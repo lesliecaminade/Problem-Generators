@@ -1,0 +1,102 @@
+Determine the resultant of the vectors [(-1)i + (-7)j + (-4)k], [(-10)i + (-2)j + (-4)k], and [(-7)i + (-6)j + (-8)k].
+A. [(-5)i + (-11)j + (-4)k]
+B. [(-18)i + (-15)j + (-16)k] #
+C. [(-15)i + (-3)j + (17)k]
+D. [(-3)i + (-10)j + (15)k]
+
+Determine the dot product of the vectors [(9)i + (4)j + (2)k] and [(10)i + (3)j + (-10)k].
+A. 82 #
+B. 99
+C. -15
+D. -50
+
+Find a unit vector parallel to the vector [(1)i + (-3)j + (-9)k].
+A. [(0.67)i + (-0.67)j + (-0.33)k]
+B. [(-0.1)i + (0.6)j + (-0.8)k]
+C. [(0.0)i + (-0.49)j + (0.87)k]
+D. [(0.1)i + (-0.31)j + (-0.94)k] #
+
+Find a vector parallel to the vector [(-9)i + (4)j + (-8)k] and has a length of 1.
+A. [(-0.71)i + (0.32)j + (-0.63)k] # #
+B. [(-9.41)i + (-1.88)j + (-2.82)k]
+C. [(-1.19)i + (-0.92)j + (1.32)k]
+D. [(-0.91)i + (-1.37)j + (-3.65)k]
+
+Find the cross product of the vectors [(-5)i + (-7)j + (-6)k] and [(-2)i + (8)j + (3)k] respectively.
+A. [(4)i + (-54)j + (20)k]
+B. [(108)i + (-94)j + (-32)k]
+C. [(27)i + (27)j + (-54)k] #
+D. [(56)i + (34)j + (-82)k]
+
+Find a unit vector perpendicular to both vectors [(8)i + (6)j + (-3)k] and [(-3)i + (-1)j + (-5)k].
+A. [(-0.76)i + (0.17)j + (0.63)k]
+B. [(0.24)i + (-0.54)j + (0.81)k]
+C. [(-0.55)i + (0.82)j + (0.17)k] #
+D. [(0.09)i + (0.93)j + (0.35)k]
+
+Find a unit vector perpendicular to both vectors [(0)i + (-9)j + (0)k] and [(4)i + (10)j + (-1)k] with a magnitude of 10.
+A. [(1.16)i + (9.93)j + (-0.08)k]
+B. [(2.43)i + (0.0)j + (9.7)k] #
+C. [(-5.96)i + (-2.98)j + (7.45)k]
+D. [(0.0)i + (-0.55)j + (-0.83)k]
+
+Find the angle between the vectors [(4)i + (9)j + (-9)k] and [(6)i + (-7)j + (-2)k].
+A. 19.11 degrees
+B. 99.6 degrees #
+C. 57.46 degrees
+D. 149.21 degrees
+
+If the two vectors [(-2)i + (-10)j + (7)k] and [(-4)i + (2)j + (z)k] are orthogonal, determine the value of z.
+A. 1.71 #
+B. 3.12
+C. 0.86
+D. 10.0
+
+Determine the component of the vector [(-1)i + (-1)j + (6)k] onto [(-6)i + (8)j + (-9)k].
+A. -2.7
+B. -4.33
+C. 2.51
+D. -4.16 #
+
+Determine the projection of the vector [(2)i + (2)j + (1)k] onto [(-10)i + (-6)j + (-2)k].
+A. [(-2.33)i + (3.27)j + (1.87)k]
+B. [(1.19)i + (-1.59)j + (1.79)k]
+C. [(-2.5)i + (-2.5)j + (-0.0)k]
+D. [(2.43)i + (1.46)j + (0.49)k] #
+
+Determine the scalar triple product of the vectors [(-9)i + (3)j + (-6)k], [(8)i + (-8)j + (10)k], and [(-7)i + (-2)j + (4)k]
+A. 465
+B. 106
+C. 234 #
+D. -431
+
+Determine the volume of the parallelipiped formed by the three vectors [(5)i + (2)j + (-4)k], [(-6)i + (4)j + (9)k], and [(-4)i + (2)j + (9)k]
+A. 198 units^3
+B. 1059 units^3
+C. 810 units^3
+D. 110 units^3 #
+
+Find the vector triple product (A x ( B x C )) if vectors A, B, and C are [(-7)i + (3)j + (7)k], [(-8)i + (9)j + (-1)k], and [(7)i + (-8)j + (-1)k] respectively.
+A. [(-1200)i + (-1050)j + (-450)k]
+B. [(108)i + (-112)j + (156)k] #
+C. [(100)i + (-132)j + (6)k]
+D. [(85)i + (267)j + (-208)k]
+
+Determine the gradient of the scalar field -9 x y/z^2 - 7/z - 9 y^3/(x^2 z^3) 
+A. [(-9 y/z^2 + 18 y^3/(x^3 z^3))i + (-9 x/z^2 - 27 y^2/(x^2 z^3))j + (18 x y/z^3 + 7/z^2 + 27 y^3/(x^2 z^4))k] #
+B. [(-10 y^3 z/x^2 + 18/(x^3 y^2 z^2))i + (15/(y^4 z^3) + 30 y^2 z/x + 18/(x^2 y^3 z^2))j + (15/(y^3 z^4) + 10 y^3/x + 18/(x^2 y^2 z^3))k]
+C. [(18 x^2 y + 27 x^2/y^3)i + (6 x^3 - 27 x^3/y^4 - 24 y^2/z)j + (8 y^3/z^2)k]
+D. [(9 x^2 z/y + 18 y/(x^4 z))i + (-3 x^3 z/y^2 - 4/(y^3 z) - 6/(x^3 z))j + (3 x^3/y - 2/(y^2 z^2) + 6 y/(x^3 z^2))k]
+
+Determine the divergence of the vector field [(-7 x^3 y^3/z^3)i + (9 z/y^3)j + (9 x^2/(y^3 z^3))k] 
+A. 3 y^3 - 7/(x^2 y^3)
+B. -21 x^2 y^3/z^3 - 27 x^2/(y^3 z^4) - 27 z/y^4 #
+C. 5 y^3 + 8 y z
+D. -2 x^3 y^2 z - 6 x^2/(y z)
+
+Determine the curl of the vector field [(-8 y/(x^3 z^3))i + (2 y^2 z/x)j + (4 x/(y^3 z^3))k] 
+A. [(-5 x^3/y - 6 y^2/(x z^2))i + (-9 y^3/(x z^2) - 2 y^3/(x^2 z^2))j + (15 x^2 z/y - 27 y^2/(x z))k]
+B. [(-8 y^3/x^2 + 3 z^3/(x^2 y^4))i + (30 y^2/(x^3 z^4) - 2 z^3/(x^3 y^3))j + (-16 y^3 z/x^3 + 20 y/(x^3 z^3))k]
+C. [(-12 x/(y^4 z^3) - 2 y^2/x)i + (-4/(y^3 z^3) + 24 y/(x^3 z^4))j + (-2 y^2 z/x^2 + 8/(x^3 z^3))k] #
+D. [(-20 x^2 y/z + 10 y^2 z/x)i + (20 x y^2/z + 2 x/y)j + (2 x z/y^2 + 5 y^2 z^2/x^2)k]
+

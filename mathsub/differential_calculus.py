@@ -8,6 +8,16 @@ from mathsub import algebra_engine
 
 x, y, z, t = sym.symbols('x y z t', real = True)#generic variables
 
+def ask():
+    ask_words = ['Find', 'Determine', 'Calculate', 'Compute', 'Evaluate']
+    return random.choice(ask_words)
+
+def parse(string_input):
+    string_input = str(string_input)
+    return string_input.replace('**', '^').replace('*', ' ')    
+
+
+
 class continuity_piecewise_function_linear_linear():
     def __init__(self):
 
@@ -44,14 +54,38 @@ class discontinuity_piecewise_function_jump():
         self.question = f"""Identify what type of discontinuity the function {piecewise.function} has."""
         self.answer = f"""{piecewise.type}, discontinuous at x = {piecewise.point_of_discontinuity} with a magnitude of {piecewise.magnitude}."""
 
-class first_derivative_explicit():
+# class first_derivative_explicit():
+#     def __init__(self):
+
+#         problem = engine.DerivativeExplicit()
+#         problem.init_random()
+
+#         self.question = f"""Differentiate {problem.function_string}."""
+#         self.answer = f"""{problem.derivative()}"""
+
+class Derivative_explicit():
     def __init__(self):
+        BATTERIES = []
+        CHOICES = []
+        suffix = ''
+        prefix = ''
+        for i in range(4):
+            #battery = engine.Some_class_from_engine
+            battery = engine.Derivative_explicit()
+            #data = battery.Some_attribute_from_battery         
+            data =  parse(battery.derivative())
+            BATTERIES.append(battery)
+            CHOICES.append(prefix + str(data) + suffix) 
+        main = BATTERIES[0]
+        CHOICES[0] = str(CHOICES[0]) + ' #'
+        random.shuffle(CHOICES)
+        #edit below
+        self.question = f"""{ask()} the first derivative of the function f(x) = {parse(main.function)}."""
 
-        problem = engine.DerivativeExplicit()
-        problem.init_random()
-
-        self.question = f"""Differentiate {problem.function_string}."""
-        self.answer = f"""{problem.derivative()}"""
+        self.answer = f"""A. {CHOICES[0]}
+B. {CHOICES[1]}
+C. {CHOICES[2]}
+D. {CHOICES[3]}"""  
 
 class first_derivative_explicit_yofx_xoft_dydt():
     def __init__(self):

@@ -1,25 +1,29 @@
-import sympy as sym
-import math
 import random
-from generator import constants_conversions as c
-from mathsub import discrete_math as discrete
-from generator import random_handler as ran
+from mathsub import discrete_math as source
 
-x, y = sym.symbols('x y', real = True)
+print('Generating...')
+file_name = 'discrete'
 
-print('Created by: Leslie Caminade')
+def write_to_file(some_object):   
+    if FILEMODE: 
+        file.write(some_object.question)
+        file.write('\n')
+        file.write(some_object.answer)
+        file.write('\n\n')
+
+def print_taks(some_object):
+    print(some_object.question)
+    print()
+    print(some_object.answer)
+    print()
+    print()
 
 TESTMODE = True
+FILEMODE = True
 
 questionList = [
-discrete.binomial_1(),
-discrete.binomial_2(),
-discrete.binomial_3(),
-discrete.binomial_4(),
-discrete.binomial_5(),
-discrete.binomial_6(),
-discrete.binomial_7(),
-discrete.binomial_8()
+source.Binomial_expansion(),
+source.Binomial_expansion_nth_term()
 ]
 
 
@@ -37,14 +41,15 @@ else:
     items_list = total_items_list
 
 print(items_list)
-
+file = open(f"{file_name}_output_{str(random.randint(1000, 9999))}.txt", 'w+')
 for i in range (len(items_list)):
     print('-----------------------------------------------------------------------')
     item = questionList[items_list[i]]
-    print(item.question)
-    print()
-    print(item.answer)
+    print_taks(item)
+    write_to_file(item)
 
+file.close()
+print('Finished.')
 stay = True
 while stay:
     command = input()

@@ -188,11 +188,8 @@ class JumpDiscontinuity(DiscontinuousPiecewise):
                 tryagain = True
 
 
-class DerivativeExplicit:
+class Derivative_explicit:
     def __init__(self):
-        pass
-
-    def init_random(self):
         type1 = algebra_engine.Polynomial()
         type2 = algebra_engine.NegativePowerPolynomial()
         type3 = algebra_engine.PositiveFractionPowerPolynomial()

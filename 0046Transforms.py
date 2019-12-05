@@ -1,13 +1,24 @@
-import math
 import random
-from generator import constants_conversions as c
 from mathsub import transforms as source
-from generator import random_handler as ran
-
-
 
 print('Generating...')
+file_name = 'transforms'
 
+def write_to_file(some_object):   
+    if FILEMODE: 
+        file.write(some_object.question)
+        file.write('\n')
+        file.write(some_object.answer)
+        file.write('\n\n')
+
+def print_taks(some_object):
+    print(some_object.question)
+    print()
+    print(some_object.answer)
+    print()
+    print()
+
+FILEMODE = True
 TESTMODE = True
 
 questionList = [
@@ -46,26 +57,14 @@ else:
     items_list = total_items_list
 
 print(items_list)
-file = open("transforms_output.txt", 'a+')
+file = open(f"{file_name}_output_{str(random.randint(1000, 9999))}.txt", 'w+')
 
 for i in range (len(items_list)):
     print('-----------------------------------------------------------------------')
     item = questionList[items_list[i]]
-    print(item.question)
-    file.write(item.question)
-    print()
-    file.write('\n')
-    print(item.answer + '        --------------------------------- answer')
-    file.write(item.answer)
-    file.write('\n\n')
-    print()
-    print()
+    print_taks(item)
+    write_to_file(item)
 
-    try:
-        print(item.choices)
-        print()
-    except:
-        pass
 
 print()
 file.close()

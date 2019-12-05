@@ -1,0 +1,24 @@
+Evaluate the Taylor series expasion of the function f(x) = 4 x^3 exp(-x) about x = 3.
+A. (log(-4 x^2)) + (2 (-a + x)/x) + (-(-a + x)^2/x^2) + (2 (-a + x)^3/(3 x^3)) + (-(-a + x)^4/(2 x^4)) + ...
+B. (x^(-3)) + (-3 (-a + x)/x^4) + (6 (-a + x)^2/x^5) + (-10 (-a + x)^3/x^6) + (15 (-a + x)^4/x^7) + ...
+C. (-3 x exp(4 x^3)) + ((-a + x) (-36 x^3 exp(4 x^3) - 3 exp(4 x^3))) + (-36 x^2 (-a + x)^2 (6 x^3 + 2) exp(4 x^3)) + (-12 x (-a + x)^3 (72 x^6 + 54 x^3 + 4) exp(4 x^3)) + (-12 (-a + x)^4 (72 x^6 + 6 x^3 (36 x^6 + 36 x^3 + 5) + 36 x^3 + 1) exp(4 x^3)) + ...
+D. (4 x^3 exp(-x)) + ((-a + x) (-4 x^3 exp(-x) + 12 x^2 exp(-x))) + (2 x (-a + x)^2 (x^2 - 6 x + 6) exp(-x)) + (2 (-a + x)^3 (-x^3 + 9 x^2 - 18 x + 6) exp(-x)/3) + ((-a + x)^4 (x^3 - 12 x^2 + 36 x - 24) exp(-x)/6) + ... #
+
+Calculate the Laplace transform of the function f(t) = 0.
+A. (40 s)/(s^2 + 25)^2
+B. 0 #
+C. -56/((s - 5)^2 - 64)
+D. -(4 (s + 4))/((s + 4)^2 - 49)
+
+Compute the inverse Laplace transform of the function F(s) = -(7 s)/(s^2 - 1).
+A. -8 exp(2 t) sin(3 t)
+B. -5 exp(6 t) sinh(4 t)
+C. 8 sinh(3 t + 12)
+D. -7 cosh(t) #
+
+Evaluate the Fourier series of the function f(t) = Piecewise[{{0, -pi < x < -pi/2}, {-5*x, -pi/2 < x < pi/2}, {0 , pi/2 < x < pi}}].
+A. (1800 cos(x) + 200 cos(3 x) + 72 cos(5 x) - 225 π^2)/(90 π)
+B. (4 (15 sin(x) + 5 sin(3 x) + 3 sin(5 x)))/(15 π)
+C. None #
+D. (2 (1800 cos(x) + 200 cos(3 x) + 72 cos(5 x) - 225 π^2))/(225 π)
+
