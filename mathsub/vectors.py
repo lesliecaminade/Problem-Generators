@@ -17,7 +17,7 @@ class Vector_add_Vector_add_Vector():
 		choice_d = str(distractor_3.resultant.print())
 
 		CHOICES = [choice_a, choice_b, choice_c, choice_d]
-
+		random.shuffle(CHOICES)
 
 		self.question = f"""Determine the resultant of the vectors {main.vector_1.print()}, {main.vector_2.print()}, and {main.vector_3.print()}."""
 	
@@ -41,7 +41,7 @@ class Dot_product():
 				CHOICES.append(battery.dot) #edit this
 
 		main = BATTERIES[0]
-
+		random.shuffle(CHOICES)
 		#edit this
 		self.question = f"""Determine the dot product of the vectors {main.vector_1.print()} and {main.vector_2.print()}."""
 
@@ -66,7 +66,7 @@ class Unit_vector_parallel_to_a_vector():
 				CHOICES.append(battery.unit_vector.round().print()) #edit this
 
 		main = BATTERIES[0]
-
+		random.shuffle(CHOICES)
 		#edit this
 		self.question = f"""Find a unit vector parallel to the vector {main.vector_1.print()}."""
 
@@ -92,7 +92,8 @@ class Unit_vector_parallel_to_a_vector_with_magnitude():
 				CHOICES.append(battery.resultant.round().print()) #edit this
 
 		main = BATTERIES[0]
-
+		CHOICES[0] = str(CHOICES[0]) + ' #'
+		random.shuffle(CHOICES)
 		#edit this
 		self.question = f"""Find a vector parallel to the vector {main.vector_1.print()} and has a length of {main.length}."""
 
@@ -101,3 +102,67 @@ class Unit_vector_parallel_to_a_vector_with_magnitude():
 B. {CHOICES[1]}
 C. {CHOICES[2]}
 D. {CHOICES[3]}"""
+
+class Cross_product():
+	def __init__(self):
+		BATTERIES = []
+		CHOICES = []
+		for i in range(4):
+			battery = engine.Cross_product()
+				#edit above 
+			BATTERIES.append(battery)
+			CHOICES.append(battery.cross_product.round().print()) 
+			#edit above
+		main = BATTERIES[0]
+		CHOICES[0] = str(CHOICES[0]) + ' #'
+		random.shuffle(CHOICES)
+		#edit below
+		self.question = f"""Find the cross product of the vectors {main.vector_1.print()} and {main.vector_2.print()} respectively."""
+
+
+		self.answer = f"""A. {CHOICES[0]}
+B. {CHOICES[1]}
+C. {CHOICES[2]}
+D. {CHOICES[3]}"""		
+
+class Unit_vector_perpendicular_to_two_vectors():
+	def __init__(self):
+		BATTERIES = []
+		CHOICES = []
+		for i in range(4):
+			battery = engine.Unit_vector_perpendicular_to_two_vectors()
+				#edit above 
+			BATTERIES.append(battery)
+			CHOICES.append(battery.cross_product_unit_vector.round().print()) 
+			#edit above
+		main = BATTERIES[0]
+		CHOICES[0] = str(CHOICES[0]) + ' #'
+		random.shuffle(CHOICES)
+		#edit below
+		self.question = f"""Find a unit vector perpendicular to both vectors {main.vector_1.print()} and {main.vector_2.print()}."""
+
+		self.answer = f"""A. {CHOICES[0]}
+B. {CHOICES[1]}
+C. {CHOICES[2]}
+D. {CHOICES[3]}"""		
+
+class Unit_vector_perpendicular_to_two_vectors_with_magnitude():
+	def __init__(self):
+		BATTERIES = []
+		CHOICES = []
+		for i in range(4):
+			battery = engine.Unit_vector_perpendicular_to_two_vectors_with_magnitude()
+				#edit above 
+			BATTERIES.append(battery)
+			CHOICES.append(battery.vector_3.round().print()) 
+			#edit above
+		main = BATTERIES[0]
+		CHOICES[0] = str(CHOICES[0]) + ' #'
+		random.shuffle(CHOICES)
+		#edit below
+		self.question = f"""Find a unit vector perpendicular to both vectors {main.vector_1.print()} and {main.vector_2.print()} with a magnitude of {main.magnitude}."""
+
+		self.answer = f"""A. {CHOICES[0]}
+B. {CHOICES[1]}
+C. {CHOICES[2]}
+D. {CHOICES[3]}"""		

@@ -215,31 +215,28 @@ class Unit_vector_parallel_to_a_vector_with_magnitude():
         self.length = random.randint(1, MAGNITUDE_MAX)
         self.resultant = self.unit_vector.multiply(self.length)
         
-class cross_product:
-    def __init__(self,**kwargs):
-        try:
-            version = kwargs['version']
-        except:
-            version = 0
-        vObj1 = vector()
-        vObj2 = vector()
-        v1 = vObj1.vector
-        v2 = vObj2.vector    
-            
-        crossObj = vObj1.cross(vObj2)
-        cross = crossObj.vector
-        self.question = f"""Find the cross product of the vectors {v1} and {v2}"""
-        self.answer = f"""{cross}"""
-        
-        if version == 1:
-            self.question = f"""Find the unit vector perpendicular to both vectors {v1} and {v2}"""
-            unitObject = crossObj.normalize()
-            unit = unitObject.vector
-            unitObject2 = unitObject.scalar_multiplication(-1)
-            unit2 = unitObject2.vector
-            self.answer = f"""{unit} or {unit2}"""
+class Cross_product():
+    def __init__(self):
+        self.vector_1 = random_vector()
+        self.vector_2 = random_vector()
+        self.cross_product = self.vector_1.cross(self.vector_2)
 
-#unit vector perpendicular to two vectors
+class Unit_vector_perpendicular_to_two_vectors():
+    def __init__(self):
+        self.vector_1 = random_vector()
+        self.vector_2 = random_vector()
+        self.cross_product = self.vector_1.cross(self.vector_2)
+        self.cross_product_unit_vector = self.cross_product.unit_vector()
+         
+class Unit_vector_perpendicular_to_two_vectors_with_magnitude():
+    def __init__(self):
+        self.vector_1 = random_vector()
+        self.vector_2 = random_vector()
+        self.cross_product = self.vector_1.cross(self.vector_2)
+        self.cross_product_unit_vector = self.cross_product.unit_vector()
+        self.magnitude = random.randint(1, MAGNITUDE_MAX)
+        self.vector_3 = self.cross_product_unit_vector.multiply(self.magnitude)
+
         
 class angle_between_two_vectors:
     def __init__(self):

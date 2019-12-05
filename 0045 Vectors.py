@@ -12,7 +12,10 @@ questionList = [
 source.Vector_add_Vector_add_Vector(),
 source.Dot_product(),
 source.Unit_vector_parallel_to_a_vector(),
-source.Unit_vector_parallel_to_a_vector_with_magnitude()
+source.Unit_vector_parallel_to_a_vector_with_magnitude(),
+source.Cross_product(),
+source.Unit_vector_perpendicular_to_two_vectors(),
+source.Unit_vector_perpendicular_to_two_vectors_with_magnitude()
 ]
 
 tryagain = True
