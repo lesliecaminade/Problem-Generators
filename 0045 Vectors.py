@@ -15,7 +15,17 @@ source.Unit_vector_parallel_to_a_vector(),
 source.Unit_vector_parallel_to_a_vector_with_magnitude(),
 source.Cross_product(),
 source.Unit_vector_perpendicular_to_two_vectors(),
-source.Unit_vector_perpendicular_to_two_vectors_with_magnitude()
+source.Unit_vector_perpendicular_to_two_vectors_with_magnitude(),
+source.Angle_between_two_vectors(),
+source.Orthogonal_vectors(),
+source.Component_of_a_vector(),
+source.Projection_of_a_vector(),
+source.Scalar_triple_product(),
+source.Volume_of_parallelipiped(),
+source.Vector_triple_product(),
+source.Gradient_of_a_scalar(),
+source.Divergence_of_a_vector(),
+source.Curl_of_a_vector()
 ]
 
 tryagain = True

@@ -2,6 +2,7 @@ import sympy
 import math
 import random
 from mathsub import analytic_geometry_engine
+from generator import constants_conversions
 
 x, y, z = sympy.symbols('x y z', real = True)
 i, j, k = sympy.symbols('i j k', real = True)
@@ -21,6 +22,9 @@ def pow():
 def random_monomial():
     return coe() * (x**pow()) * (y**pow()) * (z**pow())
 
+def parse(string_input):
+    return string_input.replace('**', '^').replace('*', ' ')
+
 class vector: #custom vector
     def __init__(self,**kwargs):
 
@@ -34,8 +38,20 @@ class vector: #custom vector
                     
             self.vector = self.x *i + self.y *j + self.z *k
 
-    def print(self):
-        return f"""[({self.x})i + ({self.y})j + ({self.z})k]""" 
+    def print(self, **kwargs):
+        hide = None
+        for key, value in kwargs.items():
+            if key == 'hide':
+                hide = value
+
+        if hide == 'x':
+            return f"""[(x)i + ({self.y})j + ({self.z})k]""" 
+        elif hide == 'y':
+            return f"""[({self.x})i + (y)j + ({self.z})k]""" 
+        elif hide == 'z':
+            return f"""[({self.x})i + ({self.y})j + (z)k]"""
+        else:
+            return f"""[({self.x})i + ({self.y})j + ({self.z})k]""" 
 
     def round(self, **kwargs):
         places = 2
@@ -46,25 +62,23 @@ class vector: #custom vector
 
     def magnitude(self):
         try:
-            magnitude = math.sqrt(self.x**2 + self.y**2 + self.z**2)
+            mag = math.sqrt(self.x**2 + self.y**2 + self.z**2)
         except:
-            magnitude = sympy.sqrt(self.x**2 + self.y**2 + self.z**2)
-        
-        self.magnitude = magnitude
-        return magnitude
+            mag = sympy.sqrt(self.x**2 + self.y**2 + self.z**2)
+        return mag
         
     def normalize(self):
-        magnitude = self.magnitude()
-        normx = self.x / magnitude
-        normy = self.y / magnitude
-        normz = self.z / magnitude
+        mag = self.magnitude()
+        normx = self.x / mag
+        normy = self.y / mag
+        normz = self.z / mag
         return vector(x_comp = normx, y_comp = normy, z_comp = normz)
 
     def unit_vector(self):
-        magnitude = self.magnitude()
-        normx = self.x / magnitude
-        normy = self.y / magnitude
-        normz = self.z / magnitude
+        mag = self.magnitude()
+        normx = self.x / mag
+        normy = self.y / mag
+        normz = self.z / mag
         return vector(x_comp = normx, y_comp = normy, z_comp = normz)
     
     def add(self,vector2):
@@ -135,11 +149,25 @@ class vector: #custom vector
         return vector(x_comp = curlx, y_comp = curly, z_comp = curlz)
 
 
-def random_vector():
-    x_component = random.randint(-COMP_MAX, COMP_MAX)
-    y_component = random.randint(-COMP_MAX, COMP_MAX)
-    z_component = random.randint(-COMP_MAX, COMP_MAX)
-    return vector(x_comp = x_component, y_comp = y_component, z_comp = z_component)
+def random_vector(**kwargs):
+    instances = 1
+    for key, value in kwargs.items():
+        if key == 'count':
+            instances = value
+    vectors = []
+
+    if instances == 1:
+        x_component = random.randint(-COMP_MAX, COMP_MAX)
+        y_component = random.randint(-COMP_MAX, COMP_MAX)
+        z_component = random.randint(-COMP_MAX, COMP_MAX)
+        return vector(x_comp = x_component, y_comp = y_component, z_comp = z_component)
+    else:
+        for i in range(instances):
+            x_component = random.randint(-COMP_MAX, COMP_MAX)
+            y_component = random.randint(-COMP_MAX, COMP_MAX)
+            z_component = random.randint(-COMP_MAX, COMP_MAX)
+            vectors.append(vector(x_comp = x_component, y_comp = y_component, z_comp = z_component))
+    return vectors
 
 def random_vector_field():
     x_component = random_monomial()
@@ -148,45 +176,26 @@ def random_vector_field():
     return vector(x_comp = x_component, y_comp = y_component, z_comp = z_component)
 
     
-class scalar_field:
+class Scalar_field:
     def __init__(self, *args):
         self.scalar = args[0]
+
+    def print(self):
+        return parse(f"""{self.scalar}""")
             
     def gradient(self):
         dx = sympy.diff(self.scalar, x)
         dy = sympy.diff(self.scalar, y)
         dz = sympy.diff(self.scalar, z)
         return vector(x_comp = dx, y_comp = dy, z_comp = dz)
-        
-    def point(self):
-        pointx = coe()
-        pointy = coe()
-        sc = self.scalar.subs(x, pointx)
-        sc = sc.subs(y, pointy)
-        
-        pointz = sympy.solveset(sc , z, domain = sympy.Reals).args[0]
 
-        point = analytic_geometry_engine.Point_3D()
-        point.init_define(pointx, pointy, pointz)
+def random_scalar_field():
+    scalar = 0 * x
+    for i in range(SCALAR_TERMS_MAX):
+        scalar = scalar + random_monomial()
+    return Scalar_field(scalar)
 
-class plane:
-    def __init__(self, **kwargs):
-    
-        point = Point_3D()
 
-        for key, value in kwargs.items():
-            if key == 'normal_vector':
-                normal_vector = value
-            if key == 'point':
-                point.init_define(value.x, value.y, value.z)
-            
-        equation_plane = normal_vector.x * (x - point.x) + normal_vector.y*(y - point.y) + normal_vector.z*(z - point.z)
-            
-        self.equation = equation_plane
-        self.normalvector = vector(x_comp = normal_vector.x, y_comp = normal_vector.y, z_comp = normal_vector.z)
-           
-        
-#-------------------------------------------------------------------
 
 class Vector_add_vector_add_vector():
     def __init__(self):
@@ -236,203 +245,76 @@ class Unit_vector_perpendicular_to_two_vectors_with_magnitude():
         self.cross_product_unit_vector = self.cross_product.unit_vector()
         self.magnitude = random.randint(1, MAGNITUDE_MAX)
         self.vector_3 = self.cross_product_unit_vector.multiply(self.magnitude)
+        
+class Angle_between_two_vectors():
+    def __init__(self):
+        self.vector_1 = random_vector()
+        self.vector_2 = random_vector()
+        self.dot = self.vector_1.dot(self.vector_2)
+        self.angle = constants_conversions.angle(
+                math.acos((self.dot) / (self.vector_1.magnitude() * self.vector_2.magnitude()))
+            , 'radians')
+
+class Orthogonal_vectors():
+    def __init__(self):
+        z_comp = 0
+        while z_comp == 0:
+            self.vector_1 = random_vector()
+            z_comp = self.vector_1.z
+
+        b_1 = coe()
+        b_2 = coe()
+        b_3 = ( - self.vector_1.x * b_1  - self.vector_1.y * b_2 ) / (self.vector_1.z)
+
+        self.vector_2 = vector(x_comp = b_1, y_comp = b_2, z_comp = b_3 )
+
+        dot = self.vector_1.dot(self.vector_2)
+        if not (dot == 0):
+            raise TypeError('vectors generated are not orthogonal')
+
+class Component_of_a_vector():
+    def __init__(self):
+        self.vector_1 = random_vector()
+        self.vector_2 = random_vector()
+        self.component = self.vector_1.component(self.vector_2)
+        
+class Projection_of_a_vector():
+    def __init__(self):
+        self.vector_1 = random_vector()
+        self.vector_2 = random_vector()
+        self.component = self.vector_1.component(self.vector_2)  
+        self.projection = self.vector_2.unit_vector().multiply(self.component)
+
+class Scalar_triple_product():
+    def __init__(self):
+        self.vector_1 = random_vector()
+        self.vector_2 = random_vector()
+        self.vector_3 = random_vector()
+        self.scalar_triple_product = self.vector_1.dot(self.vector_2.cross(self.vector_3))
+      
+class Vector_triple_product():
+    def __init__(self):
+        self.vector_1, self.vector_2, self.vector_3 = random_vector(count = 3)
+        #A x (B x C)
+        self.vector_triple_product = self.vector_1.cross(self.vector_2.cross(self.vector_3))
 
         
-class angle_between_two_vectors:
+class Gradient_of_a_scalar():
     def __init__(self):
-        vObj1 = vector()
-        vObj2 = vector()
-        v1 = vObj1.vector
-        v2 = vObj2.vector 
-        angle = math.acos(vObj1.dot(vObj2) / (vObj1.magnitude()*vObj2.magnitude()))*constants_conversions.RADIANS
-        
-        self.question = f"""Find the angle between the vectors {v1} and {v2}"""
-        self.answer = f"""{angle} degrees"""
-        
-class orthogonal_vectors:
-    def __init__(self):
-        u = random.randint(1,3)
-        
-        if u == 1:
-            vctObj1 = vector(x, ran.c(10), ran.c(10))
-        if u == 2:
-            vctObj1 = vector(ran.c(10), x, ran.c(10))
-        if u == 3:
-            vctObj1 = vector(ran.c(10), ran.c(10), x)
-            
-        vctObj2 = vector()
-        v1 = vctObj1.vector
-        v2 = vctObj2.vector
-        
-        dotexpr = vctObj1.dot(vctObj2)
-        try:
-            unknown = sympy.solveset(dotexpr, x, domain = sympy.Reals).args[0]
-        except:
-            unknown = 'solveset error'
-        
-        self.question = f"""Find the value of x that will make the vectors {v1} and {v2} orthogonal"""
-        self.answer = f"""{unknown}"""
-        
-class component_of_a_vector:
-    def __init__(self):
-        vctObj1 = vector()
-        vctObj2 = vector()
-        v1 = vctObj1.vector
-        v2 = vctObj2.vector
-        comp = vctObj1.component(vctObj2)
-        
-        self.question = f"""Find the component of {v1} onto {v2}"""
-        self.answer = f"""{comp}"""
-        
-class projection_of_a_vector:
-    def __init__(self):
-        vctObj1 = vector()
-        vctObj2 = vector()
-        v1 = vctObj1.vector
-        v2 = vctObj2.vector
-        projObj = vctObj1.projection(vctObj2)
-        proj = projObj.vector
-        self.question = f"""Find the projection of {v1} onto {v2}"""
-        self.answer = f"""{proj}"""   
+        self.scalar_1 = random_scalar_field()
+        self.gradient = self.scalar_1.gradient()
 
-class scalar_triple_product:
-    def __init__(self, **kwargs):
-        try:
-            version = kwargs['version']
-        except:
-            version = 0
             
-        ovcta = vector()
-        ovctb = vector()
-        ovctc = vector()
-        vcta = ovcta.vector
-        vctb = ovctb.vector
-        vctc = ovctc.vector
-        scalar_triple_product = ovcta.scalar_triple_product(ovctb,ovctc)
-        
-        self.question = f"""Find the scalar triple product of {vcta}, {vctb}, and {vctc}"""
-        self.answer = f"""{scalar_triple_product}"""
-        
-        if version == 1:
-            self.question = f"""Find the volume of the parallelipiped formed by the three vectors {vcta}, {vctb}, and {vctc}"""
-            volume = abs(scalar_triple_product)
-            self.answer = f"""{volume}"""
-        
-class vector_triple_product:
-    def __init__(self,**kwargs):
-        try:
-            version = kwargs['version']
-        except:
-            version = 0
-            
-        ovcta = vector()
-        ovctb = vector()
-        ovctc = vector()
-        vcta = ovcta.vector
-        vctb = ovctb.vector
-        vctc = ovctc.vector
-        vector_triple_product = ovcta.vector_triple_product(ovctb,ovctc).vector
-        
-        
-        self.question = f"""Find the vector triple product of {vcta}, {vctb}, and {vctc}"""
-        self.answer = f"""{vector_triple_product}"""
-        
-class gradient_of_a_scalar:
-    def __init__(self,**kwargs):
-        try:
-            version = kwargs['version']
-        except:
-            version = 0
-            
-        scalar_object = scalar_field()
-        gradient_vector_object = scalar_object.gradient()
-        gradient_vector = gradient_vector_object.vector
-        scalar = scalar_object.scalar
-        
-        self.question = f"""Find the gradient of the scalar field {scalar} = 0"""
-        self.answer = f"""{gradient_vector}"""
-        
-        if version == 1:
-            scalar_object = scalar_field()
-            px, py, pz = scalar_object.pointOnScalar()
-            scalar_gradient_vector_object = scalar_object.gradient(point=(px,py,pz))
-            #print('gradient'+str(scalar_gradient_vector_object.vector))
-            
-            unit_vector_object = scalar_gradient_vector_object.normalize()
-            
-            unit_vector = unit_vector_object.vector
-            unit_vector_p = sympy.pretty(unit_vector)
-            #print('unit vector'+str(unit_vector))
-            
-            self.question = f"""Find the unit vector normal to the surface {scalar} = 0 at the point ({px}, {py}, {pz})."""
-            self.answer = f"""{unit_vector_p}"""
-            
-        if version == 2:
-            scalar_object = scalar_field()
-            px, py, pz = scalar_object.pointOnScalar()
-            scalar_gradient_vector_object = scalar_object.gradient(point = (px,py,pz))
-            normal_vector_object =  scalar_gradient_vector_object
-            
-            plane_object = plane(normal = normal_vector_object, point = (px,py,pz))
-            plane_equation = plane_object.equation
-            plane_equation_p = sympy.pretty(plane_equation)
-            
-            
-            self.question = f"""Find the equation of the plane tangent to the surface {scalar} = 0 at the point ({px}, {py}, {pz})."""
-            self.answer = f"""{plane_equation_p}
-... = 0"""   
-
-        if version == 3:
-            plane_object_1 = plane()
-            plane_object_2 = plane()
-            p1 = plane_object_1.equation
-            p2 = plane_object_2.equation
-            object_gradient1 = plane_object_1.normalvector
-            object_gradient2 = plane_object_2.normalvector
-            
-            angle = math.acos((object_gradient1.dot(object_gradient2))/(object_gradient1.magnitude()*object_gradient2.magnitude()))*constants_conversions.RADIANS
-            
-            self.question = f"""Find the angle between the planes {p1} = 0 and {p2} = 0"""
-            self.answer = f"""{angle} degrees"""
-
-        if version == 4:
-            scalarObject1 = scalar_field()
-            s = scalarObject1.scalar
-            px, py, pz = scalarObject1.pointOnScalar()
-            gradientObject1 = scalarObject1.gradient(point = (px,py,pz))
-            vectorObject = vector()
-            v = vectorObject.vector
-            unitVectorObject = vectorObject.normalize()
-            directionalDerivative = gradientObject1.dot(unitVectorObject)
-            
-            self.question = f"""Find the directional derivative of {s} on the direction of {v} at the point ({px}, {py}, {pz})"""
-            self.answer = f"""{directionalDerivative}"""
-            
-class divergence_of_a_vector:
-    def __init__(self, **kwargs):
-        
-        vectorObject = vector(field = True)
-        v = vectorObject.vector
-        vp = sympy.pretty(v)
-        divergence = vectorObject.divergence()
-        divergencep = sympy.pretty(divergence)
-        
-        self.question = f"""Find the divergence of the vector field 
-{vp}"""
-        self.answer = f"""{divergencep}"""
-        
-class curl_of_a_vector:
+class Divergence_of_a_vector():
     def __init__(self):
-        vectorObject = vector(field = True)
-        v = vectorObject.vector
-        vp = sympy.pretty(v)
-        curlObject = vectorObject.curl()
-        curl = curlObject.vector
-        curlp = sympy.pretty(curl)
+        self.vector = random_vector_field()
+        self.divergence = self.vector.divergence()
+
         
-        self.question = f"""Find the curl of the vector field
-{vp}"""
-        self.answer = f"""{curlp}"""
+class Curl_of_a_vector():
+    def __init__(self):
+        self.vector = random_vector_field()
+        self.curl = self.vector.curl()
         
         
 # class point_conversion:
