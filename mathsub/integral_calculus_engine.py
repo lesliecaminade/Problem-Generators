@@ -14,6 +14,10 @@ VARIATIONS = 16
 WOLFRAM_NAME = 'ProblemGenerator'
 WOLFRAM_APPID = 'VV7LX5-5V58TH8KJX'
 client = wolframalpha.Client(WOLFRAM_APPID)
+# wolfram = client.query(string_query)
+# response = next(wolfram.results).text
+
+
 class Antiderivative():
     def __init__(self):
         pass
