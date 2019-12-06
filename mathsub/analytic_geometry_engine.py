@@ -1,7 +1,7 @@
 import sympy
 import math
 import random
-from generator import constants_conversions as c
+from generator import constants_conversions
 
 x, y, z, t = sympy.symbols('x y z t', real = True)#generic variables
 
@@ -154,13 +154,11 @@ class Point():
             return p
 
     def round(self, decimals = 2):
-        try:
-            self.x = round(self.x, decimals)
-            self.y = round(self.y, decimals)
-            self.string = f"""({self.x}, {self.y})"""
-        except:
-            pass
-
+        x_coordinate = round(self.x, decimals)
+        y_coordinate = round(self.y, decimals)
+        point = Point()
+        point.init_define(x_coordinate, y_coordinate)
+        return point
 
 
 class Line():
@@ -216,16 +214,16 @@ class Line():
 
     def inclination(self):
 
-        return c.angle(math.atan(self.slope), 'radians')
+        return constants_conversions.angle(math.atan(self.slope), 'radians')
 
     def angle_to_line(self, line):
 
         tan_theta = (self.slope - line.slope)/(1 + self.slope*line.slope)
 
         if tan_theta > 0:
-            return c.angle(math.atan(tan_theta))
+            return constants_conversions.angle(math.atan(tan_theta))
         else:
-            return c.angle(math.pi - math.atan(tan_theta))
+            return constants_conversions.angle(math.pi - math.atan(tan_theta))
 
     def distance(self, object_input):
         if type(object_input) is Point:
@@ -860,9 +858,185 @@ class Quadrant_identification():
         self.point_1 = point_1
         self.quadrant = point_1.quadrant()
 
+class Midpoint():
+    def __init__(self):
+        self.point_1 = Point()
+        self.point_2 = Point()
+        self.point_1.init_random()
+        self.point_2.init_random()
+        self.midpoint = self.point_1.midpoint(self.point_2)
+
+class Extension_of_line_segment():
+    def __init__(self):
+        point_1 = Point()
+        point_2 = Point()
+        point_1.init_random()
+        point_2.init_random()
+        factor = random.randint(EXTEND_FACTOR_MIN, EXTEND_FACTOR_MAX)
+        terminal_point = point_1.extend(point_2, factor)
+        self.point_1 = point_1
+        self.point_2 = point_2
+        self.factor = factor
+        self.terminal_point = terminal_point
+
+class Division_of_line_segment():
+    def __init__(self):
+        point_1 = Point()
+        point_2 = Point()
+        point_1.init_random()
+        point_2.init_random()
+        factor = random.randint(1,99)/100
+        terminal_point = point_1.extend(point_2, factor)
+        self.point_1 = point_1
+        self.point_2 = point_2
+        self.factor = factor
+        self.terminal_point = terminal_point
 
 
+class Equation_of_a_line_two_points():
+    def __init__(self):
+        point_1 = Point()
+        point_2 = Point()
+        point_1.init_random()
+        point_2.init_random()
+        line = Line()
+        line.init_two_points(point_1, point_2)
+        self.point_1 = point_1
+        self.point_2 = point_2
+        self.line = line
 
+class Equation_of_a_line_point_slope():
+    def __init__(self):
+        point = Point()
+        point.init_random()
+        slope = random.randint(-SLOPE_MAX, SLOPE_MAX)
+        line = Line()
+        line.init_point_slope(point, slope)
+        self.point = point
+        self.slope = slope
+        self.line = line
+
+class Equation_of_a_line_slope_intercept():
+    def __init__(self):
+        y_intercept = random.randint(-Y_RANGE, Y_RANGE)
+        slope = random.randint(-SLOPE_MAX, SLOPE_MAX)
+        line = Line()
+        line.init_slope_intercept(slope, y_intercept)
+        self.slope = slope
+        self.y_intercept = y_intercept
+        self.line = line
+
+class Equation_of_a_line_intercepts():
+    def __init__(self):
+        x_intercept = random.randint(-X_RANGE, X_RANGE)
+        y_intercept = random.randint(-Y_RANGE, Y_RANGE)
+        line = Line()
+        line.init_intercepts(x_intercept, y_intercept)
+        self.x_intercept = x_intercept
+        self.y_intercept = y_intercept
+        self.line = line
+
+class Line_parallel_to_line():
+    def __init__(self):
+        point_1 = Point()
+        point_2 = Point()
+        point_3 = Point()
+        point_1.init_random()
+        point_2.init_random()
+        point_3.init_random()
+        line_1 = Line()
+        line_1.init_two_points(point_1, point_2)
+        line_2 = Line()
+        line_2.init_point_slope(point_3, line_1.parallel())
+        self.point_1 = point_1
+        self.point_2 = point_2
+        self.point_3 = point_3
+        self.line = line_2
+
+class Line_perpendicular_to_line():
+    def __init__(self):
+        point_1 = Point()
+        point_2 = Point()
+        point_3 = Point()
+        point_1.init_random()
+        point_2.init_random()
+        point_3.init_random()
+        line_1 = Line()
+        line_1.init_two_points(point_1, point_2)
+        line_2 = Line()
+        line_2.init_point_slope(point_3, line_1.perpendicular())
+        self.point_1 = point_1
+        self.point_2 = point_2
+        self.point_3 = point_3
+        self.line = line_2
+
+class Angle_between_the_lines():
+    def __init__(self):
+        line_1 = Line()
+        line_1.init_random()
+        line_2 = Line()
+        line_2.init_random()
+        angle = line_1.angle_to_line(line_2)
+        self.line_1 = line_1
+        self.line_2 = line_2
+        self.angle = angle
+
+class Distance_from_point_to_line():
+    def __init__(self):
+        line = Line()
+        line.init_random()
+        point = Point()
+        point.init_random()
+        distance = line.distance(point)
+        self.line = line
+        self.point = point
+        self.distance = distance
+
+class Distance_from_line_to_line():
+    def __init__(self):
+        line_1 = Line()
+        slope = random.randint(-SLOPE_MAX, SLOPE_MAX)
+        y_intercept_1 = random.randint(-Y_RANGE, Y_RANGE)
+        line_1.init_slope_intercept(slope, y_intercept_1)
+        line_2 = Line()
+        y_intercept_2 = random.randint(-Y_RANGE, Y_RANGE)
+        line_2.init_slope_intercept(slope, y_intercept_2)
+        distance = line_1.distance(line_2)
+        self.line_1 = line_1
+        self.line_2 = line_2
+        self.distance = distance
+
+class Area_of_three_points():
+    def __init__(self):
+        point_1 = Point()
+        point_2 = Point()
+        point_3 = Point()
+        point_1.init_random()
+        point_2.init_random()
+        point_3.init_random()
+        area = point_1.area_shoelace_3_points(point_2, point_3)
+        self.point_1 = point_1
+        self.point_2 = point_2
+        self.point_3 = point_3
+        self.area = area
+
+class Conic_section_derivation():
+    def __init__(self):
+        conic = random.choice(CONIC_SECTIONS_LIST)
+        self.description = conic[1]
+        self.conic = conic[0]
+
+class Circle_standard_to_general():
+    def __init__(self):
+        circle = Circle()
+        circle.init_random()
+        self.circle = circle
+
+class Circle_circumference_from_general():
+    def __init__(self):
+        circle = Circle()
+        circle.init_random()
+        self.circle = circle
 
 
 

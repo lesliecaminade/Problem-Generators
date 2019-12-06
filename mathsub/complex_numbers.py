@@ -17,7 +17,7 @@ class Complex_number_raised_to_positive_integer():
 		choice_d = str(distractor_3.solution)
 
 		CHOICES = [choice_a, choice_b, choice_c, choice_d]
-
+		random.shuffle(CHOICES)
 
 		self.question = f"""Calculate the value of the complex number {main.base} when it is raised to the power of {main.power}."""
 	

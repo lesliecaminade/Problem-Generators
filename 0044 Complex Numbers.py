@@ -44,17 +44,12 @@ while tryagain:
     except:
         pass
 
-
-
 questionList = questionList + additional_questionlist
-
-
 
 #populate a set of all the items
 total_items_list = []
 for i in range(len(questionList)):
     total_items_list.append(i)
-    
     
 #choose a smaller subset from these questions
 if not TESTMODE:

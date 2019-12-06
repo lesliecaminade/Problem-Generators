@@ -20,25 +20,12 @@ def print_taks(some_object):
     print()
 
 TESTMODE = True
-FILEMODE = False
+FILEMODE = True
+
 file_name = 'analytic_geometry'
 
 questionList = [
-source.Distance_between_two_points(),
-source.Quadrant_identification()
-# source.midpoint_of_two_points(),
-# source.extension_of_line_segment(),
-# source.division_of_line_segment(),
-# source.equation_of_a_line_two_points(),
-# source.equation_of_a_line_point_slope(),
-# source.equation_of_a_line_slope_intercept(),
-# source.equation_of_a_line_intercepts(),
-# source.line_parallel_to_line(),
-# source.line_perpendicular_to_line(),
-# source.angle_between_two_lines(),
-# source.distance_from_point_to_line(),
-# source.distance_from_line_to_line(),
-# source.area_of_3_points()
+
 ]
 
 
@@ -48,6 +35,22 @@ while tryagain:
     try:
         additional_questionlist = [
         #insert hard to generate questions here
+        source.Distance_between_two_points(),
+        #source.Quadrant_identification()
+        source.Midpoint(),
+        source.Extension_of_line_segment(),
+        source.Extension_of_line_segment_by(),
+        source.Division_of_line_segment(),
+        source.Equation_of_a_line_two_points(),
+        source.Equation_of_a_line_point_slope(),
+        source.Equation_of_a_line_slope_intercept(),
+        source.Equation_of_a_line_intercepts(),
+        source.Line_parallel_to_line(),
+        source.Line_perpendicular_to_line(),
+        source.Angle_between_the_lines(),
+        source.Distance_from_point_to_line(),
+        source.Distance_from_line_to_line(),
+        source.Area_of_three_points()
         ]
         tryagain = False
     except:

@@ -1,12 +1,7 @@
-from generator import random_handler as ran
-import sympy as sym
 import math
 import random
-from generator import constants_conversions as c
 from mathsub import analytic_geometry_engine as engine
-from mathsub import algebra_engine
-
-x, y, z, t = sym.symbols('x y z t', real = True)#generic variables
+from num2words import num2words
 
 def ask():
     ask_words = ['Find', 'Determine', 'Calculate', 'Compute', 'Evaluate']
@@ -65,253 +60,401 @@ B. {CHOICES[1]}
 C. {CHOICES[2]}
 D. {CHOICES[3]}"""  
 
-class midpoint_of_two_points():
+class Midpoint():
     def __init__(self):
+        BATTERIES = []
+        CHOICES = []
+        suffix = ''
+        prefix = ''
+        for i in range(4):
+            #battery = engine.Some_class_from_engine
+            battery = engine.Midpoint()
+            #data = battery.Some_attribute_from_battery         
+            data =  parse(battery.midpoint.string)
+            BATTERIES.append(battery)
+            CHOICES.append(prefix + str(data) + suffix) 
+        main = BATTERIES[0]
+        CHOICES[0] = str(CHOICES[0]) + ' #'
+        random.shuffle(CHOICES)
+        #edit below
+        self.question = f"""{ask()} the midpoint of the points {main.point_1.string} and {main.point_2.string}"""
 
-        point_1 = engine.Point()
-        point_2 = engine.Point()
-        point_1.init_random()
-        point_2.init_random()
+        self.answer = f"""A. {CHOICES[0]}
+B. {CHOICES[1]}
+C. {CHOICES[2]}
+D. {CHOICES[3]}"""  
 
-        midpoint = point_1.midpoint(point_2)
-
-        self.question = f"""Determine the midpoint of the two points {point_1.string}  and {point_2.string}."""
-        self.answer = f"""{midpoint.string}"""
-
-class extension_of_line_segment():
+class Extension_of_line_segment():
     def __init__(self):
+        BATTERIES = []
+        CHOICES = []
+        suffix = ''
+        prefix = ''
+        for i in range(4):
+            #battery = engine.Some_class_from_engine
+            battery = engine.Extension_of_line_segment()
+            #data = battery.Some_attribute_from_battery         
+            data =  parse(battery.terminal_point.string)
+            BATTERIES.append(battery)
+            CHOICES.append(prefix + str(data) + suffix) 
+        main = BATTERIES[0]
+        CHOICES[0] = str(CHOICES[0]) + ' #'
+        random.shuffle(CHOICES)
+        #edit below
+        self.question = f"""{ask()} the terminal point of the line segment formed by extending the line segment from point {main.point_1.string} to {main.point_2.string} to {num2words(main.factor)} times its original length."""
 
-        point_1 = engine.Point()
-        point_2 = engine.Point()
-        point_1.init_random()
-        point_2.init_random()
+        self.answer = f"""A. {CHOICES[0]}
+B. {CHOICES[1]}
+C. {CHOICES[2]}
+D. {CHOICES[3]}"""
 
-        factor = random.randint(engine.EXTEND_FACTOR_MIN, engine.EXTEND_FACTOR_MAX)
-        terminal_point = point_1.extend(point_2, factor)
-
-        form = random.randint(0,1)
-
-        if form == 0:
-
-            self.question = f"""The line segment from {point_1.string} to {point_2.string} is extended to {factor} times its own length. Find the terminal point."""
-            self.answer = f"""{terminal_point.string}"""
-
-        if form == 1:
-            self.question = f"""If the line segment from {point_1.string} to {point_2.string} is extended by {factor - 1} times its own length. Find the terminal point."""
-
-            self.answer = f"""{terminal_point.string}"""
-
-class division_of_line_segment():
+class Extension_of_line_segment_by():
     def __init__(self):
+        BATTERIES = []
+        CHOICES = []
+        suffix = ''
+        prefix = ''
+        for i in range(4):
+            #battery = engine.Some_class_from_engine
+            battery = engine.Extension_of_line_segment()
+            #data = battery.Some_attribute_from_battery         
+            data =  parse(battery.terminal_point.string)
+            BATTERIES.append(battery)
+            CHOICES.append(prefix + str(data) + suffix) 
+        main = BATTERIES[0]
+        CHOICES[0] = str(CHOICES[0]) + ' #'
+        random.shuffle(CHOICES)
+        #edit below
+        self.question = f"""{ask()} the terminal point of the line segment formed by extending the line segment from point {main.point_1.string} to {main.point_2.string} by {num2words(main.factor-1)} times its original length."""
 
-        point_1 = engine.Point()
-        point_2 = engine.Point()
-        point_1.init_random()
-        point_2.init_random()
+        self.answer = f"""A. {CHOICES[0]}
+B. {CHOICES[1]}
+C. {CHOICES[2]}
+D. {CHOICES[3]}"""  
 
-        factor = random.randint(1,99) / 100
-        terminal_point = point_1.extend(point_2, factor)
-
-        self.question = f"""If the line segment from {point_1.string} to {point_2.string} is divided to {factor} times its own length, find the terminal point."""
-        self.answer = f"""{terminal_point.string}"""
-
-
-class equation_of_a_line_two_points():
+class Division_of_line_segment():
     def __init__(self):
+        BATTERIES = []
+        CHOICES = []
+        suffix = ''
+        prefix = ''
+        for i in range(4):
+            #battery = engine.Some_class_from_engine
+            battery = engine.Division_of_line_segment()
+            #data = battery.Some_attribute_from_battery         
+            data =  parse(battery.terminal_point.round().string)
+            BATTERIES.append(battery)
+            CHOICES.append(prefix + str(data) + suffix) 
+        main = BATTERIES[0]
+        CHOICES[0] = str(CHOICES[0]) + ' #'
+        random.shuffle(CHOICES)
+        #edit below
+        self.question = f"""{ask()} the terminal point of the line segment formed by dividing the line segment from point {main.point_1.string} to {main.point_2.string} to {main.factor} times its original length."""
 
-        point1 = engine.Point()
-        point2 = engine.Point()
+        self.answer = f"""A. {CHOICES[0]}
+B. {CHOICES[1]}
+C. {CHOICES[2]}
+D. {CHOICES[3]}"""  
 
-        point1.init_random()
-        point2.init_random()
-
-
-        line = engine.Line()
-        line.init_two_points(point1, point2)
-
-        self.question = f"""Determine the equation of the line that passes through the points {point1.string} to {point2.string}"""
-
-        self.answer = f"""{line.general} = 0"""
-
-class equation_of_a_line_point_slope():
+class Equation_of_a_line_two_points():
     def __init__(self):
+        BATTERIES = []
+        CHOICES = []
+        suffix = ''
+        prefix = ''
+        for i in range(4):
+            #battery = engine.Some_class_from_engine
+            battery = engine.Equation_of_a_line_two_points()
+            #data = battery.Some_attribute_from_battery         
+            data =  parse(battery.line.string)
+            BATTERIES.append(battery)
+            CHOICES.append(prefix + str(data) + suffix) 
+        main = BATTERIES[0]
+        CHOICES[0] = str(CHOICES[0]) + ' #'
+        random.shuffle(CHOICES)
+        #edit below
+        self.question = f"""{ask()} the equation of the line which intersects with the points {main.point_1.string} and {main.point_2.string}."""
 
-        point = engine.Point()
-        point.init_random()
+        self.answer = f"""A. {CHOICES[0]}
+B. {CHOICES[1]}
+C. {CHOICES[2]}
+D. {CHOICES[3]}"""  
 
-        slope = random.randint(-engine.SLOPE_MAX, engine.SLOPE_MAX)
-
-        line = engine.Line()
-
-        line.init_point_slope(point, slope)
-
-        self.question = f"""Determine the equation of the line passes through the point {point.string} and has a slope of {slope}."""
-
-        self.answer = f"""{line.general} = 0"""
-
-class equation_of_a_line_slope_intercept():
+class Equation_of_a_line_point_slope():
     def __init__(self):
+        BATTERIES = []
+        CHOICES = []
+        suffix = ''
+        prefix = ''
+        for i in range(4):
+            #battery = engine.Some_class_from_engine
+            battery = engine.Equation_of_a_line_point_slope()
+            #data = battery.Some_attribute_from_battery         
+            data =  parse(battery.line.string)
+            BATTERIES.append(battery)
+            CHOICES.append(prefix + str(data) + suffix) 
+        main = BATTERIES[0]
+        CHOICES[0] = str(CHOICES[0]) + ' #'
+        random.shuffle(CHOICES)
+        #edit below
+        self.question = f"""{ask()} the equation of the line that intersects the point {main.point.string} and has a slope of {main.slope}."""
+        self.answer = f"""A. {CHOICES[0]}
+B. {CHOICES[1]}
+C. {CHOICES[2]}
+D. {CHOICES[3]}"""  
 
-        yintercept = random.randint(-engine.Y_RANGE, engine.Y_RANGE)
-
-        slope = random.randint(-engine.SLOPE_MAX, engine.SLOPE_MAX)
-
-        line = engine.Line()
-
-        line.init_slope_intercept(slope, yintercept)
-
-        self.question = f"""Determine the equation of the line that has a slope of {slope} and has a y-intercept of {yintercept}."""
-
-        self.answer = f"""{line.general} = 0"""
-
-class equation_of_a_line_intercepts():
+class Equation_of_a_line_slope_intercept():
     def __init__(self):
+        BATTERIES = []
+        CHOICES = []
+        suffix = ''
+        prefix = ''
+        for i in range(4):
+            #battery = engine.Some_class_from_engine
+            battery = engine.Equation_of_a_line_slope_intercept()
+            #data = battery.Some_attribute_from_battery         
+            data =  parse(battery.line.string)
+            BATTERIES.append(battery)
+            CHOICES.append(prefix + str(data) + suffix) 
+        main = BATTERIES[0]
+        CHOICES[0] = str(CHOICES[0]) + ' #'
+        random.shuffle(CHOICES)
+        #edit below
+        self.question = f"""{ask()} the equation of the line which has a slope of {main.slope} and a y-intercept of {main.y_intercept}."""
+        self.answer = f"""A. {CHOICES[0]}
+B. {CHOICES[1]}
+C. {CHOICES[2]}
+D. {CHOICES[3]}"""  
 
-        xintercept = random.randint(-engine.X_RANGE, engine.X_RANGE)
-        yintercept = random.randint(-engine.Y_RANGE, engine.Y_RANGE)
-
-        line = engine.Line()
-        line.init_intercepts(xintercept, yintercept)
-
-        self.question = f"""Determine the equation of the line that has x-intercept equal to {xintercept} and y-intercept equal to {yintercept}."""
-
-        self.answer = f"""{line.general} = 0"""
-
-class line_parallel_to_line():
+class Equation_of_a_line_intercepts():
     def __init__(self):
+        BATTERIES = []
+        CHOICES = []
+        suffix = ''
+        prefix = ''
+        for i in range(4):
+            #battery = engine.Some_class_from_engine
+            battery = engine.Equation_of_a_line_intercepts()
+            #data = battery.Some_attribute_from_battery         
+            data =  parse(battery.line.string)
+            BATTERIES.append(battery)
+            CHOICES.append(prefix + str(data) + suffix) 
+        main = BATTERIES[0]
+        CHOICES[0] = str(CHOICES[0]) + ' #'
+        random.shuffle(CHOICES)
+        #edit below
+        self.question = f"""{ask()} the equation of the line which has an x-intercept of {main.x_intercept} and a y-intercept of {main.y_intercept}."""
+        self.answer = f"""A. {CHOICES[0]}
+B. {CHOICES[1]}
+C. {CHOICES[2]}
+D. {CHOICES[3]}"""  
 
-        point1 = engine.Point()
-        point2 = engine.Point()
-
-        point3 = engine.Point()
-
-        point1.init_random()
-        point2.init_random()
-        point3.init_random()
-
-        line1 = engine.Line()
-        line1.init_two_points(point1, point2)
-
-        line2 = engine.Line()
-        line2.init_point_slope(point3, line1.parallel())
-
-        self.question = f"""Determine the equation of a line that includes the point {point3.string} and is parallel to {line1.general} = 0."""
-
-        self.answer = f"""{line2.general} = 0"""
-
-class line_perpendicular_to_line():
+class Line_parallel_to_line():
     def __init__(self):
+        BATTERIES = []
+        CHOICES = []
+        suffix = ''
+        prefix = ''
+        for i in range(4):
+            #battery = engine.Some_class_from_engine
+            battery = engine.Line_parallel_to_line()
+            #data = battery.Some_attribute_from_battery         
+            data =  parse(battery.line.string)
+            BATTERIES.append(battery)
+            CHOICES.append(prefix + str(data) + suffix) 
+        main = BATTERIES[0]
+        CHOICES[0] = str(CHOICES[0]) + ' #'
+        random.shuffle(CHOICES)
+        #edit below
+        self.question = f"""{ask()} the equation of the line which intersects the point {main.point_3.string} and also parallel to the line that intersects both the points {main.point_1.string} and {main.point_2.string}."""
+        self.answer = f"""A. {CHOICES[0]}
+B. {CHOICES[1]}
+C. {CHOICES[2]}
+D. {CHOICES[3]}"""  
 
-        point1 = engine.Point()
-        point2 = engine.Point()
-
-        point3 = engine.Point()
-
-        point1.init_random()
-        point2.init_random()
-        point3.init_random()
-
-        line1 = engine.Line()
-        line1.init_two_points(point1, point2)
-
-        line2 = engine.Line()
-        line2.init_point_slope(point3, line1.perpendicular())
-
-        self.question = f"""Determine the equation of a line that includes the point {point3.string} and is perpendicular to {line1.general} = 0."""
-        self.answer = f"""{line2.general} = 0"""
-
-
-class angle_between_two_lines():
+class Line_perpendicular_to_line():
     def __init__(self):
+        BATTERIES = []
+        CHOICES = []
+        suffix = ''
+        prefix = ''
+        for i in range(4):
+            #battery = engine.Some_class_from_engine
+            battery = engine.Line_perpendicular_to_line()
+            #data = battery.Some_attribute_from_battery         
+            data =  parse(battery.line.string)
+            BATTERIES.append(battery)
+            CHOICES.append(prefix + str(data) + suffix) 
+        main = BATTERIES[0]
+        CHOICES[0] = str(CHOICES[0]) + ' #'
+        random.shuffle(CHOICES)
+        #edit below
+        self.question = f"""{ask()} the equation of the line which intersects the point {main.point_3.string} and also perpendicular to the line that intersects both the points {main.point_1.string} and {main.point_2.string}."""
+        self.answer = f"""A. {CHOICES[0]}
+B. {CHOICES[1]}
+C. {CHOICES[2]}
+D. {CHOICES[3]}"""  
 
-        line1 = engine.Line()
-        line1.init_random()
-
-        line2 = engine.Line()
-        line2.init_random()
-
-        angle_between_lines = line1.angle_to_line(line2)
-
-        self.question = f"""Determine the smaller angle between the lines {line1.general} = 0 and {line2.general} = 0."""
-
-        self.answer = f"""{angle_between_lines.degrees} degrees"""
-
-class distance_from_point_to_line():
+class Angle_between_the_lines():
     def __init__(self):
+        BATTERIES = []
+        CHOICES = []
+        suffix = ''
+        prefix = ''
+        for i in range(4):
+            #battery = engine.Some_class_from_engine
+            battery = engine.Angle_between_the_lines()
+            #data = battery.Some_attribute_from_battery         
+            data =  parse(round(battery.angle.degrees,2))
+            BATTERIES.append(battery)
+            CHOICES.append(prefix + str(data) + suffix) 
+        main = BATTERIES[0]
+        CHOICES[0] = str(CHOICES[0]) + ' #'
+        random.shuffle(CHOICES)
+        #edit below
+        self.question = f"""{ask()} the angle between the lines {main.line_1.string}, and {main.line_2.string} in degrees."""
+        self.answer = f"""A. {CHOICES[0]}
+B. {CHOICES[1]}
+C. {CHOICES[2]}
+D. {CHOICES[3]}"""  
 
-        line = engine.Line()
-        line.init_random()
-
-        point = engine.Point()
-        point.init_random()
-
-        distance = line.distance(point)
-
-        self.question = f"""Determine the shortest distance between the line {line.string} and the point {point.string}."""
-
-        self.answer = f"""{distance}"""
-
-class distance_from_line_to_line():
+class Distance_from_point_to_line():
     def __init__(self):
+        BATTERIES = []
+        CHOICES = []
+        suffix = ''
+        prefix = ''
+        for i in range(4):
+            #battery = engine.Some_class_from_engine
+            battery = engine.Distance_from_point_to_line()
+            #data = battery.Some_attribute_from_battery         
+            data =  parse(round(battery.distance,2))
+            BATTERIES.append(battery)
+            CHOICES.append(prefix + str(data) + suffix) 
+        main = BATTERIES[0]
+        CHOICES[0] = str(CHOICES[0]) + ' #'
+        random.shuffle(CHOICES)
+        #edit below
+        self.question = f"""{ask()} the distance between the line {main.line.string} and the point {main.point.string}"""
+        self.answer = f"""A. {CHOICES[0]}
+B. {CHOICES[1]}
+C. {CHOICES[2]}
+D. {CHOICES[3]}""" 
 
-        line1 = engine.Line()
-        slope = random.randint(-engine.SLOPE_MAX, engine.SLOPE_MAX)
-        b1 = random.randint(-engine.Y_RANGE, engine.Y_RANGE)
-        line1.init_slope_intercept(slope, b1)
-
-
-        line2 = engine.Line()
-        b2 = random.randint(-engine.Y_RANGE, engine.Y_RANGE)
-        line2.init_slope_intercept(slope, b2)
-
-        distance = line1.distance(line2)
-
-        self.question = f"""Determine the shortest distance between the lines {line1.string} and {line2.string}."""
-        self.answer = f"""{distance}"""
-
-class area_of_3_points():
+class Distance_from_line_to_line():
     def __init__(self):
+        BATTERIES = []
+        CHOICES = []
+        suffix = ''
+        prefix = ''
+        for i in range(4):
+            #battery = engine.Some_class_from_engine
+            battery = engine.Distance_from_line_to_line()
+            #data = battery.Some_attribute_from_battery         
+            data =  parse(round(battery.distance, 2))
+            BATTERIES.append(battery)
+            CHOICES.append(prefix + str(data) + suffix) 
+        main = BATTERIES[0]
+        CHOICES[0] = str(CHOICES[0]) + ' #'
+        random.shuffle(CHOICES)
+        #edit below
+        self.question = f"""{ask()} the distance between the lines {main.line_1.string} and {main.line_2.string}."""
+        self.answer = f"""A. {CHOICES[0]}
+B. {CHOICES[1]}
+C. {CHOICES[2]}
+D. {CHOICES[3]}""" 
 
-        point1 = engine.Point()
-        point2 = engine.Point()
-        point3 = engine.Point()
-
-        point1.init_random()
-        point2.init_random()
-        point3.init_random()
-
-        area = point1.area_shoelace_3_points(point2, point3)
-
-        self.question = f"""Determine the area formed by the convex polygon by connecting the points {point1.string}, {point2.string}, and {point3.string}."""
-        self.answer = f"""{area} square units"""
-
-class derivation_of_conic_sections():
+class Area_of_three_points():
     def __init__(self):
+        BATTERIES = []
+        CHOICES = []
+        suffix = ''
+        prefix = ''
+        for i in range(4):
+            #battery = engine.Some_class_from_engine
+            battery = engine.Area_of_three_points()
+            #data = battery.Some_attribute_from_battery         
+            data =  parse(round(battery.area, 2))
+            BATTERIES.append(battery)
+            CHOICES.append(prefix + str(data) + suffix) 
+        main = BATTERIES[0]
+        CHOICES[0] = str(CHOICES[0]) + ' #'
+        random.shuffle(CHOICES)
+        #edit below
+        self.question = f"""{ask()} the area enclosed by the polygon formed by connecting the points {main.point_1.string}, {main.point_2.string} and {main.point_3.string}."""
+        self.answer = f"""A. {CHOICES[0]}
+B. {CHOICES[1]}
+C. {CHOICES[2]}
+D. {CHOICES[3]}""" 
 
-        conic_sections = engine.CONIC_SECTIONS_LIST
-        conic = random.choice(conic_sections)
-
-        self.question = f"""What conic section is produced when {conic[1]}?"""
-        self.answer = f"""{conic[0]}"""
-
-class standard_to_general_circle():
+class Conic_section_derivation():
     def __init__(self):
+        BATTERIES = []
+        CHOICES = []
+        suffix = ''
+        prefix = ''
+        for i in range(4):
+            #battery = engine.Some_class_from_engine
+            battery = engine.Conic_section_derivation()
+            #data = battery.Some_attribute_from_battery         
+            data =  parse(battery.conic)
+            BATTERIES.append(battery)
+            CHOICES.append(prefix + str(data) + suffix) 
+        main = BATTERIES[0]
+        CHOICES[0] = str(CHOICES[0]) + ' #'
+        random.shuffle(CHOICES)
+        #edit below
+        self.question = f"""What is the conic section that is {main.description.lower()}?"""
+        self.answer = f"""A. {CHOICES[0]}
+B. {CHOICES[1]}
+C. {CHOICES[2]}
+D. {CHOICES[3]}""" 
 
-        circle = engine.Circle()
-        circle.init_random()
-
-        self.question = f"""Determine the equation of a circle whose center is located at the point {circle.center.string} and has a radius of {circle.radius}."""
-        self.answer = f"""{circle.general_string}"""
-
-class circumference_from_general():
+class Circle_standard_to_general():
     def __init__(self):
+        BATTERIES = []
+        CHOICES = []
+        suffix = ''
+        prefix = ''
+        for i in range(4):
+            #battery = engine.Some_class_from_engine
+            battery = engine.Circle_standard_to_general()
+            #data = battery.Some_attribute_from_battery         
+            data =  parse(battery.circle.general_string)
+            BATTERIES.append(battery)
+            CHOICES.append(prefix + str(data) + suffix) 
+        main = BATTERIES[0]
+        CHOICES[0] = str(CHOICES[0]) + ' #'
+        random.shuffle(CHOICES)
+        #edit below
+        self.question = f"""{ask()} the circle that has a center at {main.circle.center.string} and has a radius of {main.circle.radius}."""
+        self.answer = f"""A. {CHOICES[0]}
+B. {CHOICES[1]}
+C. {CHOICES[2]}
+D. {CHOICES[3]}""" 
 
-        circle = engine.Circle()
-        circle.init_random()
-
-        self.question = f"""Calculate the circumference of the circle whose equation is {circle.general_string}."""
-
-        self.answer = f"""{round(circle.circumference(),2)}"""
+class Circle_circumference_from_general():
+    def __init__(self):
+        BATTERIES = []
+        CHOICES = []
+        suffix = ''
+        prefix = ''
+        for i in range(4):
+            #battery = engine.Some_class_from_engine
+            battery = engine.Circle_circumference_from_general()
+            #data = battery.Some_attribute_from_battery         
+            data =  parse(round(battery.circle.circumference, 2))
+            BATTERIES.append(battery)
+            CHOICES.append(prefix + str(data) + suffix) 
+        main = BATTERIES[0]
+        CHOICES[0] = str(CHOICES[0]) + ' #'
+        random.shuffle(CHOICES)
+        #edit below
+        self.question = f"""{ask()} the circumference of the circle whose equation is {main.circle.general_string}."""
+        self.answer = f"""A. {CHOICES[0]}
+B. {CHOICES[1]}
+C. {CHOICES[2]}
+D. {CHOICES[3]}""" 
 
 class general_from_three_points():
     def __init__(self):
