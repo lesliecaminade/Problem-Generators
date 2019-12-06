@@ -18,7 +18,7 @@ FRAC_VALUE_MAX = 1
 SLOPE_MAX = 5
 
 RADIUS_MIN = 1
-RADIUS_MAX = 5
+RADIUS_MAX = 9
 
 ELLIPSE_MINOR_AXIS_MIN = 1
 ELLIPSE_MINOR_AXIS_MAX = 5
@@ -337,20 +337,16 @@ class Circle():
         self.D = self.general.coeff(x)
         self.E = self.general.coeff(y)
         self.F = self.general.func(*[term for term in self.general.args if not term.free_symbols])
-
-        return [self.A, self.B, self.C, self.D, self.E, self.F]
+        return {'A':self.A, 'B':self.B, 'C':self.C, 'D':self.D, 'E':self.E, 'F':self.F}
 
     def point(self):
         p1 = Point()
-
         x1 = random.randint(self.xmin, self.xmax)
         temp = sympy.solveset(self.general.subs(x, x1), y)
         temp2 = list(temp)
         y1 = random.choice(temp2)
         p1.init_define(x1, y1)
-
         return p1
-
 
     def three_points(self):
 
@@ -1038,13 +1034,37 @@ class Circle_circumference_from_general():
         circle.init_random()
         self.circle = circle
 
+class Circle_general_from_three_points():
+	def __init__(self):
+		circle = Circle()
+		circle.init_random()
+		points = circle.three_points()
+		self.circle = circle
+		self.points = points
+
+class Circle_coefficient_from_general_and_radius():
+	def __init__(self):
+		circle = Circle()
+		circle.init_random()
+		coeff = circle.general_coefficients()
+		self.radius = circle.radius
+		self.coefficients = coeff
+
+class Circle_distance_from_point():
+	def __init__(self):
+		circle = Circle()
+		circle.init_random()
+		point = Point()
+		point.init_random()
+		while circle.distance_to_center(point) <= circle.radius:
+			point = Point()
+			point.init_random()
+		self.circle = circle
+		self.point = point
+		self.distance = circle.distance_to_center(point)
 
 
-
-
-
-
-
+	
 
 
 
