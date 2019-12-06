@@ -4,9 +4,23 @@ from generator import constants_conversions as c
 from mathsub import complex_numbers as source
 from generator import random_handler as ran
 
-print('Generating...')
+def write_to_file(some_object):   
+    if FILEMODE: 
+        file.write(some_object.question)
+        file.write('\n')
+        file.write(some_object.answer)
+        file.write('\n\n')
+
+def print_taks(some_object):
+    print(some_object.question)
+    print()
+    print(some_object.answer)
+    print()
+    print()
 
 TESTMODE = True
+FILEMODE = True
+file_name = 'complex_numbers'
 
 questionList = [
 source.Complex_number_raised_to_positive_integer(),
@@ -50,22 +64,15 @@ else:
 
 print(items_list)
 
+file = open(f"{file_name}_output_{str(random.randint(1000, 9999))}.txt", 'w+')
 for i in range (len(items_list)):
     print('-----------------------------------------------------------------------')
     item = questionList[items_list[i]]
-    print(item.question)
-    print()
-    print(item.answer + '        --------------------------------- answer')
-    print()
-    print()
-
-    try:
-        print(item.choices)
-        print()
-    except:
-        pass
+    print_taks(item)
+    write_to_file(item)
 
 print()
+file.close()
 print('Finished.')
 stay = True
 while stay:

@@ -8,27 +8,62 @@ from mathsub import algebra_engine
 
 x, y, z, t = sym.symbols('x y z t', real = True)#generic variables
 
+def ask():
+    ask_words = ['Find', 'Determine', 'Calculate', 'Compute', 'Evaluate']
+    return random.choice(ask_words)
 
-class distance_between_two_points():
+def parse(string_input):
+    string_input = str(string_input)
+    return string_input.replace('**', '^').replace('*', ' ')
+
+class Distance_between_two_points():
     def __init__(self):
+        BATTERIES = []
+        CHOICES = []
+        suffix = ''
+        prefix = ''
+        for i in range(4):
+            #battery = engine.Some_class_from_engine
+            battery = engine.Distance_between_two_points()
+            #data = battery.Some_attribute_from_battery         
+            data =  parse(round(battery.distance,2))
+            BATTERIES.append(battery)
+            CHOICES.append(prefix + str(data) + suffix) 
+        main = BATTERIES[0]
+        CHOICES[0] = str(CHOICES[0]) + ' #'
+        random.shuffle(CHOICES)
+        #edit below
+        self.question = f"""{ask()} the distance between the two points {main.point_1.string} and {main.point_2.string}"""
 
-        p1 = engine.Point()
-        p2 = engine.Point()
+        self.answer = f"""A. {CHOICES[0]}
+B. {CHOICES[1]}
+C. {CHOICES[2]}
+D. {CHOICES[3]}"""  
 
-        p1.init_random()
-        p2.init_random()
 
-        self.question = f"""Determine the distance between the points {p1.string} and {p2.string}."""
-        self.answer = f"""{round(p1.distance(p2), 2)}"""
-
-class quadrant_identification():
+class Quadrant_identification():
     def __init__(self):
+        BATTERIES = []
+        CHOICES = []
+        suffix = ''
+        prefix = ''
+        for i in range(4):
+            #battery = engine.Some_class_from_engine
+            battery = engine.Quadrant_identification()
+            #data = battery.Some_attribute_from_battery         
+            data =  parse(battery.quadrant)
+            BATTERIES.append(battery)
+            CHOICES.append(prefix + str(data) + suffix) 
+        main = BATTERIES[0]
+        CHOICES[0] = str(CHOICES[0]) + ' #'
+        random.shuffle(CHOICES)
+        #edit below
+        self.question = f"""{ask()} the quadrant in which the point {main.point_1.string} belongs."""
 
-        point = engine.Point()
-        point.init_random()
-
-        self.question = f"""Determine in which quadrant the point {point.string} belongs."""
-        self.answer = f"""{point.quadrant()}"""
+        self.answer = f"""A. {CHOICES[0]}
+B. {CHOICES[1]}
+C. {CHOICES[2]}
+D. {CHOICES[3]}"""  
 
 class midpoint_of_two_points():
     def __init__(self):

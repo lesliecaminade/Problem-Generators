@@ -840,7 +840,25 @@ class Point_3D():
         except:
             pass
 
+#-------------------------------QUESTIONS-------------------------
 
+
+class Distance_between_two_points():
+    def __init__(self):
+        point_1 = Point()
+        point_2 = Point()
+        point_1.init_random()
+        point_2.init_random()
+        self.point_1 = point_1
+        self.point_2 = point_2
+        self.distance = point_1.distance(point_2)
+
+class Quadrant_identification():
+    def __init__(self):
+        point_1 = Point()
+        point_1.init_random()
+        self.point_1 = point_1
+        self.quadrant = point_1.quadrant()
 
 
 

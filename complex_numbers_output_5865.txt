@@ -1,0 +1,54 @@
+Calculate the value of the complex number (-5-7j) when it is raised to the power of 4.
+A. (-4324-3360j) #
+B. (-0-1000j)
+C. -128j
+D. -128j
+
+Calculate the value of the complex number (5-5j) when its principal third root is taken.
+A. (1.85-0.5j) #
+B. (1.46-0.84j)
+C. (1.57+0.27j)
+D. (2.48-0.4j)
+
+Calculate the value of the complex number -1j when raised to the power of (9-8j).
+A. -0j #
+B. -0j
+C. (-381520.48+121988.57j)
+D. -0j
+
+Calculate the natural logarithm of the complex number (3-8j).
+A. (2.15-1.21j) #
+B. (1.86+2.25j)
+C. (1.42-2.9j)
+D. (2.55-2.25j)
+
+Calculate the logarithm of the complex number (-7+1j) to the base of 3.
+A. (1.78+2.73j) #
+B. (1.74-1.93j)
+C. (1.1+0.99j)
+D. (1.24-0.24j)
+
+Calculate the logarithm of the complex number (-8+4j) to the base of (4+5j).
+A. (1.52+0.71j) #
+B. (1.27-0.23j)
+C. (1.46-0.39j)
+D. (1.24-0.06j)
+
+Calculate the sine of the complex number (-9+9j)
+A. (-1669.72-3691.48j) #
+B. (-152.66+131.85j)
+C. (414.97-358.4j)
+D. (-4008.43+589.5j)
+
+Calculate the cosine of the complex number (7-9j)
+A. (3054.47+2661.81j) #
+B. (-183.79-83.13j)
+C. (-2648.26-3066.22j)
+D. (-11.36-24.81j)
+
+Calculate the tangent of the complex number (8+4j)
+A. (-0.00019329+1.00064271j) #
+B. (2e-08+0.99999998j)
+C. (-9.762e-05-0.00066379j)
+D. (-0.01092588-1.03564795j)
+

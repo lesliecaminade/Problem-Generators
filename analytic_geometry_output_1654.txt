@@ -1,0 +1,6 @@
+Evaluate the distance between the two points (7, -3) and (2, -3)
+A. 5.0 #
+B. 9.06
+C. 9.06
+D. 2.24
+
