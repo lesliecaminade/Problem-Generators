@@ -28,15 +28,18 @@ def parse(string_input):
 class vector: #custom vector
     def __init__(self,**kwargs):
 
-            for key, value in kwargs.items():
-                if key == 'x_comp':
-                    self.x = value
-                if key == 'y_comp':
-                    self.y = value
-                if key == 'z_comp':
-                    self.z = value
-                    
-            self.vector = self.x *i + self.y *j + self.z *k
+        self.x = 0
+        self.y = 0
+        self.z = 0
+        for key, value in kwargs.items():
+            if key == 'x_comp':
+                self.x = value
+            if key == 'y_comp':
+                self.y = value
+            if key == 'z_comp':
+                self.z = value
+                
+        self.vector = self.x *i + self.y *j + self.z *k
 
     def print(self, **kwargs):
         hide = None

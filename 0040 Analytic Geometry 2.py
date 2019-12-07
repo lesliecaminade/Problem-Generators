@@ -35,8 +35,25 @@ source.Circle_standard_to_general(),
 source.Circle_circumference_from_general(),
 source.Circle_general_from_three_points(),
 source.Circle_coefficient_from_general_and_radius(),
-source.Circle_distance_from_point()
+source.Circle_distance_from_point(),
+source.Circle_center_from_general(),
+source.Circle_area_from_general(),
+source.Circle_area_from_center_and_tangent_line(),
+source.Circle_center_to_line_distance(),
+source.Circle_length_of_tangent_from_general_and_point(),
+source.Circle_ratio_of_circumference(),
+source.Circle_diameter_from_general(),
+source.Parabola_diameter_from_general(),
+source.Parabola_latus_rectum_from_general(),
+source.Parabola_latus_rectum_from_directrix_and_focus(),
+source.Parabola_from_three_points(),
+source.Parabola_from_vertex_and_focus(),
+source.Parabola_focus_from_general(),
+source.Parabola_directrix_from_general(),
+source.Ellipse_eccentricity_from_general(),
+source.Ellipse_eccentricity_from_major_minor()
 ]
+
 
 
 
