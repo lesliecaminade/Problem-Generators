@@ -25,7 +25,7 @@ def print_tasks(some_object):
     print()
 
 FILEMODE = True
-TESTMODE = True
+TESTMODE = False
 
 
 question_list = [

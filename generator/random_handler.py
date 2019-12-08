@@ -1,42 +1,24 @@
 import random
 import math
 
-def main(input, *args, **kwargs):
-    FACTOR = 0.5
-    roundFlag = True
-    intFlag = True
-    
-    input = input + random.uniform(-input*FACTOR,FACTOR*input)              
-            
-    if roundFlag:
-        if abs(input) >=0 and abs(input) < 1:
-            input = round(input,2)
-        if abs(input) >= 1 and abs(input) < 10:
-            input = round(input,1)
-        if abs(input) >= 10 and abs(input) < 100:
-            input = round(input,0)
-        if abs(input) >= 100 and abs(input) < 1000:
-            input = round(input,0)
-        if abs(input) >= 1000:
-            input = round(input,0)
-            
-    if intFlag:
-        input = int(input)
-        if input == 0:
-            input = 1
-            
-    for arg in args:
-        if arg == 'even':
-            if input % 2 == 1:
-                regen = True
-        
-        
-    # for arg in args:
-        # if arg == '%':
-            # input = input/100
-        
-    return input
-    
+def main(input_value, *args,**kwargs):
+    sigma = 2
+    positive_flag = None
+
+    if input_value > 0:
+        positive_flag = True
+    else:
+        positive_flag = False
+
+    for key ,value in kwargs.items():
+        if key == 'sigma':
+            sigma = value
+
+
+    if positive_flag:
+        return abs(round(random.gauss(input_value, sigma),2))
+    else:
+        return -abs(round(random.gauss(input_value, sigma),2))
     
     
     

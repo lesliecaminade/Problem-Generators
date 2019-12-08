@@ -2,6 +2,7 @@ import sympy
 import math
 import random
 import wolframalpha
+import time
 
 WOLFRAM_NAME = 'ProblemGenerator'
 WOLFRAM_APPID = 'VV7LX5-5V58TH8KJX'
@@ -10,10 +11,13 @@ client = wolframalpha.Client(WOLFRAM_APPID)
 
 def ask_wolfram(query,**kwargs):
     res = client.query(query)
+    print('wolfram response: ', res)
+    time.sleep(1)
     try:
         return next(res.results).text
     except:
         print('NO RESULTS')
+
 
 x, y, z = sympy.symbols('x y z')
 a = sympy.symbols('a')
@@ -83,6 +87,7 @@ def taylor(function, center):
 
 class Taylor_series():
     def __init__(self):
+        print('generating ', type(self) )
         self.function = random_taylor_function()
         self.center = abs(coe())
         self.taylor = taylor(self.function, self.center)
@@ -128,6 +133,7 @@ def laplace(function, **kwargs):
 
 class Laplace_transform():
     def __init__(self, **kwargs):
+        print('generating ', type(self) )
         solve = False
         for key, value in kwargs.items():
             if key == 'solve':
@@ -176,6 +182,7 @@ def full_simplify(function):
 
 class Fourier_series():
     def __init__(self, **kwargs):
+        print('generating ', type(self) )
         solve = False
         for key, value in kwargs.items():
             if key == 'solve':
