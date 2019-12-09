@@ -25,7 +25,7 @@ def print_tasks(some_object):
     print()
 
 FILEMODE = True
-TESTMODE = False
+TESTMODE = True
 
 question_list = [
 source.Schaums_15_1(),
