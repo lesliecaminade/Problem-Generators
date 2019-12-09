@@ -2473,23 +2473,22 @@ class schaums_15_1:
 		tf = random.randint(30,45)
 		alpha = 1.7*10**-5
 		dL = alpha*(l*c.CENTI)*(tf-ti)
-		self.answer = """{dL:e} m""".format(dL = dL)
-		
+		#self.answer = """{dL:e} m""".format(dL = dL)
+		self.answer = f"""{round(dL, 2)} m"""
 		solution = """
 dL = (alpha) Lo dT
 dL = (1.7E-5)({l:g}/100)({tf:g} - {ti:g})
 dL = {dL:g}""".format(l=l,tf=tf,ti=ti,dL=dL)
-
 		self.question = """A copper bar is {l:g}-cm long at {ti:g}°C. What is the increase in length when it is heated to {tf:g}°C? The linear expansion coefficient for copper is 1.7 x 10^(-5) C^-1.""".format(l=l,ti=ti,tf=tf)
 			
 class schaums_15_2:
 	def __init__(self,*args,**kwargs): 
 		dc = random.randint(80000,150000)/100000
 		dh = dc - random.randint(20,100)/100000
-		
 		dT = (dc - dh)/(1.1E-5 * dh)
 		ti = random.randint(20,40)
-		self.answer = """{dT:g} °C""".format(dT = dT)
+		#self.answer = """{dT:g} °C""".format(dT = dT)
+		self.answer = f"""{round(dT,2)} °C"""
 		solution = """
 dL = d_cylinder - d_hole
 dL = alpha L dT
@@ -2504,8 +2503,8 @@ class schaums_15_3:
 		ti = random.randint(15,35)
 		tf = ti - random.randint(15,35)            
 		dLL = (1.1E-5)*(tf - ti)*100          
-		self.answer = """{dLL:g} %""".format(dLL=dLL)
-
+		#self.answer = """{dLL:g} %""".format(dLL=dLL)
+		self.answer = f"""{round(dLL, 2)} %"""
 		solution = """
 dL/L = alpha (dT)
 dL/L = (1.1E-5)({tf:g} - {ti:g})
@@ -2519,7 +2518,8 @@ class schaums_15_4:
 		alphacu = 1.7E-5
 		alphaal = 2.2E-5
 		Lcu = (-alphaal*(diff*c.CENTI))/(alphacu - alphaal)
-		self.answer = """{Lcu:g} m""".format(Lcu=Lcu)
+		#self.answer = """{Lcu:g} m""".format(Lcu=Lcu)
+		self.answer = f"""{round(Lcu, 2)} m"""
 		solution = """
 dLcu = dLal
 alphacu Lcu dT = alphaal Lal dT
@@ -2543,7 +2543,8 @@ class schaums_15_5:
 		
 		dT = (dh-db)/(db*alphast - dh*alphaal)
 		tf = ti + dT
-		self.answer = """{tf:g} °C""".format(tf=tf)
+		#self.answer = """{tf:g} °C""".format(tf=tf)
+		self.answer = f"""{round(tf, 2)} °C"""
 		
 		solution = """
 Db + Db alphast dT = Dh + Dh alphaal dT
@@ -2563,14 +2564,11 @@ class schaums_15_6:
 		l = random.randint(50,100)
 		ti = random.randint(5,15)
 		tf = random.randint(25,40)
-		
 		alphacu = 1.7E-5
 		alphast = 1.1E-5
-		
 		cms = ( l * ( 1 + alphacu*(tf-ti)))/(1 + alphast*(tf-ti))
-		self.answer = """{cms:g} cm""".format(cms=cms)
-		
-		
+		#self.answer = """{cms:g} cm""".format(cms=cms)
+		self.answer = f"""{round(cms, 2)} cm"""
 		solution = """
 copper length at {tf:g}°C:
 Lcuf = Lcui(1 + alphacu dT)
@@ -2580,7 +2578,6 @@ number of "centimeters" read on the tape:
 cms = (Lcui(1 + alphacu dT)) / (1 + alphast dT)
 cms = ({l:g}*(1 + {alphacu:g}*({tf:g} - {ti:g})))/(1 + {alphast:g}*({tf:g} - {ti:g}))
 cms = {cms:g}""".format(l=l,alphacu=alphacu,tf=tf,ti=ti,alphast=alphast,cms=cms)
-		
 		self.question = """A steel tape measures the length of a copper rod as {l:g} cm when both are at {ti:g}°C, the calibration temperature for the tape. What would the tape read for the length of the rod when both are at {tf:g}°C? alphast = 1.1E-5 °C-1, alphacu = 1.7E-5°C-1""".format(l=l,ti=ti,tf=tf)
 		
 class schaums_15_7:
@@ -2591,20 +2588,16 @@ class schaums_15_7:
 		v = random.randint(25,90)
 		ti = random.randint(10,20)
 		tf = ti + random.randint(10,20)
-		
 		vext = (betamercury - betaglass)*v*(tf -ti)
-		
-		self.answer = """{vext:g} cm^3""".format(vext=vext)
-		
+		#self.answer = """{vext:g} cm^3""".format(vext=vext)
+		self.answer = f"""{round(vext, 2)} cm^3"""
 		solution = """
 Vextra = dV_mercury - dV_glass
 Vextra = (betamercury*Vo*dT) - (betaglass*Vo*dT)
 Vextra = (betamercury - betaglass)*Vo*dT
 Vextra = ({betamercury:g} - {betaglass:g})*{v:g}*({tf:g} - {ti:g})
 Vextra = {vext:g}""".format(betamercury=betamercury,betaglass=betaglass,v=v,tf=tf,ti=ti,vext=vext)
-
 		self.question = """A glass flask is filled "to the mark" with {v:g} cm^3 of mercury at {ti:g}°C. If the flask and its contents are heated to {tf:g}°C, how much mercury will be above the mark? alphaglass = 9E-6 °C-1, and betamercury = 182E-6 °C-1""".format(ti=ti,v=v,tf=tf)
-		
 		
 class schaums_15_8:
 	def __init__(self,*args,**kwargs): 
@@ -2613,7 +2606,8 @@ class schaums_15_8:
 		rho0 = 13600
 		dVv0 = beta*tf
 		rho1 = rho0 * (1/(1+dVv0))
-		self.answer = """{rho1:g} kg/m3""".format(rho1=rho1)
+		#self.answer = """{rho1:g} kg/m3""".format(rho1=rho1)
+		self.answer = f"""{round(rho1, 2)} kg/m^3"""
 		solution = """
 m = rho0 v0 = rho1 v1
 rho1 = rho0*v0/v1
@@ -2624,7 +2618,6 @@ dV/v0 = {beta:g}*{tf:g}
 dV/v0 = {dVv0:g}
 rho1 = {rho0:g}*(1/(1 + {dVv0:g}))
 rho1 = {rho1:g}""".format(beta=beta,tf=tf,rho1=rho1,rho0=rho0,dVv0 = dVv0)
-
 		self.question = """The density of mercury at exactly 0°C is 13600 kg/m3, and its volume expansion coefficient is 1.82E-4 °C-1. Calculate the density of mercury at {tf:g}°C""".format(tf=tf)
 		
 class schaums_15_9:
@@ -2635,9 +2628,9 @@ class schaums_15_9:
 		tf = ti - random.randint(10,30)
 		E = 2E11
 		alpha = 1.1E-5
-		
 		F = abs((tf-ti)*alpha*E*(a*c.MILLI**2))
-		self.answer = """{F:g} N""".format(F=F)
+		#self.answer = """{F:g} N""".format(F=F)
+		self.answer = f"""{round(F, 2)} N"""
 		solution = """
 dL = alpha L dT
 stress = F/A = E strain = E dL/L
@@ -2645,7 +2638,6 @@ F/A = dT alpha E
 F = dT alpha E A
 F = abs(({tf:g} - {ti:g})*{alpha:g}*{E:g}*({a:g}/1000^2))
 F = {F:g}""".format(tf=tf,ti=ti,alpha=alpha,E=E,a=a,F=F)
-
 		self.question = """A steel wire of {a:g} mm^2 cross-section is held straight (but under no tension) by attaching it firmly to two points a distance {l:g} m apart at {ti:g}°C. If the temperature now decreases to {tf:g}°C, and if the two tie points remain fixed, what will be the tension in the wire? For steel, alphast = 1.1E-5 °C-1 and E = 2.0E11 Pa.""".format(a=a,l=l,ti=ti,tf=tf)
 		
 class schaums_15_10:
@@ -2656,7 +2648,8 @@ class schaums_15_10:
 		alpha = 1.1E-5
 		E = 2E11
 		F = abs((tf-ti)*alpha*E*(a*c.CENTI**2))
-		self.answer = """{F:g} N""".format(F=F)            
+		#self.answer = """{F:g} N""".format(F=F)   
+		self.answer = f"""{round(F, 2)} N"""         
 		solution = """
 dL = alpha L dT
 stress = F/A = E strain = E dL/L
@@ -2664,29 +2657,24 @@ F/A = dT alpha E
 F = dT alpha E A
 F = abs(({tf:g} - {ti:g})*{alpha:g}*{E:g}*({a:g}/100^2))
 F = {F:g}""".format(tf=tf,ti=ti,alpha=alpha,E=E,a=a,F=F)
-		
 		self.question = """When a building is constructed at {ti:g}°C, a steel beam (cross-sectional area {a:g} cm^2) is put in place with its ends cemented in pillars. If the sealed ends cannot move, what will be the compressional force in the beam when the temperature if {tf:g}°C? For this kind of steel, alphast = 1.1E-5 °C-1 and E = 2E11 Pa.""".format(ti=ti,a=a,tf=tf)
 		
-
-
-
 class schaums_16_1:
 	def __init__(self,*args,**kwargs): 
+
 		v1 = random.randint(100,300)/10000
-		p1 = 101*KILO
+		p1 = 101*c.KILO
 		t1 = 5
-		
-		p2 = p1 + random.randint(1,10)*KILO
+		p2 = p1 + random.randint(1,10)*c.KILO
 		t2 = random.randint(10,50)
 		v2 = (v1*p1*(t2+273))/(p2*(t1+273))
-		self.answer = """{v2:g} m^3""".format(v2=v2)
+		#self.answer = """{v2:g} m^3""".format(v2=v2)
+		self.answer = f"""{round(v2, 2)} m^3"""
 		solution = """
 p1v1/t1 = p2v2/t2
 v2 = (v1*p1*t2)/(p2*t1)
 v2 = ({v1:g}*{p1:g}*({t2:g} + 273))/({p2:g}*({t1:g} + 273))
 v2 = {v2:g}""".format(v1=v1,v2=v2,t1=t1,t2=t2,p1=p1,p2=p2)
-		
-		
 		self.question = """A mass of oxygen occupies {v1:g} m^3 at atmospheric pressure, 101 kPa, and {t1:g}°C. Determine its volume if its pressure is increased to {p2:g} kPa while its temperature is changed to {t2:g}°C.""".format(v1=v1,t1=t1/1000,p2=p2,t2=t2)
 		
 class schaums_16_2:
@@ -2695,13 +2683,11 @@ class schaums_16_2:
 		p1g = random.randint(300,500)
 		t1 = random.randint(2,15)
 		t2 = t1 + random.randint(15,25)
-		
-		
 		p1 = p1g + patm
 		p2 = (p1*(t2+273))/((t1+273))
 		p2g = p2 - patm
-		self.answer = """{p2g:g} cmHg""".format(p2g=p2g)
-		
+		#self.answer = """{p2g:g} cmHg""".format(p2g=p2g)
+		self.answer = f"""{round(p2g, 2)} cmHg"""
 		solution = """
 p1/t1 = p2/t2
 p2 = (p1*t2*)/(t1*)
@@ -2721,8 +2707,8 @@ class schaums_16_3:
 		t1 = random.randint(5,25)
 		t2 = ((t1+273)*(p2g+patm))/(p1g+patm)
 		t2c = t2 - 273
-		
-		self.answer = """{t2c:g} °C""".format(t2c=t2c) 
+		#self.answer = """{t2c:g} °C""".format(t2c=t2c) 
+		self.answer = f"""{round(t2c, 2)} °C"""
 		solution ="""
 p1/t1 = p2/t2
 t2 = t1p2/p1
@@ -2740,7 +2726,8 @@ class schaums_16_4:
 		p2 = p1*ratio
 		p2g = p2 - patm
 		p2gkpa = p2g * 101/760
-		self.answer = """{p2gkpa:g} kPa""".format(p2gkpa=p2gkpa)
+		#self.answer = """{p2gkpa:g} kPa""".format(p2gkpa=p2gkpa)
+		self.answer = f"""{round(p2gkpa, 2)} kPa"""
 		solution = """
 p1v1 = p2v2
 p2 = p1v1/v2
@@ -2751,24 +2738,23 @@ p2g = {p2g:g}
 conversion:
 kPa = mmHg * 101/760
 p2g = {p2gkpa:g}""".format(p1=p1,ratio=ratio,p2=p2,patm=patm,p2g=p2g,p2gkpa=p2gkpa)
-		
 		self.question = """Gas at room temperature and pressure is confined to a cylinder by a piston. The piston is now pushed in so as to reduce the volume of 1/{ratio:g} of its original value. After the gas temperature has returned to room temperature, what is the gauge pressure of the gas in kPa? Local atmospheric pressure is {patm:g} mm of mercury.""".format(ratio=ratio,patm=patm)
 		
 class schaums_16_5:
 	def __init__(self,*args,**kwargs): 
 		v1 = random.randint(50,150)/100
-		v2 = v1 - random.randint(20,60)/100
+		v2 = v1 - random.randint(20,40)/100
 		p1 = random.randint(50,150)/100
 		t1 = random.randint(-40,-10)
 		t2 = random.randint(20,60)
 		p2 = (p1*v1*(t2+273))/(v2*(t1+273))
-		self.answer = """{p2:g} atm""".format(p2=p2)
+		#self.answer = """{p2:g} atm""".format(p2=p2)
+		self.answer = f"""{round(p2, 2)} atm"""
 		solution = """
 p1v1/t1 = p2v2/t2 
 p2 = p1v1t2/v2t1
 p2 = ({p1:g}*{v1:g}*({t2:g} + 273)/({v2:g}*({t1:g} + 273))
 p2 = {p2:g}""".format(p2=p2,v1=v1,t2=t2,v2=v2,t1=t1,p1=p1)
-		
 		self.question = """An ideal gas has a volume of {v1:g} liter at {p1:g} atm and {t1:g} °C. To how many atmospheres pressure must it be subjected to be compressed to {v2:g} liter when the temperature is {t2:g}°C?""".format(v1=v1,p1=p1,t1=t1,v2=v2,t2=t2)
 		
 class schaums_16_6:
@@ -2780,8 +2766,8 @@ class schaums_16_6:
 		p2 = p1 + random.randint(100,200)
 		
 		v2 = (v1*p1*(t2+273))/(p2*(t1+273))
-		self.answer = """{v2:g} mL""".format(v2=v2)
-		
+		#self.answer = """{v2:g} mL""".format(v2=v2)
+		self.answer = f"""{round(v2, 2)} mL"""
 		solution = """
 p1v1/t1 = p2v2/t2
 v2 = v1p1t2/p2t1
@@ -2794,19 +2780,17 @@ class schaums_16_7:
 		t1 = 0
 		p1 = 760
 		rho1 = 1.25
-		
 		t2 = random.randint(20,50)
 		p2 = random.randint(720,780)
 		rho2 = (rho1*p2*(t1+273))/(p1*(t2+273))
-		self.answer = """{rho2:g} kg/m^3""".format(rho2=rho2)
-		
+		#self.answer = """{rho2:g} kg/m^3""".format(rho2=rho2)
+		self.answer = f"""{round(rho2, 2)} kg/m^3"""
 		solution = """
 p1v1/t1 = p2v2/t2
 p1/(rho1 t1) = p2/(rho2 t2)
 rho2 = (rho1p2t1)/(p1t2)
 rho2 = ({rho1:g}*{p2:g}*({t1:g} +273))/({p1:g}*({t2:g} +273))
 rho2 = {rho2:g}""".format(rho1=rho1,p2=p2,t1=t1,p1=p1,t2=t2,rho2=rho2)
-
 		self.question = """The density of nitrogen is {rho1:g} kg/m^3 at S.T.P. Determine the density of nitrogen at {t2:g}°C and {p2:g} mm of mercury.""".format(rho1=rho1,t2=t2,p2=p2)
 		
 class schaums_16_8:
@@ -2815,14 +2799,12 @@ class schaums_16_8:
 		t1 = random.randint(10,30)
 		p1g = random.randint(10,30)
 		patm = 1
-		
 		p1 = (p1g + patm)*10**5
 		M = 32/1000
-		R = UNIVERSALGASCONSTANT
-		
-		m = (p1*v1*LITERS_M3*M)/(R*(t1+273))
-		self.answer = """{m:g} kg""".format(m=m)
-		
+		R = c.UNIVERSALGASCONSTANT
+		m = (p1*v1*c.LITERS_M3*M)/(R*(t1+273))
+		#self.answer = """{m:g} kg""".format(m=m)
+		self.answer = f"""{round(m, 2)} kg"""
 		solution = """
 p = patm + pg
 pV = nRT
@@ -2831,9 +2813,7 @@ m = pVM / RT
 m = (patm + pg)VM / RT
 m = (({patm:g} + {p1g:g})*{v1:g}*{M:g}) / ({R:g}*({t1:g}))
 m = {m:g}""".format(patm = patm, p1g = p1g, v1 = v1/1000, M = M/1000, R = R, t1 = t1+273, m = m)
-		
 		self.question = """A {v1:g}-liter tank contains oxygen at {t1:g}°C and a gauge pressure of {p1g:g} x 10^5 Pa. What mass of oxygen is in the tank? The molecular mass of oxygen is 32 kg/kmol. Assume atmospheric pressure to be 1 x 10^5 Pa.""".format(v1=v1,t1=t1,p1g=p1g)
-		
 		
 class schaums_16_9:
 	def __init__(self,*args,**kwargs): 
@@ -2842,17 +2822,15 @@ class schaums_16_9:
 		p1 = 101325
 		m = random.randint(1,9)
 		M = 32
-		
-		v = (m*UNIVERSALGASCONSTANT*(t1+273))/(p1*M*KGKMOL)
-		self.answer = """{v:g} m3""".format(v=v)
-		
+		v = (m*c.UNIVERSALGASCONSTANT*(t1+273))/(p1*M*c.KGKMOL)
+		#self.answer = """{v:g} m3""".format(v=v)
+		self.answer = f"""{round(v, 2)} m^3"""
 		solution = """
 pV = (m/M)RT
 V = (mRT)/(pM)
 V = ({m:g}*{R:g}*{t1:g})/({p1:g}*{M:g})
-V = {v:g}""".format(m=m,R=UNIVERSALGASCONSTANT,t1=t1+273,p1=p1,M=M*KGKMOL,v=v)
+V = {v:g}""".format(m=m,R=c.UNIVERSALGASCONSTANT,t1=t1+273,p1=p1,M=M*c.KGKMOL,v=v)
 		self.question = """Determine the volume occupied by {m:g}g of oxygen (M = 32 kg/kmol) at STP.""".format(m=m)
-		
 		
 class schaums_16_10:
 	def __init__(self,*args,**kwargs): 
@@ -2860,17 +2838,17 @@ class schaums_16_10:
 		v = random.randint(20,40)
 		t = random.randint(10,30)
 		M = 28
-		p = (m*MILLIGRAMS*UNIVERSALGASCONSTANT*(t+273))/(M*KGKMOL*v*MILLILITERS_M3)
+		p = (m*c.MILLIGRAMS*c.UNIVERSALGASCONSTANT*(t+273))/(M*c.KGKMOL*v*c.MILLILITERS_M3)
 		p_atm = p * (1/101325)
-		self.answer = """{p_atm:g} atm""".format(p_atm=p_atm)
+		#self.answer = """{p_atm:g} atm""".format(p_atm=p_atm)
+		self.answer = f"""{round(p_atm, 2)} atm"""
 		solution = """
 p = (mRT) / (MV)
 p = ({m:g}*{R:g}*{t:g})/({M:g}*{v:g})
 p = {p:g} Pa
 p_atm = p_Pa * (1/101325)
 p_atm = {p:g} * (1/101325)
-p_atm = {p_atm:g}""".format(m=m*MILLIGRAMS, R = UNIVERSALGASCONSTANT, t=t+273, M= M*KGKMOL, v = v*MILLILITERS_M3, p=p, p_atm = p_atm)
-
+p_atm = {p_atm:g}""".format(m=m*c.MILLIGRAMS, R = c.UNIVERSALGASCONSTANT, t=t+273, M= M*c.KGKMOL, v = v*c.MILLILITERS_M3, p=p, p_atm = p_atm)
 		self.question = """A {m:g}-mg droplet of liquid nitrogen is present in a {v:g} mL tube as it is sealed off at a very low temperature. What will be the nitrogen pressure in the tube when it is warmed to {t:g}°C? Express your answer in atmospheres ( M for nitrogen is 28 kg/kmol)""".format(v=v,m=m,t=t)
 		
 class schaums_16_11:
@@ -2879,13 +2857,14 @@ class schaums_16_11:
 		t = random.randint(10,30)
 		p = random.randint(3,7)
 		M = 32
-		m = ((p*ATM_PA)*(v*LITERS_M3)*(M*KGKMOL))/(UNIVERSALGASCONSTANT*(t+273))
-		self.answer = """{m:g} kg""".format(m=m)
+		m = ((p*c.ATM_PA)*(v*c.LITERS_M3)*(M*c.KGKMOL))/(c.UNIVERSALGASCONSTANT*(t+273))
+		#self.answer = """{m:g} kg""".format(m=m)
+		self.answer = f"""{round(m, 2)} kg"""
 		solution = """
 pV = (m/M)RT
 m = pVM / RT
 m = ({p:g}*{v:g}*{M:g})/({R:g}*{t:g})
-m = {m:g} kg""".format(p=p*ATM_PA,v=v*LITERS_M3,M=M*KGKMOL,R=UNIVERSALGASCONSTANT,t=t+273,m=m)
+m = {m:g} kg""".format(p=p*c.ATM_PA,v=v*c.LITERS_M3,M=M*c.KGKMOL,R=c.UNIVERSALGASCONSTANT,t=t+273,m=m)
 		self.question = """A tank of volume {v:g} liters contains oxygen at {t:g}°C at {p:g} atm pressure. Calculate the mass of the oxygen in the tank. M = 32 kg/kmol for oxygen.""".format(v=v,t=t,p=p)
 		
 class schaums_16_12:
@@ -2894,15 +2873,15 @@ class schaums_16_12:
 		p = random.randint(750,780)
 		v = random.randint(100,200)/100
 		m = random.randint(200,300)/100
-		
-		M = ((m*GRAMS)*(UNIVERSALGASCONSTANT)*(t + 273))/((p*MMHG_PA)*(v*LITERS_M3))
-		self.answer = """{M:g} kg/kmol""".format(M = M*KGMOL_KGKMOL)
+		M = ((m*c.GRAMS)*(c.UNIVERSALGASCONSTANT)*(t + 273))/((p*c.MMHG_PA)*(v*c.LITERS_M3))
+		#self.answer = """{M:g} kg/kmol""".format(M = M*c.KGMOL_KGKMOL)
+		self.answer = f"""{round(M * c.KGMOL_KGKMOL, 2)} kg/kmol"""
 		solution = """
 pV = (m/M)RT
 M = (mRT)/(PV)
 M = ({m:g}*{R:g}*{t:g})/({p:g}*{v:g})
 M = {M:g} kg/mol
-M_kgkmol = {M2:g} kg/kmol""".format(m=m*GRAMS, R = UNIVERSALGASCONSTANT, t = t + 273, p = p*MMHG_PA, v = v*LITERS_M3, M = M, M2 = M*KGMOL_KGKMOL)
+M_kgkmol = {M2:g} kg/kmol""".format(m=m*c.GRAMS, R = c.UNIVERSALGASCONSTANT, t = t + 273, p = p*c.MMHG_PA, v = v*c.LITERS_M3, M = M, M2 = M*c.KGMOL_KGKMOL)
 		self.question = """At {t:g}°C and {p:g} mmHg, {v:g} liters of an ideal gas has a mass of {m:g}g. Compute the molecular mass of the gas.""".format(t=t,p=p,v=v,m=m)
 		
 class schaums_16_13:
@@ -2912,8 +2891,9 @@ class schaums_16_13:
 		t = random.randint(10,30)
 		p = random.randint(300,400)
 		M = 4
-		v = ((m*GRAMS)*(UNIVERSALGASCONSTANT)*(t+273))/((M*KGKMOL)*(p*MMHG_PA))
-		self.answer = """{v:g} liters""".format(v = v*M3_LITERS)
+		v = ((m*c.GRAMS)*(c.UNIVERSALGASCONSTANT)*(t+273))/((M*c.KGKMOL)*(p*c.MMHG_PA))
+		#self.answer = """{v:g} liters""".format(v = v*c.M3_LITERS)
+		self.answer = f"""{round(v * c.M3_LITERS, 2)} liters"""
 		solution = """
 pv = (m/M)RT
 v = mRT / MP"""
@@ -2926,8 +2906,9 @@ class schaums_16_14:
 		M = 16
 		t = random.randint(10,30)
 		p = random.randint(2,7)
-		rho = ((p*ATM_PA)*(M*KGKMOL))/((UNIVERSALGASCONSTANT)*(t+273))
-		self.answer = """{rho:g} kg/m^3""".format(rho=rho)
+		rho = ((p*c.ATM_PA)*(M*c.KGKMOL))/((c.UNIVERSALGASCONSTANT)*(t+273))
+		#self.answer = """{rho:g} kg/m^3""".format(rho=rho)
+		self.answer = f"""{round(rho, 2)} kg/m^3"""
 		solution = """
 pV = (m/M)RT
 rho = m/V = pM / RT"""
@@ -2937,13 +2918,14 @@ class schaums_16_15:
 	def __init__(self,*args,**kwargs): 
 		v1 = random.randint(10,30)/10
 		h = random.randint(10,20)
-		rho = DENSITY_WATER
+		rho = c.DENSITY_WATER
 		g = 9.81
-		patm = STP_PRESSURE
+		patm = c.STP_PRESSURE
 		p2 = patm
 		p1 = rho*g*h + patm
 		v2 = (v1*p1) / (p2)
-		self.answer = """{v2:g} mm^3""".format(v2=v2)
+		#self.answer = """{v2:g} mm^3""".format(v2=v2)
+		self.answer = f"""{round( v2, 2)} mm^3"""
 		solution = """
 p = po + rho g h
 p1 v1 = p2 v2"""
@@ -2954,14 +2936,15 @@ class schaums_16_16:
 	def __init__(self,*args,**kwargs): 
 		ratio = random.randint(2,4)
 		l = random.randint(10,20)
-		p1 = STP_PRESSURE
+		p1 = c.STP_PRESSURE
 		g = 9.81
-		patm = STP_PRESSURE
-		rho = DENSITY_WATER
+		patm = c.STP_PRESSURE
+		rho = c.DENSITY_WATER
 		v1v2_ratio = 1/(1-(1/ratio))
 		p2 = p1*(v1v2_ratio)
 		h = (p2 - patm) / (rho*g)
-		self.answer = """{h:g} m""".format(h=h)
+		#self.answer = """{h:g} m""".format(h=h)
+		self.answer = f"""{round(h, 2)} m"""
 		solution = """
 p2 = po + rho g h
 p1 v1 = p2 v2"""
@@ -2975,11 +2958,11 @@ class schaums_16_17:
 		ph = pn - random.randint(10,20)/10
 		Mn = 28 
 		Mh = 2
-		
 		nn = mn / Mn
 		nh = nn * (ph/pn)
 		mh = nh * Mh
-		self.answer = """{mh:g} kg""".format(mh=mh)
+		#self.answer = """{mh:g} kg""".format(mh=mh)
+		self.answer = f"""{round(mh, 2)} kg"""
 		solution = """
 pn v = nn RT , ph v = nh RT
 n = m/M"""
@@ -2996,12 +2979,12 @@ class schaums_16_18:
 		Mco2 = 44
 		Mch4 = 16
 		Mc2h4 = 30
-		
 		p = ph + pc + pme + pet
 		mh = (Mh*ph) #V/RT
 		m = Mh*ph + Mco2*pc + Mch4*pme + Mc2h4*pet #V/RT
 		m_frac = mh/m
-		self.answer = """{m_frac:g}""".format(m_frac=m_frac)
+		#self.answer = """{m_frac:g}""".format(m_frac=m_frac)
+		self.answer = f"""{round(m_frac, 2)}"""
 		solution = """
 p = p1 + p2 + p3 + ... - daltons law of partial pressures
 m = M n
@@ -3024,9 +3007,10 @@ class schaums_17_2:
 		m = random.randint(1,9)
 		M = 4
 		
-		n = (m*GRAMS) / (M*KGKMOL_KGMOL)
-		N = n * AVOGADROS_NUMBER
-		self.answer = """{N:g} atoms""".format(N = N)
+		n = (m*c.GRAMS) / (M*c.KGKMOL_KGMOL)
+		N = n * c.AVOGADROS_NUMBER
+		#self.answer = """{N:g} atoms""".format(N = N)
+		self.answer = f"""{round(N, 2)} atoms"""
 		solution = """
 n = m / M
 N = n * Na"""
@@ -3037,11 +3021,12 @@ class schaums_17_3:
 		r = random.randint(20,80)
 		rho = 13600
 		M = 202
-		V = (4/3) * math.pi * (r*MILLI)**3
+		V = (4/3) * math.pi * (r*c.MILLI)**3
 		m = rho * V
-		mo = ( M*KGKMOL_KGMOL)/AVOGADROS_NUMBER
+		mo = ( M*c.KGKMOL_KGMOL)/c.AVOGADROS_NUMBER
 		N = m / mo
-		self.answer = """{N:g} atoms""".format(N = N)
+		#self.answer = """{N:g} atoms""".format(N = N)
+		self.answer = f"""{round(N, 2)} atoms"""
 		solution = """
 V = (4/3) pi r^3
 m = rho V
@@ -3054,10 +3039,11 @@ class schaums_17_4:
 		v = random.randint(10,100)
 		rho = 0.88
 		M = 78
-		m = (rho*GCM3_KGM3)*(v*MILLILITERS_M3)
-		mo = (M*KGKMOL_KGMOL)/AVOGADROS_NUMBER
+		m = (rho*c.GCM3_KGM3)*(v*c.MILLILITERS_M3)
+		mo = (M*c.KGKMOL_KGMOL)/c.AVOGADROS_NUMBER
 		N = m / mo
-		self.answer = """{N:g} atoms""".format(N=N)
+		#self.answer = """{N:g} atoms""".format(N=N)
+		self.answer = f"""{round(N, 2)} atoms"""
 		solution = """
 rho = 0.88
 M = 78
@@ -3070,9 +3056,10 @@ class schaums_17_5:
 	def __init__(self,*args,**kwargs): 
 		t = random.randint(-10,10)
 		M = 28
-		mo = (M*KGKMOL_KGMOL) / AVOGADROS_NUMBER
-		vrms = math.sqrt((3*BOLTZMANNS_CONSTANT*(t+273))/mo)
-		self.answer = """{v:g} km/s""".format(v = vrms/1000)
+		mo = (M*c.KGKMOL_KGMOL) / c.AVOGADROS_NUMBER
+		vrms = math.sqrt((3*c.BOLTZMANNS_CONSTANT*(t+273))/mo)
+		#self.answer = """{v:g} km/s""".format(v = vrms/1000)
+		self.answer = f"""{round(vrms/1000, 2)} km/s"""
 		solution = """
 M = 28
 mo = (M*KGKMOL_KGMOL) / AVOGADROS_NUMBER
@@ -3082,13 +3069,13 @@ vrms = math.sqrt((3*BOLTZMANNS_CONSTANT*(t+273))/mo)"""
 		
 class schaums_17_6:
 	def __init__(self,*args,**kwargs): 
-		
 		t = random.randint(-10,10)
 		M = 28
 		g = 9.81
-		mo = (M*KGKMOL_KGMOL) / AVOGADROS_NUMBER
-		h = (1/mo)*((3*BOLTZMANNS_CONSTANT*(t+273))/(2*g))
-		self.answer = """{h:g} km""".format(h = h/1000)
+		mo = (M*c.KGKMOL_KGMOL) / c.AVOGADROS_NUMBER
+		h = (1/mo)*((3*c.BOLTZMANNS_CONSTANT*(t+273))/(2*g))
+		#self.answer = """{h:g} km""".format(h = h/1000)
+		self.answer = f"""{round(h/1000, 2)} km"""
 		solution = """            
 M = 28
 g = 9.81
@@ -3096,28 +3083,26 @@ mo = (M*KGKMOL_KGMOL) / AVOGADROS_NUMBER
 KE = PE
 (3/2) BOLTZMANNS_CONSTANT T = mgh
 h = (1/mo)*((3*BOLTZMANNS_CONSTANT*(t+273))/(2*g))"""
-
 		self.question = """A gas molecule at the surface of the Earth happens to have the RMS speed for that has at {t:g}°C. If it were to go straight up without colliding with other molecules, how high would it rise? ( M = 28 kg/kmol )""".format(t=t)
 		
 class schaums_17_7:
 	def __init__(self,*args,**kwargs): 
-		
 		rho = 1.29
 		patm = 100
-		vrms = math.sqrt((3*patm*KILO)/(rho))
-		self.answer = """{v:g} m/s""".format(v=vrms)
+		vrms = math.sqrt((3*patm*c.KILO)/(rho))
+		#self.answer = """{v:g} m/s""".format(v=vrms)
+		self.answer = f"""{round(vrms, 2)} m/s"""
 		solution = """
 P = (1/3) rho vrms^2
 vrms = sqrt((3 P) / rho )"""
-
 		self.question = """Air at room temperature has a density of about 1.29 kg/m^3. Assuming it to be entirely one gas, find vrms for its molecules"""
 		
 class schaums_17_8:
 	def __init__(self,*args,**kwargs): 
-		
 		t = random.randint(-20,20)
-		KE_total = AVOGADROS_NUMBER * (1/1000) * (3/2) * BOLTZMANNS_CONSTANT * (t + 273)
-		self.answer = """{KE:g} J""".format(KE = KE_total)
+		KE_total = c.AVOGADROS_NUMBER * (1/1000) * (3/2) * c.BOLTZMANNS_CONSTANT * (t + 273)
+		#self.answer = """{KE:g} J""".format(KE = KE_total)
+		self.answer = f"""{round(KE_total, 2)} J"""
 		solution = """
 KE_total = AVOGADROS_NUMBER * (1/1000) * (3/2) * BOLTZMANNS_CONSTANT * (t + 273)"""
 		self.question = """Find the translational kinetic energy of one gram mole of any ideal gas at {t:g}°C""".format(t=t)
@@ -3126,22 +3111,22 @@ class schaums_17_9:
 	def __init__(self,*args,**kwargs): 
 		t = 3.5
 		M = 1
-		mo = (M*KGKMOL_KGMOL) / AVOGADROS_NUMBER
-		vrms = math.sqrt((3*BOLTZMANNS_CONSTANT*t)/(mo))
-		rho = 10**6 / AVOGADROS_NUMBER
+		mo = (M*c.KGKMOL_KGMOL) / c.AVOGADROS_NUMBER
+		vrms = math.sqrt((3*c.BOLTZMANNS_CONSTANT*t)/(mo))
+		rho = 10**6 / c.AVOGADROS_NUMBER
 		p = (1/3) *rho*vrms**2
-		self.answer = """{v:g} km/s, {p:g} Pa""".format(v = vrms/1000, p = p)
-		
+		#self.answer = """{v:g} km/s, {p:g} Pa""".format(v = vrms/1000, p = p)
+		self.answer = f"""{round(vrms/1000, 2)} km/s, {round(p, 2)} Pa"""
 		self.question = """There is about one hydrogen atom per cm^3 in outer space, where the temperature (in the shade) is about 3.5 K. Find the rms speed of these atoms and the pressure they exert. ( M = 1 kg/kmol )"""
 		
 class schaums_17_10:
 	def __init__(self,*args,**kwargs): 
-		
 		MH = 2
 		MN = 28
 		KE_ratio = 1
 		vrms_ratio = math.sqrt(MN / MH)
-		self.answer = """{KE:g}, {v:g}""".format(KE = KE_ratio,v = vrms_ratio)
+		#self.answer = """{KE:g}, {v:g}""".format(KE = KE_ratio,v = vrms_ratio)
+		self.answer = f"""{round(KE_ratio, 2)}, {round(vrms_ratio, 2)}"""
 		solution = """
 KE = (3/2) kb T,  which is independent of M. so KE_ratio = 1
 vrms = sqrt(3kbT / mo)
@@ -3150,48 +3135,45 @@ mo = M / Na"""
 		
 class schaums_17_11:
 	def __init__(self,*args,**kwargs): 
-		
 		r = random.randint(1,9)
 		V = 22.4
-		N = AVOGADROS_NUMBER
-		
-		mfp = 1 / ( 4*math.pi*math.sqrt(2)*(r*10**(-10))**2*(N/(V*LITERS_M3)))
-		self.answer = """{mfp:g} m""".format(mfp = mfp)
+		N = c.AVOGADROS_NUMBER
+		mfp = 1 / ( 4*math.pi*math.sqrt(2)*(r*10**(-10))**2*(N/(V*c.LITERS_M3)))
+		#self.answer = """{mfp:g} m""".format(mfp = mfp)
+		self.answer = f"""{round(mfp, 2)} m"""
 		solution = """
 V = 22.4
 N = AVOGADROS_NUMBER
 
 mfp = 1 / ( 4*math.pi*math.sqrt(2)*(r*10**(-10))**2*(N/(V*LITERS_M3)))"""
-
 		self.question = """Certain ideal gas molecules behave like spheres of radius {r:g} x 10^(-10) m. Find the mean free path of these molecules at STP.""".format(r=r)
-		
 		
 class schaums_17_12:
 	def __init__(self,*args,**kwargs): 
 		mfp = random.randint(30,80)
 		r = random.randint(1,9)
 		t = random.randint(10,30)
-		NoverV = 1/(math.pi*4*math.sqrt(2)*(r*10**(-10))**2*(mfp*CENTI))
-		p = NoverV*BOLTZMANNS_CONSTANT*(t+273)
-		self.answer = """{p:g} mPa""".format(p = p*1000)
+		NoverV = 1/(math.pi*4*math.sqrt(2)*(r*10**(-10))**2*(mfp*c.CENTI))
+		p = NoverV*c.BOLTZMANNS_CONSTANT*(t+273)
+		#self.answer = """{p:g} mPa""".format(p = p*1000)
+		self.answer = f"""{round(p * 1000, 2)} mPa"""
 		solution = """
 (N/V) = 1 / (4*pi*sqrt(2)*r^2*mfp)
 pV = Nkb T
 p = (N/V) kb T"""
 		self.question = """At what pressure will the mean free path be {mfp:g} cm for spherical molecules of radius {r:g} x 10^(-10) m? Assume an ideal gas at {t:g}°C""".format(mfp = mfp, r=r, t=t)
 		
-		
 class schaums_18_1:
 	def __init__(self,*args,**kwargs): 
-		
 		v = random.randint(10,30)
 		t1 = random.randint(10,30)
 		t2 = t1 + random.randint(10,20)
 		dT = t2 - t1
-		c = SPECIFIC_HEAT_WATER_JKGK
-		m = v*GRAMS_KG
-		dQ = m * c * dT
-		self.answer = """{dQ:g} kJ, -{dQ:g} kJ""".format(dQ = dQ/1000)
+		q = c.SPECIFIC_HEAT_WATER_JKGK
+		m = v*c.GRAMS_KG
+		dQ = m * q * dT
+		#self.answer = """{dQ:g} kJ, -{dQ:g} kJ""".format(dQ = dQ/1000)
+		self.answer = f"""{round(dQ/1000, 2)} kJ, {-round(dQ/1000, 2)} kJ"""
 		solution = """
 Q = mcdT 
 cw = 4186 J/kgk"""
@@ -3199,14 +3181,14 @@ cw = 4186 J/kgk"""
 		
 class schaums_18_2:
 	def __init__(self,*args,**kwargs): 
-		
 		m = random.randint(10,40) #grams
 		t1 = random.randint(80,120) #degC
 		t2 = t1 - random.randint(40,70) #degC
 		dT = t2 - t1
-		c = 880
-		dQ = m*GRAMS_KG * c * dT
-		self.answer = """{dQ:g} J""".format(dQ = dQ)
+		C = 880
+		dQ = m*c.GRAMS_KG * C * dT
+		#self.answer = """{dQ:g} J""".format(dQ = dQ)
+		self.answer = f"""{round(dQ, 2)} J"""
 		solution = """
 dQ = mc dT
 c = 880 J/kgK"""
@@ -3218,7 +3200,8 @@ class schaums_18_3:
 		ccu = 0.093
 		dTal = random.randint(40,70)
 		dTcu = (cal/ccu)*dTal
-		self.answer = """{dTcu:g}°C""".format(dTcu = dTcu)
+		#self.answer = """{dTcu:g}°C""".format(dTcu = dTcu)
+		self.answer = f"""{round(dTcu, 2)} °C"""
 		solution = """
 dQal = dQcu
 mcal dT = m ccu dT
@@ -3227,33 +3210,30 @@ dTcu = (cal/ccu) dTal"""
 		
 class schaums_18_4:
 	def __init__(self,*args,**kwargs): 
-		
 		t1 = random.randint ( 10,30)
 		t2 = t1 + random.randint(60,80)
 		tf = (t1 + t2)/2
-		self.answer = """{tf:g} °C""".format(tf=tf)
+		#self.answer = """{tf:g} °C""".format(tf=tf)
+		self.answer = f"""{round(tf, 2)} °C"""
 		solution = """dQ = mcdT"""
 		self.question = """Two identical metal plates ( mass = m, specific heat = c ) have different  temperatures; one is at {t1:g}°C and the other is at {t2:g}°C. They are placed in good thermal contact. What is their final temperature?""".format(t1=t1,t2=t2)
 		
 class schaums_18_5:
 	def __init__(self,*args,**kwargs): 
-		
 		mcoffee = random.randint(200,300)
 		tcoffee = random.randint(80,100)
 		mmilk = random.randint(10,30)
 		tmilk = random.randint(0,10)
-		c = SPECIFIC_HEAT_WATER_CALGC
 		tfinal_set = sympy.solveset(mcoffee * (x - tcoffee) + mmilk*(x - tmilk),x)
 		tfinal_list = list(tfinal_set)
 		tfinal = tfinal_list[0]
-		self.answer = """{tf:s}°C""".format(tf = str(tfinal))
+		#self.answer = """{tf:s}°C""".format(tf = str(tfinal))
+		self.answer  =f"""{round(tfinal, 2)} °C"""
 		solution = """
 dQ1 = dQ2
 dQ = mc dT
 c = c_water = c_milk = c_coffee = 4186 J/kgK"""
-
 		self.question = """A thermos bottle contains {mcoffee:g}g of coffee at {tcoffee:g}°C. To this is added {mmilk:g}g of milk at {tmilk:g}°C. After equilibrium is established, what is the temperature of the liquid? Assume no heat loss to the thermos bottle.""".format(mcoffee = mcoffee, tcoffee = tcoffee, mmilk = mmilk, tmilk = tmilk)
-		
 		
 class schaums_18_6:
 	def __init__(self,*args,**kwargs): 
@@ -3262,10 +3242,10 @@ class schaums_18_6:
 		mmetal = random.randint(70,110)
 		tmetal = random.randint(80,120)
 		tf = random.randint(twater,tmetal)
-		
-		cwater = SPECIFIC_HEAT_WATER_CALGC
+		cwater = c.SPECIFIC_HEAT_WATER_CALGC
 		cmetal = -(cwater*mwater*(tf - twater))/(mmetal*(tf - tmetal))
-		self.answer = """{cmetal:g} cal/gC""".format(cmetal = cmetal)
+		#self.answer = """{cmetal:g} cal/gC""".format(cmetal = cmetal)
+		self.answer = f"""{round(cmetal, 2)} cal/gC"""
 		solution = """
 dQwater + dQmetal = 0
 dQ = mc dT"""
@@ -3282,19 +3262,18 @@ class schaums_18_7:
 		ccu = 0.093
 		cal = 0.21
 		coil = 0.37
-	   
 		tf = sympy.solveset(sympy.Eq(cal*mal*(x - tal) + ccu*mcu*(x-tcu) + coil*moil*(x - toil),0) , x).args[0]
 		tf = sympy.N(tf)
-		self.answer = """{tf:g}°C""".format(tf = tf)
+		#self.answer = """{tf:g}°C""".format(tf = tf)
+		self.answer = f"""{round(tf, 2)} °C"""
 		solution = """sum(dQn) = 0
 		dQ = mc dT"""
-		
 		self.question = """A {mcu:g}g copper calorimeter can contains {moil:g}g of oil at {toil:g}°C. To the oil is added {mal:g}g of aluminum at {tal:g}°C. What will be the temperature of the system after equilibrium is established? ccu = 0.093 cal/gC, cal = 0.21 cal/gC, and coil = 0.37 cal/gC""".format(mcu = mcu, moil = moil, toil=toil, mal = mal, tal=tal)
 		
 class schaums_18_8:
 	def __init__(self,*args,**kwargs): 
 		ccu = 0.093
-		cwater = SPECIFIC_HEAT_WATER_CALGC
+		cwater = c.SPECIFIC_HEAT_WATER_CALGC
 		mc = random.randint(1,9)
 		mcal = random_handler.hundred(1500)
 		mw = random_handler.hundred(2000)
@@ -3304,8 +3283,8 @@ class schaums_18_8:
 		Qcarbon = sympy.solveset(x + ccu*mcal*dT + cwater*mw*dT,x).args[0]
 		Qcarbon = sympy.N(Qcarbon)
 		QcarbonPerGram = -Qcarbon/mc
-		self.answer = """{q:g} cal/g""".format(q = QcarbonPerGram)
-		
+		#self.answer = """{q:g} cal/g""".format(q = QcarbonPerGram)
+		self.answer = f"""{round(QcarbonPerGram,2)} cal/g"""
 		self.question = """Exactly {mc:g}g of carbon was burned to CO2 in a copper calorimeter. The mass of the calorimeter is {mcal:g}g, and there is {mw:g}g of water in the calorimeter. The initial temperature was {t1:g}°C, and the final temperature is {t2:g}°C. Calculate the heat given off per gram of carbon. ccu = 0.093 cal/gC. Neglect the small heat capacity of the carbon and carbon dioxide.""".format(mc=mc,mcal=mcal,mw=mw,t1=t1,t2=t2)
 		
 class schaums_18_9:
@@ -3316,15 +3295,14 @@ class schaums_18_9:
 			mwater = random_handler.ten(300)
 			mice = random_handler.ten(150)
 			twater = random_handler.ten(50)
-			Hice = LATENT_HEAT_FUSION_WATER_CALG
-			cwater = SPECIFIC_HEAT_WATER_CALGC
+			Hice = c.LATENT_HEAT_FUSION_WATER_CALG
+			cwater = c.SPECIFIC_HEAT_WATER_CALGC
 			tf = sympy.solveset(mice*Hice + cwater*mice*(x - 0) + cwater*mwater*(x - twater),x).args[0]
 			tf = sympy.N(tf)
 			if tf > 0:
 				retry = False
-		
-		
-		self.answer = """{tf:g} °C""".format(tf = tf)
+		#self.answer = """{tf:g} °C""".format(tf = tf)
+		self.answer = f"""{round(tf, 2)} °C"""
 		solution = """dQ = mc dT, dQ = m H"""
 		self.question = """Determine the temperature Tf that results when {mice:g}g of ice at 0°C is mixed with {mwater:g}g of water at {twater:g}°C.""".format(mice = mice, mwater= mwater, twater = twater)
 		
@@ -3332,21 +3310,19 @@ class schaums_18_10:
 	def __init__(self,*args,**kwargs): 
 		tf = random_handler.ten(20)
 		msteam = random_handler.ten(20)
-		Lv = LATENT_HEAT_VAPORIZATION_WATER_CALG
-		cw = SPECIFIC_HEAT_WATER_CALGC
+		Lv = c.LATENT_HEAT_VAPORIZATION_WATER_CALG
+		cw = c.SPECIFIC_HEAT_WATER_CALGC
 		dQ = msteam*(-Lv) + cw*msteam*(tf - 100)
-		self.answer = """{dQ:g} cal""".format(dQ = dQ)
-		
+		#self.answer = """{dQ:g} cal""".format(dQ = dQ)
+		self.answer = f"""{round(dQ, 2)} cal"""
 		self.question = """How much heat is given up when {msteam:g}g of steam at 100°C is condensed and cooled to {tf:g}°C?""".format(msteam = msteam, tf = tf)
 		
 class schaums_18_11:
 	def __init__(self,*args,**kwargs): 
-		
 		mal = random_handler.ten(20)
 		cal = 0.21
-		Lfice = LATENT_HEAT_FUSION_WATER_CALG
+		Lfice = c.LATENT_HEAT_FUSION_WATER_CALG
 		ti = random_handler.ten(90)
-		
 		retry = True
 		while retry: 
 			print(type(self))
@@ -3356,20 +3332,19 @@ class schaums_18_11:
 			if mice > 0:
 				retry = False
 		
-		self.answer = """{mice:g} g""".format(mice = mice)
-		
+		#self.answer = """{mice:g} g""".format(mice = mice)
+		self.answer = f"""{round(mice, 2)} g"""
 		self.question = """A {mal:g}g piece of aluminum (c = 0.21 cal/gC ) at {ti:g}°C is dropped into a cavity in a large block of ice at 0°C. How much ice does the aluminum melt?""".format(mal = mal, ti = ti)
 		
 class schaums_18_12:
 	def __init__(self,*args,**kwargs): 
-		
 		mcal = random_handler.ten(40)
 		mwater1 = random_handler.ten(200)
 		mice = random_handler.ten(50)
 		mwater2 = random_handler.ten(30)
 		twater2 = random.randint(80,95)
-		cwater = SPECIFIC_HEAT_WATER_CALGC
-		Lice = LATENT_HEAT_FUSION_ICE_CALG
+		cwater = c.SPECIFIC_HEAT_WATER_CALGC
+		Lice = c.LATENT_HEAT_FUSION_ICE_CALG
 		#assuming that the final temperature is greater than zero
 		
 		tf = sympy.solveset(mwater2*cwater*(x - twater2) + mice*Lice + (mwater1 + mice)*cwater*x + mcal*cwater*x,x).args[0]
@@ -3379,26 +3354,23 @@ class schaums_18_12:
 		if tf < 0:
 			tf = 0
 			mice_melt = (mwater2*cwater*twater2)/Lice
-			self.answer = """{tf:g}°C, {m:g} g melted ice""".format(tf = tf, m = mice_melt)
-			
+			#self.answer = """{tf:g}°C, {m:g} g melted ice""".format(tf = tf, m = mice_melt)
+			self.answer = f"""{round(tf, 2)} °C, {round(mice_melt, 2)} g melted ice."""
 		else:
-			self.answer = """{tf:g}°C""".format(tf=tf)
-		
-		
+			#self.answer = """{tf:g}°C""".format(tf=tf)
+			self.answer = f"""{round(tf, 2)} °C"""
 		self.question = """In a calorimeter can (which behaves thermally as if it were equivalent to {mcal:g}g of water) are {mwater1:g}g of water and {mice:g}g of ice, all at exactly 0°C. Into this is poured {mwater2:g}g of water at {twater2:g}°C. What will be the final condition of the system?""".format(mwater1 = mwater1, mcal=mcal,mice=mice,mwater2=mwater2, twater2 = twater2)
 		
 class schaums_18_13:
 	def __init__(self,*args,**kwargs): 
 		solution = """P = Q/t, dQ = m Lv"""
-		
 		P = random_handler.hundred(900)
 		t = random.randint(1,9)
-		Lv = LATENT_HEAT_VAPORIZATION_WATER_JKG
-		
-		m = sympy.solveset(x*Lv - (P*t*MIN_SEC), x).args[0]
+		Lv = c.LATENT_HEAT_VAPORIZATION_WATER_JKG
+		m = sympy.solveset(x*Lv - (P*t*c.MIN_SEC), x).args[0]
 		m = sympy.N(m)
-		self.answer = """{m:g} g""".format(m=m*1000)
-		
+		#self.answer = """{m:g} g""".format(m=m*1000)
+		self.answer = f"""{round(m * 1000, 2)} g"""
 		self.question = """An electric heater that produces {P:g}W of power is used to vaporize water. How much water at 100°C can be changed to steam in {t:g} minutes by the heater? For water at 100°C, Lv = 2.26 x 10^6 J/kgK.""".format(P = P, t=t)
 		
 class schaums_18_14:
@@ -3407,10 +3379,10 @@ class schaums_18_14:
 		mbullet = random.randint(1,9)
 		vbullet = random_handler.ten(180)
 		cbullet = 128
-		KE = 0.5 * mbullet*GRAMS_KG * (vbullet**2)
-		dT = KE / (mbullet*GRAMS_KG * cbullet)
-		self.answer = """{dT:g} °C""".format(dT = dT)
-		
+		KE = 0.5 * mbullet*c.GRAMS_KG * (vbullet**2)
+		dT = KE / (mbullet*c.GRAMS_KG * cbullet)
+		#self.answer = """{dT:g} °C""".format(dT = dT)	
+		self.answer = f"""{round(dT, 2)} °C"""
 		self.question = """A {mbullet:g}g bullet (c = 0.0305 cal/gC = 128 J/kgK) moving at {vbullet:g} m/s enters a bag of sand and stops. By what amount does the temperature of the bullet change if all its kinetic energy becomes thermal energy that is added to the bullet?""".format(vbullet = vbullet, mbullet = mbullet)
 		
 class schaums_18_15:
@@ -3419,9 +3391,9 @@ class schaums_18_15:
 		mperson = random_handler.ten(60)
 		cbody = 0.83
 		energy = random_handler.hundred(2500)
-		dt = (energy*BIGCAL_CAL)/(mperson*KG_GRAMS*cbody)
-		self.answer = """{dt:g}°C""".format(dt = dt)
-		
+		dt = (energy*c.BIGCAL_CAL)/(mperson*c.KG_GRAMS*cbody)
+		#self.answer = """{dt:g}°C""".format(dt = dt)
+		self.answer = f"""{round(dt, 2)} °C"""
 		self.question = """Suppose a {mperson:g}kg person consumes {energy:g} Cal of food in one day. If the entire heat equivalent of this food were retained by the person's body, how large a temperature change would it cause? (For the body, c = 0.83 cal/gC). Remember that 1 Cal = 1 kcal = 1000 cal.""".format(mperson = mperson, energy = energy)
 		
 class schaums_18_16:
@@ -3432,9 +3404,10 @@ class schaums_18_16:
 		w = random.randint(5,12)
 		h = random.randint(5,12)
 		saturated = 19.33 / 1000
-		m_water_conc = rh*PERCENT * saturated
+		m_water_conc = rh*c.PERCENT * saturated
 		mwater = m_water_conc * (l*w*h)
-		self.answer = """{mwater:g} kg""".format(mwater=mwater)
+		#self.answer = """{mwater:g} kg""".format(mwater=mwater)
+		self.answer = f"""{round(mwater, 2)} kg"""
 		self.question = """A thermometer in a {l:g} m x {w:g} m x {h:g} m room reads 22°C and a humidistat reads the R.H. to be {rh:g} percent. What mass of water vapor is in the room? Saturated air at 22°C contains 19.33 g H2O/m^3""".format(l=l,w=w,h=h,rh=rh)
 		
 class schaums_18_17:
@@ -3446,11 +3419,10 @@ class schaums_18_17:
 		tinitcon = round(tinitcon,2)
 		tdewcon = random.uniform(12,15)
 		tdewcon = round(tdewcon,2)
-		
 		rh = tdewcon / tinitcon
 		rh = rh *100
-		self.answer = """{rh:g}%""".format(rh = rh)
-		
+		#self.answer = """{rh:g}%""".format(rh = rh)
+		self.answer = f"""{round(rh, 2)} %"""
 		self.question = """On a certain day when the temperature is {tinit:g}°C, moisture forms on the outside of a glass of cold drink if the glass is at a temperature of {tdew:g}°C or lower. What is the RH on the day? Saturated air at {tinit:g}°C contains {tinitcon:g} g/m3 of water, while at {tdew:g}°C, it contains {tdewcon:g} g/m^3.""".format(tinit = tinit, tdew = tdew, tinitcon = tinitcon, tdewcon = tdewcon)
 		
 class schaums_18_18:
@@ -3464,20 +3436,19 @@ class schaums_18_18:
 		conin = random.uniform(15,19)
 		conin = round(conin,2)
 		
-		mass_wv_tout = rhin*PERCENT *conin
-		mass_wv_tin_comf = rhout*PERCENT *conout
+		mass_wv_tout = rhin*c.PERCENT *conin
+		mass_wv_tin_comf = rhout*c.PERCENT *conout
 		onem3_at_tin = (c.CELSIUS_KELVIN(tin) / c.CELSIUS_KELVIN(tout))
 		mass_wv_tin_expanded = onem3_at_tin * mass_wv_tin_comf
 		tobeadded_per_m3 = (mass_wv_tin_expanded - mass_wv_tout)
-		self.answer = """{a:g} g""".format(a = tobeadded_per_m3)
-		
+		#self.answer = """{a:g} g""".format(a = tobeadded_per_m3)
+		self.answer = f"""{round(tobeadded_per_m3, 2)} g"""
 		solution = f"""
 mass_wv_tout = {rhin}*PERCENT *{conin}
 mass_wv_tin_comf = {rhout}*PERCENT *{conout}
 onem3_at_tin = (c.CELSIUS_KELVIN({tin}) / c.CELSIUS_KELVIN({tout}))
 mass_wv_tin_expanded = {onem3_at_tin} * {mass_wv_tin_comf}
 tobeadded_per_m3 = ({mass_wv_tin_expanded} - {mass_wv_tout})"""
-
 		self.question = """Outside air at {tout:g}°C and {rhout:g} percent relative humidity is introduced into a heating and airconditioning plant where it is heated to {tin:g}°C and its relative humidity is increased to a comfortable {rhin:g} percent. How many grams of water must be evaporated into a cubic meter of outside air to accomplish this? Saturated air at {tout:g}°C contains {conout:g} g/m^3 of water, and at {tin:g}°C it contains {conin:g} g/m^3.""".format(tout=tout,rhout = rhout, rhin = rhin,tin = tin, conout=conout,conin = conin)
 		
 class schaums_19_1:
@@ -3487,9 +3458,9 @@ class schaums_19_1:
 		temp1 = random_handler.ten(150)
 		temp2 = temp1 - random.randint(5,20)
 		kt = 80
-		
-		power = kt * (area_cm2*CM2_M2)* ((temp1 - temp2)/(thick_cm*CENTI))
-		self.answer = f'{power} W'
+		power = kt * (area_cm2*c.CM2_M2)* ((temp1 - temp2)/(thick_cm*c.CENTI))
+		#self.answer = f'{power} W'
+		self.answer = f"""{round(power, 2)} W"""
 		solution = f"""
 power = kt * (area*CM2_M2) ((temp1 - temp2)/(thick_cm*CENTI)
 power = {kt} * ({area_cm2}*CM2_M2)* (({temp1} - {temp2})/({thick_cm}*CENTI)
@@ -3504,8 +3475,8 @@ class schaums_19_2:
 		power = random_handler.ten(200)
 		area = random_handler.ten(5)
 		
-		kt = (power*KCALHR_WATTS) * ((thickness*MILLI)/(area*CM2_M2*dt))
-		self.answer = f'{kt} W/mK'
+		kt = (power*c.KCALHR_WATTS) * ((thickness*c.MILLI)/(area*c.CM2_M2*dt))
+		self.answer = f'{round(kt, 2)} W/mK'
 		solution = f"""
 kt = (power*KCALHR_WATTS) * ((thickness*MILLI)/(area*CM2_M2*dt))
 kt = ({power}*KCALHR_WATTS) * (({thickness}*MILLI)/({area}*CM2_M2*{dt}))
@@ -3527,8 +3498,8 @@ class schaums_19_3:
 		tjunc = sympy.solveset((kt1*(temp1 - x)) - (kt2*(x - temp2)),x,domain=sympy.Reals).args[0]
 		tjunc = sympy.N(tjunc)
 		
-		power = kt1 * (area*CM2_M2) * (temp1 - tjunc) / (thick*MILLI)
-		self.answer = f'{tjunc}°C , {power} W'
+		power = kt1 * (area*c.CM2_M2) * (temp1 - tjunc) / (thick*c.MILLI)
+		self.answer = f'{round(tjunc,2)}°C , {round(power,2)} W'
 		solution = f"""
 {kt1}*({temp1} - tjunc) = ({kt2}*(tjunc - {temp2})
 tjunc = {tjunc}
@@ -3547,9 +3518,9 @@ class schaums_19_4:
 		tout = random_handler.ten(20)
 		
 		area = 6*(edge**2)
-		power = kt * (area*CM2_M2) * (tout) / (thick*CENTI)
-		mass_melted = (power * 3600) / (LATENT_HEAT_FUSION_ICE_JKG)
-		self.answer = f'{mass_melted} kg'
+		power = kt * (area*c.CM2_M2) * (tout) / (thick*c.CENTI)
+		mass_melted = (power * 3600) / (c.LATENT_HEAT_FUSION_ICE_JKG)
+		self.answer = f'{round(mass_melted,2)} kg'
 		solution = f"""
 area = 6*(edge**2)
 area = 6*({edge}**2)
@@ -3558,11 +3529,8 @@ power = kt * (area*CM2_M2) * (tout - 0) / (thick*CENTI)
 power = {kt} * ({area}*CM2_M2) * ({tout} - 0) / ({thick}*CENTI)
 power = {power}
 mass_melted = (power * 3600) / (LATENT_HEAT_FUSION_ICE_JKG)
-mass_melted = ({power} * 3600) / ({LATENT_HEAT_FUSION_ICE_JKG})
+mass_melted = ({power} * 3600) / ({c.LATENT_HEAT_FUSION_ICE_JKG})
 mass_melted = {mass_melted}"""
-
-		
-		
 		self.question = f"""A beverage cooler is in the shape of a cube, {edge}cm on each inside edge. Its {thick} cm thick walls are made of plastic (kt = 0.050 W/mK). When the outside temperature is {tout}°C, how much ice will melt inside the cooler each hour?"""
 		
 class schaums_19_5:
@@ -3580,7 +3548,7 @@ class schaums_19_5:
 		thickness = (dia_out - dia_in) / 2
 		power = kt * area * (tempsteam - tempwater) / (thickness) #the cms will cancel so the units are fine
 		
-		self.answer = f'{power} cals/ s'
+		self.answer = f'{round(power, 2)} cals/ s'
 		solution = f"""
 	area_in = math.pi * dia_in * length 
 	area_in = math.pi * {dia_in} * {length}
@@ -3606,15 +3574,15 @@ class schaums_19_6:
 		r2 = 4.3
 		r3 = 0.45
 		rtotal = r1 + r2 + r3
-		rtotal = rtotal * USCUSTOMARYUNIT_KELVINPERWATT
+		rtotal = rtotal * c.USCUSTOMARYUNIT_KELVINPERWATT
 		area = random_handler.ten(15)
 		dt = random_handler.ten(20)
 		time = 3600
 		dQ = area*dt*time / rtotal
-		self.answer = f'{rtotal} K/W, {dQ} J'
+		self.answer = f'{round(rtotal,2)} K/W, {round(dQ,2)} J'
 		solution = f"""
 rtotal = (r1 + r2 + r3) * USCUSTOMARYUNIT_KELVINPERWATT
-rtotal = {r1} + {r2} + {r3}*{USCUSTOMARYUNIT_KELVINPERWATT}
+rtotal = {r1} + {r2} + {r3}*{c.USCUSTOMARYUNIT_KELVINPERWATT}
 rtotal = {rtotal}
 time = 3600
 dQ = area*dt*time / rtotal
@@ -3626,15 +3594,15 @@ class schaums_19_7:
 	def __init__(self,*args,**kwargs): 
 		diameter = random_handler.r(2)
 		temperature = random_handler.r(600)
-		area = 4*math.pi*(diameter*CENTI/2)**2
-		power = area*STEFAN_BOLTZMANNS_CONSTANT*((c.CELSIUS_KELVIN(temperature))**4)
-		self.answer = f'{power} W'
+		area = 4*math.pi*(diameter*c.CENTI/2)**2
+		power = area*c.STEFAN_BOLTZMANNS_CONSTANT*((c.CELSIUS_KELVIN(temperature))**4)
+		self.answer = f'{round(power,2)} W'
 		solution = f"""
 area = 4*math.pi*(diameter*CENTI/2)**2
 area = 4*math.pi*({diameter}*CENTI/2)**2
 area = {area}
 power = area*STEFAN_BOLTZMANNS_CONSTANT*c.CELSIUS_KELVIN(temperature)**4
-power = {area}*{STEFAN_BOLTZMANNS_CONSTANT}*c.CELSIUS_KELVIN({temperature})**4
+power = {area}*{c.STEFAN_BOLTZMANNS_CONSTANT}*c.CELSIUS_KELVIN({temperature})**4
 power = {power}"""
 		self.question = f"""A spherical body of {diameter} cm diameter is maintained at {temperature}°C. Assuming that it radiates as if it were a blackbody, at what rate (in watts) is energy radiated from the sphere?"""
 		
@@ -3645,13 +3613,13 @@ class schaums_19_8:
 		temperature_body = 37
 		time = 60
 		temperature_room = temperature_body - random.randint(10,20)
-		power = area * STEFAN_BOLTZMANNS_CONSTANT * emissivity * (c.CELSIUS_KELVIN(temperature_body)**4 - c.CELSIUS_KELVIN(temperature_room)**4)*time
-		power_kcal = power * JOULE_KCAL
+		power = area * c.STEFAN_BOLTZMANNS_CONSTANT * emissivity * (c.CELSIUS_KELVIN(temperature_body)**4 - c.CELSIUS_KELVIN(temperature_room)**4)*time
+		power_kcal = power * c.JOULE_KCAL
 		
-		self.answer = f'{power} J, {power_kcal} kcal'
+		self.answer = f'{round(power,2)} J, {round(power_kcal,2)} kcal'
 		solution = f"""
 power = area * STEFAN_BOLTZMANNS_CONSTANT * emissivity * (c.CELSIUS_KELVIN(temperature_body)**4 - c.CELSIUS_KELVIN(temperature_room)**4)*time
-power = {area} * {STEFAN_BOLTZMANNS_CONSTANT} * {emissivity} * (c.CELSIUS_KELVIN({temperature_body})**4 - c.CELSIUS_KELVIN({temperature_room})**4)*{time}
+power = {area} * {c.STEFAN_BOLTZMANNS_CONSTANT} * {emissivity} * (c.CELSIUS_KELVIN({temperature_body})**4 - c.CELSIUS_KELVIN({temperature_room})**4)*{time}
 power = {power}
 power_kcal = {power} * JOULE_KCAL
 power_kcal = {power_kcal}"""
@@ -3665,11 +3633,11 @@ class schaums_20_1:
 		
 		self.question = f"""In certain process, {dQ} kcal of heat is furnished to the system while the system does {dW} kJ of work. By how much does the internal energy of the system change during the process?""" 
 		
-		dQ = dQ * KCAL_JOULE 
-		dW = dW * KILO
+		dQ = dQ * c.KCAL_JOULE 
+		dW = dW * c.KILO
 		dU = dQ - dW
 		
-		self.answer = f'{dU} J'
+		self.answer = f'{round(dU,2)} J'
 		solution = f"""
 dQ = dQ * KCAL_JOULE
 dW = dW * KILO
@@ -3682,31 +3650,31 @@ class schaums_20_2:
 		mass = random_handler.r(50)
 		temp1 = random_handler.r(21)
 		temp2 = temp1 + random_handler.r(37-21)
-		dQ = mass * GRAMS * SPECIFIC_HEAT_WATER_JKGK * (temp2 - temp1)
+		dQ = mass * c.GRAMS * c.SPECIFIC_HEAT_WATER_JKGK * (temp2 - temp1)
 		dW = 0 #practically zero expansion of water
 		dU = dQ - dW 
-		self.answer = f'{dU} J'
+		self.answer = f'{round(dU,2)} J'
 		solution = f"""
 dQ = mass * GRAMS * SPECIFIC_HEAT_WATER_JKGK * (temp2 - temp1)
-dQ = {mass} * {GRAMS} * {SPECIFIC_HEAT_WATER_JKGK} *({temp2} - {temp1})
+dQ = {mass} * {c.GRAMS} * {c.SPECIFIC_HEAT_WATER_JKGK} *({temp2} - {temp1})
 dQ = {dW}
 dW = 0
 dU = dQ - dW
 dU = {dQ} - {dW}
 dU = {dU} """
-		self.question = f"""The specific heat of water is {SPECIFIC_HEAT_WATER_JKGK} J/kgK. By how many joules does the internal energy of {mass} g of water change as it is heated from {temp1}°C to {temp2}°C?"""
+		self.question = f"""The specific heat of water is {c.SPECIFIC_HEAT_WATER_JKGK} J/kgK. By how many joules does the internal energy of {mass} g of water change as it is heated from {temp1}°C to {temp2}°C?"""
 		
 class schaums_20_3:
 	def __init__(self,*args,**kwargs): 
 		mass = random_handler.r(5)
-		dQ = mass * LATENT_HEAT_FUSION_ICE_CALG 
+		dQ = mass * c.LATENT_HEAT_FUSION_ICE_CALG 
 		dW = 0 
 		dU = dQ - dW
-		dU_J = dU * CAL_JOULE
-		self.answer = f'{dU} cal, {dU_J} J'
+		dU_J = dU * c.CAL_JOULE
+		self.answer = f'{round(dU,2)} cal, {round(dU_J,2)} J'
 		solution = f"""
 dQ = mass * LATENT_HEAT_FUSION_ICE_CALG 
-dQ = {mass} * {LATENT_HEAT_FUSION_ICE_CALG} 
+dQ = {mass} * {c.LATENT_HEAT_FUSION_ICE_CALG} 
 dW = 0 
 dU = dQ - dW
 dU = {dQ} - {dW}
@@ -3721,16 +3689,16 @@ class schaums_20_4:
 		mass_water = random_handler.r(900)
 		specific_heat_block = random_handler.r(450)
 		dx = random_handler.r(15)
-		PE = (1/2)* spring_const * (dx*CENTI)**2
-		dT = sympy.solveset(mass_block*GRAMS*specific_heat_block*x + mass_water*GRAMS*SPECIFIC_HEAT_WATER_JKGK*x - PE,x,domain = sympy.Reals).args[0]
+		PE = (1/2)* spring_const * (dx*c.CENTI)**2
+		dT = sympy.solveset(mass_block*c.GRAMS*specific_heat_block*x + mass_water*c.GRAMS*c.SPECIFIC_HEAT_WATER_JKGK*x - PE,x,domain = sympy.Reals).args[0]
 		dT = sympy.N(dT)
-		self.answer = f'{dT} K'
+		self.answer = f'{round(dT,2)} K'
 		solution = f"""
 PE = (1/2)* spring_const * (dx*CENTI)**2
 PE = (1/2)* {spring_const} * ({dx}*CENTI)**2
 PE = {PE}
 mass_block*specific_heat_block*dT + mass_water*SPECIFIC_HEAT_WATER_JKGK*dT =  PE
-{mass_block}*GRAMS*{specific_heat_block}*dT + {mass_water}*GRAMS*{SPECIFIC_HEAT_WATER_JKGK}*dT =  {PE}
+{mass_block}*GRAMS*{specific_heat_block}*dT + {mass_water}*GRAMS*{c.SPECIFIC_HEAT_WATER_JKGK}*dT =  {PE}
 dT = {dT}"""
 		
 		self.question = f"""A spring (k = {spring_const} N/m) supports a {mass_block} g mass which is immersed in {mass_water}g of water. The specific heat of the mass is {specific_heat_block} J/kgK. The spring is now stretched {dx} cm and, after thermal equilibrium is reached, the mass is released so it vibrates up and down. By how much has the temperature of the water changed when the vibration has stopped?"""
@@ -3743,14 +3711,14 @@ class schaums_20_5:
 		ciron = 0.11
 		mass = random_handler.r(1700)
 		beta = 3.6E-5
-		p = STP_PRESSURE
-		volume = (edge*CENTI)**3
+		p = c.STP_PRESSURE
+		volume = (edge*c.CENTI)**3
 		dQ = ciron * mass * (temp2 - temp1)
-		dQJ = dQ * CAL_JOULE
+		dQJ = dQ * c.CAL_JOULE
 		dV = volume * beta * (temp2 - temp1)
 		dW = p * dV
 		dU = dQJ - dW
-		self.answer = f'Internal Energy Change = {dU} J,  Work = {dW} J'
+		self.answer = f'{round(dU,2)} J, {round(dW,2)} J'
 		solution = f"""
 volume = (edge*CENTI)**3
 volume = ({edge}*CENTI)**3
@@ -3768,7 +3736,6 @@ dW = {dW}
 dU = dQ - dW
 dU = {dQJ} - {dW}
 dU = {dU}"""
-
 		self.question = f"""Find ΔW and ΔU for a {edge}-cm cube of iron as it is heated from {temp1}°C to {temp2}°C at atmospheric pressure. For iron, c = 0.11 cal/gC, and the volume coefficient of thermal expansion is 3.6 x 10^-5 °C^-1. The mass of the cube is {mass}g."""
 
 class schaums_20_6:
@@ -3777,17 +3744,17 @@ class schaums_20_6:
 		masswater = random_handler.r(5)
 		tempinc = random_handler.r(6)
 		
-		power = power_hp * HORSEPOWER_WATTS
-		dQ = masswater * SPECIFIC_HEAT_WATER_JKGK * tempinc
+		power = power_hp * c.HORSEPOWER_WATTS
+		dQ = masswater * c.SPECIFIC_HEAT_WATER_JKGK * tempinc
 		time = dQ / power
 		time_min = time/60
-		self.answer = f'{time_min} min'
+		self.answer = f'{round(time_min,2)} min'
 		solution = f"""            
 power = power_hp * HORSEPOWER_WATTS
-power = {power_hp} * {HORSEPOWER_WATTS}
+power = {power_hp} * {c.HORSEPOWER_WATTS}
 power = {power} W
 dQ = masswater * SPECIFIC_HEAT_WATER_JKGK * tempinc
-dQ = {masswater} * {SPECIFIC_HEAT_WATER_JKGK} * {tempinc}
+dQ = {masswater} * {c.SPECIFIC_HEAT_WATER_JKGK} * {tempinc}
 dQ = {dQ} J
 time = dQ / power
 time = {dQ} / {power}
@@ -3803,20 +3770,20 @@ class schaums_20_7:
 		work2_J = random_handler.r(420)
 		heat3_cal = random_handler.r(1200)
 		
-		dU1 = heat1_cal*CAL_JOULE - work1_J 
-		dU2 = heat2_cal*CAL_JOULE - (-work2_J)
-		dU3 = -heat3_cal*CAL_JOULE
+		dU1 = heat1_cal*c.CAL_JOULE - work1_J 
+		dU2 = heat2_cal*c.CAL_JOULE - (-work2_J)
+		dU3 = -heat3_cal*c.CAL_JOULE
 		
-		self.answer = f'{dU1} J, {dU2} J, {dU3} J'
+		self.answer = f'{round(dU1,2)} J, {round(dU2,2)} J, {round(dU3,2)} J'
 		solution = f"""
 dU1 = heat1_cal*CAL_JOULE - work1_J 
-dU1 = {heat1_cal}*{CAL_JOULE} - {work1_J}
+dU1 = {heat1_cal}*{c.CAL_JOULE} - {work1_J}
 dU1 = {dU1} J
 dU2 = heat2_cal*CAL_JOULE - (-work2_J)
-dU2 = {heat2_cal}*{CAL_JOULE} - (-{work2_J})
+dU2 = {heat2_cal}*{c.CAL_JOULE} - (-{work2_J})
 dU2 = {dU2} J
 dU3 = -heat3_cal*CAL_JOULE
-dU3 = -{heat3_cal}*{CAL_JOULE}
+dU3 = -{heat3_cal}*{c.CAL_JOULE}
 dU3 = {dU3} J
 """
 		
@@ -3830,7 +3797,7 @@ class schaums_20_8:
 		dQ2 = 0
 		dU1 = - (work1_J)
 		dU2 = - (-work2_J)
-		self.answer = f'{dU1} J, {dU2} J'
+		self.answer = f'{round(dU1,2)} J, {round(dU2,2)} J'
 		solution = f"""
 dQ1 = 0
 dQ2 = 0
@@ -3852,31 +3819,31 @@ class schaums_20_9:
 		temp2 = random_handler.r(130)
 		
 		dW = 0
-		dQv = cv * mass*KG_GRAMS *(temp2 - temp1)
-		dQv_J = dQv * CAL_JOULE
+		dQv = cv * mass*c.KG_GRAMS *(temp2 - temp1)
+		dQv_J = dQv * c.CAL_JOULE
 		
 		dU = dQv_J
 		
-		dQp = cp * mass *KG_GRAMS *(temp2 - temp1)
-		dQp_J = dQp * CAL_JOULE
+		dQp = cp * mass *c.KG_GRAMS *(temp2 - temp1)
+		dQp_J = dQp * c.CAL_JOULE
 		dW = dQp_J - dU
 		
-		self.answer = f'Work = {dW} J,Internal Energy = {dU} J'
+		self.answer = f'{round(dW,2)} J,{round(dU,2)} J'
 		solution = f"""
 dW = 0
 dQv = cv * mass*KG_GRAMS *(temp2 - temp1)
-dQv = {cv} * {mass}*{KG_GRAMS} *({temp2} - {temp1})
+dQv = {cv} * {mass}*{c.KG_GRAMS} *({temp2} - {temp1})
 dQv = {dQv} cal
 dQv_J = dQv * CAL_JOULE
-dQv_J = {dQv} * {CAL_JOULE}
+dQv_J = {dQv} * {c.CAL_JOULE}
 dQv_J = {dQv_J} J
 dU = dQv_J
 dU = {dQv_J} J
 dQp = cp * mass *KG_GRAMS *(temp2 - temp1)
-dQp = {cp} * {mass} *{KG_GRAMS} *({temp2} - {temp1})
+dQp = {cp} * {mass} *{c.KG_GRAMS} *({temp2} - {temp1})
 dQp = {dQp} cal
 dQp_J = dQp * CAL_JOULE
-dQp_J = {dQp} * {CAL_JOULE}
+dQp_J = {dQp} * {c.CAL_JOULE}
 dQp_J = {dQp_J} J
 dW = dQp_J - dU
 dW = {dQp_J} - {dU}
@@ -3889,15 +3856,15 @@ class schaums_20_10:
 		mass = 1
 		dV = 1.68 - 0.001
 		p = 101E3
-		Lv = LATENT_HEAT_VAPORIZATION_STEAM_JKG
+		Lv = c.LATENT_HEAT_VAPORIZATION_STEAM_JKG
 		dQ = mass * Lv
 		dW = p * dV
 		fraction = dW / (mass*Lv)
 		dU = dQ - dW
-		self.answer = f'{fraction}, {dU} J'
+		self.answer = f'{round(fraction,2)}, {round(dU,2)} J'
 		solution = f"""
 Lv = LATENT_HEAT_VAPORIZATION_STEAM_JKG
-Lv = {LATENT_HEAT_VAPORIZATION_STEAM_JKG}
+Lv = {c.LATENT_HEAT_VAPORIZATION_STEAM_JKG}
 dQ = mass * Lv
 dQ = {mass} * {Lv}
 dQ = {dQ}
@@ -3916,11 +3883,11 @@ class schaums_20_11:
 	def __init__(self,*args,**kwargs): 
 		cv = 740
 		M = 28
-		cp = cv + (UNIVERSAL_GAS_CONSTANT / (M*KGKMOL_KGMOL))
-		self.answer = f'{cp} J/kgK'
+		cp = cv + (c.UNIVERSAL_GAS_CONSTANT / (M*c.KGKMOL_KGMOL))
+		self.answer = f'{round(cp,2)} J/kgK'
 		solution = f"""
 cp = cv + (UNIVERSAL_GAS_CONSTANT / (M*KGKMOL_KGMOL))
-cp = {cv} + ({UNIVERSAL_GAS_CONSTANT}) / ({M}*{KGKMOL_KGMOL}))
+cp = {cv} + ({c.UNIVERSAL_GAS_CONSTANT}) / ({M}*{c.KGKMOL_KGMOL}))
 cp = {cp}"""
 		self.question = f"""For nitrogen gas, cv = 740 J/kgK. Find its specific heat at constant pressure. ( The molecular mass of nitrogen gas is 28 kg/kmol)"""
 		
@@ -3930,15 +3897,15 @@ class schaums_20_12:
 		volume_final = volume_initial + random_handler.r(21)
 		pressure_initial = random_handler.r(20)
 		
-		dW_iso = (pressure_initial*ATM_PA) * (volume_initial*LITERS_M3) * math.log(volume_final / volume_initial, math.exp(1))
+		dW_iso = (pressure_initial*c.ATM_PA) * (volume_initial*c.LITERS_M3) * math.log(volume_final / volume_initial, math.exp(1))
 		
-		self.answer = f'{dW_iso} J'
+		self.answer = f'{round(dW_iso,2)} J'
 		solution = f"""
 dW_iso = (pressure_initial*ATM_PA) * (volume_initial*LITERS_M3) * math.log(volume_final / volume_initial, math.exp(1))
-dW_iso = ({pressure_initial}*{ATM_PA}) * ({volume_initial}*{LITERS_M3}) * math.log({volume_final} / {volume_initial}, math.exp(1))
+dW_iso = ({pressure_initial}*{c.ATM_PA}) * ({volume_initial}*{c.LITERS_M3}) * math.log({volume_final} / {volume_initial}, math.exp(1))
 dW_iso = {dW_iso}"""
 		
-		self.question = f"""How much work is done by an ideal gas in expaning isothermally from an initial volume of {volume_initial} liters at {pressure_initial} atm to a final volume of {volume_final} liters?"""
+		self.question = f"""How much work is done by c.an ideal gas in expaning isothermally from an initial volume of {volume_initial} liters at {pressure_initial} atm to a final volume of {volume_final} liters?"""
 		
 class schaums_20_13:
 	def __init__(self,*args,**kwargs): 
@@ -3949,7 +3916,7 @@ class schaums_20_13:
 		gamma = 1.67
 		pressure2 = pressure1 * (volume1 / volume2)**gamma
 		temp2 = (c.CELSIUS_KELVIN(temp1)) * (volume1 / volume2)**(gamma - 1)
-		self.answer = f'{pressure2} kPa, {temp2} K'
+		self.answer = f'{round(pressure2,2)} kPa, {round(temp2,2)} K'
 		solution = f"""
 gamma = 1.67
 pressure2 = pressure1 * (volume1 / volume2)**gamma
@@ -3968,7 +3935,7 @@ class schaums_20_14:
 		efficiency = 1 - (c.CELSIUS_KELVIN(tempc)/c.CELSIUS_KELVIN(temph))
 		efficiency_percentage = efficiency * 100
 		
-		self.answer = f'{efficiency_percentage} %'
+		self.answer = f'{round(efficiency_percentage,2)} %'
 		solution = f"""
 efficiency = 1 - (c.CELSIUS_KELVIN(tempc)/c.CELSIUS_KELVIN(temph))
 efficiency = 1 - (c.CELSIUS_KELVIN({tempc})/c.CELSIUS_KELVIN({temph}))
@@ -3990,12 +3957,12 @@ class schaums_20_15:
 		
 		carnot_eff = 1 - (c.CELSIUS_KELVIN(tempc) / c.CELSIUS_KELVIN(temph))
 		actual_eff = eff_comp_carnot * carnot_eff
-		output_work = power_hp * HORSEPOWER_WATTS * WATTS_CALS
+		output_work = power_hp * c.HORSEPOWER_WATTS * c.WATTS_CALS
 		
 		input_heat = output_work / actual_eff
 		rejected_energy = input_heat *(1 - actual_eff)
 		
-		self.answer = f'{input_heat} cal/s, {rejected_energy} cal/s'
+		self.answer = f'{round(input_heat,2)} cal/s, {round(rejected_energy,2)} cal/s'
 		solution = f"""
 carnot_eff = 1 - (c.CELSIUS_KELVIN(tempc) / c.CELSIUS_KELVIN(temph))
 carnot_eff = 1 - (c.CELSIUS_KELVIN({tempc}) / c.CELSIUS_KELVIN({temph}))
@@ -4004,7 +3971,7 @@ actual_eff = eff_comp_carnot * carnot_eff
 actual_eff = {eff_comp_carnot} * {carnot_eff}
 actual_eff = {actual_eff}
 output_work = power_hp * HORSEPOWER_WATTS * WATTS_CALS
-output_work = {power_hp} * {HORSEPOWER_WATTS} * {WATTS_CALS}
+output_work = {power_hp} * {c.HORSEPOWER_WATTS} * {c.WATTS_CALS}
 input_heat = output_work / actual_eff
 input_heat = {output_work} / {actual_eff}
 input_heat = {input_heat}
@@ -4017,10 +3984,10 @@ rejected_energy = {rejected_energy}"""
 class schaums_20_16:
 	def __init__(self,*args,**kwargs): 
 		kmoles = random_handler.r(3)
-		moles = kmoles * KILO
+		moles = kmoles * c.KILO
 		mass = kmoles * 2
-		temp1 = STP_TEMPERATURE
-		pressure1 = STP_PRESSURE
+		temp1 = c.STP_TEMPERATURE
+		pressure1 = c.STP_PRESSURE
 		cv = 10 
 		volume1 = 22.4 * kmoles
 		volume2 = 2 * volume1
@@ -4034,8 +4001,8 @@ class schaums_20_16:
 		internal_energy = heatv
 		
 		heatp = internal_energy + work
-		heatp_mega = heatp / MEGA
-		self.answer = f'{heatp_mega} MJ'
+		heatp_mega = heatp / c.MEGA
+		self.answer = f'{round(heatp_mega,2)} MJ'
 		solution = f"""
 temp2 = c.CELSIUS_KELVIN(temp1) * vol2_vol1_ratio
 temp2 = c.CELSIUS_KELVIN({temp1}) * {vol2_vol1_ratio}
@@ -4054,7 +4021,7 @@ heatp = internal_energy + work
 heatp = {internal_energy} + {work}
 heatp = {heatp}
 heatp_mega = heatp / MEGA
-heatp_mega = {heatp} / {MEGA}
+heatp_mega = {heatp} / {c.MEGA}
 heatp_mega = {heatp_mega}"""
 
 		self.question = f"""{kmoles} kmoles ({mass} kg) of hydrogen gas at STP expands isobarically to precisely twice its volume. a) What is the final temperature of the gas? b) What is the expansion work done by the gas? c) By how much does the internal energy of the gas change? d) How much heat enters the gas during the expansion? For H2, cv = 10 kJ / kgK
@@ -4068,20 +4035,20 @@ class schaums_20_17:
 		temp2 = temp1 + random.randint(50,90)
 		distance = r.r(20)
 		
-		piston_pressure = (mass*9.81) / (area *CM2_M2)
-		gas_pressure = piston_pressure + pressure_atmosphere*KILO
-		dV = (distance * CENTI) * (area * CM2_M2)
+		piston_pressure = (mass*9.81) / (area *c.CM2_M2)
+		gas_pressure = piston_pressure + pressure_atmosphere*c.KILO
+		dV = (distance * c.CENTI) * (area * c.CM2_M2)
 		difference = gas_pressure * dV
-		self.answer = f'{difference} J'
+		self.answer = f'{round(difference,2)} J'
 		solution = f"""            
 piston_pressure = (mass*9.81) / (area *CM2_M2)
-piston_pressure = ({mass}*9.81) / ({area} *{CM2_M2})
+piston_pressure = ({mass}*9.81) / ({area} *{c.CM2_M2})
 piston_pressure = {piston_pressure}
 gas_pressure = piston_pressure + pressure_atmosphere*KILO
-gas_pressure = {piston_pressure} + {pressure_atmosphere}*{KILO}
+gas_pressure = {piston_pressure} + {pressure_atmosphere}*{c.KILO}
 gas_pressure = {gas_pressure}
 dV = (distance * CENTI) * (area * CM2_M2)
-dV = ({distance} * {CENTI}) * ({area} * {CM2_M2})
+dV = ({distance} * {c.CENTI}) * ({area} * {c.CM2_M2})
 dV = {dV}
 heating:
 dQ1 = dU1 + dW1 = dU1 + p *dV = dU1 + {gas_pressure} * {dV}

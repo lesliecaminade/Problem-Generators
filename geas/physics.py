@@ -454,19 +454,995 @@ class Schaums_8_17():
 		]
 		constructed = Constructor(instance_list)
 		self.question = constructed.question
+		self.answer = constructed.answer
+
+class Schaums_15_1():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_15_1(),        
+		engine.schaums_15_1(),
+		engine.schaums_15_1(),
+		engine.schaums_15_1()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer
+		
+class Schaums_15_2():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_15_2(),        
+		engine.schaums_15_2(),
+		engine.schaums_15_2(),
+		engine.schaums_15_2()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer
+		
+class Schaums_15_3():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_15_3(),        
+		engine.schaums_15_3(),
+		engine.schaums_15_3(),
+		engine.schaums_15_3()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer        
+		
+class Schaums_15_4():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_15_4(),        
+		engine.schaums_15_4(),
+		engine.schaums_15_4(),
+		engine.schaums_15_4()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer    
+
+class Schaums_15_5():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_15_5(),        
+		engine.schaums_15_5(),
+		engine.schaums_15_5(),
+		engine.schaums_15_5()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer              
+		
+class Schaums_15_6():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_15_6(),        
+		engine.schaums_15_6(),
+		engine.schaums_15_6(),
+		engine.schaums_15_6()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer       
+
+class Schaums_15_7():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_15_7(),        
+		engine.schaums_15_7(),
+		engine.schaums_15_7(),
+		engine.schaums_15_7()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer         
+
+class Schaums_15_8():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_15_8(),        
+		engine.schaums_15_8(),
+		engine.schaums_15_8(),
+		engine.schaums_15_8()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer      
+		
+class Schaums_15_9():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_15_9(),        
+		engine.schaums_15_9(),
+		engine.schaums_15_9(),
+		engine.schaums_15_9()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer   
+		
+class Schaums_15_10():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_15_10(),        
+		engine.schaums_15_10(),
+		engine.schaums_15_10(),
+		engine.schaums_15_10()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer  
+
+class Schaums_16_1():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_16_1(),        
+		engine.schaums_16_1(),
+		engine.schaums_16_1(),
+		engine.schaums_16_1()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer
+		
+class Schaums_16_2():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_16_2(),        
+		engine.schaums_16_2(),
+		engine.schaums_16_2(),
+		engine.schaums_16_2()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer
+		
+class Schaums_16_3():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_16_3(),        
+		engine.schaums_16_3(),
+		engine.schaums_16_3(),
+		engine.schaums_16_3()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer        
+		
+class Schaums_16_4():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_16_4(),        
+		engine.schaums_16_4(),
+		engine.schaums_16_4(),
+		engine.schaums_16_4()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer    
+
+class Schaums_16_5():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_16_5(),        
+		engine.schaums_16_5(),
+		engine.schaums_16_5(),
+		engine.schaums_16_5()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer              
+		
+class Schaums_16_6():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_16_6(),        
+		engine.schaums_16_6(),
+		engine.schaums_16_6(),
+		engine.schaums_16_6()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer              
+
+class Schaums_16_7():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_16_7(),        
+		engine.schaums_16_7(),
+		engine.schaums_16_7(),
+		engine.schaums_16_7()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
 		self.answer = constructed.answer 
 
-
-
-
-
-
-
-
-
-
+class Schaums_16_8():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_16_8(),        
+		engine.schaums_16_8(),
+		engine.schaums_16_8(),
+		engine.schaums_16_8()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer      
 		
-   
+class Schaums_16_9():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_16_9(),        
+		engine.schaums_16_9(),
+		engine.schaums_16_9(),
+		engine.schaums_16_9()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer   
+		
+class Schaums_16_10():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_16_10(),        
+		engine.schaums_16_10(),
+		engine.schaums_16_10(),
+		engine.schaums_16_10()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer  
+
+class Schaums_16_11():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_16_11(),        
+		engine.schaums_16_11(),
+		engine.schaums_16_11(),
+		engine.schaums_16_11()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer
+		
+class Schaums_16_12():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_16_12(),        
+		engine.schaums_16_12(),
+		engine.schaums_16_12(),
+		engine.schaums_16_12()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer
+		
+class Schaums_16_13():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_16_13(),        
+		engine.schaums_16_13(),
+		engine.schaums_16_13(),
+		engine.schaums_16_13()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer        
+		
+class Schaums_16_14():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_16_14(),        
+		engine.schaums_16_14(),
+		engine.schaums_16_14(),
+		engine.schaums_16_14()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer    
+
+class Schaums_16_15():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_16_15(),        
+		engine.schaums_16_15(),
+		engine.schaums_16_15(),
+		engine.schaums_16_15()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer              
+		
+class Schaums_16_16():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_16_16(),        
+		engine.schaums_16_16(),
+		engine.schaums_16_16(),
+		engine.schaums_16_16()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer              
+
+class Schaums_16_17():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_16_17(),        
+		engine.schaums_16_17(),
+		engine.schaums_16_17(),
+		engine.schaums_16_17()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer 
+
+class Schaums_16_18():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_16_18(),        
+		engine.schaums_16_18(),
+		engine.schaums_16_18(),
+		engine.schaums_16_18()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer  
+
+class Schaums_17_1():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_17_1(),        
+		engine.schaums_17_1(),
+		engine.schaums_17_1(),
+		engine.schaums_17_1()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer
+		
+class Schaums_17_2():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_17_2(),        
+		engine.schaums_17_2(),
+		engine.schaums_17_2(),
+		engine.schaums_17_2()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer
+		
+class Schaums_17_3():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_17_3(),        
+		engine.schaums_17_3(),
+		engine.schaums_17_3(),
+		engine.schaums_17_3()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer        
+		
+class Schaums_17_4():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_17_4(),        
+		engine.schaums_17_4(),
+		engine.schaums_17_4(),
+		engine.schaums_17_4()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer    
+
+class Schaums_17_5():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_17_5(),        
+		engine.schaums_17_5(),
+		engine.schaums_17_5(),
+		engine.schaums_17_5()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer              
+		
+class Schaums_17_6():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_17_6(),        
+		engine.schaums_17_6(),
+		engine.schaums_17_6(),
+		engine.schaums_17_6()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer    
+
+class Schaums_17_7():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_17_7(),        
+		engine.schaums_17_7(),
+		engine.schaums_17_7(),
+		engine.schaums_17_7()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer           
+
+class Schaums_17_8():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_17_8(),        
+		engine.schaums_17_8(),
+		engine.schaums_17_8(),
+		engine.schaums_17_8()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer      
+		
+class Schaums_17_9():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_17_9(),        
+		engine.schaums_17_9(),
+		engine.schaums_17_9(),
+		engine.schaums_17_9()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer   
+		
+class Schaums_17_10():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_17_10(),        
+		engine.schaums_17_10(),
+		engine.schaums_17_10(),
+		engine.schaums_17_10()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer  
+
+class Schaums_17_11():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_17_11(),        
+		engine.schaums_17_11(),
+		engine.schaums_17_11(),
+		engine.schaums_17_11()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer
+		
+class Schaums_17_12():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_17_12(),        
+		engine.schaums_17_12(),
+		engine.schaums_17_12(),
+		engine.schaums_17_12()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer
+
+class Schaums_18_1():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_18_1(),        
+		engine.schaums_18_1(),
+		engine.schaums_18_1(),
+		engine.schaums_18_1()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer
+		
+class Schaums_18_2():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_18_2(),        
+		engine.schaums_18_2(),
+		engine.schaums_18_2(),
+		engine.schaums_18_2()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer
+		
+class Schaums_18_3():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_18_3(),        
+		engine.schaums_18_3(),
+		engine.schaums_18_3(),
+		engine.schaums_18_3()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer        
+		
+class Schaums_18_4():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_18_4(),        
+		engine.schaums_18_4(),
+		engine.schaums_18_4(),
+		engine.schaums_18_4()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer    
+
+class Schaums_18_5():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_18_5(),        
+		engine.schaums_18_5(),
+		engine.schaums_18_5(),
+		engine.schaums_18_5()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer              
+		
+class Schaums_18_6():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_18_6(),        
+		engine.schaums_18_6(),
+		engine.schaums_18_6(),
+		engine.schaums_18_6()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer     
+
+class Schaums_18_7():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_18_7(),        
+		engine.schaums_18_7(),
+		engine.schaums_18_7(),
+		engine.schaums_18_7()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer          
+
+class Schaums_18_8():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_18_8(),        
+		engine.schaums_18_8(),
+		engine.schaums_18_8(),
+		engine.schaums_18_8()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer      
+		
+class Schaums_18_9():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_18_9(),        
+		engine.schaums_18_9(),
+		engine.schaums_18_9(),
+		engine.schaums_18_9()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer   
+		
+class Schaums_18_10():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_18_10(),        
+		engine.schaums_18_10(),
+		engine.schaums_18_10(),
+		engine.schaums_18_10()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer  
+
+class Schaums_18_11():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_18_11(),        
+		engine.schaums_18_11(),
+		engine.schaums_18_11(),
+		engine.schaums_18_11()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer
+		
+class Schaums_18_12():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_18_12(),        
+		engine.schaums_18_12(),
+		engine.schaums_18_12(),
+		engine.schaums_18_12()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer
+		
+class Schaums_18_13():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_18_13(),        
+		engine.schaums_18_13(),
+		engine.schaums_18_13(),
+		engine.schaums_18_13()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer        
+		
+class Schaums_18_14():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_18_14(),        
+		engine.schaums_18_14(),
+		engine.schaums_18_14(),
+		engine.schaums_18_14()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer    
+
+class Schaums_18_15():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_18_15(),        
+		engine.schaums_18_15(),
+		engine.schaums_18_15(),
+		engine.schaums_18_15()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer              
+		
+class Schaums_18_16():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_18_16(),        
+		engine.schaums_18_16(),
+		engine.schaums_18_16(),
+		engine.schaums_18_16()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer              
+
+class Schaums_18_17():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_18_17(),        
+		engine.schaums_18_17(),
+		engine.schaums_18_17(),
+		engine.schaums_18_17()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer 
+
+class Schaums_18_18():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_18_18(),        
+		engine.schaums_18_18(),
+		engine.schaums_18_18(),
+		engine.schaums_18_18()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer  
+
+class Schaums_19_1():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_19_1(),        
+		engine.schaums_19_1(),
+		engine.schaums_19_1(),
+		engine.schaums_19_1()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer
+		
+class Schaums_19_2():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_19_2(),        
+		engine.schaums_19_2(),
+		engine.schaums_19_2(),
+		engine.schaums_19_2()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer
+		
+class Schaums_19_3():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_19_3(),        
+		engine.schaums_19_3(),
+		engine.schaums_19_3(),
+		engine.schaums_19_3()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer        
+		
+class Schaums_19_4():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_19_4(),        
+		engine.schaums_19_4(),
+		engine.schaums_19_4(),
+		engine.schaums_19_4()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer    
+
+class Schaums_19_5():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_19_5(),        
+		engine.schaums_19_5(),
+		engine.schaums_19_5(),
+		engine.schaums_19_5()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer              
+		
+class Schaums_19_6():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_19_6(),        
+		engine.schaums_19_6(),
+		engine.schaums_19_6(),
+		engine.schaums_19_6()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer              
+
+class Schaums_19_7():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_19_7(),        
+		engine.schaums_19_7(),
+		engine.schaums_19_7(),
+		engine.schaums_19_7()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer 
+
+class Schaums_19_8():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_19_8(),        
+		engine.schaums_19_8(),
+		engine.schaums_19_8(),
+		engine.schaums_19_8()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer   
+
+class Schaums_20_1():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_20_1(),        
+		engine.schaums_20_1(),
+		engine.schaums_20_1(),
+		engine.schaums_20_1()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer
+		
+class Schaums_20_2():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_20_2(),        
+		engine.schaums_20_2(),
+		engine.schaums_20_2(),
+		engine.schaums_20_2()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer
+		
+class Schaums_20_3():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_20_3(),        
+		engine.schaums_20_3(),
+		engine.schaums_20_3(),
+		engine.schaums_20_3()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer        
+		
+class Schaums_20_4():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_20_4(),        
+		engine.schaums_20_4(),
+		engine.schaums_20_4(),
+		engine.schaums_20_4()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer    
+
+class Schaums_20_5():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_20_5(),        
+		engine.schaums_20_5(),
+		engine.schaums_20_5(),
+		engine.schaums_20_5()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer              
+		
+class Schaums_20_6():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_20_6(),        
+		engine.schaums_20_6(),
+		engine.schaums_20_6(),
+		engine.schaums_20_6()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer        
+
+class Schaums_20_7():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_20_7(),        
+		engine.schaums_20_7(),
+		engine.schaums_20_7(),
+		engine.schaums_20_7()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer       
+
+class Schaums_20_8():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_20_8(),        
+		engine.schaums_20_8(),
+		engine.schaums_20_8(),
+		engine.schaums_20_8()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer      
+		
+class Schaums_20_9():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_20_9(),        
+		engine.schaums_20_9(),
+		engine.schaums_20_9(),
+		engine.schaums_20_9()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer   
+		
+class Schaums_20_10():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_20_10(),        
+		engine.schaums_20_10(),
+		engine.schaums_20_10(),
+		engine.schaums_20_10()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer  
+
+class Schaums_20_11():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_20_11(),        
+		engine.schaums_20_11(),
+		engine.schaums_20_11(),
+		engine.schaums_20_11()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer
+		
+class Schaums_20_12():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_20_12(),        
+		engine.schaums_20_12(),
+		engine.schaums_20_12(),
+		engine.schaums_20_12()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer
+		
+class Schaums_20_13():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_20_13(),        
+		engine.schaums_20_13(),
+		engine.schaums_20_13(),
+		engine.schaums_20_13()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer        
+		
+class Schaums_20_14():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_20_14(),        
+		engine.schaums_20_14(),
+		engine.schaums_20_14(),
+		engine.schaums_20_14()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer    
+
+class Schaums_20_15():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_20_15(),        
+		engine.schaums_20_15(),
+		engine.schaums_20_15(),
+		engine.schaums_20_15()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer              
+		
+class Schaums_20_16():
+	def __init__(self):
+		instance_list = [
+		engine.schaums_20_16(),        
+		engine.schaums_20_16(),
+		engine.schaums_20_16(),
+		engine.schaums_20_16()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer              
+
+
+
+
 class Serway_7_1():
 	def __init__(self):
 		instance_list = [
