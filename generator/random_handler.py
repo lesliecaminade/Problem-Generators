@@ -2,7 +2,7 @@ import random
 import math
 
 def main(input_value, *args,**kwargs):
-    sigma = 2
+    sigma = (1/10) * abs(input_value)
     positive_flag = None
 
     if input_value > 0:

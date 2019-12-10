@@ -2474,7 +2474,7 @@ class schaums_15_1:
 		alpha = 1.7*10**-5
 		dL = alpha*(l*c.CENTI)*(tf-ti)
 		#self.answer = """{dL:e} m""".format(dL = dL)
-		self.answer = f"""{round(dL, 2)} m"""
+		self.answer = f"""{round(dL, 6)} m"""
 		solution = """
 dL = (alpha) Lo dT
 dL = (1.7E-5)({l:g}/100)({tf:g} - {ti:g})
@@ -2504,7 +2504,7 @@ class schaums_15_3:
 		tf = ti - random.randint(15,35)            
 		dLL = (1.1E-5)*(tf - ti)*100          
 		#self.answer = """{dLL:g} %""".format(dLL=dLL)
-		self.answer = f"""{round(dLL, 2)} %"""
+		self.answer = f"""{round(dLL, 6)} %"""
 		solution = """
 dL/L = alpha (dT)
 dL/L = (1.1E-5)({tf:g} - {ti:g})
@@ -2590,7 +2590,7 @@ class schaums_15_7:
 		tf = ti + random.randint(10,20)
 		vext = (betamercury - betaglass)*v*(tf -ti)
 		#self.answer = """{vext:g} cm^3""".format(vext=vext)
-		self.answer = f"""{round(vext, 2)} cm^3"""
+		self.answer = f"""{round(vext, 6)} cm^3"""
 		solution = """
 Vextra = dV_mercury - dV_glass
 Vextra = (betamercury*Vo*dT) - (betaglass*Vo*dT)
@@ -2669,7 +2669,7 @@ class schaums_16_1:
 		t2 = random.randint(10,50)
 		v2 = (v1*p1*(t2+273))/(p2*(t1+273))
 		#self.answer = """{v2:g} m^3""".format(v2=v2)
-		self.answer = f"""{round(v2, 2)} m^3"""
+		self.answer = f"""{round(v2, 6)} m^3"""
 		solution = """
 p1v1/t1 = p2v2/t2
 v2 = (v1*p1*t2)/(p2*t1)
@@ -3059,7 +3059,7 @@ class schaums_17_5:
 		mo = (M*c.KGKMOL_KGMOL) / c.AVOGADROS_NUMBER
 		vrms = math.sqrt((3*c.BOLTZMANNS_CONSTANT*(t+273))/mo)
 		#self.answer = """{v:g} km/s""".format(v = vrms/1000)
-		self.answer = f"""{round(vrms/1000, 2)} km/s"""
+		self.answer = f"""{round(vrms/1000, 6)} km/s"""
 		solution = """
 M = 28
 mo = (M*KGKMOL_KGMOL) / AVOGADROS_NUMBER
@@ -3116,7 +3116,7 @@ class schaums_17_9:
 		rho = 10**6 / c.AVOGADROS_NUMBER
 		p = (1/3) *rho*vrms**2
 		#self.answer = """{v:g} km/s, {p:g} Pa""".format(v = vrms/1000, p = p)
-		self.answer = f"""{round(vrms/1000, 2)} km/s, {round(p, 2)} Pa"""
+		self.answer = f"""{round(vrms/1000, 4)} km/s, {round(p, 4)} Pa"""
 		self.question = """There is about one hydrogen atom per cm^3 in outer space, where the temperature (in the shade) is about 3.5 K. Find the rms speed of these atoms and the pressure they exert. ( M = 1 kg/kmol )"""
 		
 class schaums_17_10:

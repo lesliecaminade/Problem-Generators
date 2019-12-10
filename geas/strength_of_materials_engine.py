@@ -56,7 +56,7 @@ class singer_107:
     def __init__(self,*args,**kwargs): 
         load = c.force(ran.main(3000),'lb')
         area = c.area(ran.main(0.5),'in2') 
-        self.question = f"""A rod is composed of an aluminum section rigidly attached between steel and bronze sections, as shown in Fig. P-107. Axial loads are applied at the positions indicated. If P = {load.lb} lb and the cross sectional area of the rod is {area.in2} in2, determine the stress in each section. https://lesliecaminadecom.files.wordpress.com/2019/06/43x8vc20i6hr46g5xi86.png"""
+        self.question = f"""A rod is composed of an aluminum section rigidly attached between steel and bronze sections, as shown. Axial loads are applied at the positions indicated. If P = {load.lb} lb and the cross sectional area of the rod is {area.in2} in2, determine the stress in each section. https://lesliecaminadecom.files.wordpress.com/2019/06/43x8vc20i6hr46g5xi86.png"""
         stressSteel = c.stress( 4*load.N / area.m2 )
         stressAluminum = c.stress( 4*load.N / area.m2 )
         stressBronze = c.stress( 3*load.N / area.m2 )
@@ -671,16 +671,331 @@ class singer_236():
 
         self.answer = f"""{mass.kg:4.4} kg"""
 
+class singer_238():
+    def __init__(self):
+        weight_load = c.force(ran.main(40), 'kips')
+        steel_length = c.length(ran.main(3), 'feet')
+        steel_area = c.area(ran.main(1), 'in2')
+        steel_E = c.stress(29e6, 'psi')
+        bronze_area = c.area(ran.main(1.5), 'in2')
+        bronze_E = c.stress(12e6, 'psi')
+
+        #condition steel_load = 2 * bronze_load
+        bronze_load = c.force(weight_load.N/5)
+        steel_load = c.force(bronze_load.N * 2)
+
+        #deformation is equal in both rods
+        equation_1 = sympy.Eq(
+            ((bronze_load.N * x) / (bronze_area.m2 * bronze_E.Pa)), 
+            ((steel_load.N * steel_length.m) / (steel_area.m2 * steel_E.Pa)) 
+            )
+        bronze_length = c.length(sympy.solveset(equation_1, x).args[0])
+        print('bronze length: REFERENCE: 3.72 ft, :', bronze_length.ft, 'ft')
+
+        #second condition 
+        #steel_stress = 2 * bronze_stress
+        equation_2 = sympy.Eq(
+            (4 * steel_area.m2  * x + bronze_area.m2 * x),
+            weight_load.N
+            ) 
+
+        bronze_stress = c.stress(sympy.solveset(equation_2, x).args[0])
+        print('bronze stress (REF: 7.27 ksi)', bronze_stress.ksi, 'ksi')
+        steel_stress = c.stress( bronze_stress.Pa * 2)
+
+        equation_3 = sympy.Eq(
+            (bronze_stress.Pa * x / bronze_E.Pa) , 
+            (steel_stress.Pa * steel_length.m / steel_E.Pa)
+            )
+
+        bronze_length_2 = c.length(sympy.solveset(equation_3, x).args[0])
+        print('bronze length 2 (REF: 2.48 ft)', bronze_length.ft, 'ft')
+
+        self.question = f"""A horizontal beam with weight {weight_load.kips:4.4} kips is hung by three rods one copper rod at the center and a steel rod on each end. The two steel rods on each end have a length of {steel_length.ft:4.4} ft , and an area of {steel_area.in2:4.4} in^2, and E = {steel_E.psi:4.4} psi. For the bronze bar, the area is {bronze_area.in2:4.4} in^2 and E = {bronze_E.psi:4.4} psi. Determine a) the length of the bronze bar so that the load on each steel bar is twice the load on the bronze bar, and b) the length of the bronze bar that will make the steel stress twice the bronze stress."""
+        self.answer = f"""{bronze_length.ft:4.4} ft, {bronze_length_2.ft:4.4} ft"""
+
+class singer_239():
+    def __init__(self):
+        try_again = True
+        while try_again:
+            aluminum_length = c.length(ran.main(249.90), 'mm')
+            initial_difference = c.length(ran.main(0.1), 'mm')
+            steel_length = c.length(aluminum_length.mm + initial_difference.mm, 'mm')
+            load = c.force(ran.main(400), 'kN')
+            steel_area = c.area(ran.main(1200), 'mm2')
+            steel_E = c.stress(200, 'GPa')
+            aluminum_area = c.area(ran.main(2400), 'mm2')
+            aluminum_E = c.stress(70, 'GPa')
+
+            #condition
+            #steel_deformation = aluminum_deformation + initial_difference
+            #Let x  = steel_stress, Let y = aluminum_stress
+            equation_1 = sympy.Eq(
+                (x * steel_length.m / steel_E.Pa),
+                (y * aluminum_length.m / aluminum_E.Pa) + initial_difference.m
+                )
+
+            equation_2 = sympy.Eq(
+                (2 * x * steel_area.m2 + y * aluminum_area.m2) ,
+                load.N
+                )
+
+            equations = [equation_1, equation_2]
+
+            aluminum_stress = c.stress(
+                sympy.linsolve(equations, x, y).args[0][0]
+                )
+
+            steel_stress = c.stress(
+                sympy.linsolve(equations, x, y).args[0][1]
+                )
+            print('linear equations', equations)
+            print('solutions', sympy.linsolve(equations, x, y))
+            if aluminum_stress.Pa > 0 and steel_stress.Pa > 0:
+                try_again = False
+
+
+        print('stress aluminum (REF: 22.48 MPa)', aluminum_stress.MPa, 'MPa')
+
+        self.question = f"""A horizontal rigid platform has negligible mass and rests on two steel bars on each of its ends, each vertical bar has a length of {steel_length.mm:4.4} mm long. A vertical center bar is aluminum and is {aluminum_length.mm:4.4} mm and just barely touching the bar. Compute the stress in the aluminum bar after the center load P = {load.kN:4.4} kN has been applied. For each steel bar, the area is {steel_area.mm2:4.4} mm^2 and E = {steel_E.GPa:4.4} GPa. For the aluminum bar, the area is {aluminum_area.mm2:4.4} mm^2 and E = {aluminum_E.GPa:4.4} GPa."""
+        self.answer = f"""{aluminum_stress.MPa:4.4} MPa"""
+
+class singer_240():
+    def __init__(self):
+        eyebar_length = c.length(ran.main(4), 'inch')
+        eyebar_width = c.length(ran.main(1), 'inch')
+        pin_diameter = c.length(ran.main(7/8), 'inch')
+        centerline_spacing = c.length(ran.main(30), 'ft')
+        middle_bar_centerline_difference = c.length(ran.main(0.045), 'inch')
+        steel_E = c.stress(29e6, 'psi')
+
+        #conditions
+        #middle_load = 2 * outer_load
+        #outer_deformation + middle_deformation = difference
+        #Let x = outer_load, 
+        equation_1 = sympy.Eq(
+            ((x * centerline_spacing.m)  / (eyebar_length.m * eyebar_width.m * steel_E.Pa)) + ((2 * x * (centerline_spacing.m - middle_bar_centerline_difference.m))/(eyebar_width.m * eyebar_length.m * steel_E.Pa)),
+            middle_bar_centerline_difference.m
+            )
+
+        outer_load = c.force(sympy.solveset(equation_1).args[0])
+        middle_load = c.force(outer_load.N * 2)
+        pin_shearing_stress = c.stress(middle_load.N / (2 * (1/4) * math.pi * (pin_diameter.m)**2))
+
+        print('shearing stress (REF: 8038.54 psi)', pin_shearing_stress.psi, 'psi')
+
+        self.question = f"""Three steel eye bars, each {eyebar_length.inch:4.4} inch by {eyebar_width.inch:4.4} inch section, are to be assembled by driving rigid {pin_diameter.inch:4.4} inch diameter drift pins through holes drilled in the ends of the bars. The center-line spacing between the holes is {centerline_spacing.ft:4.4} ft in the two outer bars, but {middle_bar_centerline_difference.inch:4.4} inch shorter in the middle bar. Find the shearing stress developed in the drip pins. Neglect local deformation at the holes."""
+        self.answer  =f"""{pin_shearing_stress.psi:4.4} psi"""
+
+class singer_241():
+    def __init__(self):
+        try_again = True
+        while try_again:
+            wire_area = c.area(ran.main(0.05), 'in2')
+            weight = c.force(ran.main(1500), 'lb')
+            wire_1_length = c.length(ran.main(74.98), 'ft')
+            wire_1_2_difference = c.length(ran.main(0.01), 'ft')
+            wire_2_length = c.length(wire_1_length.ft + wire_1_2_difference.ft, 'ft')
+            wire_2_3_difference = c.length(ran.main(0.01), 'ft')
+            wire_3_length = c.length(wire_2_length.ft + wire_2_3_difference.ft, 'ft')
+
+            #stress in longest wire
+            #bring all shorter wires to the length of the longest wire
+            steel_E = c.stress(29e6, 'psi')
+            equation_1 = sympy.Eq(
+                (wire_3_length.m - wire_1_length.m),
+                (x * wire_1_length.m) / (wire_area.m2 * steel_E.Pa)
+                )
+            wire_1_force_at_wire_3_length = c.force(sympy.solveset(equation_1, x).args[0])
+            equation_2 = sympy.Eq(
+                (wire_3_length.m - wire_2_length.m),
+                (x * wire_2_length.m) / (wire_area.m2 * steel_E.Pa)
+                )
+            wire_2_force_at_wire_3_length = c.force(sympy.solveset(equation_2, x).args[0])
+
+            equation_4 = sympy.Eq(
+                    (wire_2_length.m - wire_1_length.m),
+                    (x * wire_1_length.m) / (wire_area.m2 * steel_E.Pa)
+                    )
+            wire_1_force_at_wire_2_length = c.force(sympy.solveset(equation_4, x).args[0])
+
+            print('weight', weight.lb, 'lb')
+            print('wire 1 force at wire 3 length', wire_1_force_at_wire_3_length.lb, 'lb')
+            print('wire 2 force at wire 3 length', wire_2_force_at_wire_3_length.lb, 'lb')
+            print('wire 1 force at wire 2 length', wire_1_force_at_wire_2_length.lb, 'lb')
+
+            print('generating', type(self))
+            if weight.N > (wire_1_force_at_wire_3_length.N + wire_2_force_at_wire_3_length.N):
+                print(weight.lb, ' > ', wire_1_force_at_wire_3_length.lb, ' + ' ,wire_2_force_at_wire_3_length.N)
+                equation_3 = sympy.Eq(
+                    3*x + wire_1_force_at_wire_3_length.N + wire_2_force_at_wire_3_length.N, weight.N 
+                    )
+                wire_3_force = c.force(sympy.solveset(equation_3, x).args[0])
+                wire_2_force = c.force(wire_3_force.N + wire_2_force_at_wire_3_length.N)
+                wire_1_force = c.force(wire_3_force.N + wire_1_force_at_wire_3_length.N)
+                try_again = False
 
 
 
+            elif (wire_1_force_at_wire_2_length.N < weight.N < (wire_1_force_at_wire_3_length.N + wire_2_force_at_wire_3_length.N)):
+                print(wire_1_force_at_wire_2_length.lb,' < ',weight.lb, ' < ', wire_1_force_at_wire_3_length.lb, ' + ' ,wire_2_force_at_wire_3_length.N)
+
+                wire_3_force = c.force(0)
+
+                equation_4 = sympy.Eq(
+                    (wire_2_length.m - wire_1_length.m),
+                    (x * wire_1_length.m) / (wire_area.m2 * steel_E.Pa)
+                    )
+                wire_1_force_at_wire_2_length = c.force(sympy.solveset(equation_4, x).args[0])
+
+                equation_5 = sympy.Eq(
+                    2 * x + wire_1_force_at_wire_2_length.N, 
+                    weight.N
+                    )
+                wire_2_force = c.force(sympy.solveset(equation, x).args[0])
+                wire_1_force = c.force(wire_2_force.N + wire_1_force_at_wire_2_length.N)
+                try_again = False
+
+            elif wire_1_force_at_wire_2_length.N > weight.N:
+                print(wire_1_force_at_wire_2_length.lb,' > ',weight.lb)
+                wire_1_force = c.force(weight.N)
+                wire_2_force = c.force(0)
+                wire_3_force = c.force(0)
+                try_again = False
+            else:
+                try_again = True
+
+        print('these next numbers should be equal', weight.N, wire_1_force.N + wire_2_force.N + wire_3_force.N)
+
+        wire_3_stress = c.stress(wire_3_force.N / wire_area.m2)
+        wire_2_stress = c.stress(wire_2_force.N / wire_area.m2)
+        wire_1_stress = c.stress(wire_1_force.N / wire_area.m2)
+        print('wire stresses (wire1, wire2, wire3): ', wire_1_stress.psi, wire_2_stress.psi, wire_3_stress.psi)
+
+        self.question = f"""Three steel wires, each {wire_area.in2:4.4} in^2 in area, area used to lift a load W = {weight.lb:4.4} lb. Their unstressed lengths are {wire_1_length.ft:4.4} ft, {wire_2_length.ft:4.4} ft and {wire_3_length.ft:4.4} ft. What stress exists in each wire?"""
+        self.answer = f"""{wire_1_stress.psi:4.4} psi, {wire_2_stress.psi:4.4} psi, {wire_3_stress.psi:4.4} psi"""
 
 
+class singer_244():
+    def __init__(self):
+        cross_section_area = c.area(ran.main(500), 'mm2')
+        load_1 = c.force(ran.main(25), 'kN')
+        load_2 = c.force(ran.main(50), 'kN')
+        section_AB_length = c.length(ran.main(0.60))
+        section_BC_length = c.length(ran.main(1.2))
+        section_CD_length = c.length(ran.main(0.9))
+        total_length = c.length(section_AB_length.m + section_BC_length.m + section_CD_length.m)
+
+        reaction_A_load_1 = c.force(load_1.N * (section_BC_length.m + section_CD_length.m) / total_length.m)
+        reaction_A_load_2 = c.force(load_2.N * (section_CD_length.m/total_length.m))
+        reaction_A = c.force(reaction_A_load_1.N + reaction_A_load_2.N)
+        force_section_BC = c.force(reaction_A.N - load_1.N)
+
+        stress_section_BC = c.stress( force_section_BC.N / cross_section_area.m2)
+
+        self.question = f"""A homogeneous horizontal bar with cross sectional area of {cross_section_area.mm2:4.4} mm^2 is attached to rigid supports at each end. It is divided into three sections AB, BC, and CD from left to right. It carries the axial load P1 = {load_1.kN:4.4} kN to the right at point B and P2 = {load_2.kN:4.4} kN to the right at point C. Determine the stress in segment BC."""
+        self.answer = f"""{stress_section_BC.MPa:4.4} MPa""" 
+
+class singer_245():
+    def __init__(self):
+        aluminum_length = c.length(ran.main(15), 'inch')
+        steel_length = c.length(ran.main(10), 'inch')
+        aluminum_area = c.area(ran.main(1.25), 'in2')
+        steel_area = c.area(ran.main(2.0), 'in2')
+        aluminum_E = c.stress(10e6, 'psi')
+        steel_E = c.stress(29e6, 'psi')
+        load = c.force(ran.main(50), 'kips')
+
+        #Let x = Reaction A (leftmost), y = Reaction B, rightmost
+        equation_1 = sympy.Eq(
+            ((x * aluminum_length.m) / (aluminum_area.m2 * aluminum_E.Pa)),
+            ((y * steel_length.m)/(steel_area.m2 * steel_E.Pa))
+            )
+
+        equation_2 = sympy.Eq(
+            x,
+            load.N - y
+            )
+        equations = [equation_1, equation_2]
+        reaction_A = c.force(sympy.linsolve(equations, x, y).args[0][0])
+        reaction_B = c.force(sympy.linsolve(equations, x, y).args[0][1])
+
+        steel_force = reaction_B
+        aluminum_force = reaction_A
+        steel_stress = c.stress(steel_force.N / steel_area.m2)
+        aluminum_stress = c.stress(aluminum_force.N / aluminum_area.m2)
+
+        self.question = f"""A horizontal composite bar is firmly attached to unyielding supports. It is composed of two sections; an aluminum section with a length of {aluminum_length.inch:4.4} in. with a cross sectional area of {aluminum_area.in2:4.4} in^2, and a steel section with a length of {steel_length.inch:4.4} in. and a cross sectional area of {steel_area.in2:4.4} in^2. A force of {load.kips:4.4} kips is applied between the aluminum and steel sections in the direction towards the steel section. Compute the stress in the aluminum and steel sections respectively. E_steel = {steel_E.psi:4.4} psi, E_aluminum = {aluminum_E.psi:4.4} psi"""
+        self.answer  = f"""{aluminum_stress.psi:4.4} psi, {steel_stress.psi:4.4} psi"""
+
+class singer_247():
+    def __init__(self):
+        #aluminum section
+        aluminum_area = c.area(ran.main(900), 'mm2')
+        aluminum_E = c.stress(70, 'GPa')
+        aluminum_length = c.length(ran.main(500), 'mm')
+
+        #steel section
+        steel_area = c.area(ran.main(2000),'mm2')
+        steel_E = c.stress(200, 'GPa')
+        steel_length = c.length(ran.main(250), 'mm')
+
+        #bronze section
+        bronze_area = c.area(ran.main(1200), 'mm2')
+        bronze_E = c.stress(83, 'GPa')
+        bronze_length = c.length(ran.main(350), 'mm')
+
+        #loads
+        load_1 = c.force(ran.main(150), 'kN')
+        load_2 = c.force(ran.main(90), 'kN')
+
+        equation_1 = sympy.Eq(
+            ((x * aluminum_length.m)/(aluminum_area.m2 * aluminum_E.Pa)),
+            (((load_1.N - x) * steel_length.m)/(steel_area.m2 * steel_E.Pa)) + 
+            (((load_1.N + load_2.N - x) * bronze_length.m)/(bronze_area.m2 * bronze_E.Pa))
+            )
+
+        reaction_A = c.force(sympy.solveset(equation_1, x).args[0])
+
+        aluminum_force = c.force(reaction_A.N)
+        steel_force = c.force(load_1.N - aluminum_force.N)
+        bronze_force = c.force(load_1.N + load_2.N - aluminum_force.N)
+
+        aluminum_stress = c.stress(aluminum_force.N / aluminum_area.m2)
+        steel_stress = c.stress(steel_force.N / steel_area.m2)
+        bronze_stress = c.stress(bronze_force.N / bronze_area.m2)
+
+        print('REFERENCE: 86.22 MPa, 36.20 MPa, 135.33 MPa')
+        print(aluminum_stress.MPa, steel_stress.MPa, bronze_stress.MPa)
+
+        self.question = f"""A horizontal composite bar is composed of three sections attached end to end. The first section is an aluminum section of length {aluminum_length.mm:4.4} mm, area of {aluminum_area.mm2:4.4} mm^2 and E = {aluminum_E.GPa:4.4} GPa. The middle section is a steel section of length {steel_length.mm:4.4} mm, area of {steel_area.mm2:4.4} mm^2 and E = {steel_E.GPa:4.4} GPa. The third section is a bronze section with length {bronze_length.mm:4.4} mm, area of {bronze_area.mm2:4.4} mm^2 and E = {bronze_E.GPa:4.4} GPa. A {load_1.kN:4.4} kN force is applied between the aluminum and steel sections in the direction towards the aluminum section and another {load_2.kN:4.4} kN force is applied between the steel and bronze section in the direction towards the steel section. Calculate the stresses in the aluminum, steel, and bronze sections respectively."""
+        self.answer = f"""{aluminum_stress.MPa:4.4} MPa, {steel_stress.MPa:4.4} MPa, and {bronze_stress.MPa:4.4} MPa"""
 
 
+#problems 249 to 257 are really complicated
 
+class singer_261():
+    def __init__(self):
+        rod_area = c.area(ran.main(0.25), 'in2')
+        temperature_initial = c.temperature(ran.main(70), 'F')
+        load_initial = c.force(ran.main(1200), 'lb')
+        temperature_final = c.temperature(ran.main(0), 'F')
+        alpha = 6.5e-6 #per degree Fahrenheit
+        steel_E = c.stress(29e6, 'psi')
 
-            
+        stress_final = c.stress(
+            (alpha * steel_E.psi * (abs(temperature_final.F - temperature_initial.F)) + (load_initial.lb / rod_area.in2)), 'psi')
+
+        equation_1 = sympy.Eq(
+            (alpha * (x - temperature_initial.F)),
+            (load_initial.lb / (rod_area.in2 * steel_E.psi))
+            )
+
+        temperature_zero_stress = c.temperature(sympy.solveset(equation_1, x).args[0], 'F')
+
+        self.question = f"""A steel rod of cross-sectional area {rod_area.in2:4.4} in^2 is stretched between two fixed points. The tensile load at {temperature_initial.F:4.4} degF is {load_initial.lb:4.4} lb. What will be the stress at 0 degF? At what temperature will the stress be zero? Assume alpha = {alpha:4.4} in / in degF , and E = {steel_E.psi} psi."""
+        self.answer = f"""{stress_final.ksi:4.4} ksi, {temperature_zero_stress.F:4.4} degF"""
+
         
         
         
