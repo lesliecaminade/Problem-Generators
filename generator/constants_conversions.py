@@ -205,6 +205,11 @@ class angularVelocity:
 		self.rpm = self.revpermin
 		self.revperm = self.revpermin
 
+class angular_velocity(angularVelocity):
+	def __init__(self, *args, **kwargs):
+		super().__init__(*args, **kwargs)
+
+
 class antennaGain:
 	def __init__(self,*args,**kwargs): 
 		self.factor = args[0]
@@ -603,11 +608,10 @@ class mass:
 		
 		self.g = self.kg * 1000
 		self.lbm = self.kg * 2.205
-		self.slug = self.kg * 14.594
-		
+		self.slug = self.kg * 14.594		
+
 class momentOfInertia:
 	def __init__(self,*args,**kwargs): 
-		
 		self.kgm2 = args[0]
 
 class money:
@@ -654,6 +658,11 @@ class percentage:
 				self.decimal = args[0] / 100
 				
 		self.percent = self.decimal * 100
+
+class polar_moment_of_inertia():
+	def __init__(self, *args):
+		self.m4 = args[0]
+		
 		
 class power:
 	def __init__ (self, *args, **kwargs):
@@ -665,6 +674,8 @@ class power:
 				self.W = args[0] * 746
 			if arg == 'kW':
 				self.W = args[0] * 1000
+			if arg == 'MW':
+				self.W = args[0] * 1e6
 			if arg == 'VA':
 				self.W = args[0]
 			if arg == 'kVA':
@@ -684,12 +695,15 @@ class power:
 		
 		self.hp = self.W / 746
 		self.kW = self.W / 1000
+		self.MW = self.W / 1e6
 		self.VA = self.W
 		self.kVA = self.W / 1000
 		self.mW = self.W * 1000
 		self.uW = self.W * 1e6
 		self.nW = self.W * 1e9
 		self.pW = self.W * 1e12
+
+
 		try:
 			self.dBW = 10 * math.log(self.W , 10)
 			self.dB = self.dBW
@@ -994,8 +1008,19 @@ class torque:
 				pass
 			if arg == 'kNm':
 				self.Nm = args[0] * 1000
+			if arg == 'lbft' or arg == 'lbsft':
+				self.Nm = args[0] * 1.35582
+			if arg == 'kipft' or arg == 'kipsft':
+				self.Nm = args[0] * 1000 * 1.35582
 				
 		self.kNm = self.Nm / 1000
+		self.lbft = self.Nm  / 1.35582
+		self.kipft = self.Nm / (1000*1.35582)
+		self.kipsft = self.kipft
+
+class moment(torque):
+	def __init__(self, *args, **kwargs):
+		super().__init__(*args, **kwargs)
 
 class velocity:
 	def __init__(self, *args, **kwargs):
@@ -1036,8 +1061,6 @@ class voltage:
 		self.nV = self.V * 1e9
 		self.pV = self.V * 1e12
 
-			
-		
 class volume:
 	def __init__(self,*args,**kwargs):
 		self.m3 = args[0]

@@ -150,7 +150,7 @@ class singer_117:
         load = c.force(ran.main(400), 'kN')
         shearStress = c.stress(ran.main(300), 'MPa')
         
-        self.question = f"""Find the smallest diameter bolt that can be used in the clevis shown in Fig. 1-11b if P = {load.kN} kN. The shearing strength of the bolt is {shearStress.MPa} MPa.https://lesliecaminadecom.files.wordpress.com/2019/06/726wetc0kd0dg9hzr334.png"""
+        self.question = f"""Find the smallest diameter bolt that can be used in the clevis shown in Fig. 1-11b if P = {load.kN} kN. The shearing strength of the bolt is {shearStress.MPa} MPa. https://lesliecaminadecom.files.wordpress.com/2019/06/726wetc0kd0dg9hzr334.png"""
         
         diameter = c.length(math.sqrt((4*load.N)/(math.pi * shearStress.Pa)))
         
@@ -185,7 +185,7 @@ class singer_126:
         plateWidth = c.length(4,'inch')
         plateThickness = c.length(7/8, 'inch')
         
-        self.question = f"""The lap joint shown in Fig. P-126 is fastened by four ¾-in.-diameter rivets. Calculate the maximum safe load P that can be applied if the shearing stress in the rivets is limited to {rivetStress.ksi} ksi and the bearing stress in the plates is limited to {plateStress.ksi} ksi. Assume the applied load is uniformly distributed among the four rivets.https://lesliecaminadecom.files.wordpress.com/2019/06/xepe9ah52y755kbuiy9r.png"""
+        self.question = f"""The lap joint shown in Fig. P-126 is fastened by four ¾-in.-diameter rivets. Calculate the maximum safe load P that can be applied if the shearing stress in the rivets is limited to {rivetStress.ksi} ksi and the bearing stress in the plates is limited to {plateStress.ksi} ksi. Assume the applied load is uniformly distributed among the four rivets. https://lesliecaminadecom.files.wordpress.com/2019/06/xepe9ah52y755kbuiy9r.png"""
         
         forceA = c.force(
         rivetStress.Pa * 4 * math.pi * diameter.m**2 / 4
@@ -203,7 +203,7 @@ class singer_127:
         shear = c.stress(ran.main(12), 'ksi')
         bearing = c.stress(ran.main(20), 'ksi')
         
-        self.question = f"""In the clevis shown in Fig. 1-11b, find the minimum bolt diameter and the minimum thickness of each yoke that will support a load P = {load.kips} kips without exceeding a shearing stress of {shear.ksi} ksi and a bearing stress of {bearing.ksi} ksi.https://lesliecaminadecom.files.wordpress.com/2019/06/irl22zt567obtp1690vl.png"""
+        self.question = f"""In the clevis, find the minimum bolt diameter and the minimum thickness of each yoke that will support a load P = {load.kips} kips without exceeding a shearing stress of {shear.ksi} ksi and a bearing stress of {bearing.ksi} ksi. https://lesliecaminadecom.files.wordpress.com/2019/06/irl22zt567obtp1690vl.png"""
         
         diameter = c.length( math.sqrt((2*load.N) / (math.pi * shear.Pa)))
         
@@ -996,14 +996,276 @@ class singer_261():
         self.question = f"""A steel rod of cross-sectional area {rod_area.in2:4.4} in^2 is stretched between two fixed points. The tensile load at {temperature_initial.F:4.4} degF is {load_initial.lb:4.4} lb. What will be the stress at 0 degF? At what temperature will the stress be zero? Assume alpha = {alpha:4.4} in / in degF , and E = {steel_E.psi} psi."""
         self.answer = f"""{stress_final.ksi:4.4} ksi, {temperature_zero_stress.F:4.4} degF"""
 
+class singer_262():
+    def __init__(self):
+        load_initial = c.force(ran.main(5000), 'N')
+        temperature_initial = c.temperature(ran.main(20), 'C')
+        temperature_diff = c.temperature(ran.main(40), 'C')
+        temperature_final = c.temperature(temperature_initial.C - temperature_diff.C, 'C')
+        stress_allowable = c.stress(ran.main(130), 'MPa')
+        alpha = 11.7e-6 #per Celsius
+        steel_E = c.stress(200,'GPa')
+
+        equation_1 = sympy.Eq(
+            (stress_allowable.Pa),
+            (alpha * steel_E.Pa * temperature_diff.C) + (load_initial.N/(math.pi * (1/4) * x**2))
+            )
+
+        diameters = sympy.solveset(equation_1,x)
+        print('diameters', diameters)
+        for i in range(2):
+            if diameters.args[i] > 0:
+                diameter = c.length(diameters.args[i])
+
+        self.question = f"""A steel rod is strectched between two rigid walls and carries a tensile load of {load_initial.N:4.4} N at {temperature_initial.C:4.4} degrees Celsius. If the allowable stress is not to exceed {stress_allowable.MPa:4.4} MPa at {temperature_final.C:4.4} degrees Celsius, what is the minimum diameter of the rod? Assume alpha = {alpha} m /m degrees Celsius and E = {steel_E.GPa:4.4} GPa."""
+        self.answer = f"""{diameter.mm:4.4} mm"""        
         
+class singer_263():
+    def __init__(self):
+        reels_initial_length = c.length(ran.main(10), 'm')
+        clearance_length = c.length(ran.main(3), 'mm')
+        temperature_initial = c.temperature(ran.main(15), 'C')
+        alpha = 11.7E-6 #per C
+        steel_E = c.stress(200,'GPa')
+
+        #temperature where they touch
+        equation_1 = sympy.Eq(
+            clearance_length.mm,
+            alpha * reels_initial_length.m * (x - temperature_initial.C)
+            )
+        temperature_final = c.temperature(sympy.solveset(equation_1, x).args[0])
         
+        #stress if there were no clearance
+        stress_no_clearance = c.stress(alpha * steel_E.Pa * (temperature_final.C - temperature_initial.C))  
+
+        self.question = f"""Steel railroad reels {reels_initial_length.m:4.4} m long are laid with a clearance of {clearance_length.mm:4.4} mm at a temperature of {temperature_initial.C:4.4} degrees Celsius. At what temperature will the rails just touch? What stress would be induced in the rails at that temperature if there were no initial clearance? Assume alpha  = {alpha:4.4} m/(m*degC) and E = {steel_E.GPa:4.4} GPa"""
+        self.answer = f"""{temperature_final.C:4.4} degC, {stress_no_clearance.MPa:4.4} MPa"""
+
+class singer_264():
+    def __init__(self):
+        initial_length = c.length(ran.main(3), 'ft')
+        area = c.area(ran.main(0.25), 'in2')
+        tension_initial = c.force(ran.main(1200),'lb')
+        temperature_initial = c.temperature(ran.main(40), 'F')
+        steel_E = c.stress(29E6, 'psi')
+        alpha = 6.5E-6 #per F
+        stress_final_1 = c.stress(ran.main(10), 'ksi')
+        stress_final_2 = c.stress(0)
+
+        #without temperature change
+        stress_initial = c.stress(tension_initial.N / area.m2)
+
+        equation_1 = sympy.Eq(
+            stress_final_1.psi,
+            alpha * steel_E.psi * (x - temperature_initial.F) + stress_initial.psi
+            )
+        temperature_final_1 = c.temperature(sympy.solveset(equation_1, x).args[0], 'F')
+
+        print('REF: 12.41 degF: ', temperature_final_1.F)
+
+        equation_2 = sympy.Eq(
+            tension_initial.lb,
+            alpha * area.in2 * steel_E.psi * (x - temperature_initial.F)
+            )
+        temperature_final_2 = c.temperature(sympy.solveset(equation_2, x).args[0], 'F')
+
+        print('REF: 65.46 degF: ', temperature_final_2.F)
         
+        self.question = f"""A steel rod {initial_length.ft:4.4} ft long with a cross-sectional area of {area.in2:4.4} in^2 is stretched between two fixed points. The tensile force is {tension_initial.lb:4.4} lb at {temperature_initial.F:4.4} degrees Fahrenheit. Using E = {steel_E.psi} psi and alpha = {alpha} in/(in F), calculate a) the temperature at which the stress ins the bar will be {stress_final_1.ksi:4.4} ksi and b) the temperature at which the stress will be {stress_final_2.psi:4.4} psi."""
+        self.answer = f"""{temperature_final_1.F:4.4} degF, {temperature_final_2.F:4.4} degF"""
+
+class singer_265():
+    def __init__(self):
+        bar_length = c.length(ran.main(3), 'm')
+        bar_area = c.area(ran.main(320), 'mm2')
+        temperature_initial = c.temperature(ran.main(-20), 'C')
+        gap_length = c.length(ran.main(2.5), 'mm')
+        stress_final = c.stress(ran.main(35), 'MPa')
+        alpha = 18E-6 #per C
+        bronze_E = c.stress(80, 'GPa')
+
+        equation_1  = sympy.Eq(
+            alpha * bar_length.m * (x - temperature_initial.C),
+            stress_final.Pa*bar_length.m/bronze_E.Pa + gap_length.m
+            )
+
+        temperature_final = c.temperature(sympy.solveset(equation_1, x).args[0], 'C')
+
+        self.question = f"""A bronze bar {bar_length.m:4.4} m long with a cross sectional area of {bar_area.mm2:4.4} mm^2 is placed between two rigid walls. At a temperature of {temperature_initial.C:4.4} degrees Celsius, there exists a single gap at one end of the bar to the wall with an length of {gap_length.mm:4.4} mm. Find the temperature at which the compressive stress in the bar will be {stress_final.MPa:4.4} MPa. Use alpha = {alpha} m/(m degC) and E = {bronze_E.GPa} GPa."""
+        self.answer = f"""'{temperature_final.C:4.4} deg C"""
         
+class singer_266():
+    def __init__(self):
+        #aluminum section
+        aluminum_length = c.length(ran.main(10), 'inch')
+        aluminum_area = c.area(ran.main(2.0), 'in2')
+        aluminum_E = c.stress(10E6, 'psi')
+        aluminum_alpha = 12.8E-6 #per F
+
+        #steel section
+        steel_length = c.length(ran.main(15), 'inch')
+        steel_area = c.area(ran.main(1.5), 'in2')
+        steel_E = c.stress(29E6, 'psi')
+        steel_alpha = 6.5E-6 #per F
+
+        total_length = c.length(steel_length.m + aluminum_length.m)
+        temperature_increase = c.temperature(ran.main(100), 'F')
+
+        equation_1 = sympy.Eq(
+            (steel_alpha * steel_length.inch * temperature_increase.F + aluminum_alpha * aluminum_length.inch * temperature_increase.F),
+            ((x * steel_length.inch)/(steel_area.in2 * steel_E.psi)) + ((x * aluminum_length.inch)/(aluminum_area.in2 * aluminum_E.psi))
+            )
+
+        tension = c.force(sympy.solveset(equation_1, x).args[0], 'lb')
+        aluminum_stress = c.stress(tension.lb/aluminum_area.in2, 'psi')
+        steel_stress = c.stress(tension.lb/steel_area.in2, 'psi')
+
+        self.question = f"""Calculate the increase in stress for the aluminum and steel segments respectively of a horizontal compound bar which is composed of two sections: An aluminum section with length of {aluminum_length.inch:4.4} inches, cross-sectional area {aluminum_area.in2:4.4} in^2, E = {aluminum_E.psi} psi, and alpha = {aluminum_alpha} /F. The second section is a steel section with a length of {steel_length.inch:4.4} inch, cross-sectional area {steel_area.in2:4.4} in^2, E = {steel_E.psi} psi, alpha = {steel_alpha} / F. The said stress happens when the temperature increases by {temperature_increase.F:4.4} degress Fahrenheit. Assume that the supports are unyielding and that the bar is suitably braced against buckling."""
+        self.answer = f"""{aluminum_stress.psi:4.4} psi, {steel_stress.psi:4.4} psi"""
+
+class singer_267():
+    def __init__(self):
+        temperature_initial = c.temperature(ran.main(80),'C')
+        tire_thickness = c.length(ran.main(12), 'mm')
+        tire_width = c.length(ran.main(90),'mm')
+        wheel_diameter = c.length(ran.main(2), 'm')
+        temperature_diff = c.temperature(ran.main(55), 'C')
+        temperature_final = c.temperature(temperature_initial.C - temperature_diff.C, 'C')
+        alpha = 11.7E-6 #per C
+        steel_E = c.stress(200, 'GPa')
+
+        force = c.force(alpha * temperature_diff.C * (tire_width.m * tire_thickness.m) * steel_E.Pa)
+        pressure = c.pressure((2*force.N) / (wheel_diameter.m * tire_width.m))
+
+        self.question = f"""At a temperature of {temperature_initial.C:4.4} degrees Celsius, a steel tire {tire_thickness.mm:4.4} mm thick and {tire_width.mm:4.4} mm wide that is to be shrunk onto a locomotive driving wheel {wheel_diameter.m:4.4} m just fits over the wheel, which is at a temperature of {temperature_final.C:4.4} degrees Celsius. Determine the contact pressure between the tire and the wheel after the assembly cools to {temperature_final.C:4.4} degrees Celsius. Neglect the deformation of the wheel caused by the pressure of the tire. Assum alpha = {alpha} /C and E = {steel_E.GPa} GPa"""
+        self.answer = f"""{pressure.MPa:4.4} MPa"""
+
+#items 268 to 276 are relatively difficult so well skip them for now.
+
+class singer_304():
+    def __init__(self):
+        shaft_length = c.length(ran.main(3), 'ft')
+        shaft_diameter = c.length(ran.main(4), 'inch')
+        shaft_torque = c.torque(ran.main(15), 'kipft')
+        steel_G = c.stress(12e6, 'psi')
+
+        stress_max = c.stress( (16 * shaft_torque.Nm) / (math.pi * shaft_diameter.m**3) )
+        polar_moment_of_inertia = c.polar_moment_of_inertia((1/32) * math.pi * shaft_diameter.m**4)
+
+        twist_angle = c.angle((shaft_torque.Nm * shaft_length.m)/(polar_moment_of_inertia.m4 * steel_G.Pa))
+
+        self.question = f"""A steel shaft {shaft_length.ft:4.4} ft long has a diameter of {shaft_diameter.inch:4.4} in is subjected to a torque of {shaft_torque.kipft:4.4} kip ft. Determine the maximum shearing stress and the angle of twist."""
+        self.answer = f"""{stress_max.ksi:4.4} ksi, {twist_angle.degrees:4.4} degrees""" 
+
+class singer_305():
+    def __init__(self):
+        twist_angle = c.angle(ran.main(3), 'degrees')
+        length = c.length(ran.main(6), 'm')
+        torque = c.torque(ran.main(12), 'kNm')
+        steel_G = c.stress(83, 'GPa')
+
+
+        equation_1 = sympy.Eq(
+            twist_angle.rad,
+            ((torque.Nm * length.m)/((1/32) * math.pi * x**4 * steel_G.Pa)
+            ))
+
+        diameters = sympy.solveset(equation_1, x, domain = sympy.S.Reals)
+
+        print(diameters)
+        for i in range(len(diameters)):
+            if diameters.args[i] > 0:
+                diameter = c.length(diameters.args[i], 'm')
+
+        stress_max = c.stress((16 * torque.Nm)/(math.pi * diameter.m**3))
+
+        self.question = f"""What is the minimum diameter of a solid steel shaft that will not twist more than {twist_angle.degrees:4.4} degrees in a {length.m:4.4} m length when subjected to a torque of {torque.kNm:4.4} kNm? What maximum shearing stress will be developed? Use G = {steel_G.GPa} GPa."""
+        self.answer =f"""{diameter.mm:4.4} mm, {stress_max.MPa:4.4} MPa"""
+
+class singer_306():
+    def __init__(self):
+        diameter = c.length(ran.main(14), 'inch')
+        length = c.length(ran.main(18), 'ft')
+        power = c.power(ran.main(5000), 'hp')
+        angular_velocity = c.angular_velocity(ran.main(189), 'rpm')
+        steel_G = c.stress(12E6, 'psi')
+
+        torque = c.torque(power.W /  angular_velocity.radpers)
+        stress_max = c.stress((16 * torque.Nm)/(math.pi * diameter.m**3))
+
+        self.question = f"""A steel marine propeller shaft {diameter.inch:4.4} inches in diameter and {length.ft:4.4} ft long is used to transmit {power.hp:4.4} hp at {angular_velocity.revpermin:4.4} rpm. If G = {steel_G.psi:4.4} psi, determine the maximum shearing stress."""
+        self.answer = f"""{stress_max.psi:4.4} psi"""
+
+class singer_307():
+    def __init__(self):
+        length = c.length(ran.main(5), 'm')
+        stress = c.stress(ran.main(80), 'MPa')
+        angle = c.angle(ran.main(4), 'degrees')
+        steel_G = c.stress(83, 'GPa')
+        frequency = c.frequency(ran.main(20), 'Hz')
+
+
+        #Let x = torque in Nm
+        #Let y = diameter in m
+        equation_1 = sympy.Eq(
+            stress.Pa,
+            ((16 * ((angle.radians * math.pi * y**4 * steel_G.Pa)/(32 * length.m)))/( math.pi * y**3))
+            )
+
+        diameters = sympy.solveset(equation_1, y)
+        diameter = c.length(diameters.args[0], 'm')
+        pmi = (math.pi/32) * diameter.m**4
+        torque = c.torque((angle.radians * pmi * steel_G.Pa)/(length.m))
+        power = c.power( torque.Nm * 2 * math.pi * frequency.Hz)
+        self.question = f"""A solid steel shaft {length.m:4.4} m long is stressed at {stress.MPa:4.4} MPa when twisted through {angle.degrees:4.4} degrees. Using G = {steel_G.GPa:4.4} GPa, compute the shaft diameter. What power can be transmitted by the shaft at {frequency.Hz:4.4} Hz?"""
+        self.answer = f"""{diameter.mm:4.4} mm, {power.MW:4.4} MW"""
+
+class singer_308():
+    def __init__(self):
+        diameter = c.length(ran.main(2), 'inch')
+        angular_velocity = c.angular_velocity(ran.main(240), 'rpm')
+        stress_max = c.stress(ran.main(12), 'ksi')
+
+        equation_1 = sympy.Eq(
+            (stress_max.Pa),
+            ((16 * x)/( math.pi * diameter.m**3))
+            )
+
+        torque = c.torque(sympy.solveset(equation_1, x).args[0])
+
+        power = c.power(torque.Nm * angular_velocity.radpers)
+
+        self.question = f"""A {diameter.inch:4.4} inch diameter steel shaft rotates at {angular_velocity.rpm:4.4} rpm. If the shearing stress is limited to {stress_max.ksi:4.4} ksi, determine the maximum horsepower that can be transmitted."""
+        self.answer = f"""{power.hp:4.4} hp"""
+
+class singer_309():
+    def __init__(self):
+        power = c.power(ran.main(4.5), 'MW')
+        frequency = c.frequency(ran.main(3), 'Hz')
+        stress_max = c.stress(ran.main(50), 'MPa')
+        angle_max = c.angle(ran.main(1), 'degrees')
+        diameter = c.length(1)
+        length = c.length(random.randint(20, 30))
+        steel_G = c.stress(83, 'GPa')
+
+        torque = c.torque( power.W / (2 * math.pi * frequency.Hz))
+        equation_1 = sympy.Eq(stress_max.Pa, (16 * torque.Nm)/(math.pi * x**3))
+        diameters = sympy.solveset(equation_1, x, domain = sympy.S.Reals)
+
+        diameter_base_stress = c.length(diameters.args[0])
+
+        equation_2 = sympy.Eq(angle_max.radians, (torque.Nm * length.m)/(math.pi * x**4 * steel_G.Pa / 32))
+        diameters = sympy.solveset(equation_2, x, domain = sympy.S.Reals)
+
+        print(diameters)
+        for i in range(len(diameters)):
+            if diameters.args[i] > 0:
+                diameter_base_angle = c.length(diameters.args[i])
         
-        
-        
-        
-        
-        
-        
+
+        print(diameter_base_stress.mm, diameter_base_angle.mm)
+        diameter = c.length(max(diameter_base_angle.m, diameter_base_stress.m))
+
+        self.question = f"""A steel propeller shaft is to transmit {power.MW:4.4} MW at {frequency.Hz:4.4} Hz without exceeding a shearing stress of {stress_max.MPa:4.4} MPa or twisting through more than {angle_max.degrees:4.4} degree(s) in a length of {length.m} diameters. Compute the proper diameter if G = {steel_G.GPa:4.4} GPa."""
+        self.answer = f"""{diameter.mm:4.4} mm"""
+

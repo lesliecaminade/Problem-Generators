@@ -4,6 +4,7 @@ from mathsub import vectors_engine
 import math
 import sympy
 import random
+import fractions
 
 
 x, y = sympy.symbols('x y')
@@ -1043,10 +1044,10 @@ class schaums_8_3:
 		
 		mass = c.mass(random_handler.main(2))
 		speed = c.velocity(random_handler.main(6))
-		time = c.time(random_handler.main(7e-4, 'noround'))
+		time = c.time(random_handler.main(7) * 1e-4)
 		
 		
-		self.question = f"""A {mass.kg}kg brick is moving at a speed of {speed.mpers} m/s. How large a force F is needed to stop the brick in a time of {time.s} s ?"""
+		self.question = f"""A {mass.kg}kg brick is moving at a speed of {speed.mpers} m/s. How large a force F is needed to stop the brick in a time of {time.ms} ms ?"""
 		
 		force = c.force( - (mass.kg * speed.mpers) / (time.s))
 		
@@ -1076,35 +1077,11 @@ class schaums_8_4:
 		)
 		
 		self.answer = f"""{round(force.N,2)} N"""
-		
-		
-class schaums_8_5:
-	def __init__(self,*args,**kwargs): 
 
-		massnucleus = c.mass(random_handler.main(3.8e-25 , 'noround')) 
-		massparticle = c.mass(random_handler.main(6.6e-27, 'noround'))
-		speedparticle = c.velocity(random_handler.main(1.5e7, 'noround'))
-		
-		
-		self.question = f"""The nucleus of an atom has a mass of {massnucleus.kg} kg and is at rest. THe nucleus is radioactive and suddenly ejects a particle of mass {massparticle.kg} kg and speed {speedparticle.mpers} m/s. Find the recoil speed of the nucleus that is left behind."""
-		
-		# equation = sympy.Eq(
-		# 0,
-		# (massnucleus.kg - massparticle.kg) * x + massparticle.kg * speedparticle.mpers
-		# )
-		# print(type(self), 'equation:', equation)
-		# x_set = sympy.solveset(equation, x)
-		# x_list = list(x_set)
-		
-		# try:
-		# 	speednucleus_after = c.velocity(x_list[0])
-		# except:
-		# 	print(type(self), 'x_set: ', x_set)
-		
-		speednucleus_after = c.velocity(- massparticle.kg * speedparticle.mpers / (massnucleus.kg - massparticle.kg))
-
-		
-		self.answer = f"""{round(speednucleus_after.mpers,2)} m/s"""
+class schaums_8_5():
+	def __init__(self):
+		self.question = 'QUESTION REMOVED'
+		self.answer= ''
 		
 class schaums_8_6:
 	def __init__(self,*args,**kwargs): 
@@ -1229,11 +1206,11 @@ class schaums_8_12:
 		speedxprime = c.velocity(
 		(truckmass.kg * truckspeed.mpers - carmass.kg * carspeed.mpers * math.cos(angle.rad) ) / (totalmass.kg)
 		)
-		
+		print('speed VX: ', speedxprime.mpers, 'm/s')
 		speedyprime = c.velocity(
-		(truckmass.kg * truckspeed.mpers - carmass.kg * carspeed.mpers * math.sin(angle.rad) ) / (totalmass.kg)
+		( - carmass.kg * carspeed.mpers * math.sin(angle.rad) ) / (totalmass.kg)
 		)
-		
+		print('speed VY: ', speedyprime.mpers, 'm/s')
 		speedprime = c.velocity(math.sqrt(speedxprime.mpers**2 + speedyprime.mpers**2))
 		
 		angle2 = c.angle(math.atan(speedyprime.mpers / speedxprime.mpers), 'rad')
