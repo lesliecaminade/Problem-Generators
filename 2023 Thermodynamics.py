@@ -117,7 +117,7 @@ source.Schaums_20_16()
 total_items_list = question_list
     
 if not TESTMODE:
-    items_list = random.sample(total_items_list, round(1 * len(question_list)))
+    items_list = random.sample(total_items_list, round(1* len(question_list)))
 else:
     items_list = total_items_list
 

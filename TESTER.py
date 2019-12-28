@@ -1,8 +1,8 @@
-from geas import strength_of_materials_engine as engine
+from mathsub import analytic_geometry as engine
 import time
 
 def main():
-	object = engine.singer_309()
+	object = engine.area_from_general_ellipse()
 	print(object.question)
 	print()
 	print(object.answer)

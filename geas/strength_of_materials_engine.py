@@ -11,13 +11,14 @@ x, y, z = sympy.symbols('x y z', real = True)#generic variables
 #init_printing(use_unicode=False)
 gravity = c.acceleration(9.81, 'mpers2')
 
+
 #----------Source: Singer and Pytel------------#
 class singer_104:
     def __init__(self,*args,**kwargs): 
         diameterInside = c.length(ran.main(100),'mm')
         load = c.force(ran.main(400),'kN')
         stressLimit = c.stress(ran.main(120),'MNperm2')
-        self.question = f"""A hollow steel tube with an inside diameter of {diameterInside.mm} mm must carry a tensile load of {load.kN} kN. Determine the outside diameter of the tube if the stress is limited to {stressLimit.MNperm2} MN/m2."""
+        self.question = f"""A hollow steel tube with an inside diameter of {diameterInside.mm:4.4} mm must carry a tensile load of {load.kN:4.4} kN. Determine the outside diameter of the tube if the stress is limited to {stressLimit.MNperm2:4.4} MN/m2."""
         equation = sympy.Eq(load.N, stressLimit.Pa * (math.pi/4) * (x**2 - diameterInside.m**2))
         temp = sympy.solveset(equation,x,domain = sympy.Reals)
         temp2 = max(temp.args[0],temp.args[1])
@@ -32,8 +33,8 @@ class singer_105:
         lengthSteelCable = c.length(ran.main(3),'m')
         stressBronze = c.stress(ran.main(90),'MPa')
         stressSteel = c.stress(ran.main(120),'MPa')
-        self.question = f"""A homogeneous {mass.kg} kg bar AB is supported at either
-end by a bronze and a steel cable. Calculate the smallest area of each cable if the stress is not to exceed {stressBronze.MPa} MPa in bronze and {stressSteel.MPa} MPa in steel.(Figure P-105)"""
+        self.question = f"""A homogeneous {mass.kg:4.4} kg bar AB is supported at either
+end by a bronze and a steel cable. Calculate the smallest area of each cable if the stress is not to exceed {stressBronze.MPa:4.4} MPa in bronze and {stressSteel.MPa:4.4} MPa in steel.(Figure P-105)"""
         loadCable = c.force(mass.kg * gravity.mpers2 / 2, 'N')
         areaBronze = c.area(loadCable.N / stressBronze.Pa)
         areaSteel = c.area(loadCable.N / stressSteel.Pa)
@@ -44,7 +45,7 @@ class singer_106:
         diameter = c.length(ran.main(0.6),'inch')
         weight = c.force(ran.main(6000),'lb')
         self.question = f"""The homogeneous bar (shown in Fig. P-106) is
-supported by a smooth pin at C and a cable that runs from A to B around the smooth peg at D. Find the stress in the cable if its diameter is {diameter.inch} inch and the bar weighs {weight.lb} lb."""
+supported by a smooth pin at C and a cable that runs from A to B around the smooth peg at D. Find the stress in the cable if its diameter is {diameter.inch:4.4} inch and the bar weighs {weight.lb:4.4} lb."""
         equation = sympy.Eq(5*x + 10*(3/math.sqrt(34))*x, 5*weight.N)      
         temp = sympy.solveset(equation,x,domain = sympy.Reals)
         tension = c.force(temp.args[0])
@@ -56,7 +57,7 @@ class singer_107:
     def __init__(self,*args,**kwargs): 
         load = c.force(ran.main(3000),'lb')
         area = c.area(ran.main(0.5),'in2') 
-        self.question = f"""A rod is composed of an aluminum section rigidly attached between steel and bronze sections, as shown. Axial loads are applied at the positions indicated. If P = {load.lb} lb and the cross sectional area of the rod is {area.in2} in2, determine the stress in each section. https://lesliecaminadecom.files.wordpress.com/2019/06/43x8vc20i6hr46g5xi86.png"""
+        self.question = f"""A rod is composed of an aluminum section rigidly attached between steel and bronze sections, as shown. Axial loads are applied at the positions indicated. If P = {load.lb:4.4} lb and the cross sectional area of the rod is {area.in2:4.4} in2, determine the stress in each section. https://lesliecaminadecom.files.wordpress.com/2019/06/43x8vc20i6hr46g5xi86.png"""
         stressSteel = c.stress( 4*load.N / area.m2 )
         stressAluminum = c.stress( 4*load.N / area.m2 )
         stressBronze = c.stress( 3*load.N / area.m2 )
@@ -84,7 +85,7 @@ class singer_109:
         stressLimit = c.stress(ran.main(30), 'ksi')
         angleAB = c.angle(30, 'deg')
         angleAC = c.angle(50, 'deg')
-        self.question = f"""Determine the largest weight W that can be supported by two wires shown in Fig. P- 109. The stress in either wire is not to exceed {stressLimit.ksi} ksi. The cross-sectional areas of wires AB and AC are {areaAB.in2} in2 and {areaAC.in2} in2, respectively. https://lesliecaminadecom.files.wordpress.com/2019/06/5xdql28a14u9h4frb4c6.png"""
+        self.question = f"""Determine the largest weight W that can be supported by two wires shown in Fig. P- 109. The stress in either wire is not to exceed {stressLimit.ksi:4.4} ksi. The cross-sectional areas of wires AB and AC are {areaAB.in2:4.4} in2 and {areaAC.in2:4.4} in2, respectively. https://lesliecaminadecom.files.wordpress.com/2019/06/5xdql28a14u9h4frb4c6.png"""
         maxTensionAB = c.force( stressLimit.Pa * areaAB.m2 )
         maxTensionAC = c.force( stressLimit.Pa * areaAC.m2 )
         weightAB = c.force(
@@ -105,7 +106,7 @@ class singer_110:
         woodDiameter = c.length(8, 'in')
         concreteSide = c.length(12, 'in')
         
-        self.question = f"""A 12-inches square steel bearing plate lies between an 8-inches diameter wooden post and a concrete footing as shown in Fig. P-110. Determine the maximum value of the load P if the stress in wood is limited to {woodStressLimit.psi} psi and that in concrete to {concreteStressLimit.psi} psi.https://lesliecaminadecom.files.wordpress.com/2019/06/fc2mf3m0yzgi9qpxftu0.png"""
+        self.question = f"""A 12-inches square steel bearing plate lies between an 8-inches diameter wooden post and a concrete footing as shown in Fig. P-110. Determine the maximum value of the load P if the stress in wood is limited to {woodStressLimit.psi:4.4} psi and that in concrete to {concreteStressLimit.psi:4.4} psi.https://lesliecaminadecom.files.wordpress.com/2019/06/fc2mf3m0yzgi9qpxftu0.png"""
         
         forceWood = c.force( woodStressLimit.Pa * math.pi * woodDiameter.m**2 / 4)
         forceConcrete = c.force( concreteStressLimit.Pa * concreteSide.m**2 )
@@ -120,7 +121,7 @@ class singer_115:
         thickness = c.length(ran.main(25), 'mm')
         G = c.stress(ran.main(350), 'MNperm2')
         
-        self.question = f"""What force is required to punch a {diameter.mm}-mm-diameter hole in a plate that is {thickness.mm} mm thick? The shear strength is {G.MNperm2} MN/m2.https://lesliecaminadecom.files.wordpress.com/2019/06/33hg81bobbgb161ve5yd.png"""
+        self.question = f"""What force is required to punch a {diameter.mm:4.4}-mm-diameter hole in a plate that is {thickness.mm:4.4} mm thick? The shear strength is {G.MNperm2:4.4} MN/m2.https://lesliecaminadecom.files.wordpress.com/2019/06/33hg81bobbgb161ve5yd.png"""
         
         force = c.force( G.Pa * math.pi * diameter.m * thickness.m )
         
@@ -136,7 +137,7 @@ class singer_116:
         # scenario 2
         thickness = c.length(ran.main(0.25), 'in')
 
-        self.question = f"""As in Fig. 1-11c, a hole is to be punched out of a plate having a shearing strength of {plateStress.ksi} ksi. The compressive stress in the punch is limited to {punchStress.ksi} ksi. (a) Compute the maximum thickness of plate in which a hole {diameter.inch} inches in diameter can be punched. (b) If the plate is {thickness.inch} inch thick, determine the diameter of the smallest hole that can be punched."""
+        self.question = f"""As in Fig. 1-11c, a hole is to be punched out of a plate having a shearing strength of {plateStress.ksi:4.4} ksi. The compressive stress in the punch is limited to {punchStress.ksi:4.4} ksi. (a) Compute the maximum thickness of plate in which a hole {diameter.inch:4.4} inches in diameter can be punched. (b) If the plate is {thickness.inch:4.4} inch thick, determine the diameter of the smallest hole that can be punched."""
         
         puncherForce = c.force(punchStress.Pa * math.pi * diameter.m**2 / 4)
         thicknessAsk = c.length(puncherForce.N / (plateStress.Pa * math.pi * diameter.m ))
@@ -150,11 +151,12 @@ class singer_117:
         load = c.force(ran.main(400), 'kN')
         shearStress = c.stress(ran.main(300), 'MPa')
         
-        self.question = f"""Find the smallest diameter bolt that can be used in the clevis shown in Fig. 1-11b if P = {load.kN} kN. The shearing strength of the bolt is {shearStress.MPa} MPa. https://lesliecaminadecom.files.wordpress.com/2019/06/726wetc0kd0dg9hzr334.png"""
+        self.question = f"""Find the smallest diameter bolt that can be used in the clevis shown in Fig. 1-11b if P = {load.kN:4.4} kN. The shearing strength of the bolt is {shearStress.MPa:4.4} MPa. https://lesliecaminadecom.files.wordpress.com/2019/06/726wetc0kd0dg9hzr334.png"""
         
         diameter = c.length(math.sqrt((4*load.N)/(math.pi * shearStress.Pa)))
         
         self.answer = f"""{round(diameter.mm,2)} mm"""
+
         
 class singer_125:
     def __init__(self,*args,**kwargs): 
@@ -165,7 +167,7 @@ class singer_125:
         rivetStress = c.stress(ran.main(60), 'MPa')
         
         
-        self.question = f"""In Fig. 1-12, assume that a {diameter.mm}-mm-diameter rivet joins the plates that are each {width.mm} mm wide. The allowable stresses are {plateStress.MPa} MPa for bearing in the plate material and {rivetStress.MPa} MPa for shearing of rivet. Determine (a) the minimum thickness of each plate; and (b) the largest average tensile stress in the plates. https://lesliecaminadecom.files.wordpress.com/2019/06/0s8a1drcveflo7p7zq9u.png"""
+        self.question = f"""In Fig. 1-12, assume that a {diameter.mm:4.4}-mm-diameter rivet joins the plates that are each {width.mm:4.4} mm wide. The allowable stresses are {plateStress.MPa:4.4} MPa for bearing in the plate material and {rivetStress.MPa:4.4} MPa for shearing of rivet. Determine (a) the minimum thickness of each plate; and (b) the largest average tensile stress in the plates. https://lesliecaminadecom.files.wordpress.com/2019/06/0s8a1drcveflo7p7zq9u.png"""
         
         thickness = c.length(
         (rivetStress.Pa * math.pi * diameter.m) / (4*plateStress.Pa)
@@ -185,7 +187,7 @@ class singer_126:
         plateWidth = c.length(4,'inch')
         plateThickness = c.length(7/8, 'inch')
         
-        self.question = f"""The lap joint shown in Fig. P-126 is fastened by four ¾-in.-diameter rivets. Calculate the maximum safe load P that can be applied if the shearing stress in the rivets is limited to {rivetStress.ksi} ksi and the bearing stress in the plates is limited to {plateStress.ksi} ksi. Assume the applied load is uniformly distributed among the four rivets. https://lesliecaminadecom.files.wordpress.com/2019/06/xepe9ah52y755kbuiy9r.png"""
+        self.question = f"""The lap joint shown in Fig. P-126 is fastened by four ¾-in.-diameter rivets. Calculate the maximum safe load P that can be applied if the shearing stress in the rivets is limited to {rivetStress.ksi:4.4} ksi and the bearing stress in the plates is limited to {plateStress.ksi:4.4} ksi. Assume the applied load is uniformly distributed among the four rivets. https://lesliecaminadecom.files.wordpress.com/2019/06/xepe9ah52y755kbuiy9r.png"""
         
         forceA = c.force(
         rivetStress.Pa * 4 * math.pi * diameter.m**2 / 4
@@ -203,7 +205,7 @@ class singer_127:
         shear = c.stress(ran.main(12), 'ksi')
         bearing = c.stress(ran.main(20), 'ksi')
         
-        self.question = f"""In the clevis, find the minimum bolt diameter and the minimum thickness of each yoke that will support a load P = {load.kips} kips without exceeding a shearing stress of {shear.ksi} ksi and a bearing stress of {bearing.ksi} ksi. https://lesliecaminadecom.files.wordpress.com/2019/06/irl22zt567obtp1690vl.png"""
+        self.question = f"""In the clevis, find the minimum bolt diameter and the minimum thickness of each yoke that will support a load P = {load.kips:4.4} kips without exceeding a shearing stress of {shear.ksi:4.4} ksi and a bearing stress of {bearing.ksi:4.4} ksi. https://lesliecaminadecom.files.wordpress.com/2019/06/irl22zt567obtp1690vl.png"""
         
         diameter = c.length( math.sqrt((2*load.N) / (math.pi * shear.Pa)))
         
@@ -236,7 +238,7 @@ class singer_134:
         thickness = c.length(ran.main(5/16), 'inch')
         stress = c.stress(ran.main(8000), 'psi')
         
-        self.question = f"""The wall thickness of a {diameter.ft}-ft-diameter spherical tank is {thickness.inch} in. Calculate the allowable internal pressure if the stress is limited to {stress.psi} psi."""
+        self.question = f"""The wall thickness of a {diameter.ft:4.4}-ft-diameter spherical tank is {thickness.inch:4.4} in. Calculate the allowable internal pressure if the stress is limited to {stress.psi:4.4} psi."""
 
         pressure = c.pressure( 4 * stress.Pa * thickness.m / diameter.m )
         
@@ -249,7 +251,7 @@ class singer_135:
         stress = c.stress(ran.main(12), 'ksi')
         
         
-        self.question = f"""Calculate the minimum wall thickness for a cylindrical vessel that is to carry a gas at a pressure of {pressure.ksi} psi. The diameter of the vessel is {diameter.ft} ft, and the stress is limited to {stress.ksi} ksi."""
+        self.question = f"""Calculate the minimum wall thickness for a cylindrical vessel that is to carry a gas at a pressure of {pressure.ksi:4.4} psi. The diameter of the vessel is {diameter.ft:4.4} ft, and the stress is limited to {stress.ksi:4.4} ksi."""
         
         thickness = c.length( (pressure.Pa * diameter.m ) / (2*stress.Pa))
         
@@ -264,7 +266,7 @@ class singer_136:
         longitudinalStress = c.stress(ran.main(140), 'MPa')
         circumferentialStress = c.stress(ran.main(60), 'MPa')
         
-        self.question = f"""A cylindrical pressure vessel is fabricated from steel plating that has a thickness of {thickness.mm} mm. The diameter of the pressure vessel is {diameter.mm} mm and its length is {length.m} m. Determine the maximum internal pressure that can be applied if the longitudinal stress is limited to {longitudinalStress.MPa} MPa, and the circumferential stress is limited to {circumferentialStress.MPa} MPa."""
+        self.question = f"""A cylindrical pressure vessel is fabricated from steel plating that has a thickness of {thickness.mm:4.4} mm. The diameter of the pressure vessel is {diameter.mm:4.4} mm and its length is {length.m:4.4} m. Determine the maximum internal pressure that can be applied if the longitudinal stress is limited to {longitudinalStress.MPa:4.4} MPa, and the circumferential stress is limited to {circumferentialStress.MPa:4.4} MPa."""
         
         pressure1 = c.pressure(2 * thickness.m * circumferentialStress.Pa / diameter.m )
         
@@ -284,7 +286,7 @@ class singer_138:
         pressure = c.pressure(ran.main(150), 'psi')
         
         
-        self.question = f"""The strength of longitudinal joint in Fig. 1-17 is {tangentialStress.kipsperft} kips/ft, whereas for the girth is {longitudinalStress.kipsperft} kips/ft. Calculate the maximum diameter of the cylinder tank if the internal pressure is {pressure.psi} psi."""
+        self.question = f"""The strength of longitudinal joint in Fig. 1-17 is {tangentialStress.kipsperft:4.4} kips/ft, whereas for the girth is {longitudinalStress.kipsperft:4.4} kips/ft. Calculate the maximum diameter of the cylinder tank if the internal pressure is {pressure.psi:4.4} psi."""
         
         diameter1 = c.length(2*tangentialStress.Nperm / pressure.Pa)
         diameter2 = c.length(4*longitudinalStress.Nperm/ pressure.Pa)
@@ -301,7 +303,7 @@ class singer_141:
         width = c.length(2, 'ft')
         
         
-        self.question = f"""The tank shown in Fig. P-141 is fabricated from {thickness.inch}-in steel plate. Calculate the maximum longitudinal and circumferential stress caused by an internal pressure of {pressure.psi} psi.https://lesliecaminadecom.files.wordpress.com/2019/06/v0k26t4bf5m8cknyumkv.png"""
+        self.question = f"""The tank shown in Fig. P-141 is fabricated from {thickness.inch:4.4}-in steel plate. Calculate the maximum longitudinal and circumferential stress caused by an internal pressure of {pressure.psi:4.4} psi.https://lesliecaminadecom.files.wordpress.com/2019/06/v0k26t4bf5m8cknyumkv.png"""
         
         area = c.area( length.m * width.m + (math.pi * length.m**2 / 4) )
         force = c.force(pressure.Pa * area.m2)
@@ -324,7 +326,7 @@ class singer_142:
         stressAllowable = c.stress(ran.main(80), 'MPa')
         stressInitial = c.stress(stressAllowable.MPa - ran.main(25), 'MPa')
         
-        self.question = f"""A pipe carrying steam at {pressure.MPa} MPa has an outside diameter of 450 mm and a wall thickness of 10 mm. A gasket is inserted between the flange at one end of the pipe and a flat plate used to cap the end. How many {diameterOut.mm}-mm-diameter bolts must be used to hold the cap on if the allowable stress in the bolts is {stressAllowable.MPa} MPa, of which {stressInitial.MPa} MPa is the initial stress? What circumferential stress is developed in the pipe?https://lesliecaminadecom.files.wordpress.com/2019/06/btr10hx2z229k3q9ldfw.png"""
+        self.question = f"""A pipe carrying steam at {pressure.MPa:4.4} MPa has an outside diameter of 450 mm and a wall thickness of 10 mm. A gasket is inserted between the flange at one end of the pipe and a flat plate used to cap the end. How many {diameterOut.mm:4.4}-mm-diameter bolts must be used to hold the cap on if the allowable stress in the bolts is {stressAllowable.MPa:4.4} MPa, of which {stressInitial.MPa:4.4} MPa is the initial stress? What circumferential stress is developed in the pipe?https://lesliecaminadecom.files.wordpress.com/2019/06/btr10hx2z229k3q9ldfw.png"""
         
         capArea = c.area(math.pi * (diameterOut.m - 2*thicknessWall.m)**2 / 4 )
         force = c.force(pressure.Pa * capArea.m2)
@@ -347,7 +349,7 @@ class singer_206:
         load = c.force(ran.main(20), 'kN')
         E = c.stress(200, 'GPa')
         
-        self.question = f"""A steel rod having a cross-sectional area of {area.mm2} mm2 and a length of {length.m} m is suspended vertically from one end. It supports a tensile load of {load.kN} kN at the lower end. If the unit mass of steel is {density.kgperm3} kg/m3 and E = {E.MPa} MN/m2, find the total elongation of the rod."""
+        self.question = f"""A steel rod having a cross-sectional area of {area.mm2:4.4} mm2 and a length of {length.m:4.4} m is suspended vertically from one end. It supports a tensile load of {load.kN:4.4} kN at the lower end. If the unit mass of steel is {density.kgperm3} kg/m3 and E = {E.MPa:4.4} MN/m2, find the total elongation of the rod."""
         
         deformation1 = c.length((load.N * length.m)/(area.m2 * E.Pa))
         deformation2 = c.length((density.kgperm3 * gravity.mpers2 * length.m**2)/(2*E.Pa))
@@ -363,7 +365,7 @@ class singer_207:
         elongation = c.length(ran.main(0.20), 'in')
         E = c.stress(29e6,'psi')
         
-        self.question = f"""A steel wire {length.ft} ft long, hanging vertically, supports a load of {load.lb} lb. Neglecting the weight of the wire, determine the required diameter if the stress is not to exceed {stress.ksi} ksi and the total elongation is not to exceed {elongation.inch} in. Assume E = {E.psi} psi."""
+        self.question = f"""A steel wire {length.ft:4.4} ft long, hanging vertically, supports a load of {load.lb:4.4} lb. Neglecting the weight of the wire, determine the required diameter if the stress is not to exceed {stress.ksi:4.4} ksi and the total elongation is not to exceed {elongation.inch:4.4} in. Assume E = {E.psi:4.4} psi."""
         
         diameter1 = c.length(math.sqrt((4*load.N)/(math.pi*stress.Pa)))
         diameter2 = c.length(math.sqrt((4*load.N*length.m)/(math.pi*elongation.m*E.Pa)))
@@ -382,7 +384,7 @@ class singer_208:
         mu = ran.main(0.3)
         E = c.stress(200,'GPa')
         
-        self.question = f"""A steel tire, {thickness.mm} mm thick, {width.mm} mm wide, and {tireInsideDiameter.mm} mm inside diameter, is heated and shrunk onto a steel wheel {wheelOutsideDiameter.mm} mm in diameter. If the coefficient of static friction is {mu}, what torque is required to twist the tire relative to the wheel? Neglect the deformation of the wheel. Use E = {E.GPa} GPa. https://lesliecaminadecom.files.wordpress.com/2019/06/m483sfqwubz8a41a6n6g.png"""
+        self.question = f"""A steel tire, {thickness.mm:4.4} mm thick, {width.mm:4.4} mm wide, and {tireInsideDiameter.mm:4.4} mm inside diameter, is heated and shrunk onto a steel wheel {wheelOutsideDiameter.mm:4.4} mm in diameter. If the coefficient of static friction is {mu:4.4}, what torque is required to twist the tire relative to the wheel? Neglect the deformation of the wheel. Use E = {E.GPa:4.4} GPa. https://lesliecaminadecom.files.wordpress.com/2019/06/m483sfqwubz8a41a6n6g.png"""
         area = c.area(width.m * thickness.m)
         deformation = c.length(wheelOutsideDiameter.m - tireInsideDiameter.m)
         tension = c.force(deformation.m * area.m2 * E.Pa / tireInsideDiameter.m)
@@ -410,7 +412,7 @@ class singer_209:
         length3 = c.length(4, 'ft')
         
         
-        self.question = f"""An aluminum bar having a cross-sectional area of {area.in2} in2 carries the axial loads applied at the positions shown in Fig. P-209. Compute the total change in length of the bar if E = {E.psi} psi. Assume the bar is suitably braced to prevent lateral buckling. https://lesliecaminadecom.files.wordpress.com/2019/06/njduqdp2nyhbz2gx28f6.png"""
+        self.question = f"""An aluminum bar having a cross-sectional area of {area.in2:4.4} in2 carries the axial loads applied at the positions shown in Fig. P-209. Compute the total change in length of the bar if E = {E.psi:4.4} psi. Assume the bar is suitably braced to prevent lateral buckling. https://lesliecaminadecom.files.wordpress.com/2019/06/njduqdp2nyhbz2gx28f6.png"""
         
         deformation1 = c.length((force1.N * length1.m)/(area.m2 * E.Pa))
         deformation2 = c.length((force2.N * length2.m)/(area.m2 * E.Pa))
@@ -439,7 +441,7 @@ class singer_211:
         stressAluminum = c.stress(ran.main(80), 'MPa')
         deformation = c.length(ran.main(3.0), 'mm')
 
-        self.question = f"""A bronze bar is fastened between a steel bar and an aluminum bar as shown in Fig. P- 211. Axial loads are applied at the positions indicated. Find the largest value of P that will not exceed an overall deformation of {deformation.mm} mm, or the following stresses: {stressSteel.MPa} MPa in the steel, {stressBronze.MPa} MPa in the bronze, and {stressAluminum.MPa} MPa in the aluminum. Assume that the assembly is suitably braced to prevent buckling. Use Est = {Est.GPa} GPa, Eal = {Eal.GPa} GPa, and Ebr = {Ebr.GPa} GPa. https://lesliecaminadecom.files.wordpress.com/2019/06/eq9xj1csj51g0cpqa8xb.png"""
+        self.question = f"""A bronze bar is fastened between a steel bar and an aluminum bar as shown in Fig. P- 211. Axial loads are applied at the positions indicated. Find the largest value of P that will not exceed an overall deformation of {deformation.mm:4.4} mm, or the following stresses: {stressSteel.MPa:4.4} MPa in the steel, {stressBronze.MPa:4.4} MPa in the bronze, and {stressAluminum.MPa:4.4} MPa in the aluminum. Assume that the assembly is suitably braced to prevent buckling. Use Est = {Est.GPa:4.4} GPa, Eal = {Eal.GPa:4.4} GPa, and Ebr = {Ebr.GPa:4.4} GPa. https://lesliecaminadecom.files.wordpress.com/2019/06/eq9xj1csj51g0cpqa8xb.png"""
         
         force1 = c.force(stressSteel.Pa * area1.m2)
         force2 = c.force(stressBronze.Pa * area2.m2 / 2)
@@ -465,7 +467,7 @@ class singer_223:
         v = 0.3
         E = c.stress(29e6, 'psi')
         
-        self.question = f"""A rectangular steel block is {xlength.inch} inches long in the x direction, {ylength.inch} inches long in the y direction, and {zlength.inch} inches long in the z direction. The block is subjected to a triaxial loading of three uniformly distributed forces as follows: {xforce.kips} kips tension in the x direction, {yforce.kips} kips compression in the y direction, and {zforce.kips} kips tension in the z direction. If ν = {v} and E = {E.psi} psi, determine the single uniformly distributed load in the x direction that would produce the same deformation in the y direction as the original loading."""
+        self.question = f"""A rectangular steel block is {xlength.inch:4.4} inches long in the x direction, {ylength.inch:4.4} inches long in the y direction, and {zlength.inch:4.4} inches long in the z direction. The block is subjected to a triaxial loading of three uniformly distributed forces as follows: {xforce.kips:4.4} kips tension in the x direction, {yforce.kips:4.4} kips compression in the y direction, and {zforce.kips:4.4} kips tension in the z direction. If ν = {v:4.4} and E = {E.psi:4.4} psi, determine the single uniformly distributed load in the x direction that would produce the same deformation in the y direction as the original loading."""
         
         xstress = c.stress(xforce.N / (ylength.m * zlength.m))
         ystress = c.stress(yforce.N / (xlength.m * zlength.m))
@@ -487,7 +489,7 @@ class singer_225:
         v = 0.30
         E = c.stress(200, 'GPa')
         
-        self.question = f"""A welded steel cylindrical drum made of a {thickness.mm}-mm plate has an internal diameter of {diameter.m} m. Compute the change in diameter that would be caused by an internal pressure of {pressure.MPa} MPa. Assume that Poisson's ratio is {v} and E = {E.GPa} GPa."""
+        self.question = f"""A welded steel cylindrical drum made of a {thickness.mm:4.4}-mm plate has an internal diameter of {diameter.m:4.4} m. Compute the change in diameter that would be caused by an internal pressure of {pressure.MPa:4.4} MPa. Assume that Poisson's ratio is {v:4.4} and E = {E.GPa:4.4} GPa."""
         
         ystress = c.stress((pressure.Pa * diameter.m)/(4 * thickness.m))
         xstress = c.stress((pressure.Pa * diameter.m)/(2 * thickness.m))
@@ -503,7 +505,7 @@ class singer_226:
         load = c.force(ran.main(3140), 'lb')
         v = 0.30
         
-        self.question = f"""A {diameter.inch}-in.-diameter steel tube with a wall thickness of {thickness.inch} inch just fits in a rigid hole. Find the tangential stress if an axial compressive load of {load.lb} lb is applied. Assume ν = {v} and neglect the possibility of buckling."""
+        self.question = f"""A {diameter.inch:4.4}-in.-diameter steel tube with a wall thickness of {thickness.inch:4.4} inch just fits in a rigid hole. Find the tangential stress if an axial compressive load of {load.lb:4.4} lb is applied. Assume ν = {v:4.4} and neglect the possibility of buckling."""
         
         ystress = c.stress(load.N / (math.pi * diameter.m * thickness.m))
         xstress = c.stress(v * ystress.Pa)
@@ -520,7 +522,7 @@ class singer_227:
         v = 1/3
         E = c.stress(83, 'GPa')
         
-        self.question = f"""A {length.mm}-mm-long bronze tube, closed at its ends, is {diameter.mm} mm in diameter and has a wall thickness of {thickness.mm} mm. It fits without clearance in an {diameter.mm}-mm hole in a rigid block. The tube is then subjected to an internal pressure of {pressure.MPa} MPa. Assuming ν = 1/3 and E = {E.GPa} GPa, determine the tangential stress in the tube."""
+        self.question = f"""A {length.mm:4.4}-mm-long bronze tube, closed at its ends, is {diameter.mm:4.4} mm in diameter and has a wall thickness of {thickness.mm:4.4} mm. It fits without clearance in an {diameter.mm:4.4}-mm hole in a rigid block. The tube is then subjected to an internal pressure of {pressure.MPa:4.4} MPa. Assuming ν = 1/3 and E = {E.GPa:4.4} GPa, determine the tangential stress in the tube."""
         
         ystress = c.stress((pressure.Pa * diameter.m)/(4 * thickness.m))
         xstress = c.stress(v * ystress.Pa)
@@ -537,7 +539,7 @@ class singer_228:
         E = c.stress(12e6, 'psi')
         pressure = c.pressure(ran.main(6000), 'psi')
         
-        self.question = f"""A {length.inch}-in.-long bronze tube, with closed ends, is {diameter.inch} in. in diameter with a wall thickness of {thickness.inch} in. With no internal pressure, the tube just fits between two rigid end walls. Calculate the longitudinal and tangential stresses for an internal pressure of {pressure.psi} psi. Assume ν = 1/3 and E = {E.psi} psi."""
+        self.question = f"""A {length.inch:4.4}-in.-long bronze tube, with closed ends, is {diameter.inch:4.4} in. in diameter with a wall thickness of {thickness.inch:4.4} in. With no internal pressure, the tube just fits between two rigid end walls. Calculate the longitudinal and tangential stresses for an internal pressure of {pressure.psi:4.4} psi. Assume ν = 1/3 and E = {E.psi:4.4} psi."""
         
         tstress = c.stress((pressure.Pa * diameter.m)/(2 * thickness.m))
         lstress = c.stress(v * tstress.Pa)
@@ -554,7 +556,7 @@ class singer_233:
         Eiron = c.stress(100, 'GPa')
         
         
-        self.question = f"""A steel bar {diameter.mm} mm in diameter and {length.m} m long is surrounded by a shell of a cast iron {thickness.mm} mm thick. Compute the load that will compress the combined bar a total of {deformation.mm} mm in the length of {length.m} m. For steel, E = {Est.GPa} GPa, and for cast iron, E = {Eiron.GPa} GPa."""
+        self.question = f"""A steel bar {diameter.mm:4.4} mm in diameter and {length.m:4.4} m long is surrounded by a shell of a cast iron {thickness.mm:4.4} mm thick. Compute the load that will compress the combined bar a total of {deformation.mm:4.4} mm in the length of {length.m:4.4} m. For steel, E = {Est.GPa:4.4} GPa, and for cast iron, E = {Eiron.GPa:4.4} GPa."""
         
         ironForce = c.force( 
         deformation.m * (math.pi/4) * ((diameter.m + 2*thickness.m)**2 - diameter.m**2) * Eiron.Pa / length.m)
@@ -574,7 +576,7 @@ class singer_234:
         steelstress = c.stress(ran.main(120), 'MPa')
         Eco = c.stress(14, 'GPa')
         Est = c.stress(200, 'GPa')
-        self.question = f"""A reinforced concrete column {diameter.mm} mm in diameter is designed to carry an axial compressive load of {load.kN} kN. Determine the required area of the reinforcing steel if the allowable stresses are {concretestress.MPa} MPa and {steelstress.MPa} MPa for the concrete and steel, respectively. Use Eco = {Eco.GPa} GPa and Est = {Est.GPa} GPa."""
+        self.question = f"""A reinforced concrete column {diameter.mm:4.4} mm in diameter is designed to carry an axial compressive load of {load.kN:4.4} kN. Determine the required area of the reinforcing steel if the allowable stresses are {concretestress.MPa:4.4} MPa and {steelstress.MPa:4.4} MPa for the concrete and steel, respectively. Use Eco = {Eco.GPa:4.4} GPa and Est = {Est.GPa:4.4} GPa."""
         stressconcrete_maxsteel = c.stress(steelstress.Pa * Eco.Pa / Est.Pa)
         
         if stressconcrete_maxsteel.Pa < concretestress.Pa:
@@ -1268,4 +1270,94 @@ class singer_309():
 
         self.question = f"""A steel propeller shaft is to transmit {power.MW:4.4} MW at {frequency.Hz:4.4} Hz without exceeding a shearing stress of {stress_max.MPa:4.4} MPa or twisting through more than {angle_max.degrees:4.4} degree(s) in a length of {length.m} diameters. Compute the proper diameter if G = {steel_G.GPa:4.4} GPa."""
         self.answer = f"""{diameter.mm:4.4} mm"""
+
+class singer_311():
+	def __init__(self):
+		diameter = c.length(ran.main(50), 'mm')
+		G_aluminum = c.stress(28, 'GPa')
+		D_torque = c.torque(ran.main(800), 'Nm')
+		C_torque = c.torque(-ran.main(1100), 'Nm')
+		B_torque = c.torque(ran.main(900), 'Nm')
+		A_torque = c.torque(-(D_torque.Nm + C_torque.Nm + B_torque.Nm), 'Nm')
+		DC_length = c.length(ran.main(2), 'm')
+		CB_length = c.length(ran.main(3), 'm')
+		BA_length = c.length(ran.main(2), 'm')
+
+		DA_angle = c.angle(
+			((1)/((math.pi/32)*(diameter.m**4)*(G_aluminum.Pa)))
+
+			*(D_torque.Nm*DC_length.m + (D_torque.Nm - C_torque.Nm)*CB_length.m + (A_torque.Nm)*BA_length.m), 'radians'
+			)
+
+		print('this should be zero: ', D_torque.Nm + C_torque.Nm + B_torque.Nm + A_torque.Nm)
+
+		self.question = f"""An aluminum shaft with a constant diameter of {diameter.mm:4.4} mm is loaded by torques D = {D_torque.Nm:4.4} Nm, C = {C_torque.Nm:4.4} Nm, B = {B_torque.Nm:4.4} Nm, and A = {A_torque.Nm:4.4} Nm, applied to gears attached to it as shown. https://lesliecaminadecom.files.wordpress.com/2019/12/screenshot-from-2019-12-20-10-07-47.png . Using G = {G_aluminum.GPa:4.4} GPa, determine the relative angle of twist of gear D relative to gear A. The lengths of the sections are section DC = {DC_length.m:4.4} m, CB = {CB_length.m:4.4} m, BA = {BA_length.m:4.4} m."""
+
+		self.answer= f"""{DA_angle.degrees:4.4} degrees"""
+
+class singer_312():
+	def __init__(self):
+		diameter_inside = c.length(ran.main(0.20), 'in')
+		torque_per_unit_length = c.force(ran.main(0.50), 'lb')
+		shearing_stress_max = c.stress(ran.main(20), 'ksi')
+		G_material = c.stress(12e6, 'psi')
+
+		torque_max = c.torque( shearing_stress_max.Pa * math.pi * diameter_inside.m**3 / 16)
+
+		length = c.length(torque_max.Nm / torque_per_unit_length.N)
+
+		polar_moment_of_inertia = c.polar_moment_of_inertia(
+			(math.pi/32) * diameter_inside.m**4
+			)
+
+		theta = c.angle( (1/(polar_moment_of_inertia.m4 * G_material.Pa)) * sympy.integrate(torque_per_unit_length.N * x, (x, 0, length.m)), 'radians')
+
+		self.question = f"""A flexible shaft consists of a {diameter_inside.inch:4.4}-in diameter steel wire encased in a stationary tube that fits closely enough to impose a frictional torque of {torque_per_unit_length.lb:4.4} lb in/in. Determine the maximum length of the shaft if the shaft if the shearing stress is not to exceed {shearing_stress_max.ksi:4.4} ksi. What will be the angular deformation of one end relative to the other end? G = {G_material.psi:4.4} psi."""
+
+		self.answer = f"""{theta.degrees:4.4} degrees""" 
+
+class singer_313():
+	def __init__(self):
+		diameter_inside = c.length(ran.main(80), 'mm')
+		diameter_outside = c.length(diameter_inside.mm + ran.main(20), 'mm')
+		shear_limit = c.stress(ran.main(60), 'MPa')
+		twist_per_length_limit = c.angle(ran.main(0.5), 'degrees')
+		G_material = c.stress(83, 'GPa')
+
+		torque_based_on_stress = c.torque(
+			(shear_limit.Pa * math.pi * (diameter_outside.m**4 - diameter_inside.m**4)) / (16 * diameter_outside.m)
+			)
+
+		polar_moment_of_inertia = c.polar_moment_of_inertia(
+			(math.pi/32) * (diameter_outside.m**4 - diameter_inside.m**4)
+			)
+
+		torque_based_on_twist = c.torque(
+			(twist_per_length_limit.radians * polar_moment_of_inertia.m4 * G_material.Pa ) / (1)
+			, 'Nm'
+			)
+
+		print('torques', {torque_based_on_stress.Nm:4.4}, 'Nm, ', {torque_based_on_twist.Nm:4.4}, 'Nm')
+
+		self.question = f"""Determine the maximum torque that can be applied to a hollow circular steel shaft of {diameter_outside.mm:4.4} mm outside diameter and a {diameter_inside.mm:4.4} mm inside diameter without exceeding a shearing stress of {shear_limit.MPa:4.4} MPa or a twist of {twist_per_length_limit.degrees:4.4} deg/m. G = {G_material.GPa:4.4} GPa."""
+
+		self.answer = f"""{min(torque_based_on_stress.Nm, torque_based_on_twist.Nm):4.4} Nm"""
+
+# class singer_314():
+# 	def __init__(self):
+# 		angular_velocity = c.angular_velocity(ran.main(4), 'rpm')
+# 		power_A = c.power(-ran.main(35), 'kW')
+# 		power_B = c.power(-ran.main(20), 'kW')
+# 		power_C = c.power(-(power_A.kW + power_B.kW), 'kW')
+# 		G_material = c.stress(83, 'GPa')
+# 		length_AB = c.length(ran.main(4))
+# 		length_BC = c.length(ran.main(2))
+# 		diameter_AB = c.length(ran.main(55), 'mm')
+# 		diameter_BC = c.length(ran.main(65), 'mm')
+
+		
+
+
+
+
 
