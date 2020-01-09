@@ -1,8 +1,7 @@
-from mathsub import analytic_geometry as engine
-import time
+from geas import engineering_economy_engine as engine
 
 def main():
-	object = engine.area_from_general_ellipse()
+	object = engine.hipolito_3_6()
 	print(object.question)
 	print()
 	print(object.answer)

@@ -1,85 +1,79 @@
-import randomizer
-import random_handler as ran
-import sympy_handler as symh
-import numpy_handler as num
-import sympy as sym
-from sympy import init_printing
-from sympy import oo
-
-import math
-import math_common
 import random
-import stringHandling
-# import integral_calculus
-# import analytic_geometry
-# import differential_equations
-# import algebra
-# import physics
-# import strength_of_materials as strength
-import engineering_economy as econ
+from geas import engineering_economy as source
 
-x, y = sym.symbols('x y', real = True)
+print('Generating...')
+file_name = 'engineering_economy'
 
-import constants_conversions as c
-from constants_conversions import *
-from common_names import *
+import os
+print(__file__)
+print(os.path.realpath(__file__))
+print(os.path.dirname(os.path.realpath(__file__)))
+folderpath = os.path.dirname(os.path.realpath(__file__))
+
+def write_to_file(some_object):   
+    if FILEMODE: 
+        file.write(some_object.question)
+        file.write('\n')
+        file.write(some_object.answer)
+        file.write('\n\n')
+
+def print_tasks(some_object):
+    print(some_object.question)
+    print()
+    print(some_object.answer)
+    print()
+    print()
+
+FILEMODE = True
+TESTMODE = True
+
+question_list = [source.hipolito_2_1(),
+source.hipolito_2_2(),
+source.hipolito_2_3(),
+source.hipolito_2_4(),
+source.hipolito_2_5(),
+source.hipolito_2_6(),
+source.hipolito_2_7(),
+source.hipolito_2_8(),
+source.hipolito_2_9(),
+source.hipolito_2_10(),
+source.hipolito_2_11(),
+source.hipolito_2_12(),
+source.hipolito_2_14(),
+source.hipolito_2_15(),
+source.hipolito_2_18(),
+source.hipolito_2_19(),
+source.hipolito_2_21(),
+source.hipolito_2_22(),
+source.hipolito_2_23(),
+source.hipolito_3_1(),
+source.hipolito_3_2(),
+source.hipolito_3_3(),
+source.hipolito_3_5(),
+]
 
 
-
-
-#test code
-#from IPython.display import display
-init_printing(use_unicode = False)
-#display(yourobject) --- > to display new objects
-
-solutions_flag = False
-
-title_string = """Strength of Materials - Singer and PYtel
-Coded by Leslie Caminade June 2019
-www.lesliecaminadecom.wordpress.com
-note: 
- - log(x) refers to the natural logarithm
- - constant of integration is not added by itself"""
- 
-questionList = (
-econ.hipolito_2_1(),
-econ.hipolito_2_2(),
-econ.hipolito_2_3(),
-#econ.hipolito_2_4(),
-econ.hipolito_2_5(),
-econ.hipolito_2_6(),
-econ.hipolito_2_7(),
-econ.hipolito_2_8(),
-econ.hipolito_2_9(),
-econ.hipolito_2_10(),
-econ.hipolito_2_11(),
-)
-
-
-#populate a set of all the items
-total_items_list = []
-for i in range(len(questionList)):
-    total_items_list.append(i)
+total_items_list = question_list
     
-    
-#choose a smaller subset from these questions
-items_list = random.sample(total_items_list, round(0.25 * len(questionList)))
+if not TESTMODE:
+    items_list = random.sample(total_items_list, round(1 * len(question_list)))
+else:
+    items_list = total_items_list
 
-
-print(title_string)
-print()
 print(items_list)
+file = open(f"{folderpath}/outputs/{file_name}_output_{str(random.randint(1000, 9999))}.txt", 'w+')
 
 for i in range (len(items_list)):
+
     print('-----------------------------------------------------------------------')
-    item = questionList[items_list[i]]
-    print(item.question)
-    print()
-    print(item.answer)
-
-    
+    item = question_list[i]
+    print_tasks(item)
+    write_to_file(item)
 
 
+print()
+file.close()
+print('Finished.')
 
 stay = True
 while stay:

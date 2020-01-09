@@ -1,5 +1,27 @@
 input_list = [
-'singer_107', 'singer_108', 'singer_109', 'singer_110', 'singer_115', 'singer_116', 'singer_117', 'singer_125', 'singer_126', 'singer_127', 'singer_133', 'singer_134', 'singer_135', 'singer_136', 'singer_138', 'singer_141', 'singer_142', 'singer_206', 'singer_207', 'singer_208', 'singer_209', 'singer_211', 'singer_223', 'singer_225', 'singer_226', 'singer_227', 'singer_228','singer_233', 'singer_234', 'singer_235', 'singer_236', 'singer_238', 'singer_239', 'singer_240', 'singer_241', 'singer_244', 'singer_245', 'singer_247', 'singer_261', 'singer_262', 'singer_263', 'singer_264', 'singer_265', 'singer_266', 'singer_267', 'singer_304', 'singer_305', 'singer_306', 'singer_307', 'singer_308', 'singer_309', 'singer_311', 'singer_312', 'singer_313'
+'hipolito_2_1',
+'hipolito_2_2',
+'hipolito_2_3',
+'hipolito_2_4',
+'hipolito_2_5',
+'hipolito_2_6',
+'hipolito_2_7',
+'hipolito_2_8',
+'hipolito_2_9',
+'hipolito_2_10',
+'hipolito_2_11',
+'hipolito_2_12',
+'hipolito_2_14',
+'hipolito_2_15',
+'hipolito_2_18',
+'hipolito_2_19',
+'hipolito_2_21',
+'hipolito_2_22',
+'hipolito_2_23',
+'hipolito_3_1',
+'hipolito_3_2',
+'hipolito_3_3',
+'hipolito_3_5'
 ]
 
 def construct(battery_string):
@@ -15,8 +37,7 @@ def construct(battery_string):
 		constructed = Constructor(instance_list)
 		self.question = constructed.question
 		self.answer = constructed.answer    
-
-
+		
 """
 
 	return code

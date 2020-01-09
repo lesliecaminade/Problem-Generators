@@ -1,5 +1,7 @@
 import random
 import math
+import datetime
+
 
 def main(input_value, *args,**kwargs):
     sigma = (1/10) * abs(input_value)
@@ -20,16 +22,19 @@ def main(input_value, *args,**kwargs):
     else:
         return -abs(round(random.gauss(input_value, sigma),2))
     
+def dates(year): 
+    date_1 = datetime.date(year, random.randint(1,12), random.randint(1,28))
+    date_2 = datetime.date(year, random.randint(1,12), random.randint(1,28))
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    delta = date_2 - date_1
+    if delta.days >= 0:
+        return date_1, date_2
+    if delta.days < 0:
+        return date_2, date_1
+
+def date(year):
+    date = datetime.date(year, random.randint(1,12), random.randint(1,28))
+    return date
     
 #legacy codes ------------------------------------------
 def point(input):

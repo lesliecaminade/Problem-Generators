@@ -1,5 +1,6 @@
 import math
 import random
+import datetime
 #LEGACY code
 
 SPEED_OF_LIGHT = 299792458
@@ -614,36 +615,15 @@ class momentOfInertia:
 	def __init__(self,*args,**kwargs): 
 		self.kgm2 = args[0]
 
-class money:
+class pesos:
 	def __init__(self,*args,**kwargs): 
-		self.money = args[0]
-		
-	def add(self,money_object):
-		new_money = self.money + money_object.money
-		return money(new_money)
-	
-	def compound(self,interest_object,periods,*args):
-		
-		#args0 is interest per period
 		try:
-			interest_per_period = args[0]
+			self.pesos = round(args[0],2)
+			self.pesos_string = f"""PHP {self.pesos:,}"""
 		except:
-			interest_per_period = 1
-			
-		new_money = self.money * (1 + interest_object.decimal/interest_per_period)**(periods)
-
-		return money(new_money) 
-		
-	def whenCompound(self,future_object, interest_object):
-		#this finds the number of periods required to go from principal to future values
-		periods = math.log(future_object.money/self.money) / math.log(1 + interest_object.decimal)
-		return periods
-		
-	def findInterestCompound(self,future_object,periods):
-		#find the interest rate
-		interestrate = (future_object.money / self.money)**(1/periods) - 1
-		return interest(interestrate*100)
-		
+			self.pesos = 'N/A'
+			self.pesos_string = 'N/A'
+	
 		
 class percentage:
 	def __init__(self,*args, **kwargs):
@@ -779,8 +759,6 @@ class reluctance:
 	def __init__(self, *args, **kwargs):
 		self.perH = args[0]
 
-		
-		
 class resistance:
 	def __init__(self, *args, **kwargs):
 		
@@ -822,8 +800,6 @@ class resistance:
 
 class resistor:
 	def __init__(self, band = 4, **kwargs):
-
-
 		if band == 4 or band == 3 :
 			color_list = ['black', 'brown', 'red', 'orange', 'yellow', 'green', 'blue', 'violet', 'gray', 'white']
 			tolerance_list = ['gold', 'silver', 'no band']
@@ -878,9 +854,6 @@ class resistor:
 			self.maxresistance = resistance(self.resistance.ohms * (1 + self.tolerance_value))
 			self.minresistance = resistance(self.resistance.ohms * (1 - self.tolerance_value))
 
-		
-
-
 class resistivity:   
 	def __init__(self,*args, **kwargs):
 		
@@ -913,8 +886,6 @@ class relativePermittivity_material:
 		i = random.randint(0, len(list_materials) - 1)
 		self.name = list_materials[i][0]
 		self.relativePermittivity = list_materials[i][1]
-		
-		
 		
 class springConstant:
 	def __init__(self,*args,**kwargs):
@@ -974,8 +945,7 @@ class temperature:
 class thermalResistance:
 	def __init__(self,*args,**kwargs): 
 		self.CperW = args[0]
-		
-		
+				
 class time:
 	def __init__(self, *args, **kwargs):
 		self.s = args[0]       
