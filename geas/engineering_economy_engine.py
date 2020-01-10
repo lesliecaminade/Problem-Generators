@@ -565,7 +565,7 @@ class hipolito_2_14():
 		years_in_question = random.randint(1, years-1)
 		present_in_question = move_payments(annuity, interest_rate, years_in_question + 1, years, 0)
 
-		self.question = f"""{random.choice(RICH_MEN_NAMES)} borrows {present.pesos_string} at {interest_rate.percent:4.4}% compounded annually, agreeing to repay the loan in {years} equal annual payments. How much of the original principal is still unpaid after he has made the {num2words(years_in_question, to = 'ordinal')} payment?"""
+		self.question = f"""{random.choice(RICH_MEN_NAMES)} borrows {present.pesos_string} at {interest_rate.percent:4.4}% compounded annually, agreeing to repay the loan in {years} equal annual payments. How much of the original principal is still unpaid after he has made the {num2words(years_in_question, to = 'ordinal_num')} payment?"""
 		self.answer = f"""{present_in_question.pesos_string}"""
 
 
@@ -600,7 +600,7 @@ class hipolito_2_15():
 		temp_4 = random.randint(2, total_payments - 2)
 		fourth_question = move_payments(annuity, interest_per_period, 1, total_payments, temp_4 + 1)
 
-		self.question = f"""{person} purchased a small lot in a subdivision, paying {downpayment.pesos_string} down and promising to pay {annuity.pesos_string} every {12/payments_per_year} months for the next {years} years. THe seller figured interest at {interest_per_year.percent:4.4} % compounded {method}. a) What was the cash price of the lot? b) If {person} missed the first {temp_2} payments, what must he pay at the time the {num2words(temp_2 + 1, to = 'ordinal')} is due to bring him up to date? c) After making {temp_3} payments, {person} wished to discharge his remaining indebtness by a single payment at the time when the {num2words(temp_3 + 1, to = 'ordinal')} regular payment was due, what must he pay in addition to the regular payment then due? d) If {person} missed the first {temp_4} payments, what must he pay when the {num2words(temp_4 + 1, to = 'ordinal')} payment is due to discharge his entire indebtness?"""
+		self.question = f"""{person} purchased a small lot in a subdivision, paying {downpayment.pesos_string} down and promising to pay {annuity.pesos_string} every {12/payments_per_year} months for the next {years} years. THe seller figured interest at {interest_per_year.percent:4.4} % compounded {method}. a) What was the cash price of the lot? b) If {person} missed the first {temp_2} payments, what must he pay at the time the {num2words(temp_2 + 1, to = 'ordinal_num')} is due to bring him up to date? c) After making {temp_3} payments, {person} wished to discharge his remaining indebtness by a single payment at the time when the {num2words(temp_3 + 1, to = 'ordinal_num')} regular payment was due, what must he pay in addition to the regular payment then due? d) If {person} missed the first {temp_4} payments, what must he pay when the {num2words(temp_4 + 1, to = 'ordinal_num')} payment is due to discharge his entire indebtness?"""
 		self.answer = f"""{first_question.pesos_string}, {second_question.pesos_string}, {third_question.pesos_string}, {fourth_question.pesos_string}"""
 
 
@@ -660,7 +660,7 @@ class hipolito_2_19():
 
 		deposit_per_year = present_to_annuities(withdraw_to_present, interest_per_year, deposits)
 
-		self.question = f"""A man wishes to provide a fund for his retirement such that from his {num2words(withdraw_year_start, to = 'ordinal')} to {num2words(withdraw_year_end, to = 'ordinal')} birthdays he will be able to withdraw equal sums of {withdraw_annuity.pesos_string} for his yearly expenses. He invests equal amount for his {num2words(deposit_year_start, to = 'ordinal')} to {num2words(deposit_year_end, to = 'ordinal')} birthdays in a fund earning {interest_per_year.percent:4.4} % compounded annually. How much should each of these amounts be?"""
+		self.question = f"""A man wishes to provide a fund for his retirement such that from his {num2words(withdraw_year_start, to = 'ordinal_num')} to {num2words(withdraw_year_end, to = 'ordinal_num')} birthdays he will be able to withdraw equal sums of {withdraw_annuity.pesos_string} for his yearly expenses. He invests equal amount for his {num2words(deposit_year_start, to = 'ordinal_num')} to {num2words(deposit_year_end, to = 'ordinal_num')} birthdays in a fund earning {interest_per_year.percent:4.4} % compounded annually. How much should each of these amounts be?"""
 
 		self.answer = f"""{deposit_per_year.pesos_string}"""
 
@@ -829,7 +829,7 @@ class hipolito_3_5():
 		print_depreciation_sched(sum_of_the_years)
 		print()
 
-		self.question = f"""An industrial plant bought a generator set for {generator_cost.pesos_string}. Other expenses including installation amounted to {installation_cost.pesos_string}. The generator set is to have a life of {lifespan} years with a salvage value at the end of life of {salvage_value.pesos_string}. Determine the depreciation charge during the {num2words(year_in_question, to = 'ordinal')} year and the book value at the end of {year_in_question} years by the 
+		self.question = f"""An industrial plant bought a generator set for {generator_cost.pesos_string}. Other expenses including installation amounted to {installation_cost.pesos_string}. The generator set is to have a life of {lifespan} years with a salvage value at the end of life of {salvage_value.pesos_string}. Determine the depreciation charge during the {num2words(year_in_question, to = 'ordinal_num')} year and the book value at the end of {year_in_question} years by the 
 i) declining balance method
 ii) double declining balance method
 iii) sinking fund method at {interest_rate.percent:4.4} %
@@ -861,7 +861,7 @@ class hipolito_3_6():
 
 		self.question = f"""A telephone company purchased a microwave radio equipment for {original_cost.pesos_string}. Freight and installation charges amounted to {installation_cost_percentage.percent:4.4}% of the purchased price. If the equipment shall be depreciated over a period of {lifespan} years  with a salvage value of {salvage_value_percentage.percent:4.4}%, determine the following:
 a) Annual depreciation charge using the straight line method.
-b) Depreciation charge during the {num2words(year_in_question, to = 'ordinal')} year using the sum-of-the year's digits method."""
+b) Depreciation charge during the {num2words(year_in_question, to = 'ordinal_num')} year using the sum-of-the year's digits method."""
 		self.answer = f"""{straight_line.depreciations[1].pesos_string}, {syd.depreciations[year_in_question].pesos_string}"""
 
 
