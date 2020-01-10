@@ -25,7 +25,7 @@ def print_tasks(some_object):
     print()
 
 FILEMODE = True
-TESTMODE = True
+TESTMODE = False
 
 question_list = [source.hipolito_2_1(),
 source.hipolito_2_2(),
@@ -49,27 +49,18 @@ source.hipolito_2_23(),
 source.hipolito_3_1(),
 source.hipolito_3_2(),
 source.hipolito_3_3(),
-source.hipolito_3_5(),
+source.hipolito_3_5()
 ]
 
 
-total_items_list = question_list
-    
-if not TESTMODE:
-    items_list = random.sample(total_items_list, round(1 * len(question_list)))
-else:
-    items_list = total_items_list
-
-print(items_list)
+random.shuffle(question_list)
 file = open(f"{folderpath}/outputs/{file_name}_output_{str(random.randint(1000, 9999))}.txt", 'w+')
 
-for i in range (len(items_list)):
-
+for i in range (len(question_list)):
     print('-----------------------------------------------------------------------')
     item = question_list[i]
     print_tasks(item)
     write_to_file(item)
-
 
 print()
 file.close()

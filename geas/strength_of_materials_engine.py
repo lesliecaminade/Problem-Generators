@@ -459,6 +459,13 @@ class singer_223:
         xlength = c.length(ran.main(3), 'in')
         ylength = c.length(ran.main(2), 'in')
         zlength = c.length(ran.main(4), 'in')
+        # xlength = c.length(3, 'in')
+        # ylength = c.length(2, 'in')
+        # zlength = c.length(4, 'in')
+
+        # print('xlength', xlength.inch)
+        # print('ylength', ylength.inch)
+        # print('zlength', zlength.inch)
         
         xforce = c.force(ran.main(48), 'kips')
         yforce = c.force(ran.main(60), 'kips')
@@ -472,13 +479,18 @@ class singer_223:
         xstress = c.stress(xforce.N / (ylength.m * zlength.m))
         ystress = c.stress(yforce.N / (xlength.m * zlength.m))
         zstress = c.stress(zforce.N / (ylength.m * xlength.m))
+
         
-        ystrain = (1/E.Pa)*(ystress.Pa - v*(xstress.Pa + zstress.Pa))
+        ystrain = (1/E.Pa)   *   ( - ystress.Pa - v * (xstress.Pa + zstress.Pa))
+        # print('ystrain', ystrain)
+        #----------------------------------
+        xstress2 = c.stress(- ystrain * E.Pa / v)
+        # print('xtressx', xstress2.psi)
         
-        xstress2 = c.stress(-v*ystrain*E.Pa)
-        
-        xforce2 = c.force(xstress.Pa * ylength.m * zlength.m)
-        
+        # print(xstress2.psi, ylength.inch, zlength.inch)
+        # print(xstress2.psi * ylength.inch * zlength.inch)
+        xforce2 = c.force( xstress2.Pa * ylength.m * zlength.m )
+        #print('xforce ', xforce2.lb, xforce2.kips)
         self.answer = f"""{round(xforce2.kips,2)} kips (tension)"""
         
 class singer_225:
