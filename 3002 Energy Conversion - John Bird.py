@@ -89,9 +89,3 @@ for i in range (len(question_list)):
 print()
 file.close()
 print('Finished.')
-
-stay = True
-while stay:
-    command = input()
-    if command == 'exit':
-        stay = False

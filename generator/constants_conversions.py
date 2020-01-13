@@ -587,6 +587,10 @@ class magneticFluxDensity:
 				pass
 			if arg == 'mT':
 				self.T = args[0] / 1E3
+			if arg == 'uT':
+				self.T = args[0] / 1e6
+
+		self.uT = self.T * 1e6
 		self.mT = self.T * 1e3
 
 class magnetizingForce:
@@ -969,6 +973,7 @@ class time:
 		self.ns = self.s * 1E9
 		self.ps = self.s * 1E12
 		self.fs = self.s * 1E15
+
 		
 class torque:
 	def __init__(self,*args,**kwargs): 

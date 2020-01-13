@@ -9,8 +9,8 @@ from mathsub import analytic_geometry_engine
 x, y, z = sym.symbols('x y z', real = True)#generic variables
 MAX_COE = 9
 MAX_POWER = 3
-POLY_TERMS_MIN = 3
-POLY_TERMS_MAX = 5
+POLY_TERMS_MIN = 4
+POLY_TERMS_MAX = 6
 
 MULTIVARIABLE_POWER_MAX = 3
 MULTIVARIABLE_COE_MAX = 9
@@ -189,10 +189,14 @@ class Linear(Polynomial):
             A = random_coeff()
 
         B = random_coeff()
-        self.expression = random_coeff() * x + random_coeff()
+        self.a = A
+        self.b = B
+        self.expression = A * x + B
         return self.expression
 
     def init_coeff(self, a, b):
+        self.a = a
+        self.b = b
         self.expression = 0 * x
         self.expression = sym.Poly(a * x + b)
         return self.expression.as_expr()
@@ -206,6 +210,9 @@ class Linear(Polynomial):
         new = Linear()
         new.init_expression(solution_list[0])
         return new
+
+    def root(self):
+        return  - self.b/self.a
 
 
 class Quadratic(Polynomial):

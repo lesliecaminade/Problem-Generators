@@ -1,7 +1,7 @@
-from geas import strength_of_materials_engine as engine
+from mathsub import number_theory_engine as engine
 
 def main():
-	object = engine.singer_223()
+	object = engine.descartes_2()
 	print(object.question)
 	print()
 	print(object.answer)

@@ -1,93 +1,170 @@
-import math
 import random
+from electronics import circuits as source
 
-import circuits as ckt
+print('Generating...')
+file_name = 'circuits'
 
+import os
+print(__file__)
+print(os.path.realpath(__file__))
+print(os.path.dirname(os.path.realpath(__file__)))
+folderpath = os.path.dirname(os.path.realpath(__file__))
 
-import constants_conversions as c
-from constants_conversions import *
+def write_to_file(some_object):   
+    if FILEMODE: 
+        file.write(some_object.question)
+        file.write('\n')
+        file.write(some_object.answer)
+        file.write('\n\n')
 
-title_string = """Electrical Circuits
-Coded by Leslie Caminade Sep 25 2019
-www.lesliecaminadecom.wordpress.com"""
-
-questionList = (
-ckt.sadiku_1_1(),
-ckt.sadiku_1_2(),
-ckt.sadiku_1_3(),
-ckt.sadiku_1_4(),
-ckt.sadiku_1_5(),
-ckt.sadiku_1_6(),
-ckt.sadiku_1_7(),
-ckt.sadiku_1_8(),
-ckt.sadiku_1_9(),
-ckt.sadiku_2_1(),
-ckt.sadiku_2_2(),
-ckt.sadiku_2_3(),
-ckt.sadiku_2_5(),
-ckt.sadiku_2_6(),
-ckt.sadiku_2_7(),
-ckt.sadiku_2_8(),
-ckt.johnbird_2_1(),
-ckt.johnbird_2_2(),
-ckt.johnbird_2_3(),
-ckt.johnbird_2_4(),
-ckt.johnbird_2_5(),
-ckt.johnbird_2_6(),
-ckt.johnbird_2_7(),
-ckt.johnbird_2_9(),
-ckt.johnbird_2_10(),
-ckt.johnbird_2_11(),
-ckt.johnbird_2_12(),
-ckt.johnbird_2_13(),
-ckt.johnbird_2_14(),
-ckt.johnbird_2_15(),
-ckt.johnbird_2_16(),
-ckt.johnbird_2_17(),
-ckt.johnbird_2_18(),
-ckt.johnbird_2_19(),
-ckt.johnbird_3_1(),
-ckt.johnbird_3_2(),
-ckt.johnbird_3_3(),
-ckt.johnbird_3_4(),
-ckt.johnbird_3_5(),
-ckt.johnbird_3_6(),
-ckt.johnbird_3_7(),
-ckt.johnbird_3_9(),
-ckt.johnbird_3_10(),
-ckt.johnbird_3_11()
-)
-
-
-#populate a set of all the items
-total_items_list = []
-for i in range(len(questionList)):
-    total_items_list.append(i)
-    
-
-fraction = 0.25
-#choose a smaller subset from these questions
-items_list = random.sample(total_items_list, round(fraction * len(questionList)))
-
-#this next line shows all items in the database in the correct order
-
-
-#items_list = total_items_list #for testing purposes - comment if needed
-
-
-print(title_string)
-print()
-print(items_list)
-
-for i in range (len(items_list)):
-    print('-----------------------------------------------------------------------')
-    item = questionList[items_list[i]]
-    print(item.question)
+def print_tasks(some_object):
+    print(some_object.question)
     print()
-    print(item.answer)
+    print(some_object.answer)
+    print()
+    print()
 
-stay = True
-while stay:
-    command = input()
-    if command == 'exit':
-        stay = False
+FILEMODE = True
+TESTMODE = True
+
+question_list = [source.sadiku_1_1(),
+source.sadiku_1_2(),
+source.sadiku_1_3(),
+source.sadiku_1_4(),
+source.sadiku_1_5(),
+source.sadiku_1_5(),
+source.sadiku_1_6(),
+source.sadiku_1_7(),
+source.sadiku_1_8(),
+source.sadiku_1_9(),
+source.sadiku_2_1(),
+source.sadiku_2_2(),
+source.sadiku_2_3(),
+source.sadiku_2_5(),
+source.sadiku_2_6(),
+source.sadiku_2_7(),
+source.sadiku_2_8(),
+source.johnbird_2_1(),
+source.johnbird_2_2(),
+source.johnbird_2_3(),
+source.johnbird_2_4(),
+source.johnbird_2_5(),
+source.johnbird_2_6(),
+source.johnbird_2_7(),
+source.johnbird_2_9(),
+source.johnbird_2_10(),
+source.johnbird_2_11(),
+source.johnbird_2_12(),
+source.johnbird_2_13(),
+source.johnbird_2_14(),
+source.johnbird_2_15(),
+source.johnbird_2_16(),
+source.johnbird_2_17(),
+source.johnbird_2_18(),
+source.johnbird_2_19(),
+source.johnbird_3_1(),
+source.johnbird_3_2(),
+source.johnbird_3_3(),
+source.johnbird_3_4(),
+source.johnbird_3_5(),
+source.johnbird_3_6(),
+source.johnbird_3_7(),
+source.johnbird_3_8(),
+source.johnbird_3_9(),
+source.johnbird_3_10(),
+source.johnbird_3_11(),
+source.johnbird_3_12(),
+source.johnbird_3_13(),
+source.johnbird_3_14(),
+source.johnbird_3_16(),
+source.johnbird_3_17(),
+source.johnbird_3_18(),
+source.johnbird_3_19(),
+source.johnbird_5_1(),
+source.johnbird_5_2(),
+source.johnbird_5_3(),
+source.johnbird_5_5(),
+source.johnbird_5_7(),
+source.johnbird_5_13(),
+source.johnbird_5_16(),
+source.johnbird_5_17(),
+source.johnbird_6_1_a(),
+source.johnbird_6_1_b(),
+source.johnbird_6_2(),
+source.johnbird_6_3(),
+source.johnbird_6_4(),
+source.johnbird_6_5(),
+source.johnbird_6_6(),
+source.johnbird_6_8(),
+source.johnbird_6_9(),
+source.johnbird_6_10(),
+source.johnbird_6_11(),
+source.johnbird_6_12(),
+source.johnbird_6_13(),
+source.johnbird_6_15(),
+source.johnbird_6_16(),
+source.johnbird_6_17(),
+source.johnbird_6_18(),
+source.johnbird_7_1(),
+source.johnbird_7_2(),
+source.johnbird_7_3(),
+source.johnbird_7_4(),
+source.johnbird_7_5(),
+source.johnbird_7_6(),
+source.johnbird_7_7(),
+source.johnbird_7_8(),
+source.johnbird_7_9(),
+source.johnbird_7_10(),
+source.johnbird_7_11(),
+source.johnbird_7_12(),
+source.johnbird_8_2(),
+source.johnbird_8_3(),
+source.johnbird_8_4(),
+source.johnbird_8_6(),
+source.johnbird_8_7(),
+source.johnbird_9_1(),
+source.johnbird_9_2(),
+source.johnbird_9_3(),
+source.johnbird_9_4(),
+source.johnbird_9_6(),
+source.johnbird_9_7(),
+source.johnbird_9_8(),
+source.johnbird_9_9(),
+source.johnbird_9_10(),
+source.johnbird_9_11(),
+source.johnbird_9_12(),
+source.johnbird_9_13(),
+source.johnbird_9_14(),
+source.johnbird_9_15(),
+source.johnbird_9_16(),
+source.johnbird_9_17(),
+source.johnbird_9_18(),
+source.johnbird_9_19(),
+source.johnbird_9_20(),
+source.johnbird_10_1(),
+source.johnbird_10_2(),
+source.johnbird_10_4(),
+source.johnbird_10_18(),
+source.johnbird_10_19(),
+source.johnbird_10_20(),
+source.johnbird_10_21(),
+source.johnbird_10_22(),
+source.johnbird_10_23(),
+source.johnbird_10_24(),
+]
+
+if TESTMODE:
+	random.shuffle(question_list)
+
+
+file = open(f"{folderpath}/outputs/{file_name}_output_{str(random.randint(1000, 9999))}.txt", 'w+')
+
+for i in range (len(question_list)):
+    print('-----------------------------------------------------------------------')
+    item = question_list[i]
+    print_tasks(item)
+    write_to_file(item)
+
+print()
+file.close()
+print('Finished.')
