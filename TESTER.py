@@ -1,9 +1,14 @@
-from mathsub import number_theory_engine as engine
+from mathsub import plane_geometry_engine as engine
 
 def main():
-	object = engine.descartes_2()
+	object = engine.rgs_15()
+
 	print(object.question)
 	print()
 	print(object.answer)
+	print()
+	print()
+	print()
 
-main()
+for i in range(10):
+	main()

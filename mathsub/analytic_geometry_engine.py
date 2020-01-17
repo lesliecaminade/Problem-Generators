@@ -1,6 +1,6 @@
 import sympy
 import math
-import random
+from generator import random_handler as ran
 from generator import constants_conversions
 
 x, y, z, t = sympy.symbols('x y z t', real = True)#generic variables
@@ -161,6 +161,9 @@ class Point():
 		return point
 
 
+ORIGIN = Point()
+ORIGIN.init_define(0, 0)
+
 class Line():
 	def __init__(self):
 		pass
@@ -170,26 +173,31 @@ class Line():
 			self.general = (point2.x - point1.x) * y - (point2.y - point1.y) *x + point2.y * point1.x - point1.y * point2.x
 			self.slope = (point2.y - point1.y) / (point2.x - point1.x)
 			self.string = f"""{self.general} = 0"""
+			self.equation = sympy.Eq((point2.x - point1.x) * y - (point2.y - point1.y) *x + point2.y * point1.x - point1.y * point2.x, 0)
 		except:
 			self.general = x - point1.x
 			self.string = f"""{self.general} = 0"""
 			self.slope = 'undefined'
+			self.equation = sympy.Eq(x - point1.x, 0)
 
 
 	def init_point_slope(self, point, slope):
 		self.general = slope * x - y - slope * point.x + point.y
 		self.slope = slope
 		self.string = f"""{self.general} = 0"""
+		self.equation = sympy.Eq(slope * x - y - slope * point.x + point.y, 0)
 
 	def init_slope_intercept(self, slope, yintercept):
 		self.general = slope * x - y + yintercept 
 		self.string = f"""{self.general} = 0"""
 		self.slope = slope
+		self.equation = sympy.Eq(slope * x - y + yintercept , 0)
 
 	def init_intercepts(self, a, b):
 		self.general = b * x + a * y - a * b 
 		self.slope = - b / a
 		self.string = f"""{self.general} = 0"""
+		self.equation = sympy.Eq(b * x + a * y - a * b , 0)
 
 	def perpendicular(self):
 		return -1/self.slope
@@ -215,13 +223,20 @@ class Line():
 		return constants_conversions.angle(math.atan(self.slope), 'radians')
 
 	def angle_to_line(self, line):
+		m1 = self.slope
+		m2 = line.slope
 
-		tan_theta = (self.slope - line.slope)/(1 + self.slope*line.slope)
+		if m2 > m1:
+			m2, m1 = m1, m2
+
+
+		tan_theta = (m1 - m2)/(1 + m1*m2)
 
 		if tan_theta > 0:
 			return constants_conversions.angle(math.atan(tan_theta))
 		else:
 			return constants_conversions.angle(math.pi - math.atan(tan_theta))
+
 
 	def distance(self, object_input):
 		if type(object_input) is Point:
@@ -283,6 +298,7 @@ class Circle():
 		self.center = center
 		self.radius = radius
 		self.general = sympy.expand((x - center.x)**2 + (y - center.y)**2 - radius**2)
+
 		self.standard = sympy.Eq((x - center.x)**2 + (y - center.y)**2, radius**2)
 		self.general_string = f"""{self.general} = 0"""
 		self.standard_string = f"""{sympy.pretty(self.standard)}"""
@@ -296,6 +312,7 @@ class Circle():
 
 		self.ymax = self.center.y + self.radius
 		self.ymin = self.center.y - self.radius
+		self.area = math.pi * self.radius**2
 
 	def init_define(self, c, r):
 		center = c
@@ -317,6 +334,7 @@ class Circle():
 		self.ymin = self.center.y - self.radius
 
 		self.equation = sympy.Eq(self.general, 0)
+		self.area = math.pi * self.radius**2
 
 	def area(self):
 		self.area = math.pi * self.radius**2

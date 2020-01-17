@@ -206,6 +206,11 @@ class Identity():
         wrong_list = random.sample(wrong_list,WRONG_CHOICES)
         self.wrong_list = wrong_list
 
+def herons(a, b, c):
+    s = (a + b + c) / 2
+    area = math.sqrt((s - a)* (s - b)*(s - c) * s)
+    return area
+
 class Triangle():
     def __init__(self):
         pass
@@ -219,7 +224,7 @@ class Triangle():
 
         self.a = b * math.sin(self.A.radians) / math.sin(self.B.radians)
         self.c = b * math.sin(self.C.radians) / math.sin(self.B.radians)
-
+        self.area = (1/2) * self.a * self.b * math.sin(self.C.radians)
 
     def init_random(self):
 

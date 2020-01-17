@@ -1,8 +1,8 @@
 import random
-from electronics import diode as source
+from mathsub import probability as source
 
 print('Generating...')
-file_name = 'energy_conversion'
+file_name = 'word_problems'
 
 import os
 print(__file__)
@@ -27,41 +27,36 @@ def print_tasks(some_object):
 FILEMODE = True
 TESTMODE = True
 
-question_list = [source.floyd_2_1_a(),
-source.floyd_2_1_b(),
-source.floyd_2_2(),
-source.floyd_2_3(),
-source.floyd_2_4(),
-source.floyd_2_5(),
-source.floyd_2_6(),
-source.floyd_2_7(),
-source.floyd_2_8(),
-source.floyd_2_9(),
-source.floyd_2_10(),
-source.floyd_2_11(),
-source.floyd_2_12(),
-source.floyd_2_13(),
-source.floyd_3_5(),
-source.floyd_3_6(),
-source.floyd_3_7(),
-source.floyd_3_8_a(),
-source.boylestad_2_4(),
-source.boylestad_2_6(),
-source.boylestad_2_9(),
-source.boylestad_2_10(),
-source.boylestad_2_11(),
-source.boylestad_2_12(),
-source.boylestad_2_13(),
-source.boylestad_2_14(),
-source.boylestad_2_15(),
-source.boylestad_2_16(),
-source.boylestad_2_17()
+question_list = [source.rgs_sample_1(),
+source.rgs_sample_2(),
+source.rgs_sample_3(),
+source.rgs_sample_4(),
+source.rgs_sample_5(),
+source.rgs_sample_6(),
+source.rgs_sample_7(),
+source.rgs_sample_8(),
+source.rgs_sample_9(),
+source.rgs_sample_11(),
+source.rgs_sample_12(),
+source.rgs_2(),
+source.rgs_3(),
+source.rgs_5(),
+source.rgs_6(),
+source.rgs_7(),
+source.rgs_8(),
+source.rgs_9(),
+source.rgs_10(),
+source.rgs_11(),
+source.rgs_12(),
+source.rgs_13(),
+source.rgs_14(),
+source.rgs_15(),
+source.rgs_16(),
+source.rgs_17(),
 ]
 
-if not TESTMODE:
-	random.shuffle(question_list)
 
-
+random.shuffle(question_list)
 file = open(f"{folderpath}/outputs/{file_name}_output_{str(random.randint(1000, 9999))}.txt", 'w+')
 
 for i in range (len(question_list)):
@@ -73,3 +68,4 @@ for i in range (len(question_list)):
 print()
 file.close()
 print('Finished.')
+
