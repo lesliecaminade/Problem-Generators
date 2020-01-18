@@ -1,15 +1,18 @@
 input_list = [
-'boylestad_2_4',
-'boylestad_2_6',
-'boylestad_2_9',
-'boylestad_2_10',
-'boylestad_2_11',
-'boylestad_2_12',
-'boylestad_2_13',
-'boylestad_2_14',
-'boylestad_2_15',
-'boylestad_2_16',
-'boylestad_2_17'
+'boylestad_7_1',
+'boylestad_7_2',
+'boylestad_7_4',
+'boylestad_7_5',
+'boylestad_7_6',
+'boylestad_7_8',
+'boylestad_7_10',
+'boylestad_7_11',
+'boylestad_8_7',
+'boylestad_8_8',
+'boylestad_8_9',
+'boylestad_8_10',
+'boylestad_8_11',
+'boylestad_8_12'
 ]
 
 def construct(battery_string):

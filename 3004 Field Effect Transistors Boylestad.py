@@ -1,91 +1,60 @@
-import random_handler as ran
-import sympy as sym
-import math
 import random
-import field_effect_transistors as fet
+from electronics import field_effect_transistors as source
 
-x, y = sym.symbols('x y', real = True)
+print('Generating...')
+file_name = 'field_effect_transistors'
 
-import constants_conversions as c
-from constants_conversions import *
+import os
+print(__file__)
+print(os.path.realpath(__file__))
+print(os.path.dirname(os.path.realpath(__file__)))
+folderpath = os.path.dirname(os.path.realpath(__file__))
 
-title_string = """Field Effect Transistors
-Coded by Leslie Caminade June 2019
-www.lesliecaminadecom.wordpress.com"""
+def write_to_file(some_object):   
+    if FILEMODE: 
+        file.write(some_object.question)
+        file.write('\n')
+        file.write(some_object.answer)
+        file.write('\n\n')
 
-questionList = (
-fet.boylestad_7_1(),
-fet.boylestad_7_2(),
-#fet.boylestad_7_3(),
-fet.boylestad_7_4(),
-fet.boylestad_7_5(),
-fet.boylestad_7_6(),
-#fet.boylestad_7_7()
-fet.boylestad_7_8(),
-fet.boylestad_7_10(),
-fet.boylestad_7_11(),
-fet.boylestad_8_7(),
-fet.boylestad_8_8(),
-fet.boylestad_8_9(),
-fet.boylestad_8_10(),
-fet.boylestad_8_11(),
-fet.boylestad_8_12()
-)
-
-
-class genericClass:
-
-    def __init__(self):
-        question = ""
-        answer = ""
-        
-        solution = ""
-      
-        temp = random.randint(0,len(questionList)-1)
-        try:
-            q = questionList[temp]
-            self.question = q.question
-            self.answer = q.answer
-            try:
-                self.choices = q.choices
-            except:
-                self.choices = ''
-            
-            try:
-                self.solution = q.solution
-                
-            except:
-                self.solution = 'no solution provided'
-        except:
-            pass
-
-            
-
-
-
-#populate a set of all the items
-total_items_list = []
-for i in range(len(questionList)):
-    total_items_list.append(i)
-    
-    
-#choose a smaller subset from these questions
-items_list = random.sample(total_items_list, round(1 * len(questionList)))
-
-
-print(title_string)
-print()
-print(items_list)
-
-for i in range (len(items_list)):
-    print('-----------------------------------------------------------------------')
-    item = questionList[items_list[i]]
-    print(item.question)
+def print_tasks(some_object):
+    print(some_object.question)
     print()
-    print(item.answer)
+    print(some_object.answer)
+    print()
+    print()
 
-stay = True
-while stay:
-    command = input()
-    if command == 'exit':
-        stay = False
+FILEMODE = True
+TESTMODE = True
+
+question_list = [source.boylestad_7_1(),
+source.boylestad_7_2(),
+source.boylestad_7_4(),
+source.boylestad_7_5(),
+source.boylestad_7_6(),
+source.boylestad_7_8(),
+source.boylestad_7_10(),
+source.boylestad_7_11(),
+source.boylestad_8_7(),
+source.boylestad_8_8(),
+source.boylestad_8_9(),
+source.boylestad_8_10(),
+source.boylestad_8_11(),
+source.boylestad_8_12(),
+]
+
+if not TESTMODE:
+	random.shuffle(question_list)
+
+
+file = open(f"{folderpath}/outputs/{file_name}_output_{str(random.randint(1000, 9999))}.txt", 'w+')
+
+for i in range (len(question_list)):
+    print('-----------------------------------------------------------------------')
+    item = question_list[i]
+    print_tasks(item)
+    write_to_file(item)
+
+print()
+file.close()
+print('Finished.')

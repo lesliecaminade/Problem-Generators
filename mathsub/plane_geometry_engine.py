@@ -83,6 +83,66 @@ class Regular_Polygon():
 
 		self.central_angle = c.angle(math.pi * 2 / sides)
 
+	def init_inradius(self, sides, inradius):
+		circumradius = inradius / math.cos(math.pi / sides)
+		side = 2 * inradius * math.tan(math.pi / sides)
+
+		diagonals = (sides / 2) * (sides - 3)
+		triangles = (sides - 2)
+		sum_of_interior_angles = c.angle(triangles * math.pi)
+		interior_angle = c.angle(sum_of_interior_angles.radians / sides)
+		sum_of_exterior_angles = c.angle(math.pi * 2)
+		exterior_angle = c.angle( sum_of_exterior_angles.radians / sides)
+
+		area_2 = sides * inradius**2 * math.tan(math.pi / sides)
+		area_3 = (sides/2) * circumradius**2 * math.sin(2*math.pi / sides)
+		print('check_1', round(area, 2) == round(area_2, 2))
+		print('check_2', round(area, 2) == round(area_3, 2))
+
+		self.sides = sides
+		self.name = name
+		self.side = side_length
+		self.area = area
+		self.inradius = inradius
+		self.circumradius = circumradius
+		self.diagonals = diagonals
+		self.triangles = triangles
+		self.sum_of_interior_angles = sum_of_interior_angles
+		self.interior_angle = interior_angle
+		self.sum_of_exterior_angles = sum_of_exterior_angles
+		self.exterior_angle = exterior_angle
+		self.central_angle = c.angle(math.pi * 2 / sides)
+
+	def init_circumradius(self, sides, circumradius):
+		inradius = circumradius * math.cos(math.pi / sides)
+		side = 2 * circumradius * math.sin(math.pi / sides)
+
+		diagonals = (sides / 2) * (sides - 3)
+		triangles = (sides - 2)
+		sum_of_interior_angles = c.angle(triangles * math.pi)
+		interior_angle = c.angle(sum_of_interior_angles.radians / sides)
+		sum_of_exterior_angles = c.angle(math.pi * 2)
+		exterior_angle = c.angle( sum_of_exterior_angles.radians / sides)
+
+		area_2 = sides * inradius**2 * math.tan(math.pi / sides)
+		area_3 = (sides/2) * circumradius**2 * math.sin(2*math.pi / sides)
+		print('check_1', round(area, 2) == round(area_2, 2))
+		print('check_2', round(area, 2) == round(area_3, 2))
+
+		self.sides = sides
+		self.name = name
+		self.side = side_length
+		self.area = area
+		self.inradius = inradius
+		self.circumradius = circumradius
+		self.diagonals = diagonals
+		self.triangles = triangles
+		self.sum_of_interior_angles = sum_of_interior_angles
+		self.interior_angle = interior_angle
+		self.sum_of_exterior_angles = sum_of_exterior_angles
+		self.exterior_angle = exterior_angle
+		self.central_angle = c.angle(math.pi * 2 / sides)
+
 class Quadrilateral():
 	def __init__(self):
 		pass
@@ -690,6 +750,38 @@ class rgs_15():
 
 		self.question = f"""One side of a parallelogram is {round(p.a, 4)} cm and its diagonals is {round(p.d1, 4)} cm and {round(p.d2, 4)} cm respectively. Find its area."""
 		self.answer = f"""{round(p.area,4)} cm2"""
+
+class rgs_16():
+	def __init__(self):
+		rp = Regular_Polygon()
+		rp.init_random()
+
+		self.question = f"""The sum of the interior angles of a polygon is {round(rp.sum_of_interior_angles.degrees, 2)} degrees. Find the number of sides."""
+		self.answer = f"""{rp.sides}"""
+
+class rgs_17():
+	def __init__(self):
+		rh = Rhombus()
+		rh.init_random()
+
+		self.question = f"""The lengths of the diagonals of a rhombus are {round(rh.d1, 4)} cm and {round(rh.d2, 4)} cm, respectively. Find the perimeter of the rhombus."""
+		self.answer = f"""{round(rh.perimeter, 4)} cm"""
+
+class rgs_18():
+	def __init__(self):
+		sides = random.randint(POLYGON_SIDE_MIN, POLYGON_SIDE_MAX)
+		circle = analytic_geometry_engine.Circle()
+		circle.init_random()
+
+		large_rp = Regular_Polygon()
+		large_rp.init_inradius(sides, circle.radius)
+		small_rp = Regular_Polygon()
+		small_rp.init_circumradius(sides, circle.radius)
+
+		ratio = fractions.Fraction(small_rp.area, large_rp.area)
+
+		self.question = f"""The ratio of the area of regular polygon inscribed in a circle to the area of the circumscribing regular polygon of the same number of side is {ratio.numerator}:{ratio.denominator}. Find the number of the sides."""
+		self.answer = f"""{rp.sides}"""
 
 
 
