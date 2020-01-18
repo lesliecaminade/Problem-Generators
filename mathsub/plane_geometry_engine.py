@@ -16,6 +16,12 @@ POLYGON_SIDE_MAX = 20
 MIN_LENGTH = 1
 MAX_LENGTH = 20
 
+STAR_SIDE_MIN = 5
+STAR_SIDE_MAX = 20
+
+STAR_CIRCUMRADIUS_MIN = 1
+STAR_CIRCUMRADIUS_MAX = 20
+
 POLYGON_NAMES = [
 None, 
 None,
@@ -86,7 +92,7 @@ class Regular_Polygon():
 	def init_inradius(self, sides, inradius):
 		circumradius = inradius / math.cos(math.pi / sides)
 		side = 2 * inradius * math.tan(math.pi / sides)
-
+		name = polygon_name(sides)
 		diagonals = (sides / 2) * (sides - 3)
 		triangles = (sides - 2)
 		sum_of_interior_angles = c.angle(triangles * math.pi)
@@ -94,6 +100,7 @@ class Regular_Polygon():
 		sum_of_exterior_angles = c.angle(math.pi * 2)
 		exterior_angle = c.angle( sum_of_exterior_angles.radians / sides)
 
+		area = (1/4) * sides * side**2 * (1/math.tan(math.pi/sides))
 		area_2 = sides * inradius**2 * math.tan(math.pi / sides)
 		area_3 = (sides/2) * circumradius**2 * math.sin(2*math.pi / sides)
 		print('check_1', round(area, 2) == round(area_2, 2))
@@ -101,7 +108,7 @@ class Regular_Polygon():
 
 		self.sides = sides
 		self.name = name
-		self.side = side_length
+		self.side = side
 		self.area = area
 		self.inradius = inradius
 		self.circumradius = circumradius
@@ -116,7 +123,7 @@ class Regular_Polygon():
 	def init_circumradius(self, sides, circumradius):
 		inradius = circumradius * math.cos(math.pi / sides)
 		side = 2 * circumradius * math.sin(math.pi / sides)
-
+		name = polygon_name(sides)
 		diagonals = (sides / 2) * (sides - 3)
 		triangles = (sides - 2)
 		sum_of_interior_angles = c.angle(triangles * math.pi)
@@ -124,6 +131,7 @@ class Regular_Polygon():
 		sum_of_exterior_angles = c.angle(math.pi * 2)
 		exterior_angle = c.angle( sum_of_exterior_angles.radians / sides)
 
+		area = (1/4) * sides * side**2 * (1/math.tan(math.pi/sides))
 		area_2 = sides * inradius**2 * math.tan(math.pi / sides)
 		area_3 = (sides/2) * circumradius**2 * math.sin(2*math.pi / sides)
 		print('check_1', round(area, 2) == round(area_2, 2))
@@ -131,7 +139,38 @@ class Regular_Polygon():
 
 		self.sides = sides
 		self.name = name
-		self.side = side_length
+		self.side = side
+		self.area = area
+		self.inradius = inradius
+		self.circumradius = circumradius
+		self.diagonals = diagonals
+		self.triangles = triangles
+		self.sum_of_interior_angles = sum_of_interior_angles
+		self.interior_angle = interior_angle
+		self.sum_of_exterior_angles = sum_of_exterior_angles
+		self.exterior_angle = exterior_angle
+		self.central_angle = c.angle(math.pi * 2 / sides)
+
+	def init_side(self, sides, side):
+		inradius = side / (2 * math.tan(math.pi / sides))
+		circumradius = side / (2 * math.sin(math.pi / sides))
+		name = polygon_name(sides)
+		diagonals = (sides / 2) * (sides - 3)
+		triangles = (sides - 2)
+		sum_of_interior_angles = c.angle(triangles * math.pi)
+		interior_angle = c.angle(sum_of_interior_angles.radians / sides)
+		sum_of_exterior_angles = c.angle(math.pi * 2)
+		exterior_angle = c.angle( sum_of_exterior_angles.radians / sides)
+
+		area = (1/4) * sides * side**2 * (1/math.tan(math.pi/sides))
+		area_2 = sides * inradius**2 * math.tan(math.pi / sides)
+		area_3 = (sides/2) * circumradius**2 * math.sin(2*math.pi / sides)
+		print('check_1', round(area, 2) == round(area_2, 2))
+		print('check_2', round(area, 2) == round(area_3, 2))
+
+		self.sides = sides
+		self.name = name
+		self.side = side
 		self.area = area
 		self.inradius = inradius
 		self.circumradius = circumradius
@@ -161,30 +200,32 @@ class Quadrilateral():
 			angle_A_2 = c.angle(random.randint(10,80), 'degrees')
 			angle_C_2 = c.angle(random.randint(10,80), 'degrees')
 
-			if angle_A.degrees + angle_B.degrees + angle_C.degrees + angle_D.degrees < 360:
+
+
+			triangle_1.init_define_ASA(angle_A_1.degrees, diagonal_1, angle_C_1.degrees)
+
+
+			triangle_2.init_define_ASA(angle_A_2.degrees, diagonal_1, angle_C_2.degrees)
+
+			angle_A = c.angle(angle_A_1.degrees + angle_A_2.degrees, 'degrees')
+			angle_C = c.angle(angle_C_1.degrees + angle_C_2.degrees, 'degrees')
+
+			angle_B = triangle_1.B
+			angle_D = triangle_2.B
+
+			side_a = triangle_1.c
+			side_b = triangle_1.a
+			side_c = triangle_2.a
+			side_d = triangle_2.c
+
+			print(side_a, side_b, side_c, side_d, angle_A.degrees, angle_B.degrees, angle_C.degrees, angle_D.degrees)
+
+			print('check_1', side_a**2 + side_b**2 + side_c**2 > side_d**2 / 3)
+			print('check_2', side_a**4 + side_b**4 + side_c**4 > side_d**4 / 27)
+			print('check_3', round(angle_A.degrees + angle_B.degrees + angle_C.degrees + angle_D.degrees, 2) == 360)
+
+			if round(angle_A.degrees + angle_B.degrees + angle_C.degrees + angle_D.degrees,1) == 360:
 				repeat = False
-
-		triangle_1.init_define_ASA(angle_A_1.degrees, diagonal_1, angle_C_1.degrees)
-
-
-		triangle_2.init_define_ASA(angle_A_2.degrees, diagonal_1, angle_C_2.degrees)
-
-		angle_A = c.angle(angle_A_1.degrees + angle_A_2.degrees, 'degrees')
-		angle_C = c.angle(angle_C_1.degrees + angle_C_2.degrees, 'degrees')
-
-		angle_B = triangle_1.B
-		angle_D = triangle_2.B
-
-		side_a = triangle_1.c
-		side_b = triangle_1.a
-		side_c = triangle_2.a
-		side_d = triangle_2.c
-
-		print(side_a, side_b, side_c, side_d, angle_A.degrees, angle_B.degrees, angle_C.degrees, angle_D.degrees)
-
-		print('check_1', side_a**2 + side_b**2 + side_c**2 > side_d**2 / 3)
-		print('check_2', side_a**4 + side_b**4 + side_c**4 > side_d**4 / 27)
-		print('check_3', angle_A.degrees + angle_B.degrees + angle_C.degrees + angle_D.degrees < 360)
 
 		area = triangle_1.area + triangle_2.area
 		perimeter = side_a + side_b + side_c + side_d
@@ -532,14 +573,12 @@ class Secant_Theorem():
 		
 		return trigonometry_engine.herons(self.points[0].distance(self.points[1]), self.points[1].distance(self.points[2]), self.points[2].distance(self.points[0])) + trigonometry_engine.herons(self.points[0].distance(self.points[2]), self.points[2].distance(self.points[3]), self.points[3].distance(self.points[0]))
 
-
-
 class Cyclic_Quadrilateral():
 	def __init__(self):
 		pass
 
 	def init_random(self):
-#https://en.wikipedia.org/wiki/Quadrilateral
+		#https://en.wikipedia.org/wiki/Quadrilateral
 		triangle_1 = trigonometry_engine.Triangle()
 		triangle_2 = trigonometry_engine.Triangle()
 
@@ -595,6 +634,10 @@ class Cyclic_Quadrilateral():
 
 		print('check_5', round(diagonal_1 * diagonal_2,2) == round(side_a * side_c + side_b * side_d,2))
 
+		radius = math.sqrt(
+			(side_a * side_b + side_c * side_d)  * (side_a * side_c + side_b * side_d) * (side_a * side_d + side_b * side_c) 
+			) / (4 * area)
+
 		self.a = side_a
 		self.b = side_b
 		self.c = side_c
@@ -607,6 +650,30 @@ class Cyclic_Quadrilateral():
 		self.perimeter = perimeter
 		self.d1 = diagonal_1
 		self.d2 = diagonal_2
+		self.radius = radius
+
+
+class Star():
+	def __init__(self):
+		pass
+
+	def init_random(self):
+		sides = random.randint(STAR_SIDE_MIN, STAR_SIDE_MAX)
+		circumradius = random.randint(STAR_CIRCUMRADIUS_MIN, STAR_CIRCUMRADIUS_MAX)
+
+		angle_A = c.angle(math.pi / sides)
+		angle_B = c.angle(math.pi / (2 * sides))
+		angle_C = c.angle(math.pi - angle_A.radians - angle_B.radians)
+
+		S = circumradius * math.sin(angle_A.radians) / math.sin(angle_C.radians)
+
+		area_t = (1/2) * circumradius * S * math.sin(angle_B.radians)
+		area = 2 * sides * area_t
+
+		self.sides = sides
+		self.circumradius = circumradius
+		self.area = area
+
 
 
 class rgs_1():
@@ -634,19 +701,13 @@ class rgs_3():
 	def __init__(self):
 		cq = Cyclic_Quadrilateral()
 		cq.init_random()
-		largest = max(cq.a, cq.b, cq.c, cq.d)
 
 		side_list = [cq.a, cq.b, cq.c, cq.d]
 
-		for i in range(len(side_list) - 1):
-			if side_list[i] == largest:
-				side_list.pop(i)
+		area = math.pi * cq.radius**2
 
-		circle = Circle()
-		circle.init_diameter(largest)
-
-		self.question = f"""A cyclic quadrilateral has the sides AB = {round(side_list[0],2)} cm, BC = {round(side_list[1],2)} cm, CD = {round(side_list[2],2)} cm. The fourth side DA is the diameter of the circle. Find the area of the circle."""
-		self.answer = f"""{round(circle.area,2)} cm2"""
+		self.question = f"""A cyclic quadrilateral has the sides AB = {round(side_list[0],2)} cm, BC = {round(side_list[1],2)} cm, CD = {round(side_list[2],2)} cm, and DA = {round(side_list[3], 2)} cm. Find the area of the circle."""
+		self.answer = f"""{round(area,2)} cm2"""
 
 class rgs_4():
 	def __init__(self):
@@ -688,7 +749,7 @@ class rgs_5():
 		distance = point_1.distance(point_2)
 
 		self.question = f"""A border is formed by two concentric circles of different radii. If the length of the chord of the larger circle that is tangent to the smaller circle is {round(distance,2)} , find the area of the border."""
-		self.answer = f"""{round(circle_2.area() - circle_1.area(), 2)}"""
+		self.answer = f"""{round(circle_2.area - circle_1.area, 2)}"""
 
 class rgs_6():
 	def __init__(self):
@@ -725,7 +786,7 @@ class rgs_10():
 		rp.init_random()
 
 		self.question = f"""For a regular {rp.name}, find the number of degrees contained in each central angle."""
-		self.answer = f"""{round(rp.central_angle,4)}"""
+		self.answer = f"""{round(rp.central_angle.degrees,4)}"""
 
 class rgs_12():
 	def __init__(self):
@@ -778,10 +839,251 @@ class rgs_18():
 		small_rp = Regular_Polygon()
 		small_rp.init_circumradius(sides, circle.radius)
 
-		ratio = fractions.Fraction(small_rp.area, large_rp.area)
+		ratio = fractions.Fraction(small_rp.area/ large_rp.area).limit_denominator(100_000)
 
 		self.question = f"""The ratio of the area of regular polygon inscribed in a circle to the area of the circumscribing regular polygon of the same number of side is {ratio.numerator}:{ratio.denominator}. Find the number of the sides."""
-		self.answer = f"""{rp.sides}"""
+		self.answer = f"""{small_rp.sides}"""
+
+class rgs_19():
+	def __init__(self):
+		base = random.randint(5,15)
+		height = random.randint(base + 1, base * 2)
+
+		line_1 = analytic_geometry_engine.Line()
+		line_2 = analytic_geometry_engine.Line()
+		D = analytic_geometry_engine.Point()
+		D.init_define(0, 0)
+		A = analytic_geometry_engine.Point()
+		A.init_define(0, height)
+		B = analytic_geometry_engine.Point()
+		B.init_define(base, height)
+		C = analytic_geometry_engine.Point()
+		C.init_define(base, 0)
+
+		line_1.init_two_points(A, D)
+		line_2.init_two_points(C, B)
+
+		print('line1 ', line_1.equation)
+		print('line2 ', line_2.equation)
+
+		diagonal = analytic_geometry_engine.Line()
+		diagonal.init_two_points(A, C)
+
+		print('diagonal ', diagonal.equation)
+
+		p_diagonal = analytic_geometry_engine.Line()
+		p_diagonal.init_point_slope(A.midpoint(C), diagonal.perpendicular())
+
+		e_point = sympy.linsolve([line_1.equation, p_diagonal.equation], [x, y])
+		print('epoints ', e_point)
+		E = analytic_geometry_engine.Point()
+		E.init_define(e_point.args[0][0], e_point.args[0][1])
+		print('point E ', E.string)
+
+		f_point = sympy.linsolve([line_2.equation, p_diagonal.equation], [x, y])
+		print('fpoints ', f_point)
+		F = analytic_geometry_engine.Point()
+		F.init_define(f_point.args[0][0], f_point.args[0][1])
+		print('point F ', F.string)
+
+		fold = E.distance(F)
+
+		self.question = f"""A rectangular ABCD which measures {base} x {height} units is folded once, perpendicular to the diagonal AC, so that the opposite vertices A and C coincide. Find the length of the fold."""
+		self.answer = f"""{round(fold, 2)} units"""
+
+class rgs_20():
+	def __init__(self):
+		circle_1 = analytic_geometry_engine.Circle()
+		circle_2 = analytic_geometry_engine.Circle()
+		diameter_1 = random.randint(5,15)
+		diameter_2 = random.randint(diameter_1 * 2 + 1, 3*diameter_1)
+		center_2 = analytic_geometry_engine.Point()
+		center_2.init_define((diameter_2/ 2) - (diameter_1/2), 0)
+		circle_1.init_define(analytic_geometry_engine.ORIGIN, diameter_1 / 2)
+		circle_2.init_define(center_2, diameter_2 / 2)
+
+		tangent_length = math.sqrt(
+			(circle_2.radius - circle_1.radius)**2 - circle_1.radius**2)
+
+		self.question = f"""The diameters of two circles are {round(circle_2.diameter,4)} and {round(circle_1.diameter, 4)}, respectively. What is the length of the tangent segment from the center of the larger circle to the smaller circle?"""
+		self.answer = f"""{round(tangent_length, 4)}"""
+
+class rgs_21():
+	def __init__(self):
+		radius_1 = ran.main(2500)
+		radius_2 = radius_1 + ran.main(500)
+
+		angle_1 = c.angle(ran.main(20), 'degrees')
+		angle_2 = c.angle(angle_1.degrees + ran.main(5), 'degrees')
+
+		arc_1 = radius_1 * angle_1.radians 
+		arc_2 = radius_2 * angle_2.radians
+
+		arc_total = arc_1 + arc_2
+
+		self.question = f"""A reverse curve on a railroad track consists of two circular arcs. The central angle of one side is {round(angle_1.degrees, 2)} degrees with radius of {round(radius_1, 2)} feet, while the central angle of the other is {round(angle_2.degrees, 2)} degrees with radius {round(radius_2, 2)} feet. Find the total lengths of the two arcs."""
+		self.answer = f"""{round(arc_total, 2)} feet"""
+
+class rgs_22():
+	def __init__(self):
+		star = Star()
+		star.init_random()
+
+
+		self.question = f"""A regular {star.sides}-pointed star is inscribed in a circle with a diameter of {round(star.circumradius * 2, 4)} m. What is the area of the region inside the circle not covered by the star?"""
+		self.answer = f"""{round(star.circumradius**2 * math.pi - star.area, 4)} m2"""
+
+class rgs_23():
+	def __init__(self):
+		rp_small = Regular_Polygon()
+		rp_large = Regular_Polygon()
+
+		side_length = int(ran.main(10))
+		sides = random.randint(4, 10)
+		rp_small.init_side(sides, side_length)
+		rp_large.init_side(sides, side_length + int(ran.main(10)))
+
+		self.question = f"""A regular {rp_small.name} has sides of {round(rp_large.side, 4)} cm. An inner {rp_small.name} with sides {round(rp_small.side, 4)} cm is inside and concentric to the larger {rp_small.name}. Determine the area inside the larger {rp_small.name} but outside of the smaller pentagon."""
+		self.answer = f"""{round(rp_large.area - rp_small.area, 4)} cm2"""
+
+class rgs_24():
+	def __init__(self):
+		cq = Cyclic_Quadrilateral()
+		cq.init_random()
+
+		self.question = f"""A quadrilateral is inscribed in a circle having a radius of {round(cq.radius, 2)} cm. Three other sides are {round(cq.a, 2)} cm, {round(cq.b, 2)} cm, and {round(cq.c, 2)} cm respectively. Determine the length of the fourth side."""
+		self.answer = f"""{round(cq.d, 2)} cm"""
+
+
+class rgs_26():
+	def __init__(self):
+		repeat= True
+		while repeat:
+			base = random.randint(5,10)
+			height = random.randint(base + 1, base*2)
+			rope = random.randint(height + 1, max(2* height, 2*base))
+
+			if rope > base and rope > height and (rope - base) < height and (rope - height) < base:
+				repeat = False
+
+		area = math.pi * rope**2 * (3/4) + math.pi * (rope - base)**2 /4 + math.pi * (rope - height)**2 / 4
+		animal = random.choice(['goat', 'chicken', 'dog', 'pig', 'horse', 'sheep'])
+		self.question = f"""A {animal} is tethered to a corner of a {base} m by {height} m shed by a {rope} m rope. What is the maximum area the {animal} can cover?"""
+		self.answer = f"""{round(area, 2)} m^2"""
+
+
+class rgs_27():
+	def __init__(self):
+		st = Secant_Theorem()
+		st.init_random()
+
+		self.question = f"""Two secants are to a circle from the same external point. If the external and internal segments of one secant is {round(st.PB, 2)} inches and {round(st.PA - st.PB, 2)} inches and the external segment of the other secant is {round(st.PD, 2)} inches, compute the length of the second secant."""
+		self.answer = f"""{round(st.PC, 2)} inches"""
+
+class rgs_28():
+	def __init__(self):
+		circle_1 = analytic_geometry_engine.Circle()
+		circle_2 = analytic_geometry_engine.Circle()
+		diameter_2 = random.randint(5,15)
+		diameter_1 = random.randint(diameter_2 + 1, 2*diameter_2)
+
+		center_2 = analytic_geometry_engine.Point()
+		center_2.init_define((diameter_1/ 2) + (diameter_1/2), 0)
+		circle_1.init_define(analytic_geometry_engine.ORIGIN, diameter_1 / 2)
+		circle_2.init_define(center_2, diameter_2 / 2)
+
+		length_tangent_segment = math.sqrt(
+			(circle_1.radius + circle_2.radius)**2 - (circle_1.radius - circle_2.radius)**2
+			)
+
+		self.question = f"""Two circles with radii {circle_1.radius} m and {circle_2.radius} m are tangent to each other externally. What is the distance between the points of tangency of one of their common external tangents?"""
+		self.answer = f"""{round(length_tangent_segment,2)} m"""
+
+class rgs_29():
+	def __init__(self):
+		p = Parallelogram()
+		p.init_random()
+
+		self.question = f"""If the sides of a parallelogram and an included angle area {round(p.a, 2)}, {round(p.b, 2)} and {round(p.A.degrees, 2)} degrees respectively, find the length of the shorter diagonal."""
+		self.answer = f"""{round(min(p.d1, p.d2),2)}"""
+
+class rgs_30():
+	def __init__(self):
+		p = Parallelogram()
+		p.init_random()
+
+		self.question = f"""The sides of a parallelogram are {round(p.a, 2)} cm and {round(p.b, 2)} cm respectively. If one of its diagonals is {round(p.d1,2)} cm long, compute the smallest interior angle of the parallelogram."""
+		self.answer = f"""{round(min(p.A.degrees, p.B.degrees),2)} degrees"""
+
+class rgs_31():
+	def __init__(self):
+		rp_1 = Regular_Polygon()
+		rp_2 = Regular_Polygon()
+
+		rp_1.init_random()
+		rp_2.init_random()
+
+		sum_of_sides = rp_1.sides + rp_2.sides
+		sum_of_diagonals = rp_1.diagonals + rp_2.diagonals
+
+		self.question = f"""The sum of the sides of two polygons is {sum_of_sides} and the sum of their diagonals is {sum_of_diagonals}. Find the number of sides of the polygon with smaller number of sides."""
+		self.answer = f"""{min(rp_1.sides, rp_2.sides)}"""
+
+class rgs_32():
+	def __init__(self):
+		radius = random.randint(5,15)
+		distance = random.randint(radius + 1, 2 * radius)
+		tangent = math.sqrt(
+			distance**2 - radius**2
+			)
+		self.question = f"""Tangents are drawn to a circle of radius {radius} cm from a point {distance} cm from its center. Find the length of each tangent."""
+		self.answer = f"""{round(tangent, 2)} cm"""
+
+class rgs_33():
+	def __init__(self):
+		tr = trigonometry_engine.Triangle()
+		tr.init_random()
+		radius_circumscribing = tr.circumradius()
+
+		self.question = f"""Find the radius of the circle circumscribing a triangle with side lengths {round(tr.a, 2)} cm, {round(tr.b, 2)} cm, and {round(tr.c, 2)} cm."""
+
+		self.answer = f"""{round(radius_circumscribing, 2)} cm"""
+
+class rgs_34():
+	def __init__(self):
+		tr = trigonometry_engine.Triangle()
+		tr.init_random()
+		radius_circumscribing = tr.circumradius()
+
+		self.question = f"""The sides of the triangle are {round(tr.a, 2)} cm, {round(tr.b, 2)} cm, and {round(tr.c, 2)} cm. How far is the point of intersection of the perpendicular bisectors of the sides of the triangle to any of its vertices?"""
+		self.answer = f"""{round(tr.circumradius(), 2)} cm"""
+
+class rgs_35():
+	def __init__(self):
+		tr = trigonometry_engine.Triangle()
+		tr.init_random()
+
+		self.question = f"""A triangle has sides equal to {round(tr.a, 2)} cm, {round(tr.b, 2)} cm, and {round(tr.c, 2)} cm, respectively. Find the area of the escribed circle tangent to the shortest side of the triangle."""
+		self.answer = f"""{round(tr.exradius('smallest')**2 * math.pi, 2)} cm^2"""
+
+class rgs_36():
+	def __init__(self):
+		q = Quadrilateral()
+		q.init_random()
+
+		self.question = f"""A quadrilateral has sides equal to {round(q.a, 2)} cm, {round(q.b, 2)} cm, {round(q.c, 2)} cm and {round(q.d, 2)} cm respectively. If the sum of the two opposite angles is {round(q.A.degrees + q.C.degrees, 2)} degrees, find the area of the quadrilateral."""
+		self.answer= f"""{round(q.area, 2)} cm^2"""
+
+class rgs_37():
+	def __init__(self):
+		rp = Regular_Polygon()
+		rp.init_random()
+
+		self.question = f"""How many diagonals can be drawn from a {rp.sides}-sided polygon?"""
+		self.answer = f"""{rp.diagonals}"""
+
+
+
 
 
 

@@ -1,78 +1,79 @@
-import math
 import random
-from generator import constants_conversions as c
-from mathsub import transforms as source
-from generator import random_handler as ran
-
-
+from mathsub import plane_geometry as source
 
 print('Generating...')
+file_name = 'plane_geometry'
 
+import os
+print(__file__)
+print(os.path.realpath(__file__))
+print(os.path.dirname(os.path.realpath(__file__)))
+folderpath = os.path.dirname(os.path.realpath(__file__))
+
+def write_to_file(some_object):   
+    if FILEMODE: 
+        file.write(some_object.question)
+        file.write('\n')
+        file.write(some_object.answer)
+        file.write('\n\n')
+
+def print_tasks(some_object):
+    print(some_object.question)
+    print()
+    print(some_object.answer)
+    print()
+    print()
+
+FILEMODE = True
 TESTMODE = True
 
-questionList = [
-source.Taylor_series(),
-source.Laplace_transform(),
-source.Inverse_laplace_transform(),
-source.Fourier_series()
+question_list = [source.rgs_1(),
+source.rgs_2(),
+source.rgs_3(),
+source.rgs_4(),
+source.rgs_5(),
+source.rgs_6(),
+source.rgs_8(),
+source.rgs_9(),
+source.rgs_10(),
+source.rgs_12(),
+source.rgs_13(),
+source.rgs_15(),
+source.rgs_16(),
+source.rgs_17(),
+source.rgs_18(),
+source.rgs_19(),
+source.rgs_20(),
+source.rgs_21(),
+source.rgs_22(),
+source.rgs_23(),
+source.rgs_24(),
+source.rgs_26(),
+source.rgs_27(),
+source.rgs_28(),
+source.rgs_29(),
+source.rgs_30(),
+source.rgs_31(),
+source.rgs_32(),
+source.rgs_33(),
+source.rgs_34(),
+source.rgs_35(),
+source.rgs_36(),
+source.rgs_37(),
 ]
 
-tryagain = True
-while tryagain:
-    try:
-        additional_questionlist = [
-        #insert hard to generate questions here
-        ]
-        tryagain = False
-    except:
-        pass
-
-
-
-questionList = questionList + additional_questionlist
-
-
-
-#populate a set of all the items
-total_items_list = []
-for i in range(len(questionList)):
-    total_items_list.append(i)
-    
-    
-#choose a smaller subset from these questions
 if not TESTMODE:
-    items_list = random.sample(total_items_list, round(1 * len(questionList)))
-else:
-    items_list = total_items_list
+	random.shuffle(question_list)
 
-print(items_list)
-file = open("transforms_output.txt", 'a+')
 
-for i in range (len(items_list)):
+file = open(f"{folderpath}/outputs/{file_name}_output_{str(random.randint(1000, 9999))}.txt", 'w+')
+
+for i in range (len(question_list)):
     print('-----------------------------------------------------------------------')
-    item = questionList[items_list[i]]
-    print(item.question)
-    file.write(item.question)
-    print()
-    file.write('\n')
-    print(item.answer + '        --------------------------------- answer')
-    file.write(item.answer)
-    file.write('\n\n')
-    print()
-    print()
-
-    try:
-        print(item.choices)
-        print()
-    except:
-        pass
+    item = question_list[i]
+    print_tasks(item)
+    write_to_file(item)
 
 print()
 file.close()
 print('Finished.')
-
-stay = True
-while stay:
-    command = input()
-    if command == 'exit':
-        stay = False

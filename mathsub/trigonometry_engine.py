@@ -333,6 +333,10 @@ class Triangle():
             side_length = self.b
         elif side == 'c':
             side_length = self.c
+        elif side == 'smallest':
+            side_length = min(self.a, self.b, self.c)
+        elif side == 'largest':
+            sides_length = max(self.a, self.b, self.c)
         else:
             print('exradius_error')
 
