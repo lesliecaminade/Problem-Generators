@@ -1,6 +1,6 @@
-base_string = 'rgs_'
+base_string = 'boylestad_4_'
 start = 1
-end = 37
+end = 35
 
 
 output = ''

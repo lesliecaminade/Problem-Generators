@@ -1,7 +1,7 @@
-from mathsub import plane_geometry_engine as engine
+from electronics import bipolar_junction_transistors_engine as engine
 
 def main():
-	object = engine.rgs_37()
+	object = engine.boylestad_5_9()
 
 	print(object.question)
 	print()

@@ -356,7 +356,197 @@ class rgs_17():
         self.answer = constructed.answer   
 
 
+class rgs_18():
+    def __init__(self):
+        instance_list = [
+        engine.rgs_18(),        
+        engine.rgs_18(),
+        engine.rgs_18(),
+        engine.rgs_18()        
+        ]
+        constructed = Constructor(instance_list)
+        self.question = constructed.question
+        self.answer = constructed.answer    
         
+class rgs_19():
+    def __init__(self):
+        instance_list = [
+        engine.rgs_19(),        
+        engine.rgs_19(),
+        engine.rgs_19(),
+        engine.rgs_19()        
+        ]
+        constructed = Constructor(instance_list)
+        self.question = constructed.question
+        self.answer = constructed.answer    
+        
+class rgs_20():
+    def __init__(self):
+        instance_list = [
+        engine.rgs_20(),        
+        engine.rgs_20(),
+        engine.rgs_20(),
+        engine.rgs_20()        
+        ]
+        constructed = Constructor(instance_list)
+        self.question = constructed.question
+        self.answer = constructed.answer    
+        
+class rgs_21():
+    def __init__(self):
+        instance_list = [
+        engine.rgs_21(),        
+        engine.rgs_21(),
+        engine.rgs_21(),
+        engine.rgs_21()        
+        ]
+        constructed = Constructor(instance_list)
+        self.question = constructed.question
+        self.answer = constructed.answer    
+        
+class rgs_22():
+    def __init__(self):
+        instance_list = [
+        engine.rgs_22(),        
+        engine.rgs_22(),
+        engine.rgs_22(),
+        engine.rgs_22()        
+        ]
+        constructed = Constructor(instance_list)
+        self.question = constructed.question
+        self.answer = constructed.answer    
+        
+class rgs_23():
+    def __init__(self):
+        instance_list = [
+        engine.rgs_23(),        
+        engine.rgs_23(),
+        engine.rgs_23(),
+        engine.rgs_23()        
+        ]
+        constructed = Constructor(instance_list)
+        self.question = constructed.question
+        self.answer = constructed.answer    
+        
+class rgs_24():
+    def __init__(self):
+        instance_list = [
+        engine.rgs_24(),        
+        engine.rgs_24(),
+        engine.rgs_24(),
+        engine.rgs_24()        
+        ]
+        constructed = Constructor(instance_list)
+        self.question = constructed.question
+        self.answer = constructed.answer    
+        
+class rgs_25():
+    def __init__(self):
+        instance_list = [
+        engine.rgs_25(),        
+        engine.rgs_25(),
+        engine.rgs_25(),
+        engine.rgs_25()        
+        ]
+        constructed = Constructor(instance_list)
+        self.question = constructed.question
+        self.answer = constructed.answer    
+        
+class rgs_26():
+    def __init__(self):
+        instance_list = [
+        engine.rgs_26(),        
+        engine.rgs_26(),
+        engine.rgs_26(),
+        engine.rgs_26()        
+        ]
+        constructed = Constructor(instance_list)
+        self.question = constructed.question
+        self.answer = constructed.answer    
+        
+class rgs_27():
+    def __init__(self):
+        instance_list = [
+        engine.rgs_27(),        
+        engine.rgs_27(),
+        engine.rgs_27(),
+        engine.rgs_27()        
+        ]
+        constructed = Constructor(instance_list)
+        self.question = constructed.question
+        self.answer = constructed.answer    
+        
+class rgs_28():
+    def __init__(self):
+        instance_list = [
+        engine.rgs_28(),        
+        engine.rgs_28(),
+        engine.rgs_28(),
+        engine.rgs_28()        
+        ]
+        constructed = Constructor(instance_list)
+        self.question = constructed.question
+        self.answer = constructed.answer    
+        
+class rgs_29():
+    def __init__(self):
+        instance_list = [
+        engine.rgs_29(),        
+        engine.rgs_29(),
+        engine.rgs_29(),
+        engine.rgs_29()        
+        ]
+        constructed = Constructor(instance_list)
+        self.question = constructed.question
+        self.answer = constructed.answer    
+        
+class rgs_30():
+    def __init__(self):
+        instance_list = [
+        engine.rgs_30(),        
+        engine.rgs_30(),
+        engine.rgs_30(),
+        engine.rgs_30()        
+        ]
+        constructed = Constructor(instance_list)
+        self.question = constructed.question
+        self.answer = constructed.answer    
+        
+class rgs_31():
+    def __init__(self):
+        instance_list = [
+        engine.rgs_31(),        
+        engine.rgs_31(),
+        engine.rgs_31(),
+        engine.rgs_31()        
+        ]
+        constructed = Constructor(instance_list)
+        self.question = constructed.question
+        self.answer = constructed.answer    
+        
+class rgs_32():
+    def __init__(self):
+        instance_list = [
+        engine.rgs_32(),        
+        engine.rgs_32(),
+        engine.rgs_32(),
+        engine.rgs_32()        
+        ]
+        constructed = Constructor(instance_list)
+        self.question = constructed.question
+        self.answer = constructed.answer    
+        
+class rgs_33():
+    def __init__(self):
+        instance_list = [
+        engine.rgs_33(),        
+        engine.rgs_33(),
+        engine.rgs_33(),
+        engine.rgs_33()        
+        ]
+        constructed = Constructor(instance_list)
+        self.question = constructed.question
+        self.answer = constructed.answer        
 
 
 

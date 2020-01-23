@@ -2,7 +2,7 @@ import random
 from mathsub import probability as source
 
 print('Generating...')
-file_name = 'word_problems'
+file_name = 'probability'
 
 import os
 print(__file__)
@@ -25,7 +25,7 @@ def print_tasks(some_object):
     print()
 
 FILEMODE = True
-TESTMODE = True
+TESTMODE = False
 
 question_list = [source.rgs_sample_1(),
 source.rgs_sample_2(),
@@ -53,7 +53,21 @@ source.rgs_14(),
 source.rgs_15(),
 source.rgs_16(),
 source.rgs_17(),
+source.rgs_18(),
+source.rgs_19(),
+source.rgs_20(),
+source.rgs_21(),
+source.rgs_22(),
+source.rgs_23(),
+source.rgs_24(),
+source.rgs_25(),
+source.rgs_27(),
+source.rgs_29(),
+source.rgs_30(),
+source.rgs_32(),
+source.rgs_33(),
 ]
+
 
 
 random.shuffle(question_list)

@@ -1,68 +1,66 @@
-
-import random_handler as ran
-import sympy as sym
-import math
 import random
-import bipolar_junction_transistors as bjt
+from electronics import bipolar_junction_transistors as source
 
-x, y = sym.symbols('x y', real = True)
+print('Generating...')
+file_name = 'bipolar_junction_transistors'
 
-import constants_conversions as c
-from constants_conversions import *
+import os
+print(__file__)
+print(os.path.realpath(__file__))
+print(os.path.dirname(os.path.realpath(__file__)))
+folderpath = os.path.dirname(os.path.realpath(__file__))
 
+def write_to_file(some_object):   
+    if FILEMODE: 
+        file.write(some_object.question)
+        file.write('\n')
+        file.write(some_object.answer)
+        file.write('\n\n')
 
-title_string = """Bipolar Junction Transistors
-Coded by Leslie Caminade June 2019
-www.lesliecaminadecom.wordpress.com"""
-
-questionList = (
-bjt.boylestad_4_1(),
-bjt.boylestad_4_2(),
-bjt.boylestad_4_3(),
-bjt.boylestad_4_6(),
-bjt.boylestad_4_8(),
-bjt.boylestad_4_12(),
-bjt.boylestad_4_14(),
-bjt.boylestad_4_16(),
-bjt.boylestad_4_17(),
-bjt.boylestad_4_18(),
-bjt.boylestad_4_19(),
-bjt.boylestad_4_20(),
-bjt.boylestad_4_27(),
-bjt.boylestad_4_28(),
-bjt.boylestad_4_29(),
-bjt.boylestad_4_30(),
-bjt.boylestad_4_31(),
-bjt.boylestad_4_32(),
-bjt.boylestad_4_35(),
-bjt.boylestad_4_36(),
-bjt.boylestad_4_37()
-)
-
-
-#populate a set of all the items
-total_items_list = []
-for i in range(len(questionList)):
-    total_items_list.append(i)
-    
-    
-#choose a smaller subset from these questions
-items_list = random.sample(total_items_list, round(1 * len(questionList)))
-
-
-print(title_string)
-print()
-print(items_list)
-
-for i in range (len(items_list)):
-    print('-----------------------------------------------------------------------')
-    item = questionList[items_list[i]]
-    print(item.question)
+def print_tasks(some_object):
+    print(some_object.question)
     print()
-    print(item.answer)
+    print(some_object.answer)
+    print()
+    print()
 
-stay = True
-while stay:
-    command = input()
-    if command == 'exit':
-        stay = False
+FILEMODE = True
+TESTMODE = True
+
+question_list = [source.boylestad_4_1(),
+source.boylestad_4_2(),
+source.boylestad_4_3(),
+source.boylestad_4_6(),
+source.boylestad_4_8(),
+source.boylestad_4_12(),
+source.boylestad_4_14(),
+source.boylestad_4_16(),
+source.boylestad_4_17(),
+source.boylestad_4_18(),
+source.boylestad_4_19(),
+# source.boylestad_4_20(), - to be troubleshooted
+source.boylestad_4_27(),
+source.boylestad_4_28(),
+source.boylestad_4_29(),
+source.boylestad_4_30(),
+source.boylestad_4_31(),
+source.boylestad_4_32(),
+source.boylestad_4_35(),
+source.boylestad_4_36()
+]
+
+if not TESTMODE:
+	random.shuffle(question_list)
+
+
+file = open(f"{folderpath}/outputs/{file_name}_output_{str(random.randint(1000, 9999))}.txt", 'w+')
+
+for i in range (len(question_list)):
+    print('-----------------------------------------------------------------------')
+    item = question_list[i]
+    print_tasks(item)
+    write_to_file(item)
+
+print()
+file.close()
+print('Finished.')

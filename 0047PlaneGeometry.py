@@ -68,11 +68,13 @@ if not TESTMODE:
 
 file = open(f"{folderpath}/outputs/{file_name}_output_{str(random.randint(1000, 9999))}.txt", 'w+')
 
+
 for i in range (len(question_list)):
     print('-----------------------------------------------------------------------')
     item = question_list[i]
     print_tasks(item)
     write_to_file(item)
+
 
 print()
 file.close()
