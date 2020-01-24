@@ -1,5 +1,5 @@
 import random
-from electronics import bipolar_junction_transistors_engine as engine
+from electronics import operational_amplifiers_engine as engine
 from num2words import num2words
 
 
@@ -39,245 +39,341 @@ B. {CHOICES[1]}
 C. {CHOICES[2]}
 D. {CHOICES[3]}"""       
 		
-class boylestad_4_1():
+class boylestad_10_1():
 	def __init__(self):
 		instance_list = [
-		engine.boylestad_4_1(),        
-		engine.boylestad_4_1(),
-		engine.boylestad_4_1(),
-		engine.boylestad_4_1()        
+		engine.boylestad_10_1(),        
+		engine.boylestad_10_1(),
+		engine.boylestad_10_1(),
+		engine.boylestad_10_1()        
 		]
 		constructed = Constructor(instance_list)
 		self.question = constructed.question
 		self.answer = constructed.answer    
 		
-class boylestad_4_2():
+class boylestad_10_2():
 	def __init__(self):
 		instance_list = [
-		engine.boylestad_4_2(),        
-		engine.boylestad_4_2(),
-		engine.boylestad_4_2(),
-		engine.boylestad_4_2()        
+		engine.boylestad_10_2(),        
+		engine.boylestad_10_2(),
+		engine.boylestad_10_2(),
+		engine.boylestad_10_2()        
 		]
 		constructed = Constructor(instance_list)
 		self.question = constructed.question
 		self.answer = constructed.answer    
 		
-class boylestad_4_3():
+class boylestad_10_3():
 	def __init__(self):
 		instance_list = [
-		engine.boylestad_4_3(),        
-		engine.boylestad_4_3(),
-		engine.boylestad_4_3(),
-		engine.boylestad_4_3()        
+		engine.boylestad_10_3(),        
+		engine.boylestad_10_3(),
+		engine.boylestad_10_3(),
+		engine.boylestad_10_3()        
 		]
 		constructed = Constructor(instance_list)
 		self.question = constructed.question
 		self.answer = constructed.answer    
 		
-class boylestad_4_6():
+class boylestad_10_4():
 	def __init__(self):
 		instance_list = [
-		engine.boylestad_4_6(),        
-		engine.boylestad_4_6(),
-		engine.boylestad_4_6(),
-		engine.boylestad_4_6()        
+		engine.boylestad_10_4(),        
+		engine.boylestad_10_4(),
+		engine.boylestad_10_4(),
+		engine.boylestad_10_4()        
 		]
 		constructed = Constructor(instance_list)
 		self.question = constructed.question
 		self.answer = constructed.answer    
 		
-class boylestad_4_8():
+class boylestad_10_5():
 	def __init__(self):
 		instance_list = [
-		engine.boylestad_4_8(),        
-		engine.boylestad_4_8(),
-		engine.boylestad_4_8(),
-		engine.boylestad_4_8()        
+		engine.boylestad_10_5(),        
+		engine.boylestad_10_5(),
+		engine.boylestad_10_5(),
+		engine.boylestad_10_5()        
 		]
 		constructed = Constructor(instance_list)
 		self.question = constructed.question
 		self.answer = constructed.answer    
 		
-class boylestad_4_12():
+class boylestad_10_6():
 	def __init__(self):
 		instance_list = [
-		engine.boylestad_4_12(),        
-		engine.boylestad_4_12(),
-		engine.boylestad_4_12(),
-		engine.boylestad_4_12()        
+		engine.boylestad_10_6(),        
+		engine.boylestad_10_6(),
+		engine.boylestad_10_6(),
+		engine.boylestad_10_6()        
 		]
 		constructed = Constructor(instance_list)
 		self.question = constructed.question
 		self.answer = constructed.answer    
 		
-class boylestad_4_14():
+class boylestad_10_7():
 	def __init__(self):
 		instance_list = [
-		engine.boylestad_4_14(),        
-		engine.boylestad_4_14(),
-		engine.boylestad_4_14(),
-		engine.boylestad_4_14()        
+		engine.boylestad_10_7(),        
+		engine.boylestad_10_7(),
+		engine.boylestad_10_7(),
+		engine.boylestad_10_7()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer    
+		
+class boylestad_10_8():
+	def __init__(self):
+		instance_list = [
+		engine.boylestad_10_8(),        
+		engine.boylestad_10_8(),
+		engine.boylestad_10_8(),
+		engine.boylestad_10_8()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer    
+		
+class boylestad_10_9():
+	def __init__(self):
+		instance_list = [
+		engine.boylestad_10_9(),        
+		engine.boylestad_10_9(),
+		engine.boylestad_10_9(),
+		engine.boylestad_10_9()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer    
+		
+class boylestad_10_10():
+	def __init__(self):
+		instance_list = [
+		engine.boylestad_10_10(),        
+		engine.boylestad_10_10(),
+		engine.boylestad_10_10(),
+		engine.boylestad_10_10()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer    
+		
+class boylestad_10_11():
+	def __init__(self):
+		instance_list = [
+		engine.boylestad_10_11(),        
+		engine.boylestad_10_11(),
+		engine.boylestad_10_11(),
+		engine.boylestad_10_11()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer    
+		
+class boylestad_10_12():
+	def __init__(self):
+		instance_list = [
+		engine.boylestad_10_12(),        
+		engine.boylestad_10_12(),
+		engine.boylestad_10_12(),
+		engine.boylestad_10_12()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer    
+		
+class boylestad_10_13():
+	def __init__(self):
+		instance_list = [
+		engine.boylestad_10_13(),        
+		engine.boylestad_10_13(),
+		engine.boylestad_10_13(),
+		engine.boylestad_10_13()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer    
+		
+class boylestad_10_14():
+	def __init__(self):
+		instance_list = [
+		engine.boylestad_10_14(),        
+		engine.boylestad_10_14(),
+		engine.boylestad_10_14(),
+		engine.boylestad_10_14()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer    
+		
+class boylestad_10_15():
+	def __init__(self):
+		instance_list = [
+		engine.boylestad_10_15(),        
+		engine.boylestad_10_15(),
+		engine.boylestad_10_15(),
+		engine.boylestad_10_15()        
 		]
 		constructed = Constructor(instance_list)
 		self.question = constructed.question
 		self.answer = constructed.answer     
 		
-class boylestad_4_16():
+class boylestad_10_17():
 	def __init__(self):
 		instance_list = [
-		engine.boylestad_4_16(),        
-		engine.boylestad_4_16(),
-		engine.boylestad_4_16(),
-		engine.boylestad_4_16()        
+		engine.boylestad_10_17(),        
+		engine.boylestad_10_17(),
+		engine.boylestad_10_17(),
+		engine.boylestad_10_17()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer         
+		
+class boylestad_10_22():
+	def __init__(self):
+		instance_list = [
+		engine.boylestad_10_22(),        
+		engine.boylestad_10_22(),
+		engine.boylestad_10_22(),
+		engine.boylestad_10_22()        
 		]
 		constructed = Constructor(instance_list)
 		self.question = constructed.question
 		self.answer = constructed.answer    
 		
-class boylestad_4_17():
+class boylestad_11_1():
 	def __init__(self):
 		instance_list = [
-		engine.boylestad_4_17(),        
-		engine.boylestad_4_17(),
-		engine.boylestad_4_17(),
-		engine.boylestad_4_17()        
+		engine.boylestad_11_1(),        
+		engine.boylestad_11_1(),
+		engine.boylestad_11_1(),
+		engine.boylestad_11_1()        
 		]
 		constructed = Constructor(instance_list)
 		self.question = constructed.question
 		self.answer = constructed.answer    
 		
-class boylestad_4_18():
+class boylestad_11_2():
 	def __init__(self):
 		instance_list = [
-		engine.boylestad_4_18(),        
-		engine.boylestad_4_18(),
-		engine.boylestad_4_18(),
-		engine.boylestad_4_18()        
+		engine.boylestad_11_2(),        
+		engine.boylestad_11_2(),
+		engine.boylestad_11_2(),
+		engine.boylestad_11_2()        
 		]
 		constructed = Constructor(instance_list)
 		self.question = constructed.question
 		self.answer = constructed.answer    
 		
-class boylestad_4_19():
+class boylestad_11_3():
 	def __init__(self):
 		instance_list = [
-		engine.boylestad_4_19(),        
-		engine.boylestad_4_19(),
-		engine.boylestad_4_19(),
-		engine.boylestad_4_19()        
+		engine.boylestad_11_3(),        
+		engine.boylestad_11_3(),
+		engine.boylestad_11_3(),
+		engine.boylestad_11_3()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer       
+		
+class boylestad_11_6():
+	def __init__(self):
+		instance_list = [
+		engine.boylestad_11_6(),        
+		engine.boylestad_11_6(),
+		engine.boylestad_11_6(),
+		engine.boylestad_11_6()        
 		]
 		constructed = Constructor(instance_list)
 		self.question = constructed.question
 		self.answer = constructed.answer    
 		
-class boylestad_4_20():
+class boylestad_11_7():
 	def __init__(self):
 		instance_list = [
-		engine.boylestad_4_20(),        
-		engine.boylestad_4_20(),
-		engine.boylestad_4_20(),
-		engine.boylestad_4_20()        
+		engine.boylestad_11_7(),        
+		engine.boylestad_11_7(),
+		engine.boylestad_11_7(),
+		engine.boylestad_11_7()        
 		]
 		constructed = Constructor(instance_list)
 		self.question = constructed.question
 		self.answer = constructed.answer    
 		
-class boylestad_4_27():
+class boylestad_11_8():
 	def __init__(self):
 		instance_list = [
-		engine.boylestad_4_27(),        
-		engine.boylestad_4_27(),
-		engine.boylestad_4_27(),
-		engine.boylestad_4_27()        
+		engine.boylestad_11_8(),        
+		engine.boylestad_11_8(),
+		engine.boylestad_11_8(),
+		engine.boylestad_11_8()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer      
+		
+class boylestad_11_10():
+	def __init__(self):
+		instance_list = [
+		engine.boylestad_11_10(),        
+		engine.boylestad_11_10(),
+		engine.boylestad_11_10(),
+		engine.boylestad_11_10()        
 		]
 		constructed = Constructor(instance_list)
 		self.question = constructed.question
 		self.answer = constructed.answer    
 		
-class boylestad_4_28():
+class boylestad_11_11():
 	def __init__(self):
 		instance_list = [
-		engine.boylestad_4_28(),        
-		engine.boylestad_4_28(),
-		engine.boylestad_4_28(),
-		engine.boylestad_4_28()        
+		engine.boylestad_11_11(),        
+		engine.boylestad_11_11(),
+		engine.boylestad_11_11(),
+		engine.boylestad_11_11()        
 		]
 		constructed = Constructor(instance_list)
 		self.question = constructed.question
 		self.answer = constructed.answer    
 		
-class boylestad_4_29():
+class boylestad_11_12():
 	def __init__(self):
 		instance_list = [
-		engine.boylestad_4_29(),        
-		engine.boylestad_4_29(),
-		engine.boylestad_4_29(),
-		engine.boylestad_4_29()        
+		engine.boylestad_11_12(),        
+		engine.boylestad_11_12(),
+		engine.boylestad_11_12(),
+		engine.boylestad_11_12()        
 		]
 		constructed = Constructor(instance_list)
 		self.question = constructed.question
 		self.answer = constructed.answer    
 		
-class boylestad_4_30():
+class boylestad_11_13():
 	def __init__(self):
 		instance_list = [
-		engine.boylestad_4_30(),        
-		engine.boylestad_4_30(),
-		engine.boylestad_4_30(),
-		engine.boylestad_4_30()        
+		engine.boylestad_11_13(),        
+		engine.boylestad_11_13(),
+		engine.boylestad_11_13(),
+		engine.boylestad_11_13()        
 		]
 		constructed = Constructor(instance_list)
 		self.question = constructed.question
 		self.answer = constructed.answer    
 		
-class boylestad_4_31():
+class boylestad_11_14():
 	def __init__(self):
 		instance_list = [
-		engine.boylestad_4_31(),        
-		engine.boylestad_4_31(),
-		engine.boylestad_4_31(),
-		engine.boylestad_4_31()        
+		engine.boylestad_11_14(),        
+		engine.boylestad_11_14(),
+		engine.boylestad_11_14(),
+		engine.boylestad_11_14()        
 		]
 		constructed = Constructor(instance_list)
 		self.question = constructed.question
-		self.answer = constructed.answer    
-		
-class boylestad_4_32():
-	def __init__(self):
-		instance_list = [
-		engine.boylestad_4_32(),        
-		engine.boylestad_4_32(),
-		engine.boylestad_4_32(),
-		engine.boylestad_4_32()        
-		]
-		constructed = Constructor(instance_list)
-		self.question = constructed.question
-		self.answer = constructed.answer    
-		
-class boylestad_4_35():
-	def __init__(self):
-		instance_list = [
-		engine.boylestad_4_35(),        
-		engine.boylestad_4_35(),
-		engine.boylestad_4_35(),
-		engine.boylestad_4_35()        
-		]
-		constructed = Constructor(instance_list)
-		self.question = constructed.question
-		self.answer = constructed.answer    
-		
-class boylestad_4_36():
-	def __init__(self):
-		instance_list = [
-		engine.boylestad_4_36(),        
-		engine.boylestad_4_36(),
-		engine.boylestad_4_36(),
-		engine.boylestad_4_36()        
-		]
-		constructed = Constructor(instance_list)
-		self.question = constructed.question
-		self.answer = constructed.answer  
+		self.answer = constructed.answer
 
 
 		

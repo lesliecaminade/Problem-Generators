@@ -17,7 +17,7 @@ class boylestad_10_1:
 		vee = c.voltage(ran.main(-9))
 		
 		
-		self.question = f"""Determine the values of VC for a BJT differential amplifier with RC1 = RC2 = {rc.kohms} ohms, common RE = {re.kohms} kohms, VCC = {vcc.V} V and VEE = {vee.V} V."""
+		self.question = f"""Determine the values of VC for a BJT differential amplifier with RC1 = RC2 = {rc.kohms:.4} ohms, common RE = {re.kohms:.4} kohms, VCC = {vcc.V:.4} V and VEE = {vee.V:.4} V."""
 		
 		ie = c.current(
 		( - vee.V - 0.7) / 
@@ -28,7 +28,7 @@ class boylestad_10_1:
 		
 		vc = c.voltage( vcc.V - ic.A * rc.ohms )
 		
-		self.answer = f"""{vc.V} V"""
+		self.answer = f"""{vc.V:.4} V"""
 
 class boylestad_10_2:
 	def __init__(self,*args,**kwargs): 
@@ -43,7 +43,7 @@ class boylestad_10_2:
 		vi = c.voltage(ran.main(2), 'mV')
 		
 		
-		self.question = f"""Calculate the single-ended output voltage Vo1 for a BJT differential amplifier setup with VCC = {vcc.V} V, VEE = {vee.V} V, RC1 = RC2 = {rc.kohms} kohms, RE = {re.kohms} kohms,  BJT characteristics are ri = {ri.kohms} kohms, and beta = {beta}. The input voltage is {vi.mV} mV."""
+		self.question = f"""Calculate the single-ended output voltage Vo1 for a BJT differential amplifier setup with VCC = {vcc.V:.4} V, VEE = {vee.V:.4} V, RC1 = RC2 = {rc.kohms:.4} kohms, RE = {re.kohms:.4} kohms,  BJT characteristics are ri = {ri.kohms:.4} kohms, and beta = {beta:.4}. The input voltage is {vi.mV:.4} mV."""
 
 		ie = c.current(
 		(- vee.V - 0.7) / 
@@ -60,7 +60,7 @@ class boylestad_10_2:
 		
 		vo = c.voltage( vi.V * av )
 		
-		self.answer = f"""{vo.V} V"""
+		self.answer = f"""{vo.V:.4} V"""
 		
 		
 class boylestad_10_3:
@@ -76,7 +76,7 @@ class boylestad_10_3:
 		vi = c.voltage(ran.main(2), 'mV')
 		
 		
-		self.question = f"""Calculate the common-mode gain for a BJT differential amplifier setup with VCC = {vcc.V} V, VEE = {vee.V} V, RC1 = RC2 = {rc.kohms} kohms, RE = {re.kohms} kohms,  BJT characteristics are ri = {ri.kohms} kohms, and beta = {beta}. The input voltage is {vi.mV} mV."""
+		self.question = f"""Calculate the common-mode gain for a BJT differential amplifier setup with VCC = {vcc.V:.4} V, VEE = {vee.V:.4} V, RC1 = RC2 = {rc.kohms:.4} kohms, RE = {re.kohms:.4} kohms,  BJT characteristics are ri = {ri.kohms:.4} kohms, and beta = {beta:.4}. The input voltage is {vi.mV:.4} mV."""
 
 		ie = c.current(
 		(- vee.V - 0.7) / 
@@ -94,7 +94,7 @@ class boylestad_10_3:
 		(ri.ohms + 2*(beta + 1)*re.ohms)
 		)
 		
-		self.answer = f"""{ac}"""
+		self.answer = f"""{ac:.4}"""
 		
 class boylestad_10_4:
 	def __init__(self,*args,**kwargs): 
@@ -110,14 +110,14 @@ class boylestad_10_4:
 		beta2 = ran.main(75)
 		ro = c.resistance(ran.main(200), 'kohms')
 		
-		self.question = f"""Calculate the common-mode voltage gain of a differential amplifier with VDD = {vdd.V} V, RC1 = RC2 = {rc.kohms} kohms, uses identical Q1 and Q2, and the BJT characteristics are beta = {beta1} and ri = {ri.kohms} kohms. This differential amplifier uses a BJT constant current source as a emitter resistance the BJT uses a limiter resistor R1 = {r1.kohms} kohms, a bleeder resistor of R2 = {r2.kohms} kohms, and an emitter resistance of R3 = {r3.kohms} kohms. The BJT Q3 used in the constant current source has the characteristics ro = {ro.kohms} kohms, and beta = {beta2}."""
+		self.question = f"""Calculate the common-mode voltage gain of a differential amplifier with VDD = {vdd.V:.4} V, RC1 = RC2 = {rc.kohms:.4} kohms, uses identical Q1 and Q2, and the BJT characteristics are beta = {beta1:.4} and ri = {ri.kohms:.4} kohms. This differential amplifier uses a BJT constant current source as a emitter resistance the BJT uses a limiter resistor R1 = {r1.kohms:.4} kohms, a bleeder resistor of R2 = {r2.kohms:.4} kohms, and an emitter resistance of R3 = {r3.kohms:.4} kohms. The BJT Q3 used in the constant current source has the characteristics ro = {ro.kohms:.4} kohms, and beta = {beta2:.4}."""
 		
 		ac = (
 		( beta1 * rc.ohms ) / 
 		( ri.ohms + 2*(beta1 + 1)*ro.ohms)
 		)
 		
-		self.answer = f"""{ac}"""
+		self.answer = f"""{ac:.4}"""
 		
 class boylestad_10_5:
 	def __init__(self,*args,**kwargs): 
@@ -126,14 +126,14 @@ class boylestad_10_5:
 		r1 = c.resistance(ran.main(100), 'kohms')
 		v1 = c.voltage(ran.main(2))
 		
-		self.question = f"""An inverting amplifier opamp circuit has R1 = {r1.kohms} kohms and RF = {rf.kohms} kohms. What output voltage results for an input of V1 = {v1.V} V?"""
+		self.question = f"""An inverting amplifier opamp circuit has R1 = {r1.kohms:.4} kohms and RF = {rf.kohms:.4} kohms. What output voltage results for an input of V1 = {v1.V:.4} V?"""
 		
 		vo = c.voltage(
 		(- rf.ohms * v1.V) / 
 		( r1.ohms )
 		)
 		
-		self.answer = f"""{vo.V} V"""
+		self.answer = f"""{vo.V:.4} V"""
 		
 class boylestad_10_6:
 	def __init__(self,*args,**kwargs): 
@@ -142,11 +142,11 @@ class boylestad_10_6:
 		rf = c.resistance(ran.main(500), 'kohms')
 		r1 = c.resistance(ran.main(100), 'kohms')
 		
-		self.question = f"""Calculate the output voltage of a opamp noninverting amplifier for values V1 ={v1.V} V, RF = {rf.kohms} kohms, and R1 = {r1.kohms} kohms."""
+		self.question = f"""Calculate the output voltage of a opamp noninverting amplifier for values V1 ={v1.V:.4} V, RF = {rf.kohms:.4} kohms, and R1 = {r1.kohms:.4} kohms."""
 		
 		vo = c.voltage((1 + (rf.ohms / r1.ohms)) * v1.V)
 		
-		self.answer = f"""{vo.V} V"""
+		self.answer = f"""{vo.V:.4} V"""
 		
 class boylestad_10_7:
 	def __init__(self,*args,**kwargs): 
@@ -169,11 +169,11 @@ class boylestad_10_7:
 			r2 = c.resistance(ran.main(500), 'kohms')
 			r3 = c.resistance(ran.main(1), 'Mohms')
 			
-		self.question = f"""Calculate the output voltage of an opamp summing amplifier for the set of voltages and resistors: RF = {rf.Mohms} Mohms, V1 = {v1.V} V, V2 = {v2.V} V, V3 = {v3.V} V, R1 = {r1.kohms} kohms, R2 = {r2.kohms} kohms, R3 = {r3.kohms} kohms."""
+		self.question = f"""Calculate the output voltage of an opamp summing amplifier for the set of voltages and resistors: RF = {rf.Mohms:.4} Mohms, V1 = {v1.V:.4} V, V2 = {v2.V:.4} V, V3 = {v3.V:.4} V, R1 = {r1.kohms:.4} kohms, R2 = {r2.kohms:.4} kohms, R3 = {r3.kohms:.4} kohms."""
 		
 		vo = c.voltage(- rf.ohms * ( v1.V / r1.ohms + v2.V / r2.ohms + v3.V / r3.ohms ))
 		
-		self.answer = f"""{vo.V} V"""
+		self.answer = f"""{vo.V:.4} V"""
 		
 class boylestad_10_8:
 	def __init__(self,*args,**kwargs): 
@@ -183,13 +183,13 @@ class boylestad_10_8:
 		rf = c.resistance(ran.main(150), 'kohms')
 		
 		
-		self.question = f"""Calculate the output offset voltage of a noninverting opamp circuit utilizing an opamp with input offset voltage VIO = {vio.mV} mV and external resistors RF = {rf.kohms} kohms and R1 = {r1.kohms} kohms."""
+		self.question = f"""Calculate the output offset voltage of a noninverting opamp circuit utilizing an opamp with input offset voltage VIO = {vio.mV:.4} mV and external resistors RF = {rf.kohms:.4} kohms and R1 = {r1.kohms:.4} kohms."""
 		
 		voo = c.voltage(
 		vio.V * (1 + rf.ohms / r1.ohms)
 		)
 		
-		self.answer = f"""{voo.mV} mV"""
+		self.answer = f"""{voo.mV:.4} mV"""
 		
 class boylestad_10_9:
 	def __init__(self,*args,**kwargs): 
@@ -199,11 +199,11 @@ class boylestad_10_9:
 		r1 = c.resistance(ran.main(2), 'kohms')
 		rf = c.resistance(ran.main(150), 'kohms')
 		
-		self.question = f"""Calculate the offset voltage of a noninverting opamp circuit utilizing  an opamp with input offset current IIO = {iio.nA} nA. The external resistors have values RF = {rf.kohms} kohms and R1 = {r1.kohms} kohms."""
+		self.question = f"""Calculate the offset voltage of a noninverting opamp circuit utilizing  an opamp with input offset current IIO = {iio.nA:.4} nA. The external resistors have values RF = {rf.kohms:.4} kohms and R1 = {r1.kohms:.4} kohms."""
 		
 		vo = c.voltage(iio.A * rf.ohms)
 		
-		self.answer = f"""{vo.mV} mV"""
+		self.answer = f"""{vo.mV:.4} mV"""
 		
 class boylestad_10_10:
 	def __init__(self,*args,**kwargs): 
@@ -213,14 +213,14 @@ class boylestad_10_10:
 		vio = c.voltage(ran.main(4), 'mV')
 		iio = c.current(ran.main(150), 'nA')
 		
-		self.question = f"""Calculate the total offset voltage an inverting opamp configuration with RF = {rf.kohms} kohms and R1 = {r1.kohms} kohms, and a compensating resistor RC = {r1.kohms} kohms for an oapmp with specified values of input offset voltage = {vio.mV} mV and input offset current IIO = {iio.nA} nA."""
+		self.question = f"""Calculate the total offset voltage an inverting opamp configuration with RF = {rf.kohms:.4} kohms and R1 = {r1.kohms:.4} kohms, and a compensating resistor RC = {r1.kohms:.4} kohms for an oapmp with specified values of input offset voltage = {vio.mV:.4} mV and input offset current IIO = {iio.nA:.4} nA."""
 		
 		vo = c.voltage(
 		vio.V * (1 + rf.ohms/r1.ohms) +
 		iio.A * rf.ohms
 		)
 		
-		self.answer = f"""{vo.mV} mV"""
+		self.answer = f"""{vo.mV:.4} mV"""
 		
 class boylestad_10_11:
 	def __init__(self,*args,**kwargs): 
@@ -228,12 +228,12 @@ class boylestad_10_11:
 		iio = c.current(ran.main(5), 'nA')
 		iib = c.current(ran.main(30), 'nA')
 		
-		self.question = f"""Calculate the input bias currents at each input of an opamp having specified values of IIO = {iio.nA} nA and IIB = {iib.nA} nA."""
+		self.question = f"""Calculate the input bias currents at each input of an opamp having specified values of IIO = {iio.nA:.4} nA and IIB = {iib.nA:.4} nA."""
 		
 		iibplus = c.current(iib.A + iio.A/2)
 		iibminus = c.current(iib.A - iio.A/2)
 		
-		self.answer = f"""{iibplus.nA} nA, {iibminus.nA} nA"""
+		self.answer = f"""{iibplus.nA:.4} nA, {iibminus.nA:.4} nA"""
 		
 class boylestad_10_12:
 	def __init__(self,*args,**kwargs): 
@@ -242,11 +242,11 @@ class boylestad_10_12:
 		avd = c.voltage(ran.main(200), 'V')
 		avref = c.voltage(1, 'mV')
 		
-		self.question = f"""Determine the cutoff frequency of an opamp having specified values B = {bandwidth.MHz} MHz and Avd = {avd.V/avref.V} V/mV."""
+		self.question = f"""Determine the cutoff frequency of an opamp having specified values B = {bandwidth.MHz:.4} MHz and Avd = {avd.V/avref.V:.4} V/mV."""
 		
 		fc = c.frequency(bandwidth.Hz / avd.V)
 		
-		self.answer = f"""{fc.Hz} Hz"""
+		self.answer = f"""{fc.Hz:.4} Hz"""
 		
 class boylestad_10_13:
 	def __init__(self,*args,**kwargs): 
@@ -256,14 +256,14 @@ class boylestad_10_13:
 		vi = c.voltage(ran.main(0.5))
 		ti = c.time(ran.main(10), 'us')
 		
-		self.question = f"""For an opamp having a slew rate of SR = {sr.V/srref.us} V/us, what is the minimum closed-loop voltage gain that can be used when the input signal varies by {vi.V}V in {ti.us} us?"""
+		self.question = f"""For an opamp having a slew rate of SR = {sr.V/srref.us:.4} V/us, what is the minimum closed-loop voltage gain that can be used when the input signal varies by {vi.V:.4}V in {ti.us:.4} us?"""
 		
 		acl = (
 		(sr.V / srref.s) / 
 		(vi.V / ti.s)
 		)
 		
-		self.answer = f"""{acl}"""
+		self.answer = f"""{acl:.4}"""
 		
 		
 class boylestad_10_14:
@@ -276,7 +276,7 @@ class boylestad_10_14:
 		srref = c.time(1, 'us')
 		sr = c.voltage(random.randint(1,5))
 		
-		self.question = f"""For a {vi.V} V, omega = {omega.radpers} rad/s signal as an input to an inverting opamp with R1 = {r1.kohms} kohms and RF = {rf.kohms} kohms. The opamp slew rate is SR = {sr.V} V/us."""
+		self.question = f"""For a {vi.V:.4} V, omega = {omega.radpers:.4} rad/s signal as an input to an inverting opamp with R1 = {r1.kohms:.4} kohms and RF = {rf.kohms:.4} kohms. The opamp slew rate is SR = {sr.V:.4} V/us."""
 		
 		acl = rf.ohms / r1.ohms
 		
@@ -284,7 +284,7 @@ class boylestad_10_14:
 		
 		omegaout = c.angularVelocity((sr.V * 1e6) / (vo.V))
 		
-		self.answer = f"""{omegaout.radpers} rad/s"""
+		self.answer = f"""{omegaout.radpers:.4} rad/s"""
 		
 class boylestad_10_15:
 	def __init__(self,*args,**kwargs): 
@@ -293,11 +293,11 @@ class boylestad_10_15:
 		power = c.power(ran.main(500), 'mW')
 		
 		
-		self.question = f"""Determine the current draw from a dual power supply of +/- {supply.V}V if the IC dissipates {power.mW} mW."""
+		self.question = f"""Determine the current draw from a dual power supply of +/- {supply.V:.4}V if the IC dissipates {power.mW:.4} mW."""
 		
 		current = c.current((power.W / (2 * supply.V)))
 		
-		self.answer = f"""{current.mA} mA"""
+		self.answer = f"""{current.mA:.4} mA"""
 		
 class boylestad_10_17:
 	def __init__(self,*args,**kwargs): 
@@ -308,14 +308,14 @@ class boylestad_10_17:
 		voc = c.voltage(ran.main(12), 'mV')
 		
 		
-		self.question = f"""Two input signals, both {vid.mV} mV out of phase are directly applied to the inverting and non-inverting inputs of an opamp and the resulting output signal is of magnitude {vod.V} V. Then the input signals are changed to {vic.mV} mV in phase and are still directly applied to the inverting and non-inverting inputs and the resulting output signal is of magnitude {voc.mV} mV. Calculate the CMRR in this case."""
+		self.question = f"""Two input signals, both {vid.mV:.4} mV out of phase are directly applied to the inverting and non-inverting inputs of an opamp and the resulting output signal is of magnitude {vod.V:.4} V. Then the input signals are changed to {vic.mV:.4} mV in phase and are still directly applied to the inverting and non-inverting inputs and the resulting output signal is of magnitude {voc.mV:.4} mV. Calculate the CMRR in this case."""
 		
 		ad = vod.V / vid.V
 		ac = voc.V / vic.V
 		CMRR = ad/ac
 		CMRR_log = 20*math.log(CMRR, 10)
 		
-		self.answer = f"""{CMRR} or {CMRR_log} dB"""
+		self.answer = f"""{CMRR:.4} or {CMRR_log:.4} dB"""
 		
 class boylestad_10_22:
 	def __init__(self,*args,**kwargs): 
@@ -331,13 +331,13 @@ class boylestad_10_22:
 			CMRR = ran.main(10e5)
 			
 		
-		self.question = f"""Determine the output voltage of an opmap for input voltages Vi1 = {vi1.uV} uV and Vi2 = {vi2.uV} uV. THe amplifier has a differential gain of Ad = {ad}  and the value of CMRR is {CMRR}."""
+		self.question = f"""Determine the output voltage of an opmap for input voltages Vi1 = {vi1.uV:.4} uV and Vi2 = {vi2.uV:.4} uV. THe amplifier has a differential gain of Ad = {ad:.4}  and the value of CMRR is {CMRR:.4}."""
 		
 		vd = c.voltage(vi1.V - vi2.V)
 		vc = c.voltage((vi1.V + vi2.V) / 2)
 		vo = c.voltage( ad * vd.V * ( 1 + (1/CMRR)*(vc.V / vd.V)))
 		
-		self.answer = f"""{vo.V} V"""
+		self.answer = f"""{vo.V:.4} V"""
 		
 class boylestad_11_1:
 	def __init__(self,*args,**kwargs): 
@@ -346,13 +346,13 @@ class boylestad_11_1:
 		r1 = c.resistance(ran.main(2), 'kohms')
 		rf = c.resistance(ran.main(200), 'kohms')
 		
-		self.question = f"""Determine the output voltage of an inverting opamp amplifier with a sinusoidal input of {vi.mV} mV, R1 = {r1.kohms} kohms, and RF = {rf.kohms} kohms."""
+		self.question = f"""Determine the output voltage of an inverting opamp amplifier with a sinusoidal input of {vi.mV:.4} mV, R1 = {r1.kohms:.4} kohms, and RF = {rf.kohms:.4} kohms."""
 		
 		av = - rf.ohms/r1.ohms
 		
 		vo = c.voltage(av * vi.V)
 		
-		self.answer = f"""{vo.V} V"""
+		self.answer = f"""{vo.V:.4} V"""
 		
 class boylestad_11_2:
 	def __init__(self,*args,**kwargs): 
@@ -361,12 +361,12 @@ class boylestad_11_2:
 		rf = c.resistance(ran.main(240), 'kohms')
 		r1 = c.resistance(ran.main(2.4), 'kohms')
 		
-		self.question = f"""Calculate the output voltage from the circuit for a non-inverting amplifier with a sinusoidal input of {vi.uV} uV, a feedback resistor of {rf.kohms} kohms and an input resistor of {r1.kohms} kohms."""
+		self.question = f"""Calculate the output voltage from the circuit for a non-inverting amplifier with a sinusoidal input of {vi.uV:.4} uV, a feedback resistor of {rf.kohms:.4} kohms and an input resistor of {r1.kohms:.4} kohms."""
 		
 		av = 1 + rf.ohms/r1.ohms
 		vo = c.voltage( av * vi.V)
 		
-		self.answer = f"""{vo.V} V"""
+		self.answer = f"""{vo.V:.4} V"""
 		
 class boylestad_11_3:
 	def __init__(self,*args,**kwargs): 
@@ -385,7 +385,7 @@ class boylestad_11_3:
 			r2 = c.resistance(ran.main(15), 'kohms')
 			r3 = c.resistance(ran.main(10), 'kohms')
 
-		self.question = f"""A multiple-stage operational amplifier circuit has a non-inverting amplifier as a first stage, and the next two amplifiers as inverting types. An input signal of {vi.uV} uV is applied. All the stages use a feedback resistor of RF = {rf.kohms} kohms, R1st = {r1.kohms}, R2nd = {r2.kohms}, R3rd = {r3.kohms} kohms. Calculate the output voltage."""
+		self.question = f"""A multiple-stage operational amplifier circuit has a non-inverting amplifier as a first stage, and the next two amplifiers as inverting types. An input signal of {vi.uV:.4} uV is applied. All the stages use a feedback resistor of RF = {rf.kohms:.4} kohms, R1st = {r1.kohms:.4}, R2nd = {r2.kohms:.4}, R3rd = {r3.kohms:.4} kohms. Calculate the output voltage."""
 		
 		a1 = 1 + rf.ohms/r1.ohms
 		a2 = - rf.ohms/r2.ohms
@@ -393,7 +393,7 @@ class boylestad_11_3:
 		
 		vo = c.voltage( a1 * a2 * a3 * vi.V)
 		
-		self.answer = f"""{vo.V} V"""
+		self.answer = f"""{vo.V:.4} V"""
 		
 		
 class boylestad_11_6:
@@ -407,14 +407,14 @@ class boylestad_11_6:
 		omega1 = c.angularVelocity(ran.main(3000, 'int'), 'radpers')
 		omega2 = c.angularVelocity(ran.main(1000, 'int'), 'radpers')
 		
-		self.question = f"""Calculate the output voltage of a operational amplifier summing circuit with a {rf.kohms} kohms feedback resistor, R1 = {r1.kohms} kohms and R2 = {r2.kohms} kohms. The inputs are V1 = {vi1.mV} mV sin ({omega1.radpers}t) and V2 = {vi2.mV} mV sin ({omega2.radpers}t )."""
+		self.question = f"""Calculate the output voltage of a operational amplifier summing circuit with a {rf.kohms:.4} kohms feedback resistor, R1 = {r1.kohms:.4} kohms and R2 = {r2.kohms:.4} kohms. The inputs are V1 = {vi1.mV:.4} mV sin ({omega1.radpers:.4}t) and V2 = {vi2.mV:.4} mV sin ({omega2.radpers:.4}t )."""
 		
 		av1 =  rf.ohms/r1.ohms
 		av2 =  rf.ohms/r2.ohms
 		vo1 = c.voltage(vi1.V * av1)
 		vo2 = c.voltage(vi2.V * av2)
 		
-		self.answer = f""" - [{vo1.V} sin ({omega1.radpers} t) + {vo2.V} sin ({omega2.radpers} t)] """
+		self.answer = f""" - [{vo1.V:.4} sin ({omega1.radpers:.4} t) + {vo2.V:.4} sin ({omega2.radpers:.4} t)] """
 		
 
 class boylestad_11_7:
@@ -427,13 +427,13 @@ class boylestad_11_7:
 		vi1 = c.voltage(ran.main(10), 'mV')
 		vi2 = c.voltage(ran.main(5), 'mV')
 		
-		self.question = f"""Determine the output voltage for the circuit with components RF = {rf.kohms} kohms, R1 = {r1.kohms} kohms, R2 = {r2.kohms} kohms and R3 = {r3.kohms} kohms. The input voltages are V1 =  {vi1.mV} mV sine wave and V2 = {vi2.mV} mV sine wave.https://lesliecaminadecom.files.wordpress.com/2019/06/3d9hy67csq0037yl2x55.png"""
+		self.question = f"""Determine the output voltage for the circuit with components RF = {rf.kohms:.4} kohms, R1 = {r1.kohms:.4} kohms, R2 = {r2.kohms:.4} kohms and R3 = {r3.kohms:.4} kohms. The input voltages are V1 =  {vi1.mV:.4} mV sine wave and V2 = {vi2.mV:.4} mV sine wave.https://lesliecaminadecom.files.wordpress.com/2019/06/3d9hy67csq0037yl2x55.png"""
 		
 		vo = c.voltage(
 		- (rf.ohms/r2.ohms)*vi2.V + ((rf.ohms**2)/(r3.ohms*r1.ohms))*vi1.V
 		)
 		
-		self.answer = f"""{vo.mV} mV"""
+		self.answer = f"""{vo.mV:.4} mV"""
 		
 class boylestad_11_8:
 	def __init__(self,*args,**kwargs): 
@@ -445,7 +445,7 @@ class boylestad_11_8:
 		vi1 = c.voltage(ran.main(5), 'mV')
 		vi2 = c.voltage(ran.main(10), 'mV')
 		
-		self.question = f"""Determine the output voltage for the circuit where R1 = {r1.kohms} kohms, R2 = {r2.kohms} kohms, R3 = {r3.kohms} kohms, R4 = {r4.kohms} kohms. V1 = {vi1.mV} mV and V2 = {vi2.mV} mV
+		self.question = f"""Determine the output voltage for the circuit where R1 = {r1.kohms:.4} kohms, R2 = {r2.kohms:.4} kohms, R3 = {r3.kohms:.4} kohms, R4 = {r4.kohms:.4} kohms. V1 = {vi1.mV:.4} mV and V2 = {vi2.mV:.4} mV
 		https://lesliecaminadecom.files.wordpress.com/2019/06/udquqc14msx6k2n885w2.png"""
 		
 		vo = c.voltage(
@@ -453,7 +453,7 @@ class boylestad_11_8:
 		(r1.ohms/r2.ohms)*vi2.V
 		)
 		
-		self.answer = f"""{vo.mV} mV"""
+		self.answer = f"""{vo.mV:.4} mV"""
 		
 		
 class boylestad_11_10:
@@ -465,20 +465,20 @@ class boylestad_11_10:
 			rl = c.resistance(ran.main(4), 'kohms')
 			rc = c.resistance(ran.main(2), 'kohms')
 			
-			self.question = f"""Calculate IL for the circuit if V1 = {v1.V} V, R1 = {r1.kohms} kohms, RC = {rc.kohms} kohms, and RL = {rl.kohms} kohms. https://lesliecaminadecom.files.wordpress.com/2019/06/22o4e3vhc0kbvj5ir1v8.png"""
+			self.question = f"""Calculate IL for the circuit if V1 = {v1.V:.4} V, R1 = {r1.kohms:.4} kohms, RC = {rc.kohms:.4} kohms, and RL = {rl.kohms:.4} kohms. https://lesliecaminadecom.files.wordpress.com/2019/06/22o4e3vhc0kbvj5ir1v8.png"""
 			
 			il = c.current(v1.V / r1.ohms)
 			
-			self.answer = f"""Load current IL = {il.mA} mA"""
+			self.answer = f"""Load current IL = {il.mA:.4} mA"""
 		if temp == 1:
 			ii = c.current(ran.main(10), 'mA')
 			r1 = c.resistance(ran.main(2), 'kohms')
 			
-			self.question = f"""Calculate Vo for the circuit if Ii = {ii.mA} mA and R1 = {r1.kohms} kohms.https://lesliecaminadecom.files.wordpress.com/2019/06/lrdxv9z3wg4hmhmby2sa.png"""
+			self.question = f"""Calculate Vo for the circuit if Ii = {ii.mA:.4} mA and R1 = {r1.kohms:.4} kohms.https://lesliecaminadecom.files.wordpress.com/2019/06/lrdxv9z3wg4hmhmby2sa.png"""
 			
 			vo = c.voltage( - ii.A * r1.ohms)
 			
-			self.answer = f"""{vo.V} V"""
+			self.answer = f"""{vo.V:.4} V"""
 			
 class boylestad_11_11:
 	def __init__(self,*args,**kwargs): 
@@ -488,11 +488,11 @@ class boylestad_11_11:
 		vi1 = c.voltage(ran.main(10), 'mV')
 		vi2 = c.voltage(ran.main(5), 'mV')
 		
-		self.question = f"""Calculate the output voltage for the instrumentation amplifier where R = {rmain.kohms} kohms and Rp = {rp.ohms} ohms. The input voltages are V1 = {vi1.mV} mV while V2 = {vi2.mV} mV.https://lesliecaminadecom.files.wordpress.com/2019/06/yg773cdlps895pl4tb89.png"""
+		self.question = f"""Calculate the output voltage for the instrumentation amplifier where R = {rmain.kohms:.4} kohms and Rp = {rp.ohms:.4} ohms. The input voltages are V1 = {vi1.mV:.4} mV while V2 = {vi2.mV:.4} mV.https://lesliecaminadecom.files.wordpress.com/2019/06/yg773cdlps895pl4tb89.png"""
 		
 		vo = c.voltage((1 + (2*rmain.ohms/rp.ohms)) * (vi1.V - vi2.V))
 		
-		self.answer = f"""{vo.mV} mV"""
+		self.answer = f"""{vo.mV:.4} mV"""
 		
 class boylestad_11_12:
 	def __init__(self,*args,**kwargs): 
@@ -500,11 +500,11 @@ class boylestad_11_12:
 		r1 = c.resistance(ran.main(1.2), 'kohms')
 		c1 = c.capacitance(ran.main(0.02), 'uF')
 		
-		self.question = f"""Calculate the cutoff frequency of a first-order low-pass filter for R1 = {r1.kohms} kohms, and C1 = {c1.uF} uF."""
+		self.question = f"""Calculate the cutoff frequency of a first-order low-pass filter for R1 = {r1.kohms:.4} kohms, and C1 = {c1.uF:.4} uF."""
 		
 		fc = c.frequency(1 / (2*math.pi*r1.ohms*c1.F))
 		
-		self.answer = f"""Cutoff frequency = {fc.kHz} kHz"""
+		self.answer = f"""Cutoff frequency = {fc.kHz:.4} kHz"""
 		
 class boylestad_11_13:
 	def __init__(self,*args,**kwargs): 
@@ -515,11 +515,11 @@ class boylestad_11_13:
 		rf = c.resistance(ran.main(50), 'kohms')
 		
 		
-		self.question = f"""Calculate the cutoff frequency of a second-order high-pass filter for R1 = R2 = {r1.kohms} kohms and C1 = C2 = {c1.uF} uF, RG = {rg.kohms} kohms, and RF = {rf.kohms} kohms.https://lesliecaminadecom.files.wordpress.com/2019/06/qtpcae4eyx2ire4q7zk3.png"""
+		self.question = f"""Calculate the cutoff frequency of a second-order high-pass filter for R1 = R2 = {r1.kohms:.4} kohms and C1 = C2 = {c1.uF:.4} uF, RG = {rg.kohms:.4} kohms, and RF = {rf.kohms:.4} kohms.https://lesliecaminadecom.files.wordpress.com/2019/06/qtpcae4eyx2ire4q7zk3.png"""
 		
 		fc = c.frequency(1 / (2*math.pi*r1.ohms*c1.F))
 		
-		self.answer = f"""{fc.kHz} kHz"""
+		self.answer = f"""{fc.kHz:.4} kHz"""
 		
 class boylestad_11_14:
 	def __init__(self,*args,**kwargs): 
@@ -529,12 +529,12 @@ class boylestad_11_14:
 		c2 = c.capacitance(ran.main(2), 'nF')
 		
 		
-		self.question = f"""Calculate the cutoff frequencies of the bandpass filter circuit with R1 = R2 = {r1.kohms} kohms, C1 = {c1.uF} uF, and C2 = {c2.uF} uF.https://lesliecaminadecom.files.wordpress.com/2019/06/7w08dlp8p1jq0rqw7t5o.png"""
+		self.question = f"""Calculate the cutoff frequencies of the bandpass filter circuit with R1 = R2 = {r1.kohms:.4} kohms, C1 = {c1.uF:.4} uF, and C2 = {c2.uF:.4} uF.https://lesliecaminadecom.files.wordpress.com/2019/06/7w08dlp8p1jq0rqw7t5o.png"""
 		
 		fcl = c.frequency(1 / (2*math.pi*r1.ohms*c1.F))
 		fch = c.frequency(1 / (2*math.pi*r1.ohms*c2.F))
 		
-		self.answer = f"""{fcl.Hz} Hz, {fch.kHz} kHz"""
+		self.answer = f"""{fcl.Hz:.4} Hz, {fch.kHz:.4} kHz"""
 		
 
 		

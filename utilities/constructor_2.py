@@ -1,6 +1,6 @@
-base_string = 'gibilisco_23_'
+base_string = 'boylestad_11_'
 start = 1
-end = 20
+end = 14
 
 
 output = ''
