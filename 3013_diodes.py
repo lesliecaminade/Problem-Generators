@@ -56,7 +56,10 @@ source.boylestad_2_13(),
 source.boylestad_2_14(),
 source.boylestad_2_15(),
 source.boylestad_2_16(),
-source.boylestad_2_17(),
+source.boylestad_2_17()
+]
+
+concept_list = [
 source_2.gibilisco_19_1(),
 source_2.gibilisco_19_2(),
 source_2.gibilisco_19_3(),
@@ -110,18 +113,18 @@ source_2.gibilisco_21_16(),
 source_2.gibilisco_21_17(),
 source_2.gibilisco_21_18(),
 source_2.gibilisco_21_19(),
-source_2.gibilisco_21_20(),
+source_2.gibilisco_21_20()
 ]
 
 if not TESTMODE:
 	random.shuffle(question_list)
-
+	random.shuffle(concept_list)
 
 file = open(f"{folderpath}/outputs/{file_name}_output_{str(random.randint(1000, 9999))}.txt", 'w+')
 
-for i in range (len(question_list)):
+for i in range (min(len(question_list), len(concept_list))):
 	print('-----------------------------------------------------------------------')
-	item = question_list[i]
+	item = random.choice([question_list[i], concept_list[i]])
 	print_tasks(item)
 	write_to_file(item)
 
