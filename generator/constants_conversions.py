@@ -138,6 +138,9 @@ RESISTIVITY_CARBON = 3.5E-5
 
 
 FLOAT_ROUND = 8
+E6 = [10, 15, 22, 33, 47, 68]
+E12 = [10, 11, 12, 13, 15, 16, 18, 20, 22, 24, 27, 30, 33, 36, 39,43,47,51, 56, 62,68,75,82,91]
+
 
 def eng_string( x, format='%s', si=False):
     '''
@@ -335,14 +338,25 @@ class conductance:
 class capacitance:
 	def __init__(self,*args,**kwargs): 
 		self.F = float(args[0])
+		#print('capacitance: ', self.F)
 		
 		for arg in args:
+			#print('looking _for arguments...')
 			if arg == 'uF':
 				self.F = float(args[0]) / 1e6
 			if arg == 'nF':
 				self.F = float(args[0]) / 1e9
 			if arg == 'pF':
 				self.F = float(args[0]) / 1e12
+			if arg == 'e12':
+				#print('e12 detected')
+				digits = float(random.choice(E12))
+				for i in range(-22, 22):
+					if 10**i <= float(args[0]) < 10**(i+1):
+						self.F = digits * 10**i
+						# print('reducing')
+						# print('digits: ', digits)
+						# print('self.F ', self.F)
 				
 		self.uF = self.F * 1e6
 		self.nF = self.F * 1e9
@@ -554,11 +568,23 @@ class inductance:
 				self.H = float(args[0]) / 1e9
 			if arg == 'pH':
 				self.H = float(args[0]) / 1e12
+
+			if arg == 'e12':
+				digits = float(random.choice(E12))
+				for i in range(-22, 22):
+					if 10**i <= float(args[0]) < 10**(i+1):
+						self.H = digits * 10**i
 		
 		self.mH = self.H * 1000
 		self.uH = self.H * 1e6
 		self.nH = self.H * 1e9
 		self.pH = self.H * 1e12
+
+	def series(self, object):
+		return inductance(self.H + object.H)
+
+	def parallel(self, object):
+		return inductance( (self.H * object.H) / ( self.H + object.H))
 		
 			
 class length:
@@ -816,7 +842,7 @@ class resistance:
 	def __init__(self, *args, **kwargs):
 		
 		self.ohm = float(args[0])
-		self.E12 = [10, 11, 12, 13, 15, 16, 18, 20, 22, 24, 27, 30, 33, 36, 39,43,47,51, 56, 62,68,75,82,91]
+		#self.E12 = [10, 11, 12, 13, 15, 16, 18, 20, 22, 24, 27, 30, 33, 36, 39,43,47,51, 56, 62,68,75,82,91]
 
 		for arg in args:
 			if arg == 'mohm' or arg == 'mohms':
@@ -826,25 +852,11 @@ class resistance:
 			if arg == 'Mohm' or arg == 'Mohms':
 				self.ohm = float(args[0]) * 1e6
 
-
 			if arg == 'e12':
-				digits = float(random.choice(self.E12))
-				if 0 < float(args[0]) < 10:
-					self.ohm = digits / 10
-				elif 10 <= float(args[0]) < 100:
-					self.ohm = digits
-				elif 100 <= float(args[0]) < 1000:
-					self.ohm = digits * 10
-				elif 1000 <= float(args[0]) < 10_000:
-					self.ohm = digits * 100
-				elif 10_000 <= float(args[0]) < 100_000:
-					self.ohm = digits * 1000
-				elif 100_000 <= float(args[0]) < 1_000_000:
-					self.ohm = float(args[0]) * 10_000
-				elif 1_000_000 <= float(args[0]) < 10_000_000:
-					self.ohm = float(args[0]) * 100_000
-				elif 10_000_000 <= float(args[0]) < 100_000_000:
-					self.ohm = float(args[0]) * 1_000_000
+				digits = float(random.choice(E12))
+				for i in range(-22, 22):
+					if 10**i <= float(args[0]) < 10**(i+1):
+						self.ohm = digits * 10**i
 
 		self.ohms = self.ohm
 		self.Gohm = self.ohm * 1E-9
@@ -870,6 +882,8 @@ class resistance:
 		result = (self.ohms + resistance_object.ohms)
 
 		return resistance(result)
+
+		
 
 class resistor:
 	def __init__(self, band = 4, **kwargs):

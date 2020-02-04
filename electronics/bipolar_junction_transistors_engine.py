@@ -635,7 +635,7 @@ class boylestad_4_16:
 			(beta + 1) * ib.A
 			)
 			
-			if ie.A < (-vee.V / re.ohms):
+			if ie.A < abs(-vee.V / re.ohms):
 				regen = 0
 		
 		
@@ -890,8 +890,8 @@ class boylestad_4_31:
 			vcc = c.voltage(ran.main(-18))
 			r1 =  c.resistance(ran.main(47_000 ))
 			r2 =  c.resistance(ran.main(10_000 ))
-			rc =  c.resistance(ran.main(2400 ))
-			re =  c.resistance(ran.main(1100 ))
+			rc =  c.resistance(ran.main(2400))
+			re =  c.resistance(ran.main(1100))
 			beta = ran.main(120)
 			
 			self.question = f"""Determine VCE for the voltage divider bias configuration when VCC = {round(vcc.V,2)} V, R1(top) = {round(r1.kohms,2)} kohms, R2(bottom) = {round(r2.kohms,2)} kohms, RC = {round(rc.kohms,2)} kohms, RE = {round(re.kohms,2)} kohms, and beta = {round(beta,2)}. Use approximate analysis.

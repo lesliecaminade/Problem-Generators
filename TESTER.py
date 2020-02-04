@@ -1,7 +1,10 @@
-from electronics import bipolar_junction_transistors_engine as engine
+from mathsub import differential_equation_engine as engine
 
 def main():
-	object = engine.boylestad_5_9()
+	object = engine.DE_2()
+
+	#for objects that are non-questions
+	#object.init_random()
 
 	print(object.question)
 	print()
@@ -12,3 +15,5 @@ def main():
 
 for i in range(10):
 	main()
+
+

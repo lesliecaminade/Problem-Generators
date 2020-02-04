@@ -1,6 +1,6 @@
-base_string = 'boylestad_11_'
+base_string = 'ece_radio_receivers_section_1_'
 start = 1
-end = 14
+end = 50
 
 
 output = ''

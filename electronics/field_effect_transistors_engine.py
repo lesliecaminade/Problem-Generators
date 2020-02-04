@@ -10,7 +10,9 @@ class boylestad_7_1:
 	def __init__(self,**kwargs): 
 		print('preparing 7_1')
 		regen = True
-		while regen:
+		counter = 100
+		while regen and (not counter < 0 ):
+			counter = counter - 1
 
 			vdd = c.voltage(ran.main(16))
 			rd = c.resistance(ran.main(2000))
@@ -84,7 +86,8 @@ class boylestad_7_2:
 			idss.A * ( 1 - ((- x * rs.ohms)/(vgsoff.V)) )**2
 			)
 			idsat = c.current(vdd.V / (rd.ohms + rs.ohms))
-			idset = sym.solveset(equation, x)
+			idset = sym.solveset(equation, x, domain = sym.S.Reals)
+			print(idset)
 			idlist = list(idset)
 			vgslist = []
 			vdslist = []

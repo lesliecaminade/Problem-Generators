@@ -16,11 +16,16 @@ def main(input_value, *args,**kwargs):
         if key == 'sigma':
             sigma = value
 
-
-    if positive_flag:
-        return abs(round(random.gauss(input_value, sigma),2))
+    if input_value > 1e-9:
+        if positive_flag:
+            return abs(round(random.gauss(input_value, sigma),4))
+        else:
+            return -abs(round(random.gauss(input_value, sigma),4))
     else:
-        return -abs(round(random.gauss(input_value, sigma),2))
+        if positive_flag:
+            return abs(random.gauss(input_value, sigma))
+        else:
+            return - abs(random.gauss(input_value, sigma))
     
 def dates(year): 
     date_1 = datetime.date(year, random.randint(1,12), random.randint(1,28))
