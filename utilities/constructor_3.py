@@ -1,9 +1,15 @@
 
 start = 1
-end = 23
+end = 29
+mode = 'normal'
 
-template = 'source2.engineering_electronic_devices_thyristors_'
+template = 'source3.electronic_devices_semiconductors_'
 suffix = '(),'
 
 for i in range(start, end + 1):
-	print(f"""{template}{i}{suffix}""")
+	if mode == 'normal':
+
+		print(f"""{template}{i}{suffix}""")
+	if mode == 'combination':
+
+		print(f"""{template}{2*i - 1}_{2*i}{suffix}""")

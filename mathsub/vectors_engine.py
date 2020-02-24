@@ -320,12 +320,23 @@ class Curl_of_a_vector():
         self.curl = self.vector.curl()
         
         
-# class point_conversion:
-    # def __init__(self, *args):
-        # typeFrom = random.randint(1,3)
-        # typeList = ('','cartesian','cylindrical','spherical')
-        # point1 = analytic_geometry.pointInstance(type = typeList[typeFrom], dimensions = 3)
-        # typeTo = random.randint(1,3)
+class Point_Conversion():
+    def __init__(self):
+        point = analytic_geometry_engine.Point_3_Dimensions()
+        point.init_random()
+
+        from_types = ['rectangular', 'cylindrical', 'spherical']
+        to_types = ['rectangular', 'cylindrical', 'spherical']
+        again = True
+        while again:
+            from_type = random.choice(from_types)
+            to_type = random.choice(to_types)
+
+            if not(to_type == from_type):
+                again = False
+
+        self.question = f"""Convert the point {point.types[from_type]} which is in {from_type} coordinates into its equivalent in {to_type} coordinates"""
+        self.answer = f"""{point.types[to_type]}"""
         
         
         

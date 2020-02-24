@@ -1,19 +1,12 @@
 input_list = [
-'jma_1_95',
-'jma_1_98',
-'jma_1_99_a',
-'jma_1_99_b',
-'jma_1_100',
-'jma_1_102_a',
-'jma_1_102_b',
-'jma_1_104',
-'jma_1_105',
-'jma_1_108',
-'jma_1_109_a',
-'jma_1_109_b',
-'jma_1_110',
-'jma_1_112',
-'jma_1_113'
+'jma_14_1',
+'jma_14_2',
+'jma_14_3',
+'jma_14_4',
+'jma_14_5',
+'jma_14_6',
+'jma_14_7',
+'jma_14_8',
 ]
 
 def construct(battery_string):

@@ -1,7 +1,7 @@
-from mathsub import differential_equation_engine as engine
+from est import digital_communications_engine as engine
 
 def main():
-	object = engine.DE_2()
+	object = engine.jma_15_9()
 
 	#for objects that are non-questions
 	#object.init_random()

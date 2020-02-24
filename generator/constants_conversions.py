@@ -320,6 +320,21 @@ class bitrate:
 		self.kbps = self.bps / 1000
 		self.Mbps = self.bps / 1e6
 		self.Gbps = self.bps / 1e9
+
+class baudrate:
+	def __init__(self, *args, **kwargs):
+		self.baud = float(args[0])
+		for arg in args:
+			if arg == 'kbaud':
+				self.baud = float(args[0]) * 1000
+			if arg == 'Mbaud':
+				self.baud = float(args[0]) * 1e6
+			if arg == 'Gbaud':
+				self.baud = float(args[0]) * 1e9
+				
+		self.kbaud = self.baud / 1000
+		self.Mbaud = self.baud / 1e6
+		self.Gbaud = self.baud / 1e9
 					
 class conductance:
 	def __init__(self,*args,**kwargs): 

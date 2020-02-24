@@ -4,6 +4,12 @@ from mathsub import vectors as source
 print('Generating...')
 file_name = 'vectors'
 
+import os
+print(__file__)
+print(os.path.realpath(__file__))
+print(os.path.dirname(os.path.realpath(__file__)))
+folderpath = os.path.dirname(os.path.realpath(__file__))
+
 def write_to_file(some_object):   
     if FILEMODE: 
         file.write(some_object.question)
@@ -11,17 +17,18 @@ def write_to_file(some_object):
         file.write(some_object.answer)
         file.write('\n\n')
 
-def print_taks(some_object):
+def print_tasks(some_object):
     print(some_object.question)
     print()
     print(some_object.answer)
     print()
     print()
 
-TESTMODE = True
 FILEMODE = True
+TESTMODE = False
+CONCEPTS = False
 
-questionList = [
+question_list = [
 source.Vector_add_Vector_add_Vector(),
 source.Dot_product(),
 source.Unit_vector_parallel_to_a_vector(),
@@ -38,50 +45,32 @@ source.Volume_of_parallelipiped(),
 source.Vector_triple_product(),
 source.Gradient_of_a_scalar(),
 source.Divergence_of_a_vector(),
-source.Curl_of_a_vector()
+source.Curl_of_a_vector(),
+source.Point_Conversion()
 ]
 
-tryagain = True
-while tryagain:
-    try:
-        additional_questionlist = [
-        #insert hard to generate questions here
-        ]
-        tryagain = False
-    except:
-        pass
 
+concept_list = []
 
-
-questionList = questionList + additional_questionlist
-
-
-
-#populate a set of all the items
-total_items_list = []
-for i in range(len(questionList)):
-    total_items_list.append(i)
-    
-    
-#choose a smaller subset from these questions
 if not TESTMODE:
-    items_list = random.sample(total_items_list, round(1 * len(questionList)))
-else:
-    items_list = total_items_list
+    random.shuffle(question_list)
+    random.shuffle(concept_list)
 
-print(items_list)
-file = open(f"{file_name}_output_{str(random.randint(1000, 9999))}.txt", 'w+')
-for i in range (len(items_list)):
-    print('-----------------------------------------------------------------------')
-    item = questionList[items_list[i]]
-    print_taks(item)
-    write_to_file(item)
+file = open(f"{folderpath}/outputs/{file_name}_output_{str(random.randint(1000, 9999))}.txt", 'w+')
+
+if CONCEPTS:
+    for i in range (min(len(question_list), len(concept_list))):
+        print('-----------------------------------------------------------------------')
+        item = random.choice([question_list[i], concept_list[i]])
+        print_tasks(item)
+        write_to_file(item)
+else:
+    for i in range (len(question_list)):
+        print('-----------------------------------------------------------------------')
+        item = question_list[i]
+        print_tasks(item)
+        write_to_file(item)
 
 print()
 file.close()
 print('Finished.')
-stay = True
-while stay:
-    command = input()
-    if command == 'exit':
-        stay = False

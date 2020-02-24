@@ -25,40 +25,26 @@ FILEMODE = True
 file_name = 'analytic_geometry'
 
 questionList = [
-
+#insert hard to generate questions here
+source.Distance_between_two_points(),
+#source.Quadrant_identification()
+source.Midpoint(),
+source.Extension_of_line_segment(),
+source.Extension_of_line_segment_by(),
+source.Division_of_line_segment(),
+source.Equation_of_a_line_two_points(),
+source.Equation_of_a_line_point_slope(),
+source.Equation_of_a_line_slope_intercept(),
+source.Equation_of_a_line_intercepts(),
+source.Line_parallel_to_line(),
+source.Line_perpendicular_to_line(),
+source.Angle_between_the_lines(),
+source.Distance_from_point_to_line(),
+source.Distance_from_line_to_line(),
+source.Area_of_three_points()
 ]
 
-
-
-tryagain = True
-while tryagain:
-    try:
-        additional_questionlist = [
-        #insert hard to generate questions here
-        source.Distance_between_two_points(),
-        #source.Quadrant_identification()
-        source.Midpoint(),
-        source.Extension_of_line_segment(),
-        source.Extension_of_line_segment_by(),
-        source.Division_of_line_segment(),
-        source.Equation_of_a_line_two_points(),
-        source.Equation_of_a_line_point_slope(),
-        source.Equation_of_a_line_slope_intercept(),
-        source.Equation_of_a_line_intercepts(),
-        source.Line_parallel_to_line(),
-        source.Line_perpendicular_to_line(),
-        source.Angle_between_the_lines(),
-        source.Distance_from_point_to_line(),
-        source.Distance_from_line_to_line(),
-        source.Area_of_three_points()
-        ]
-        tryagain = False
-    except:
-        pass
-
-
-
-questionList = questionList + additional_questionlist
+questionList = questionList
 
 
 

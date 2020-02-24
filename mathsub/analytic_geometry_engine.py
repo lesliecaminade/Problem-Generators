@@ -8,6 +8,8 @@ x, y, z, t = sympy.symbols('x y z t', real = True)#generic variables
 
 X_RANGE = 10
 Y_RANGE = 10
+Z_RANGE = 10
+
 EXTEND_FACTOR_MIN = 2
 EXTEND_FACTOR_MAX = 5
 
@@ -161,9 +163,62 @@ class Point():
 		point.init_define(x_coordinate, y_coordinate)
 		return point
 
+	def to_polar(self):
+		return Point_Polar(math.sqrt(self.x**2 + self.y**2), math.atan2(point.y, point.x))
 
 ORIGIN = Point()
 ORIGIN.init_define(0, 0)
+
+class Point_Polar():
+	def __init__(self):
+		pass
+
+	def init_define(self, r, theta):
+		self.r = r
+		self.theta = constants_conversions.angle(theta, 'radians')
+
+	def to_rectangular(self):
+		return Point(self.r * math.cos(self.theta.radians), self.r * math.sin(self.theta.radians))
+
+class Point_3_Dimensions():
+	def __init__(self):
+		pass
+
+	def init_define(self, x, y, z):
+		self.x = float(x)
+		self.y = float(y)
+		self.z = float(z)
+		self.rectangular = f"""({self.x:.4}, {self.y:.4}, {self.z:.4})"""
+
+		self.rho = math.sqrt(self.x**2 + self.y**2)
+		self.phi = constants_conversions.angle(math.atan2(self.y, self.x), 'radians')
+		self.cylindrical = f"""({self.rho:.4}, {self.phi.radians:.4}, {self.z:.4})"""
+
+		self.r = math.sqrt(self.x**2 + self.y**2 + self.z**2)
+		self.theta = constants_conversions.angle(math.atan2(self.z, self.r), 'radians')
+		self.spherical = f"""({self.r:.4}, {self.theta.radians:.4}, {self.phi.radians:.4})"""
+
+		self.types = {'rectangular':self.rectangular, 'cylindrical':self.cylindrical, 'spherical':self.spherical, 'cartesian':self.rectangular}
+
+	def init_random(self):
+		self.x = float(random.randint(-X_RANGE, X_RANGE))
+		self.y = float(random.randint(-Y_RANGE, Y_RANGE))
+		self.z = float(random.randint(-Z_RANGE, Z_RANGE))
+		self.rectangular = f"""({self.x:.4}, {self.y:.4}, {self.z:.4})"""
+
+		self.rho = math.sqrt(self.x**2 + self.y**2)
+		self.phi = constants_conversions.angle(math.atan2(self.y, self.x), 'radians')
+		self.cylindrical = f"""({self.rho:.4}, {self.phi.radians:.4}, {self.z:.4})"""
+
+		self.r = math.sqrt(self.x**2 + self.y**2 + self.z**2)
+		self.theta = constants_conversions.angle(math.atan2(self.z, self.r), 'radians')
+		self.spherical = f"""({self.r:.4}, {self.theta.radians:.4}, {self.phi.radians:.4})"""
+
+		self.types = {'rectangular':self.rectangular, 'cylindrical':self.cylindrical, 'spherical':self.spherical, 'cartesian':self.rectangular}
+
+
+
+
 
 class Line():
 	def __init__(self):
@@ -895,10 +950,13 @@ class Division_of_line_segment():
 	def __init__(self):
 		point_1 = Point()
 		point_2 = Point()
+
 		point_1.init_random()
 		point_2.init_random()
+		
 		factor = random.randint(1,99)/100
 		terminal_point = point_1.extend(point_2, factor)
+		
 		self.point_1 = point_1
 		self.point_2 = point_2
 		self.factor = factor

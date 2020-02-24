@@ -28,7 +28,8 @@ class Distance_between_two_points():
 			BATTERIES.append(battery)
 			CHOICES.append(prefix + str(data) + suffix) 
 		main = BATTERIES[0]
-		CHOICES[0] = str(CHOICES[0]) + {ANSWER_FLAG}
+		print(CHOICES[0], '-choices[0]')
+		CHOICES[0] = str(CHOICES[0]) + ANSWER_FLAG
 		random.shuffle(CHOICES)
 		#edit below
 		self.question = f"""{ask()} the distance between the two points {main.point_1.string} and {main.point_2.string}"""
@@ -53,7 +54,7 @@ class Quadrant_identification():
 			BATTERIES.append(battery)
 			CHOICES.append(prefix + str(data) + suffix) 
 		main = BATTERIES[0]
-		CHOICES[0] = str(CHOICES[0]) + {ANSWER_FLAG}
+		CHOICES[0] = str(CHOICES[0]) + ANSWER_FLAG
 		random.shuffle(CHOICES)
 		#edit below
 		self.question = f"""{ask()} the quadrant in which the point {main.point_1.string} belongs."""
@@ -77,7 +78,7 @@ class Midpoint():
 			BATTERIES.append(battery)
 			CHOICES.append(prefix + str(data) + suffix) 
 		main = BATTERIES[0]
-		CHOICES[0] = str(CHOICES[0]) + {ANSWER_FLAG}
+		CHOICES[0] = str(CHOICES[0]) + ANSWER_FLAG
 		random.shuffle(CHOICES)
 		#edit below
 		self.question = f"""{ask()} the midpoint of the points {main.point_1.string} and {main.point_2.string}"""
@@ -101,7 +102,7 @@ class Extension_of_line_segment():
 			BATTERIES.append(battery)
 			CHOICES.append(prefix + str(data) + suffix) 
 		main = BATTERIES[0]
-		CHOICES[0] = str(CHOICES[0]) + {ANSWER_FLAG}
+		CHOICES[0] = str(CHOICES[0]) + ANSWER_FLAG
 		random.shuffle(CHOICES)
 		#edit below
 		self.question = f"""{ask()} the terminal point of the line segment formed by extending the line segment from point {main.point_1.string} to {main.point_2.string} to {num2words(main.factor)} times its original length."""
@@ -125,7 +126,7 @@ class Extension_of_line_segment_by():
 			BATTERIES.append(battery)
 			CHOICES.append(prefix + str(data) + suffix) 
 		main = BATTERIES[0]
-		CHOICES[0] = str(CHOICES[0]) + {ANSWER_FLAG}
+		CHOICES[0] = str(CHOICES[0]) + ANSWER_FLAG
 		random.shuffle(CHOICES)
 		#edit below
 		self.question = f"""{ask()} the terminal point of the line segment formed by extending the line segment from point {main.point_1.string} to {main.point_2.string} by {num2words(main.factor-1)} times its original length."""
@@ -149,7 +150,7 @@ class Division_of_line_segment():
 			BATTERIES.append(battery)
 			CHOICES.append(prefix + str(data) + suffix) 
 		main = BATTERIES[0]
-		CHOICES[0] = str(CHOICES[0]) + {ANSWER_FLAG}
+		CHOICES[0] = str(CHOICES[0]) + ANSWER_FLAG
 		random.shuffle(CHOICES)
 		#edit below
 		self.question = f"""{ask()} the terminal point of the line segment formed by dividing the line segment from point {main.point_1.string} to {main.point_2.string} to {main.factor} times its original length."""
@@ -173,7 +174,7 @@ class Equation_of_a_line_two_points():
 			BATTERIES.append(battery)
 			CHOICES.append(prefix + str(data) + suffix) 
 		main = BATTERIES[0]
-		CHOICES[0] = str(CHOICES[0]) + {ANSWER_FLAG}
+		CHOICES[0] = str(CHOICES[0]) + ANSWER_FLAG
 		random.shuffle(CHOICES)
 		#edit below
 		self.question = f"""{ask()} the equation of the line which intersects with the points {main.point_1.string} and {main.point_2.string}."""
@@ -197,7 +198,7 @@ class Equation_of_a_line_point_slope():
 			BATTERIES.append(battery)
 			CHOICES.append(prefix + str(data) + suffix) 
 		main = BATTERIES[0]
-		CHOICES[0] = str(CHOICES[0]) + {ANSWER_FLAG}
+		CHOICES[0] = str(CHOICES[0]) + ANSWER_FLAG
 		random.shuffle(CHOICES)
 		#edit below
 		self.question = f"""{ask()} the equation of the line that intersects the point {main.point.string} and has a slope of {main.slope}."""
@@ -220,7 +221,7 @@ class Equation_of_a_line_slope_intercept():
 			BATTERIES.append(battery)
 			CHOICES.append(prefix + str(data) + suffix) 
 		main = BATTERIES[0]
-		CHOICES[0] = str(CHOICES[0]) + {ANSWER_FLAG}
+		CHOICES[0] = str(CHOICES[0]) + ANSWER_FLAG
 		random.shuffle(CHOICES)
 		#edit below
 		self.question = f"""{ask()} the equation of the line which has a slope of {main.slope} and a y-intercept of {main.y_intercept}."""
@@ -243,7 +244,7 @@ class Equation_of_a_line_intercepts():
 			BATTERIES.append(battery)
 			CHOICES.append(prefix + str(data) + suffix) 
 		main = BATTERIES[0]
-		CHOICES[0] = str(CHOICES[0]) + {ANSWER_FLAG}
+		CHOICES[0] = str(CHOICES[0]) + ANSWER_FLAG
 		random.shuffle(CHOICES)
 		#edit below
 		self.question = f"""{ask()} the equation of the line which has an x-intercept of {main.x_intercept} and a y-intercept of {main.y_intercept}."""
@@ -266,7 +267,7 @@ class Line_parallel_to_line():
 			BATTERIES.append(battery)
 			CHOICES.append(prefix + str(data) + suffix) 
 		main = BATTERIES[0]
-		CHOICES[0] = str(CHOICES[0]) + {ANSWER_FLAG}
+		CHOICES[0] = str(CHOICES[0]) + ANSWER_FLAG
 		random.shuffle(CHOICES)
 		#edit below
 		self.question = f"""{ask()} the equation of the line which intersects the point {main.point_3.string} and also parallel to the line that intersects both the points {main.point_1.string} and {main.point_2.string}."""
@@ -289,7 +290,7 @@ class Line_perpendicular_to_line():
 			BATTERIES.append(battery)
 			CHOICES.append(prefix + str(data) + suffix) 
 		main = BATTERIES[0]
-		CHOICES[0] = str(CHOICES[0]) + {ANSWER_FLAG}
+		CHOICES[0] = str(CHOICES[0]) + ANSWER_FLAG
 		random.shuffle(CHOICES)
 		#edit below
 		self.question = f"""{ask()} the equation of the line which intersects the point {main.point_3.string} and also perpendicular to the line that intersects both the points {main.point_1.string} and {main.point_2.string}."""
@@ -312,7 +313,7 @@ class Angle_between_the_lines():
 			BATTERIES.append(battery)
 			CHOICES.append(prefix + str(data) + suffix) 
 		main = BATTERIES[0]
-		CHOICES[0] = str(CHOICES[0]) + {ANSWER_FLAG}
+		CHOICES[0] = str(CHOICES[0]) + ANSWER_FLAG
 		random.shuffle(CHOICES)
 		#edit below
 		self.question = f"""{ask()} the angle between the lines {main.line_1.string}, and {main.line_2.string} in degrees."""
@@ -335,7 +336,7 @@ class Distance_from_point_to_line():
 			BATTERIES.append(battery)
 			CHOICES.append(prefix + str(data) + suffix) 
 		main = BATTERIES[0]
-		CHOICES[0] = str(CHOICES[0]) + {ANSWER_FLAG}
+		CHOICES[0] = str(CHOICES[0]) + ANSWER_FLAG
 		random.shuffle(CHOICES)
 		#edit below
 		self.question = f"""{ask()} the distance between the line {main.line.string} and the point {main.point.string}"""
@@ -358,7 +359,7 @@ class Distance_from_line_to_line():
 			BATTERIES.append(battery)
 			CHOICES.append(prefix + str(data) + suffix) 
 		main = BATTERIES[0]
-		CHOICES[0] = str(CHOICES[0]) + {ANSWER_FLAG}
+		CHOICES[0] = str(CHOICES[0]) + ANSWER_FLAG
 		random.shuffle(CHOICES)
 		#edit below
 		self.question = f"""{ask()} the distance between the lines {main.line_1.string} and {main.line_2.string}."""
@@ -381,7 +382,7 @@ class Area_of_three_points():
 			BATTERIES.append(battery)
 			CHOICES.append(prefix + str(data) + suffix) 
 		main = BATTERIES[0]
-		CHOICES[0] = str(CHOICES[0]) + {ANSWER_FLAG}
+		CHOICES[0] = str(CHOICES[0]) + ANSWER_FLAG
 		random.shuffle(CHOICES)
 		#edit below
 		self.question = f"""{ask()} the area enclosed by the polygon formed by connecting the points {main.point_1.string}, {main.point_2.string} and {main.point_3.string}."""

@@ -1,6 +1,6 @@
-base_string = 'ece_radio_receivers_section_1_'
+base_string = 'jma_15_'
 start = 1
-end = 50
+end = 9
 
 
 output = ''
