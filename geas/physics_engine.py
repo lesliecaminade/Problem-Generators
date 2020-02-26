@@ -18,66 +18,66 @@ class example_2_1:
 	def __init__(self,*args,**kwargs):
 		velocity = c.velocity(random_handler.main(0.200), 'cmpers')
 		
-		self.question = f"""Change the speed {velocity.cmpers} cm/s to kilometers per year."""
+		self.question = f"""Change the speed {round(velocity.cmpers,2)} cm/s to kilometers per year."""
 		
-		self.answer = f"""{velocity.kmperyear} kilometers per year."""
+		self.answer = f"""{round(velocity.kmperyear,2)} km/year."""
 		
 class example_2_2:
 	def __init__(self,*args,**kwargs):
 		distance = c.length(  random_handler.main(200),'m' )
 		time = c.time(random_handler.main(25),'s')
-		
-		self.question = f"""A runner makes one lap around a {distance.m} m track in a time of {time.s}s. What were the runner's a) average speed and b) average velocity?"""
+		variation = random.randint(0,1)
+		ask = ['speed', 'velocity']
+		self.question = f"""A runner makes one lap around a {round(distance.m,2)} m track in a time of {round(time.s,2)} s. What were the runner's average {ask[variation]}?"""
 		
 		aveSpeed = c.velocity( distance.m / time.s)
 		aveVelocity = c.velocity(0)
-		
-		self.answer = f"""Average Speed = {aveSpeed.mpers} m/s
-Average Velocity = {aveVelocity.mpers} m/s"""
+		answer = [aveSpeed.mpers, aveVelocity.mpers]
+		self.answer = f"""{round(answer[variation],2)} m/s"""
 
 class example_2_3:
 	def __init__(self,*args,**kwargs):
 		acceleration = c.acceleration(random_handler.main(8.00),'mpers2')
 		time = c.time(random_handler.main(5),'s')
 		
-		
-		self.question = f"""An object starts from rest with a constant acceleration of {acceleration.mpers2} m/s2 along a straight line. a) Find the speed at the end of {time.s} s, b) the average speed for the {time.s}-second interval, and c) the distance traveled in the {time.s} seconds."""
+		ask = [f"""Find the speed at the end of {round(time.s,2)} s""", f"""Find the average speed for the {round(time.s,2)}-second interval""", f"""Find the distance travelled in the {round(time.s,2)} second(s)"""]
+		variation = random.randint(0, len(ask) - 1)
+		self.question = f"""An object starts from rest with a constant acceleration of {round(acceleration.mpers2,2)} m/s2 along a straight line. {ask[variation]}"""
 		
 		velocity = c.velocity(acceleration.mpers2 * time.s)
 		aveVelocity = c.velocity(velocity.mpers / 2)
 		distance = c.length( 0.5 * acceleration.mpers2 * time.s**2 )
-		
-		self.answer = f"""Speed after {time.s}s = {velocity.mpers} m/s
-Average Velocity = {aveVelocity.mpers} m/s
-Distance Traveled = {distance.m} m"""
+		answers = [f"""{round(velocity.mpers,2)} m/s""", f"""{round(aveVelocity.mpers,2)} m/s""", f"""{round(distance.m,2)} m"""]
+		self.answer = f"""{answers[variation]}"""
 
 class example_2_4:
 	def __init__(self,*args,**kwargs):
 		velocity1 = c.velocity(random_handler.main(15),'kmperh')
 		velocity2 = c.velocity(random_handler.main(60),'kmperh')
 		time = c.time(random_handler.main(20),'s')
-		
-		self.question = f"""A truck's speed increases uniformly from {velocity1.kmperh} km/h to {velocity2.kmperh} km/h in {time.s} s. Determine a) the average speed, b) the average acceleration, c) the distance traveled, all in units of meters and seconds."""
+		ask = ['the average speed', 'the average acceleration', 'the distance travelled']
+		variation = random.randint(0, len(ask) - 1)
+		self.question = f"""A truck's speed increases uniformly from {round(velocity1.kmperh,2)} km/h to {round(velocity2.kmperh,2)} km/h in {round(time.s,2)} s. Determine a) the average speed, b) the average acceleration, c) the distance traveled, all in units of meters and seconds."""
 		
 		vAverage = c.velocity(0.5*(velocity1.mpers + velocity2.mpers))
 		aAverage = c.acceleration((velocity2.mpers - velocity1.mpers)/2)
 		distance = c.length(vAverage.mpers * time.s)
-		
-		self.answer = f"""Average Speed = {vAverage.mpers} m/s
-Average Acceleration = {aAverage.mpers2} m/s2
-Distance Traveled = {distance.m} m"""
+		answers = [f"""{round(vAverage.mpers,2)} m/s""", f"""{round(aAverage.mpers2,2)} m/s2""", f"""{round(distance.m,2)} m"""]
+		self.answer = f"""{answers[variation]}"""
 
 class example_2_8:
 	def __init__(self,*args,**kwargs):
 		height = c.length(random_handler.main(50),'m')
-		
-		self.question = f"""A ball is dropped from rest at a height of {height.m} m above the ground. a) What is its speed just before it hits the ground? b) How long does it take to reach the ground?"""
+		ask = ['What is its speed before it hits the ground?', 'How long does it take to reach the ground?']
+		variation = random.randint(0, len(ask) - 1)
+		self.question = f"""A ball is dropped from rest at a height of {round(height.m,2)} m above the ground. a) What is its speed just before it hits the ground? b) How long does it take to reach the ground?"""
 		
 		velocityFinal = c.velocity(math.sqrt(2 * gravity.mpers2 * height.m))
 		time = c.time(velocityFinal.mpers / gravity.mpers2)
 		
-		self.answer = f"""Speed before hitting the ground = {velocityFinal.mpers} m/s
-Time taken = {time.s} s"""
+		answers = [f"""{round(velocityFinal.mpers,2)} m/s""", f"""{round(time.s,2)} s"""]
+
+		self.answer = f"""{answers[variation]}"""
 
 class example_2_9:
 	def __init__(self,*args,**kwargs):
@@ -85,27 +85,31 @@ class example_2_9:
 		time1 = c.time(random_handler.main(3.0),'s')
 		velocity = c.velocity(random_handler.main(24),'mpers')
 		
-		self.question = f"""A skier starts from rest and slides {distance.m}m down a slope in {time1.s}s. In what time after starting will the skier acquire a speed of {velocity.mpers}m/s? Assume that the acceleration is constant."""
+		self.question = f"""A skier starts from rest and slides {round(distance.m,2)}m down a slope in {round(time1.s,2)}s. In what time after starting will the skier acquire a speed of {round(velocity.mpers,2)}m/s? Assume that the acceleration is constant."""
 		
 		acceleration = c.acceleration((2*distance.m) / time1.s**2)
 		time2 = c.time(velocity.mpers / acceleration.mpers2)
 		
-		self.answer = f"""Time to achieve a velocity of {velocity.mpers}m/s = {time2.s} seconds."""
+		self.answer = f"""{round(time2.s,2)} s."""
 		
 class example_2_10:
 	def __init__(self,*args,**kwargs):
 		velocity = c.velocity(random_handler.main(20),'mpers')
 		deceleration = c.acceleration (random_handler.main(-3.0),'mpers2')
 		
-		self.question = f"""A bus moving at a speed of {velocity.mpers}m/s begins to slow down at a constant rate of {deceleration.mpers2} m/s each second. Find how far it goes before stopping."""
+		self.question = f"""A bus moving at a speed of {round(velocity.mpers,2)}m/s begins to slow down at a constant rate of {round(deceleration.mpers2,2)} m/s each second. Find how far it goes before stopping."""
 		
 		distance = c.length(-(velocity.mpers**2)/(2*deceleration.mpers2))
 		
-		self.answer = f"""Distance to stop = {distance.m} m"""
+		self.answer = f"""{round(distance.m,2)} m"""
 		
 class example_2_11:
 	def __init__(self,*args,**kwargs):
 		regen = True
+
+		ask = ['the acceleration of the car', 'the distance it moves in the third second']
+		variation = random.randint(0, len(ask) - 1)
+
 		while regen:
 			print(type(self))
 			velocityInit = c.velocity(random_handler.main(30),'mpers')
@@ -113,14 +117,14 @@ class example_2_11:
 			timeLarger = c.time(random_handler.main(5), 's')
 			timeSmaller = c.time(3, 's')
 			
-			self.question = f"""A car moving at {velocityInit.mpers} m/s slows uniformly to a speed of {velocityFinal.mpers} m/s in a time of {timeLarger.s}s. Determine a) the acceleration of the car and b) the distance it moves in the third second."""
+			self.question = f"""A car moving at {round(velocityInit.mpers,2)} m/s slows uniformly to a speed of {round(velocityFinal.mpers,2)} m/s in a time of {round(timeLarger.s,2)}s. Determine {ask[variation]}"""
 		
 			acceleration = c.acceleration((velocityFinal.mpers - velocityInit.mpers)/timeLarger.s) 
 			
 			distanceThirdSecond = c.length(velocityInit.mpers * (3 - 2) + 0.5*acceleration.mpers2 * (3**2 - 2**2) )
 			
-			self.answer = f"""Acceleration = {acceleration.mpers2} m/s2
-Distance traveled at the third second = {distanceThirdSecond.m} m"""
+			answers = [f"""{round(acceleration.mpers2,2)} m/s2""", f"""{round(distanceThirdSecond.m,2)} m"""]
+			self.answer = f"""{answers[variation]}"""
 
 			if velocityInit.mpers > velocityFinal.mpers:
 				regen = False
@@ -134,14 +138,12 @@ class example_2_12:
 			velocityFinal = c.velocity(random_handler.main(7), 'mpers')
 			distance = c.length(random_handler.main(90),'m')
 			
-			self.question = f"""The speed of a train is reduced uniformly from {velocityInit.mpers} m/s to {velocityFinal.mpers} m/s while traveling a distance of {distance.m} m. a) Compute the acceleration. b) How much farther will the train travel before coming to rest, provided the acceleration remains constant?"""
+			self.question = f"""The speed of a train is reduced uniformly from {round(velocityInit.mpers,2)} m/s to {round(velocityFinal.mpers,2)} m/s while traveling a distance of {round(distance.m,2)} m. How much farther will the train travel before coming to rest, provided the acceleration remains constant?"""
 			
 			acceleration = c.acceleration( (velocityFinal.mpers**2 - velocityInit.mpers)**2 / ( 2 * distance.m ))
 			restDistance = c.length((0 - velocityInit.mpers**2) / (2 * acceleration.mpers2))
 			
-			self.answer = f"""Acceleration = {acceleration.mpers2} m/s2
-	Distance to stop = {restDistance.m} m"""
-
+			self.answer = f"""{round(restDistance.m,2)} m"""
 			
 			if velocityInit.mpers > velocityFinal.mpers:
 				regen = False
@@ -150,25 +152,24 @@ class example_2_13:
 	def __init__(self,*args,**kwargs):
 		height = c.length(random_handler.main(20),'m')
 		
-		self.question = f"""A stone is thrown straight upward and it rises to a height of {height.m} m. With what speed was it thrown?"""
+		self.question = f"""A stone is thrown straight upward and it rises to a height of {round(height.m,2)} m. With what speed was it thrown?"""
 
 		velocityInit = c.velocity(math.sqrt(2 * gravity.mpers2 * height.m))
-		self.answer = f"""Initial Velocity  = {velocityInit.mpers} m/s"""
+		self.answer = f"""{round(velocityInit.mpers,2)} m/s"""
 		
 class example_2_14:
 	def __init__(self,*args,**kwargs):
 		velocityInit = c.velocity(random_handler.main(20),'mpers')
 		heightCaught = c.length(random_handler.main(5),'m')
 		
-		self.question = f"""A stone is thrown straight upward with a speed of {velocityInit.mpers} m/s. It is caught on its way down at a point {heightCaught.m} m above where it was thrown. a) How fast was it going when it was caught? b) How long did the trip take?"""
+		self.question = f"""A stone is thrown straight upward with a speed of {round(velocityInit.mpers,2)} m/s. It is caught on its way down at a point {round(heightCaught.m,2)} m above where it was thrown. a) How fast was it going when it was caught? b) How long did the trip take?"""
 		
 
 		velocityFinal = c.velocity(-math.sqrt(abs(velocityInit.mpers**2 + 2*-gravity.mpers2*heightCaught.m)))
 		
 		time = c.time((velocityFinal.mpers - velocityInit.mpers)/(-gravity.mpers2))
 		
-		self.answer = f"""Velocity upon landing = {velocityFinal.mpers} m/s
-Trip time = {time.s} s"""
+		self.answer = f"""{round(time.s,2)} s"""
    
 
 			
@@ -177,11 +178,11 @@ class example_2_15:
 		gravityMoon = c.acceleration(1.60,'mpers2')
 		returnTime = c.time(random_handler.main(4),'s')
 		
-		self.question = f"""A ball that is thrown vertically upward on the Moon returns to its starting point in {returnTime.s} s. Acceleration due to gravity there is {gravityMoon.mpers2} m/s2. Find the ball's original speed."""
+		self.question = f"""A ball that is thrown vertically upward on the Moon returns to its starting point in {round(returnTime.s,2)} s. Acceleration due to gravity there is {round(gravityMoon.mpers2,2)} m/s2. Find the ball's original speed."""
 		
 		velocityInitial = c.velocity((0.5*gravityMoon.mpers2*returnTime.s**2) /(returnTime.s) )
 		
-		self.answer = f"""Original Speed = {velocityInitial.mpers} m/s"""
+		self.answer = f"""{round(velocityInitial.mpers,2)} m/s"""
 			
 		
 class example_2_16:
@@ -191,7 +192,7 @@ class example_2_16:
 		time = c.time(random_handler.main(30),'s')
 		distanceSpecific = c.length(random_handler.main(100),'m')
 		
-		self.question = f"""A baseball is thrown straight upward on the Moon with an initial speed of {velocityInitial.mpers} m/s. Compute a) the maximum height reached by the ball, b) the time taken to reach that height, c) its velocity {time.s} s after it is thrown, and d) when the ball's height is {distanceSpecific.m} m."""
+		self.question = f"""A baseball is thrown straight upward on the Moon with an initial speed of {round(velocityInitial.mpers,2)} m/s. Compute the time when the ball's height is {round(distanceSpecific.m,2)} m."""
 	
 		maxHeight = c.length(velocityInitial.mpers**2 / (2*gravityMoon.mpers2))
 		
@@ -205,12 +206,7 @@ class example_2_16:
 		
 		
 		
-		self.answer = f"""Max height = {maxHeight.m} m
-Time to max height = {timeMaxHeight.s} s
-Velocity {time.s} s after throwing = {velocityFinal.mpers} m/s
-Time when the ball's height is {distanceSpecific.m} m = {timelist} seconds"""
-
-			
+		self.answer = f"""{timelist} seconds"""	
 			
 class example_2_17:
 	def __init__(self,*args,**kwargs):
@@ -218,7 +214,7 @@ class example_2_17:
 		velocityInitial = c.velocity(random_handler.main(13),'mpers')
 		timeSpecific = c.time(random_handler.main(5.0),'s')
 		
-		self.question = f"""A ballast bag is dropped from a balloon that is {height.m} m above the ground and rising at {velocityInitial.mpers} m/s. For the bag, find a) the maximum height reached, b) its position and velocity {timeSpecific.s}s after it is released, and c) the time at which it hits the ground."""
+		self.question = f"""A ballast bag is dropped from a balloon that is {round(height.m,2)} m above the ground and rising at {round(velocityInitial.mpers,2)} m/s. For the bag, the time at which it hits the ground."""
 		
 		#upward positive:
 		equation = sympy.Eq(0, velocityInitial.mpers**2 + 2*-gravity.mpers2*x)
@@ -232,10 +228,7 @@ class example_2_17:
 			
 		timeToGround = c.time(max(sympy.solveset(equation,x,domain = sympy.Reals).args[0], sympy.solveset(equation,x,domain = sympy.Reals).args[1]))
 	
-		self.answer = f"""Max height from the ground = {maxHeight.m} m
-Position after {timeSpecific.s}s = {positionAtTime.m} m
-Velocity after {timeSpecific.s}s = {velocityAtTime.mpers} m/s
-Time to hit the ground = {timeToGround.s} s"""
+		self.answer = f"""{round(timeToGround.s,2)} s"""
 					
 			
 class example_2_18:
@@ -244,7 +237,7 @@ class example_2_18:
 		velocityInitialY = c.velocity(0)
 		heightInitial = c.length(random_handler.main(80),'m')
 		
-		self.question = f"""A projectile is fired horizontally with a speed of {velocityInitialX.mpers} m/s from the top of a cliff {heightInitial.m} m high. a) How long will it take to strike the level ground at the base of the cliff? b) How far from the foot of the cliff will it strike? c) With what velocity will it strike?"""
+		self.question = f"""A projectile is fired horizontally with a speed of {round(velocityInitialX.mpers,2)} m/s from the top of a cliff {round(heightInitial.m,2)} m high. With what velocity will it strike the base of the cliff?"""
 		
 		
 		equation = sympy.Eq(0, heightInitial.m + velocityInitialY.mpers*x + 0.5*-gravity.mpers2*x**2)
@@ -258,9 +251,7 @@ class example_2_18:
 		
 		velocityFinal = c.velocity(math.sqrt( velocityFinalX.mpers**2 + velocityFinalY.mpers**2))
 		
-		self.answer = f"""Time to land = {timeToLand.s} s
-x - distance of landing point from launch point = {xDistance.m} m
-Velocity on landing = {velocityFinal.mpers} m/s"""
+		self.answer = f"""{round(velocityFinal.mpers,2)} m/s"""
 		
 
 			
@@ -270,7 +261,7 @@ class example_2_19:
 		hi = c.length(random_handler.main(100), 'm')
 		viy = c.velocity(0)
 		
-		self.question = f"""A stunt flier is moving at {vix.mpers} m/s to the flat ground {hi.m} meters below. How large must the distance x from the plane to target be if a sack of flour released from the plane is to strike the target?"""
+		self.question = f"""A stunt flier is moving at {round(vix.mpers,2)} m/s to the flat ground {round(hi.m,2)} meters below. How large must the distance x from the plane to target be if a sack of flour released from the plane is to strike the target?"""
 		
 		equation = sympy.Eq(0, hi.m + viy.mpers * x + 0.5 * -gravity.mpers2 * x**2)
 		
@@ -278,7 +269,7 @@ class example_2_19:
 		
 		xDistance = c.length( vix.mpers * t.s )
 		
-		self.answer = f"""Distance = {xDistance.m} m"""
+		self.answer = f"""{round(xDistance.m,2)} m"""
 
 		
 class example_2_20:
@@ -286,7 +277,7 @@ class example_2_20:
 		vi = c.velocity(random_handler.main(100),'mpers')
 		angle = c.angle(random_handler.main(30),'deg')
 		
-		self.question = f"""A baseball is thrown with an initial velocity of {vi.mpers} m/s at an angle of {angle.deg} degrees above the horizontal. How far from the throwing point will the baseball attain its original level?"""
+		self.question = f"""A baseball is thrown with an initial velocity of {round(vi.mpers,2)} m/s at an angle of {round(angle.deg,2)} degrees above the horizontal. How far from the throwing point will the baseball attain its original level?"""
 		
 		vix = c.velocity( vi.mpers * math.cos(angle.rad))
 		viy = c.velocity( vi.mpers * math.sin(angle.rad))
@@ -298,7 +289,7 @@ class example_2_20:
 		
 		xDistance = c.length(vix.mpers*t.s)
 		
-		self.answer = f"""Horizontal distance = {xDistance.m} m"""
+		self.answer = f"""{round(xDistance.m,2)} m"""
 		
 class example_2_21:
 	def __init__(self,*args,**kwargs): 
@@ -306,7 +297,7 @@ class example_2_21:
 		vi = c.velocity(random_handler.main(20), 'mpers')
 		angle = c.angle(random_handler.main(40), 'deg')
 		
-		self.question = f"""A ball is thrown from the top of one building toward a tall building {distanceBuilding.m} m away. The initial velocity of the ball is {vi.mpers} m/s, {angle.deg} degrees above horizontal. How far above or below its original level will the ball strike the opposite wall?"""
+		self.question = f"""A ball is thrown from the top of one building toward a tall building {round(distanceBuilding.m,2)} m away. The initial velocity of the ball is {round(vi.mpers,2)} m/s, {round(angle.deg,2)} degrees above horizontal. How far above or below its original level will the ball strike the opposite wall?"""
 		
 		vix = c.velocity( vi.mpers * math.cos(angle.rad))
 		viy = c.velocity( vi.mpers * math.sin(angle.rad))
@@ -316,7 +307,7 @@ class example_2_21:
 		
 		yDistance = c.length(viy.mpers * t.s + 0.5*-gravity.mpers2*t.s**2 )
 		
-		self.answer = f"""For upward positive, the ball will hit {yDistance.m} m from the original level."""
+		self.answer = f"""{round(yDistance.m,2)} m from the launch point."""
 		
 class example_3_1:
 	def __init__(self,*args,**kwargs):

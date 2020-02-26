@@ -20,7 +20,7 @@ class algebra_1:
 
         degree = polynomial.degree()
 
-        self.answer = f"""Degree: {degree}"""
+        self.answer = f"""{degree}"""
 
 class algebra_2:
     def __init__(self):
@@ -31,7 +31,7 @@ class algebra_2:
 {sym.pretty(polynomial.expression.as_expr())}
 """
         degree = polynomial.degree()
-        self.answer = f"""Degree: {degree}"""
+        self.answer = f"""{degree}"""
 
 class algebra_3:
     def __init__(self):
@@ -44,7 +44,7 @@ class algebra_3:
 {sym.pretty(quadratic.expression.as_expr())}
 """
 
-        self.answer = f"""Discriminant: {quadratic.discriminant()}"""
+        self.answer = f"""{quadratic.discriminant()}"""
 
 class algebra_4:
     def __init__(self):
@@ -75,7 +75,7 @@ class algebra_4:
 
         self.question = f"""Given that the polynomial A x^2 + {B} x + {C} = 0 has equal roots, determine the value of A."""
 
-        self.answer = f"""A: {A}"""
+        self.answer = f"""{A}"""
 
 class algebra_5:
     #sum of the roots of a polynomial
@@ -90,7 +90,7 @@ class algebra_5:
 
         sum_of_the_roots = polynomial.sum_of_the_roots()
 
-        self.answer = f"""Sum of the roots: {sum_of_the_roots}"""
+        self.answer = f"""{sum_of_the_roots}"""
 
 class algebra_6:
     #product of the roots of a polynomial
@@ -104,7 +104,7 @@ class algebra_6:
 """
         product_of_the_roots = polynomial.product_of_the_roots()
 
-        self.answer = f"""Product of the roots: {product_of_the_roots}"""
+        self.answer = f"""{product_of_the_roots}"""
 
 class algebra_7:
     def __init__(self):
@@ -125,7 +125,7 @@ class algebra_7:
 when divided by 
 {sym.pretty(divisor.expression.as_expr())}"""
 
-        self.answer = f"""Remainder: {remainder.as_expr()}"""
+        self.answer = f"""{remainder.as_expr()}"""
 
 
 class algebra_8:
@@ -147,8 +147,7 @@ class algebra_8:
 when divided by 
 {sym.pretty(divisor.expression.as_expr())}"""
 
-        self.answer = f"""Depressed equation: 
-{sym.pretty(quotient.as_expr())}"""
+        self.answer = f"""{sym.pretty(quotient.as_expr())}"""
 
 
 class algebra_9:
@@ -166,7 +165,7 @@ f({input_num})?"""
 
         output_num = polynomial.expression.subs(x, input_num)
 
-        self.answer = f"""f({input_num}) = {output_num}"""
+        self.answer = f"""{output_num}"""
 
 class algebra_10:
     def __init__(self):
@@ -191,7 +190,7 @@ What is the value of (f o g) ({input_value})?"""
 
         output_value = function_f.substitute(function_g.substitute(input_value))
 
-        self.answer = f"""(f o g )({input_value}) = {output_value}"""
+        self.answer = f"""{output_value}"""
 
 class algebra_11:
     def __init__(self):
@@ -215,7 +214,7 @@ class algebra_11:
 What is the value of a satisfying
 f({input_value}) = {output_value}?"""
 
-        self.answer = f"""a = {A}"""
+        self.answer = f"""{A}"""
 
 class algebra_12:
     def __init__(self):
@@ -237,7 +236,7 @@ What is the value of f({input_value_1}) * g({input_value_2})?"""
 
         output_value = f_.substitute( input_value_1) * g_.substitute( input_value_2)
 
-        self.answer = f"""f({input_value_1}) * g({input_value_2}) = {output_value}"""
+        self.answer = f"""{output_value}"""
 
 class algebra_13:
     def __init__(self):
@@ -262,7 +261,7 @@ What is the value of h({input_value_1}) * k({input_value_2})?"""
 
         output_value = h_.subs(x, input_value_1) * k_.subs(x, input_value_2)
 
-        self.answer = f"""h({input_value_1}) * k({input_value_2}) = {output_value}"""
+        self.answer = f"""{output_value}"""
 
 class algebra_14:
     def __init__(self):
@@ -292,7 +291,7 @@ and g(x) = ...
 If h(x) = f(x) + g(x) and k(x) = g(x) / f(x), what is the value of x satisfying
 h(x) - k(x) = {output_value}?"""
 
-        self.answer = f"""x = {input_value_1}"""
+        self.answer = f"""{input_value_1}"""
 
 class algebra_15:
     def __init__(self):
@@ -323,7 +322,7 @@ Find the value of {statement}."""
 
         output_value = g_.substitute(f_.substitute(input_value))
 
-        self.answer = f"""{statement} = {output_value.as_expr()}"""
+        self.answer = f"""{output_value.as_expr()}"""
 
 class algebra_16:
     def __init__(self):
@@ -350,7 +349,7 @@ class algebra_16:
 {sym.pretty(f_.expression.as_expr())}
 What is the value of {statement}{input_value}{suffix}?"""
 
-        self.answer = f"""{statement}{input_value}{suffix} = {output_value}"""
+        self.answer = f"""{output_value}"""
 
 class algebra_17:
     def __init__(self):
@@ -372,7 +371,7 @@ What is the value of (f o g)({input_value_1}) + (g o f)({input_value_2})?"""
 
         output_value = f_.substitute(g_.substitute(input_value_1)) + g_.substitute(f_.substitute(input_value_2))
 
-        self.answer = f"""(f o g)({input_value_1}) + (g o f)({input_value_2}) = {output_value}"""
+        self.answer = f"""{output_value}"""
 
 class algebra_18:
     def __init__(self):
@@ -391,7 +390,7 @@ class algebra_18:
 
         self.question = f"""f : R -> R is a function satisfying f({g_.expression.as_expr()}) = {f_.expression.as_expr()}. What is the value of f({semi_input_value})?"""
 
-        self.answer = f"""f({semi_input_value}) = {output_value}"""
+        self.answer = f"""{output_value}"""
 
 class algebra_19:
     def __init__(self):
@@ -417,7 +416,7 @@ what is the value of g({input_value_1}) + g-1({input_value_2})?"""
 
         output_value = g_.substitute(input_value_1) + f_.substitute(input_value_2)
 
-        self.answer = f"""g({input_value_1}) + g-1({input_value_2}) = {output_value}"""
+        self.answer = f"""{output_value}"""
 
 class algebra_20:
     def __init__(self):
@@ -438,28 +437,34 @@ class algebra_20:
         A = coefficients[0]
         B = coefficients[1]
 
-        self.answer = f"""a + b = {A + B}, f(x) = {f_.expression.as_expr()}"""
+        self.answer = f"""{A + B}"""
 
 class algebra_21:
     def __init__(self):
         #symbolic operators
-        k = sym.symbols('k', real = True)
-        k_ = ae.Polynomial()
-        k_.init_expression(x**ae.random_power() - (x - ae.random_coeff())**ae.random_power())
+        tryagain = True
+        while tryagain:
+            try:
+                k = sym.symbols('k', real = True)
+                k_ = ae.Polynomial()
+                k_.init_expression(x**ae.random_power() - (x - ae.random_coeff())**ae.random_power())
 
 
 
-        input_value = -1
-        while input_value < 0:
-            input_value = ae.random_coeff()
+                input_value = -1
+                while input_value < 0:
+                    input_value = ae.random_coeff()
 
 
 
-        self.question = f"""For positive integer k, let dot_k_dot = {k_.expression.as_expr().subs(x, k)}, what is the value of dot_{input_value}_dot?"""
+                self.question = f"""For positive integer k, let dot_k_dot = {k_.expression.as_expr().subs(x, k)}, what is the value of dot_{input_value}_dot?"""
 
-        output_value = k_.substitute(input_value)
+                output_value = k_.substitute(input_value)
 
-        self.answer= f"""dot_{input_value}_dot = {output_value}"""
+                self.answer= f"""{output_value}"""
+                tryagain = False
+            except:
+                tryagain = True
 
 class algebra_22:
     def __init__(self):
@@ -477,7 +482,7 @@ class algebra_22:
 {expression}
 What is the value of {input_value_1}_nabla_{input_value_2}?"""
 
-        self.answer = f"""{input_value_1}_nabla_{input_value_2} = {output_value}"""
+        self.answer = f"""{output_value}"""
 
 class algebra_23:
     def __init__(self):
@@ -498,7 +503,7 @@ class algebra_23:
 
         output_value = output_value_1 + output_value_2
 
-        self.answer = f"""{input_m} {input_k}^caret {input_n} + {input_n} {input_k}^caret {input_m} = {output_value}"""
+        self.answer = f"""{output_value}"""
 
 class algebra_24:
     def __init__(self):

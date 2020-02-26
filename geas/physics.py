@@ -34,6 +34,222 @@ B. {CHOICES[1]}
 C. {CHOICES[2]}
 D. {CHOICES[3]}"""  
 
+class example_2_1():
+	def __init__(self):
+		instance_list = [
+		engine.example_2_1(),        
+		engine.example_2_1(),
+		engine.example_2_1(),
+		engine.example_2_1()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer    
+		
+class example_2_2():
+	def __init__(self):
+		instance_list = [
+		engine.example_2_2(),        
+		engine.example_2_2(),
+		engine.example_2_2(),
+		engine.example_2_2()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer    
+		
+class example_2_3():
+	def __init__(self):
+		instance_list = [
+		engine.example_2_3(),        
+		engine.example_2_3(),
+		engine.example_2_3(),
+		engine.example_2_3()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer    
+		
+class example_2_4():
+	def __init__(self):
+		instance_list = [
+		engine.example_2_4(),        
+		engine.example_2_4(),
+		engine.example_2_4(),
+		engine.example_2_4()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer    
+		
+class example_2_8():
+	def __init__(self):
+		instance_list = [
+		engine.example_2_8(),        
+		engine.example_2_8(),
+		engine.example_2_8(),
+		engine.example_2_8()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer    
+		
+class example_2_9():
+	def __init__(self):
+		instance_list = [
+		engine.example_2_9(),        
+		engine.example_2_9(),
+		engine.example_2_9(),
+		engine.example_2_9()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer    
+		
+class example_2_10():
+	def __init__(self):
+		instance_list = [
+		engine.example_2_10(),        
+		engine.example_2_10(),
+		engine.example_2_10(),
+		engine.example_2_10()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer    
+		
+class example_2_11():
+	def __init__(self):
+		instance_list = [
+		engine.example_2_11(),        
+		engine.example_2_11(),
+		engine.example_2_11(),
+		engine.example_2_11()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer    
+		
+class example_2_12():
+	def __init__(self):
+		instance_list = [
+		engine.example_2_12(),        
+		engine.example_2_12(),
+		engine.example_2_12(),
+		engine.example_2_12()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer    
+		
+class example_2_13():
+	def __init__(self):
+		instance_list = [
+		engine.example_2_13(),        
+		engine.example_2_13(),
+		engine.example_2_13(),
+		engine.example_2_13()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer    
+		
+class example_2_14():
+	def __init__(self):
+		instance_list = [
+		engine.example_2_14(),        
+		engine.example_2_14(),
+		engine.example_2_14(),
+		engine.example_2_14()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer    
+		
+class example_2_15():
+	def __init__(self):
+		instance_list = [
+		engine.example_2_15(),        
+		engine.example_2_15(),
+		engine.example_2_15(),
+		engine.example_2_15()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer    
+		
+class example_2_16():
+	def __init__(self):
+		instance_list = [
+		engine.example_2_16(),        
+		engine.example_2_16(),
+		engine.example_2_16(),
+		engine.example_2_16()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer    
+		
+class example_2_17():
+	def __init__(self):
+		instance_list = [
+		engine.example_2_17(),        
+		engine.example_2_17(),
+		engine.example_2_17(),
+		engine.example_2_17()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer    
+		
+class example_2_18():
+	def __init__(self):
+		instance_list = [
+		engine.example_2_18(),        
+		engine.example_2_18(),
+		engine.example_2_18(),
+		engine.example_2_18()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer    
+		
+class example_2_19():
+	def __init__(self):
+		instance_list = [
+		engine.example_2_19(),        
+		engine.example_2_19(),
+		engine.example_2_19(),
+		engine.example_2_19()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer    
+		
+class example_2_20():
+	def __init__(self):
+		instance_list = [
+		engine.example_2_20(),        
+		engine.example_2_20(),
+		engine.example_2_20(),
+		engine.example_2_20()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer    
+		
+class example_2_21():
+	def __init__(self):
+		instance_list = [
+		engine.example_2_21(),        
+		engine.example_2_21(),
+		engine.example_2_21(),
+		engine.example_2_21()        
+		]
+		constructed = Constructor(instance_list)
+		self.question = constructed.question
+		self.answer = constructed.answer  
+
 class Schaums_6_1():
 	def __init__(self):
 		instance_list = [
@@ -455,6 +671,8 @@ class Schaums_8_17():
 		constructed = Constructor(instance_list)
 		self.question = constructed.question
 		self.answer = constructed.answer
+
+
 
 class Schaums_15_1():
 	def __init__(self):

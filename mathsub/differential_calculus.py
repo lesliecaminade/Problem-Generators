@@ -322,6 +322,48 @@ class wall_and_beam_and_building():
 
 
 
+#some new codes -----
+class Constructor():
+    def __init__(self, engine_class_instances):
+        #Battery - a single instance of a set of givens, and an answer for a certain problem
+
+        BATTERIES = []
+        CHOICES = []
+        suffix = ''
+        prefix = ''
+        for i in range(4):
+
+            #battery = engine.Some_class_from_engine
+            battery = engine_class_instances[i]
+
+            #data = battery.Some_attribute_from_battery         
+            data =  parse(battery.answer)
+
+            BATTERIES.append(battery)
+            CHOICES.append(prefix + str(data) + suffix) 
+        main = BATTERIES[0]
+        CHOICES[0] = str(CHOICES[0]) + ' #'
+        random.shuffle(CHOICES)
+        #edit below
+        self.question = main.question
+        self.answer = f"""A. {CHOICES[0]}
+B. {CHOICES[1]}
+C. {CHOICES[2]}
+D. {CHOICES[3]}""" 
+
+class first_derivative():
+    def __init__(self):
+        instance_list = [
+        engine.first_derivative(),        
+        engine.first_derivative(),
+        engine.first_derivative(),
+        engine.first_derivative()        
+        ]
+        constructed = Constructor(instance_list)
+        self.question = constructed.question
+        self.answer = constructed.answer    
+        
+
 
 
 

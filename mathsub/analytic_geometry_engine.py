@@ -56,6 +56,10 @@ CONIC_SECTIONS_LIST = [
 ['Asymptote', 'Refers to a straight line towards which a curve approaches but never meets']
 ]
 
+def parse(string_input):
+	string_input = str(string_input)
+	return string_input.replace('**', '^').replace('*', ' ')
+
 class Point():
 	def __init__(self):
 		pass
@@ -66,12 +70,16 @@ class Point():
 
 		self.x = abcissa
 		self.y = ordinate
-		self.string = f"""({self.x}, {self.y})"""
+		self.string = parse(f"""({self.x}, {self.y})""")
+
+		return self
 
 	def init_define(self, abcissa, ordinate):
 		self.x = abcissa
 		self.y = ordinate
-		self.string = f"""({self.x}, {self.y})"""
+		self.string = parse(f"""({self.x}, {self.y})""")
+
+		return self
 
 	def quadrant(self):
 
@@ -217,9 +225,6 @@ class Point_3_Dimensions():
 		self.types = {'rectangular':self.rectangular, 'cylindrical':self.cylindrical, 'spherical':self.spherical, 'cartesian':self.rectangular}
 
 
-
-
-
 class Line():
 	def __init__(self):
 		pass
@@ -228,32 +233,38 @@ class Line():
 		try:
 			self.general = (point2.x - point1.x) * y - (point2.y - point1.y) *x + point2.y * point1.x - point1.y * point2.x
 			self.slope = (point2.y - point1.y) / (point2.x - point1.x)
-			self.string = f"""{self.general} = 0"""
+			self.string = parse(f"""{self.general} = 0""")
 			self.equation = sympy.Eq((point2.x - point1.x) * y - (point2.y - point1.y) *x + point2.y * point1.x - point1.y * point2.x, 0)
 		except:
 			self.general = x - point1.x
-			self.string = f"""{self.general} = 0"""
+			self.string = parse(f"""{self.general} = 0""")
 			self.slope = 'undefined'
 			self.equation = sympy.Eq(x - point1.x, 0)
+
+		return self
 
 
 	def init_point_slope(self, point, slope):
 		self.general = slope * x - y - slope * point.x + point.y
 		self.slope = slope
-		self.string = f"""{self.general} = 0"""
+		self.string = parse(f"""{self.general} = 0""")
 		self.equation = sympy.Eq(slope * x - y - slope * point.x + point.y, 0)
+		return self
+
 
 	def init_slope_intercept(self, slope, yintercept):
 		self.general = slope * x - y + yintercept 
-		self.string = f"""{self.general} = 0"""
+		self.string = parse(f"""{self.general} = 0""")
 		self.slope = slope
 		self.equation = sympy.Eq(slope * x - y + yintercept , 0)
+		return self
 
 	def init_intercepts(self, a, b):
 		self.general = b * x + a * y - a * b 
 		self.slope = - b / a
-		self.string = f"""{self.general} = 0"""
+		self.string = parse(f"""{self.general} = 0""")
 		self.equation = sympy.Eq(b * x + a * y - a * b , 0)
+		return self
 
 	def perpendicular(self):
 		return -1/self.slope
@@ -272,7 +283,8 @@ class Line():
 			self.slope = (point2.y - point1.y) / (point2.x - point1.x)
 		except:
 			self.slope = 'undefined'
-		self.string = f"""{self.general} = 0"""
+		self.string = parse(f"""{self.general} = 0""")
+		return self
 
 	def inclination(self):
 
@@ -910,13 +922,19 @@ class Point_3D():
 
 class Distance_between_two_points():
 	def __init__(self):
-		point_1 = Point()
-		point_2 = Point()
-		point_1.init_random()
-		point_2.init_random()
-		self.point_1 = point_1
-		self.point_2 = point_2
-		self.distance = point_1.distance(point_2)
+		tryagain = True
+		while tryagain:
+			try:
+				point_1 = Point()
+				point_2 = Point()
+				point_1.init_random()
+				point_2.init_random()
+				self.point_1 = point_1
+				self.point_2 = point_2
+				self.distance = point_1.distance(point_2)
+				tryagain = False
+			except:
+				tryagain = True
 
 class Quadrant_identification():
 	def __init__(self):
@@ -927,11 +945,17 @@ class Quadrant_identification():
 
 class Midpoint():
 	def __init__(self):
-		self.point_1 = Point()
-		self.point_2 = Point()
-		self.point_1.init_random()
-		self.point_2.init_random()
-		self.midpoint = self.point_1.midpoint(self.point_2)
+		tryagain = True
+		while tryagain:
+			try:
+				self.point_1 = Point()
+				self.point_2 = Point()
+				self.point_1.init_random()
+				self.point_2.init_random()
+				self.midpoint = self.point_1.midpoint(self.point_2)
+				tryagain = False
+			except:
+				pass
 
 class Extension_of_line_segment():
 	def __init__(self):
@@ -998,58 +1022,82 @@ class Equation_of_a_line_slope_intercept():
 
 class Equation_of_a_line_intercepts():
 	def __init__(self):
-		x_intercept = random.randint(-X_RANGE, X_RANGE)
-		y_intercept = random.randint(-Y_RANGE, Y_RANGE)
-		line = Line()
-		line.init_intercepts(x_intercept, y_intercept)
-		self.x_intercept = x_intercept
-		self.y_intercept = y_intercept
-		self.line = line
+		tryagain = True
+		while tryagain:
+			try:
+				x_intercept = random.randint(-X_RANGE, X_RANGE)
+				y_intercept = random.randint(-Y_RANGE, Y_RANGE)
+				line = Line()
+				line.init_intercepts(x_intercept, y_intercept)
+				self.x_intercept = x_intercept
+				self.y_intercept = y_intercept
+				self.line = line
+				tryagain = False
+			except:
+				pass
 
 class Line_parallel_to_line():
 	def __init__(self):
-		point_1 = Point()
-		point_2 = Point()
-		point_3 = Point()
-		point_1.init_random()
-		point_2.init_random()
-		point_3.init_random()
-		line_1 = Line()
-		line_1.init_two_points(point_1, point_2)
-		line_2 = Line()
-		line_2.init_point_slope(point_3, line_1.parallel())
-		self.point_1 = point_1
-		self.point_2 = point_2
-		self.point_3 = point_3
-		self.line = line_2
+		tryagain = True
+		while tryagain:
+			try:
+				point_1 = Point()
+				point_2 = Point()
+				point_3 = Point()
+				point_1.init_random()
+				point_2.init_random()
+				point_3.init_random()
+				line_1 = Line()
+				line_1.init_two_points(point_1, point_2)
+				line_2 = Line()
+				line_2.init_point_slope(point_3, line_1.parallel())
+				self.point_1 = point_1
+				self.point_2 = point_2
+				self.point_3 = point_3
+				self.line = line_2
+				tryagain = False
+			except:
+				pass
 
 class Line_perpendicular_to_line():
 	def __init__(self):
-		point_1 = Point()
-		point_2 = Point()
-		point_3 = Point()
-		point_1.init_random()
-		point_2.init_random()
-		point_3.init_random()
-		line_1 = Line()
-		line_1.init_two_points(point_1, point_2)
-		line_2 = Line()
-		line_2.init_point_slope(point_3, line_1.perpendicular())
-		self.point_1 = point_1
-		self.point_2 = point_2
-		self.point_3 = point_3
-		self.line = line_2
+		tryagain = True
+		while tryagain:
+			try:
+				point_1 = Point()
+				point_2 = Point()
+				point_3 = Point()
+				point_1.init_random()
+				point_2.init_random()
+				point_3.init_random()
+				line_1 = Line()
+				line_1.init_two_points(point_1, point_2)
+				line_2 = Line()
+				line_2.init_point_slope(point_3, line_1.perpendicular())
+				self.point_1 = point_1
+				self.point_2 = point_2
+				self.point_3 = point_3
+				self.line = line_2
+				tryagain = False
+			except:
+				pass
 
 class Angle_between_the_lines():
 	def __init__(self):
-		line_1 = Line()
-		line_1.init_random()
-		line_2 = Line()
-		line_2.init_random()
-		angle = line_1.angle_to_line(line_2)
-		self.line_1 = line_1
-		self.line_2 = line_2
-		self.angle = angle
+		tryagain = True
+		while tryagain:
+			try:
+				line_1 = Line()
+				line_1.init_random()
+				line_2 = Line()
+				line_2.init_random()
+				angle = line_1.angle_to_line(line_2)
+				self.line_1 = line_1
+				self.line_2 = line_2
+				self.angle = angle
+				tryagain = False
+			except:
+				pass
 
 class Distance_from_point_to_line():
 	def __init__(self):

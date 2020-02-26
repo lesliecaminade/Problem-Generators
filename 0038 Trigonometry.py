@@ -1,56 +1,79 @@
-import sympy as sym
-import math
 import random
-from generator import constants_conversions as c
-from mathsub import trigonometry as t
-from generator import random_handler as ran
+from mathsub import trigonometry as source
 
-x, y = sym.symbols('x y', real = True)
+print('Generating...')
+file_name = 'trigonometry'
 
-print('Created by: Leslie Caminade')
+import os
+print(__file__)
+print(os.path.realpath(__file__))
+print(os.path.dirname(os.path.realpath(__file__)))
+folderpath = os.path.dirname(os.path.realpath(__file__))
 
-TESTMODE = False
+def write_to_file(some_object):   
+    if FILEMODE: 
+        file.write(some_object.question)
+        file.write('\n')
+        file.write(some_object.answer)
+        file.write('\n\n')
 
-questionList = [
-t.median(),
-t.angular_bisector(),
-t.altitude(),
-t.inradius(),
-t.circumradius(),
-t.exradius(),
-t.identity(),
-t.area(),
-t.airplane(),
-t.elevation_person_building(),
-t.elevation_two_person_building(),
-t.inclined_post()
+def print_tasks(some_object):
+    print(some_object.question)
+    print()
+    print(some_object.answer)
+    print()
+    print()
+
+FILEMODE = True
+TESTMODE = True
+
+question_list = [source.median(),
+source.angular_bisector(),
+source.altitude(),
+source.inradius_SSS(),
+source.inradius_SAS(),
+source.inradius_ASA(),
+source.inradius(),
+source.circumradius(),
+source.exradius(),
+source.area(),
+source.airplane(),
+source.elevation_person_building(),
+source.elevation_two_person_building(),
+source.inclined_post(),
 ]
 
+concept_list = []
+
+# concept_list = [
+# source.identity()
+# ]
 
 
-#populate a set of all the items
-total_items_list = []
-for i in range(len(questionList)):
-    total_items_list.append(i)
-    
-    
-#choose a smaller subset from these questions
-if not TESTMODE:
-    items_list = random.sample(total_items_list, round(1 * len(questionList)))
+if len(concept_list) == 0:
+    CONCEPTS = False
 else:
-    items_list = total_items_list
+    CONCEPTS = True
 
-print(items_list)
+if not TESTMODE:
+    random.shuffle(question_list)
+    random.shuffle(concept_list)
 
-for i in range (len(items_list)):
-    print('-----------------------------------------------------------------------')
-    item = questionList[items_list[i]]
-    print(item.question)
-    print()
-    print(item.answer)
+file = open(f"{folderpath}/outputs/{file_name}_output_{str(random.randint(1000, 9999))}.txt", 'w+')
 
-stay = True
-while stay:
-    command = input()
-    if command == 'exit':
-        stay = False
+if CONCEPTS:
+    for i in range (min(len(question_list), len(concept_list))):
+        print('-----------------------------------------------------------------------')
+        item = random.choice([question_list[i], concept_list[i]])
+        print_tasks(item)
+        write_to_file(item)
+else:
+    for i in range (len(question_list)):
+        print('-----------------------------------------------------------------------')
+        item = question_list[i]
+        print_tasks(item)
+        write_to_file(item)
+
+print()
+file.close()
+print('Finished.')

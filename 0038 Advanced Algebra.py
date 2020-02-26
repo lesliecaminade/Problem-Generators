@@ -1,75 +1,77 @@
-import sympy as sym
-import math
 import random
-from generator import constants_conversions as c
-from mathsub import algebra as alg
-from generator import random_handler as ran
+from mathsub import algebra_2 as source
 
-x, y = sym.symbols('x y', real = True)
+print('Generating...')
+file_name = 'algebra'
 
+import os
+print(__file__)
+print(os.path.realpath(__file__))
+print(os.path.dirname(os.path.realpath(__file__)))
+folderpath = os.path.dirname(os.path.realpath(__file__))
+
+def write_to_file(some_object):   
+    if FILEMODE: 
+        file.write(some_object.question)
+        file.write('\n')
+        file.write(some_object.answer)
+        file.write('\n\n')
+
+def print_tasks(some_object):
+    print(some_object.question)
+    print()
+    print(some_object.answer)
+    print()
+    print()
+
+FILEMODE = True
 TESTMODE = True
 
-print('Created by: Leslie Caminade')
+question_list = [source.algebra_1(),
+source.algebra_2(),
+source.algebra_3(),
+source.algebra_4(),
+source.algebra_5(),
+source.algebra_6(),
+source.algebra_7(),
+source.algebra_8(),
+source.algebra_9(),
+source.algebra_10(),
+source.algebra_11(),
+source.algebra_12(),
+source.algebra_13(),
+source.algebra_14(),
+source.algebra_15(),
+source.algebra_16(),
+source.algebra_17(),
+source.algebra_18(),
+source.algebra_19(),
+source.algebra_20(),
+source.algebra_21(),
+source.algebra_22(),
+source.algebra_23(),
+source.algebra_24(),
+source.algebra_25(),
+source.algebra_26(),
+source.algebra_27(),
+source.algebra_28(),
+source.algebra_29(),
+source.algebra_30(),
+source.algebra_31(),
+]
 
-questionList = (
-alg.algebra_1(),
-alg.algebra_2(),
-alg.algebra_3(),
-alg.algebra_4(),
-alg.algebra_5(),
-alg.algebra_6(),
-alg.algebra_7(),
-alg.algebra_8(),
-alg.algebra_9(),
-alg.algebra_10(),
-alg.algebra_11(),
-alg.algebra_12(),
-alg.algebra_13(),
-alg.algebra_14(),
-alg.algebra_15(),
-alg.algebra_16(),
-alg.algebra_17(),
-alg.algebra_18(),
-alg.algebra_19(),
-alg.algebra_20(),
-alg.algebra_21(),
-alg.algebra_22(),
-alg.algebra_23(),
-alg.algebra_24(),
-alg.algebra_25(),
-alg.algebra_26(),
-alg.algebra_27(),
-alg.algebra_28(),
-alg.algebra_29(),
-alg.algebra_30(),
-alg.algebra_31()
-)
+if TESTMODE:
+	random.shuffle(question_list)
 
 
+file = open(f"{folderpath}/outputs/{file_name}_output_{str(random.randint(1000, 9999))}.txt", 'w+')
 
-#populate a set of all the items
-total_items_list = []
-for i in range(len(questionList)):
-    total_items_list.append(i)
-    
-    
-#choose a smaller subset from these questions
-if not TESTMODE:
-    items_list = random.sample(total_items_list, round(1 * len(questionList)))
-else:
-    items_list = total_items_list
-
-print(items_list)
-
-for i in range (len(items_list)):
+for i in range (len(question_list)):
     print('-----------------------------------------------------------------------')
-    item = questionList[items_list[i]]
-    print(item.question)
-    print()
-    print(item.answer)
+    item = question_list[i]
+    print_tasks(item)
+    write_to_file(item)
 
-stay = True
-while stay:
-    command = input()
-    if command == 'exit':
-        stay = False
+print()
+file.close()
+print('Finished.')
